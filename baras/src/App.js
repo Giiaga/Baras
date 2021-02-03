@@ -1,11 +1,14 @@
-import logo from "./logo.svg";
-import "./App.css";
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import LoginFormPage from "./components/LoginFormPage";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Main</h1>
-    </div>
+    <Switch>
+      <Route path="/login">
+        <LoginFormPage />
+      </Route>
+    </Switch>
   );
 }
 
