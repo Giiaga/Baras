@@ -31,6 +31,12 @@ export const login = (user) => async (dispatch) => {
 
 const initialState = { user: null };
 
+export const restoreUser = () => async (dispatch) => {
+  const res = await fetch("/api/session");
+  dispatch(setUser(res.data.user));
+  return res;
+};
+
 const sessionReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
