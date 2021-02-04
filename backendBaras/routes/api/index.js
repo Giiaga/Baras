@@ -12,8 +12,4 @@ const { User } = require("../../db/models");
 router.use("/session", sessionRouter);
 router.use("/users", usersRouter);
 
-router.get("/", (req, res) => {
-  res.send("hiiihdsf");
-});
-
 module.exports = router;
