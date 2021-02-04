@@ -29,6 +29,32 @@ export const login = (user) => async (dispatch) => {
   return response;
 };
 
+export const signup = (user) => async (dispatch) => {
+  const {
+    username,
+    email,
+    password,
+    photo,
+    quote,
+    description,
+    privateAccount,
+  } = user;
+  const response = await fetch("/api/users", {
+    method: "POST",
+    body: JSON.stringify({
+      username,
+      email,
+      password,
+      photo,
+      quote,
+      description,
+      privateAccount,
+    }),
+  });
+  dispatch(setUser(response.data.user));
+  return response;
+};
+
 const initialState = { user: null };
 
 export const restoreUser = () => async (dispatch) => {
