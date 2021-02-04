@@ -21,6 +21,8 @@ module.exports = {
       photo: {
         type: Sequelize.TEXT,
         allowNull: true,
+        defaultValue:
+          "https://site.groupe-psa.com/content/uploads/sites/9/2016/12/white-background-2.jpg",
       },
       quote: {
         type: Sequelize.STRING(200),
