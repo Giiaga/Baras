@@ -26,7 +26,7 @@ module.exports = {
       expressId: {
         type: Sequelize.INTEGER,
         allowNull: true,
-        references: { model: "Express" },
+        references: { model: "Expresses" },
       },
       createdAt: {
         allowNull: false,
