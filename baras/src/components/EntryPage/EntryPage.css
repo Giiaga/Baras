@@ -1,0 +1,40 @@
+.entryPageMain {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+.entryPageContent {
+  margin: auto;
+  margin-top: 13%;
+}
+
+.entryPageContent > h1 {
+  margin-top: 40px;
+  color: orange;
+  font-size: 650%;
+  margin-bottom: 25px;
+}
+
+.buttonDiv {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.buttonDiv > button {
+  height: 35px;
+  width: 70px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+}
+
+.entryPageQuote {
+  display: flex;
+  /* flex-direction: column; */
+}
+.entryPageQuote > p {
+  color: purple;
+  margin: auto;
+  margin-bottom: 8px;
+  font-size: large;
+}

@@ -68,7 +68,7 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.PrivateChat, { foreignKey: "recieverId" });
     User.hasMany(models.Bunched, { foreignKey: "userId" });
     User.hasMany(models.Story, { foreignKey: "userId" });
-    User.hasMany(models.BaraLikes, { foreignKey: "userId" });
+    User.hasMany(models.BarasLikes, { foreignKey: "userId" });
     User.hasMany(models.BarasComments, { foreignKey: "userId" });
     User.hasMany(models.Trust, { foreignKey: "userId" });
     User.hasMany(models.Trust, { foreignKey: "trustedId" });

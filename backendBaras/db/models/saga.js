@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Saga.associate = function (models) {
-    Saga.belongsto(models.Express, { foreignKey: "expressId" });
+    Saga.belongsTo(models.Express, { foreignKey: "expressId" });
 
     // associations can be defined here
   };
