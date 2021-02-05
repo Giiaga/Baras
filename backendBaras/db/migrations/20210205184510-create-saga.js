@@ -25,7 +25,20 @@ module.exports = {
       },
       expressId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: { model: "Expresses" },
+      },
+      positionH: {
+        type: Sequelize.INTEGER,
+      },
+      positionV: {
+        type: Sequelize.INTEGER,
+      },
+      width: {
+        type: Sequelize.INTEGER,
+      },
+      height: {
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
