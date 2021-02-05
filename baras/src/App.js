@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 
 import * as sessionActions from "./store/session";
 import EntryPage from "./components/EntryPage/EntryPage";
+import SlideMenu from "./components/SlideMenu/SlideMenu";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +20,9 @@ function App() {
       {/* <Navigation isLoaded={isLoaded} /> */}
       {isLoaded && (
         <Switch>
+          <Route path="/test">
+            <SlideMenu />
+          </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
