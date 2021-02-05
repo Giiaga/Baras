@@ -11,6 +11,11 @@ module.exports = (sequelize, DataTypes) => {
   Trust.associate = function (models) {
     Trust.belongsTo(models.User, { foreignKey: "userId" });
     Trust.belongsTo(models.User, { foreignKey: "trustedId" });
+    Trust.belongsToMany(models.Baras, {
+      through: "BarasTrustedJoins",
+      otherKey: "barasId",
+      foriegnKey: "trustedId",
+    });
     // associations can be defined here
   };
   return Trust;
