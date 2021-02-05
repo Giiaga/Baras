@@ -1,0 +1,24 @@
+"use strict";
+module.exports = (sequelize, DataTypes) => {
+  const Story = sequelize.define(
+    "Story",
+    {
+      userId: { type: DataTypes.INTEGER, allowNull: false },
+      title: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        validate: {
+          len: [0, 100],
+        },
+      },
+      published: { type: DataTypes.BOOLEAN, defaultValue: false },
+    },
+    {}
+  );
+  Story.associate = function (models) {
+    Story.belongsTo(models.User, { foreignKey: "userId" });
+    Story.hasMany(models.Page, { foreignKey: "storyId" });
+    // associations can be defined here
+  };
+  return Story;
+};
