@@ -16,6 +16,11 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Story.associate = function (models) {
+    Story.belongsToMany(models.Bunched, {
+      through: "BunchedJoin",
+      foreignKey: "storyId",
+      otheryKey: "bunchedId",
+    });
     Story.belongsTo(models.User, { foreignKey: "userId" });
     Story.hasMany(models.Page, { foreignKey: "storyId" });
     // associations can be defined here

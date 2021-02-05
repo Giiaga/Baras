@@ -21,6 +21,11 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Baras.associate = function (models) {
+    Baras.belongsToMany(models.Bunched, {
+      through: "BunchedJoin",
+      foreignKey: "barasId",
+      otherKey: "bunchedId",
+    });
     Baras.hasMany(models.BarasComments, { foreignKey: "barasId" });
     Baras.hasMany(models.BarasLikes, { foreignKey: "barasId" });
     Baras.belongsTo(models.User, { foreignKey: "userId" });

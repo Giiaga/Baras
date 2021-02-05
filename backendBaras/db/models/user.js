@@ -63,6 +63,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   User.associate = function (models) {
+    User.hasMany(models.Express, { foreignKey: "userId" });
+    User.hasMany(models.PrivateChat, { foreignKey: "senderId" });
+    User.hasMany(models.PrivateChat, { foreignKey: "recieverId" });
+    User.hasMany(models.Bunched, { foreignKey: "userId" });
     User.hasMany(models.Story, { foreignKey: "userId" });
     User.hasMany(models.BaraLikes, { foreignKey: "userId" });
     User.hasMany(models.BarasComments, { foreignKey: "userId" });
