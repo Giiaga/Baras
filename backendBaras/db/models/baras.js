@@ -21,6 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Baras.associate = function (models) {
+    Baras.hasMany(models.BarasComments, { foreignKey: "barasId" });
+    Baras.hasMany(models.BarasLikes, { foreignKey: "barasId" });
     Baras.belongsTo(models.User, { foreignKey: "userId" });
     Baras.belongsToMany(models.Trust, {
       through: "BarasTrustedJoins",
