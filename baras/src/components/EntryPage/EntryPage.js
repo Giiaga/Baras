@@ -4,8 +4,16 @@ import "./EntryPage.css";
 
 function EntryPage() {
   let user = useSelector((state) => state.session.user);
+  //  let fileread = new FileReader();
+  //  if (photo) {
+  //    fileread.onload = (e) =>
+  //      document.getElementById("pho").setAttribute("src", e.target.result);
+  //    fileread.readAsDataURL(photo);
+  //    console.log("after", photo);
+  //  }
   return (
     <div className="entryPageMain">
+      {/* <img id='pho' alt='fd' /> */}
       <div className="entryPageContent">
         <h1>BARAS</h1>
         <div className="entryPageQuote">

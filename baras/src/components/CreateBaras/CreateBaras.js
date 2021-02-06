@@ -17,6 +17,7 @@ function CreateBaras() {
       <form onSubmit={submitCreateBaras}>
         <input
           type="text"
+          required
           value={relatesTo}
           onChange={(e) => setRelatesTo(e.target.value)}
           placeholder="Relates to"
@@ -28,22 +29,23 @@ function CreateBaras() {
           onChange={(e) => setAudioLink(e.target.value)}
           placeholder="Put audio link here"
         />
-        {audioLink && (
+        {/* {audioLink && (
           <audio controls src={audioLink}>
             Sorry, your browser does not support audio being used on here
           </audio>
-        )}
+        )} */}
         <input
           hidden={audioChoosen}
           type="text"
           value={videoLink}
           onChange={(e) => setVideoLink(e.target.value)}
         />
-        {videoLink && (
+        {/* {videoLink && (
           <video controls width="300px" height="300px">
             <source src={videoLink} />
+            Sorry, your browser does not support video being used on here
           </video>
-        )}
+        )} */}
         <textarea
           value={mainText}
           placeholder="Let it outt, if you will"
