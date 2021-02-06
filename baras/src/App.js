@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
-import Navigation from "./components/Navigation";
+// import Navigation from "./components/Navigation";
 
 import * as sessionActions from "./store/session";
 import EntryPage from "./components/EntryPage/EntryPage";
 import SlideMenu from "./components/SlideMenu/SlideMenu";
+import LoginForm from "./components/LoginFormModal/LoginForm";
 
 function App() {
+  let user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
@@ -17,19 +19,28 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      {/* <Navigation isLoaded={isLoaded} /> */}
+      {user && <SlideMenu />}
       {isLoaded && (
-        <Switch>
-          <Route path="/test">
-            <SlideMenu />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route exact path="/">
-            <EntryPage />
-          </Route>
-        </Switch>
+        <>
+          <Switch>
+            <Route exact path="/">
+              <EntryPage />
+            </Route>
+            <Route path="/login">
+              <LoginForm />
+            </Route>
+            <Route path="/test">
+              <SlideMenu />
+            </Route>
+            <Route path="/signup">
+              <SignupFormPage />
+            </Route>
+            <Route path="*">
+              <EntryPage />
+            </Route>
+          </Switch>
+        </>
       )}
     </>
   );
