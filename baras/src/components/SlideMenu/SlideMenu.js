@@ -23,7 +23,7 @@ function SlideMenu() {
           <h4 onClick={() => (window.location.href = "/world-baras")}>
             World Baras
           </h4>
-          <h4 onClick={() => (window.location.href = "/trust/baras")}>
+          <h4 onClick={() => (window.location.href = "/trust-baras")}>
             Trusted Baras
           </h4>
           <h4 onClick={() => (window.location.href = "/trust")}>Trust</h4>
