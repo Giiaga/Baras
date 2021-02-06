@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import "./SlideMenu.css";
 
 function SlideMenu() {
+  let user = useSelector((state) => state.session.user);
+  console.log(user);
   let [showMenu, setShowMenu] = useState(true);
   let menuButton;
   if (showMenu) {
@@ -11,7 +14,9 @@ function SlideMenu() {
     <>
       <div hidden={showMenu} className="menu">
         <div className="menuList">
-          <h4 onClick={() => (window.location.href = "/user")}>Me</h4>
+          <h4 onClick={() => (window.location.href = `${user.username}`)}>
+            Me
+          </h4>
           <h4 onClick={() => (window.location.href = "/world-baras")}>
             World Baras
           </h4>
