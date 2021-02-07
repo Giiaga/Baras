@@ -77,13 +77,18 @@ function CreateBaras() {
           />
           <button
             hidden={photoChoosen}
+            type="button"
             onClick={() => {
               document.getElementById("addPhotoInput").value = "";
             }}
           >
             Clear
           </button>
-          <button hidden={photoChoosen} onClick={() => setPhotoChoosen(true)}>
+          <button
+            hidden={photoChoosen}
+            type="button"
+            onClick={() => setPhotoChoosen(true)}
+          >
             Cancel
           </button>
         </div>
@@ -95,7 +100,11 @@ function CreateBaras() {
             onChange={(e) => setAudioLink(e.target.value)}
             placeholder="Put audio link here"
           />
-          <button hidden={audioChoosen} onClick={() => setAudioChoosen(true)}>
+          <button
+            hidden={audioChoosen}
+            type="button"
+            onClick={() => setAudioChoosen(true)}
+          >
             Cancel
           </button>
         </div>
@@ -112,7 +121,11 @@ function CreateBaras() {
             value={videoLink}
             onChange={(e) => setVideoLink(e.target.value)}
           />
-          <button hidden={videoChoosen} onClick={() => setVideoChoosen(true)}>
+          <button
+            hidden={videoChoosen}
+            type="button"
+            onClick={() => setVideoChoosen(true)}
+          >
             Cancel
           </button>
         </div>
@@ -127,6 +140,7 @@ function CreateBaras() {
           placeholder="Let it outt, if you will"
           onChange={(e) => setMainText(e.target.value)}
         ></textarea>
+        <button>Let it out</button>
       </form>
     </>
   );
