@@ -23,7 +23,6 @@ function CreateBaras() {
 
   return (
     <>
-      <button>Write</button>
       <button
         onClick={() => {
           setPhotoChoosen(false);
@@ -68,31 +67,55 @@ function CreateBaras() {
           onChange={(e) => setRelatesTo(e.target.value)}
           placeholder="Relates to"
         />
-        <input
-          type="file"
-          hidden={photoChoosen}
-          onChange={(e) => addPhoto(e.target.files[0])}
-          placeholder="Photo"
-        />
-        <input
-          type="text"
-          hidden={audioChoosen}
-          value={audioLink}
-          onChange={(e) => setAudioLink(e.target.value)}
-          placeholder="Put audio link here"
-        />
+        <div>
+          <input
+            id="addPhotoInput"
+            type="file"
+            hidden={photoChoosen}
+            onChange={(e) => addPhoto(e.target.files[0])}
+            placeholder="Photo"
+          />
+          <button
+            hidden={photoChoosen}
+            onClick={() => {
+              document.getElementById("addPhotoInput").value = "";
+            }}
+          >
+            Clear
+          </button>
+          <button hidden={photoChoosen} onClick={() => setPhotoChoosen(true)}>
+            Cancel
+          </button>
+        </div>
+        <div>
+          <input
+            type="text"
+            hidden={audioChoosen}
+            value={audioLink}
+            onChange={(e) => setAudioLink(e.target.value)}
+            placeholder="Put audio link here"
+          />
+          <button hidden={audioChoosen} onClick={() => setAudioChoosen(true)}>
+            Cancel
+          </button>
+        </div>
         {audioLink && (
           <audio controls src={audioLink}>
             Sorry, your browser does not support audio being used on here
           </audio>
         )}
-        <input
-          type="text"
-          hidden={videoChoosen}
-          placeholder="Put video link here"
-          value={videoLink}
-          onChange={(e) => setVideoLink(e.target.value)}
-        />
+        <div>
+          <input
+            type="text"
+            hidden={videoChoosen}
+            placeholder="Put video link here"
+            value={videoLink}
+            onChange={(e) => setVideoLink(e.target.value)}
+          />
+          <button hidden={videoChoosen} onClick={() => setVideoChoosen(true)}>
+            Cancel
+          </button>
+        </div>
         {/* {videoLink && (
           <video controls width="300px" height="300px">
             <source src={videoLink} />
