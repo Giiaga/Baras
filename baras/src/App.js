@@ -8,6 +8,7 @@ import * as sessionActions from "./store/session";
 import EntryPage from "./components/EntryPage/EntryPage";
 import SlideMenu from "./components/SlideMenu/SlideMenu";
 import LoginForm from "./components/LoginFormModal/LoginForm";
+import Showpic from "./quicktets";
 
 function App() {
   let user = useSelector((state) => state.session.user);
@@ -31,7 +32,8 @@ function App() {
               <LoginForm />
             </Route>
             <Route path="/test">
-              <SlideMenu />
+              <Showpic />
+              {/* <SlideMenu /> */}
             </Route>
             <Route path="/signup">
               <SignupFormPage />

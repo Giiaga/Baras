@@ -49,7 +49,11 @@ router.delete("/", (_req, res) => {
   res.clearCookie("token");
   return res.json({ message: "success" });
 });
-
+router.get("/h", async (req, res) => {
+  let userr = await User.findByPk(17);
+  console.log(userr);
+  res.json({ userr });
+});
 // Restore session user
 router.get("/", restoreUser, (req, res) => {
   const { user } = req;

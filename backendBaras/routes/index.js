@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const apiRouter = require("./api");
 const { requireAuth } = require("../utils/auth");
+const { User } = require("../db/models/user");
+
 router.use("/api", apiRouter);
 
 // Static routes
@@ -35,8 +37,9 @@ if (process.env.NODE_ENV !== "production") {
     return res.json({});
   });
 }
-
-router.get("/", (req, res) => {
-  res.send("hi");
-});
+// router.get("/", async (req, res) => {
+//   let userr = await User.findByPk(15);
+//   // console.log(userr);
+//   res.json("hi");
+// });
 module.exports = router;
