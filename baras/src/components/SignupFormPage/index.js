@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import PhotoUpload from "../PhotoUpload/PhotoUpload";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -50,6 +49,14 @@ function SignupFormPage() {
     ]);
   };
 
+  let changePhoto = (data) => {
+    let fileread = new FileReader();
+    fileread.onload = (e) => {
+      setPhoto(e.target.result);
+    };
+    fileread.readAsDataURL(data);
+  };
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -84,13 +91,13 @@ function SignupFormPage() {
       </label>
       <label>
         Photo
-        <PhotoUpload onNewImageBase64={(data) => setPhoto(data)} />
-        {/* <input
+        {/* <PhotoUpload onNewImageBase64={(data) => setPhoto(data)} /> */}
+        <input
           type="file"
           // value={photo}
           // name="file"
-          // onChange={(e) => changePhoto(e.target.files[0])}
-        /> */}
+          onChange={(e) => changePhoto(e.target.files[0])}
+        />
       </label>
       <label>
         Quote

@@ -3,18 +3,42 @@ import React, { useState } from "react";
 function CreateBaras() {
   let [relatesTo, setRelatesTo] = useState();
   let [mainText, setMainText] = useState();
+  let [photo, setPhoto] = useState();
   let [audioLink, setAudioLink] = useState();
   let [videoLink, setVideoLink] = useState();
-  let [audioChoosen, setAudioChoosen] = useState(false);
-  let [videoChoosen, setVideoChoosen] = useState(false);
+  let [audioChoosen, setAudioChoosen] = useState(true);
+  let [videoChoosen, setVideoChoosen] = useState(true);
+  let [photoChoosen, setPhotoChoosen] = useState(true);
   let submitCreateBaras = () => {};
+
+  let addPhoto = (data) => {
+    let fileread = new FileReader();
+
+    fileread.onload = (e) => {
+      setPhoto(e.target.result);
+    };
+
+    fileread.readAsDataURL(data);
+  };
+
   return (
     <>
       <button>Write</button>
-      <button>Add Photo</button>
+      <button
+        onClick={() => {
+          setPhotoChoosen(false);
+          setAudioChoosen(true);
+          setVideoChoosen(true);
+        }}
+      >
+        Add Photo
+      </button>
       <button onClick={() => setAudioChoosen(true)}>Add Song</button>
       <button onClick={() => setVideoChoosen(true)}>Add Video</button>
-      <form onSubmit={submitCreateBaras}>
+      <form
+        onSubmit={submitCreateBaras}
+        style={{ display: "flex", flexDirection: "column", width: "20%" }}
+      >
         <input
           type="text"
           required
@@ -23,20 +47,29 @@ function CreateBaras() {
           placeholder="Relates to"
         />
         <input
-          hidden={videoChoosen}
+          type="file"
+          hidden={photoChoosen}
+          onChange={(e) => addPhoto(e.target.files[0])}
+          placeholder="Photo"
+        />
+        <input
+          // hidden={videoChoosen}
           type="text"
+          hidden={audioChoosen}
           value={audioLink}
           onChange={(e) => setAudioLink(e.target.value)}
           placeholder="Put audio link here"
         />
-        {/* {audioLink && (
+        {audioLink && (
           <audio controls src={audioLink}>
             Sorry, your browser does not support audio being used on here
           </audio>
-        )} */}
+        )}
         <input
-          hidden={audioChoosen}
+          // hidden={audioChoosen}
           type="text"
+          hidden={videoChoosen}
+          placeholder="Put video link here"
           value={videoLink}
           onChange={(e) => setVideoLink(e.target.value)}
         />

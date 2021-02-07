@@ -50,7 +50,7 @@ router.delete("/", (_req, res) => {
   return res.json({ message: "success" });
 });
 router.get("/h", async (req, res) => {
-  let userr = await User.findByPk(20);
+  let userr = await User.findByPk(26);
   console.log(userr);
   res.json({ userr });
 });
