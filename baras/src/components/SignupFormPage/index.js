@@ -49,33 +49,9 @@ function SignupFormPage() {
     ]);
   };
 
-  function changePhoto(data) {
-    let fileread = new FileReader();
-    // if (data) {
-    // console.log(data);
-    // let photourl = window.URL.createObjectURL(data);
-    // console.log(photourl);
-    // setPhoto(photourl);
-    // fileread.addEventListener("load", function () {
-    //   let dec = btoa(fileread.result);
-    //   fileread.readAsDataURL(data);
-    //   setPhoto(data);
-    // });
-    // console.log("dataaaaa");
-    // console.log(photo);
-    //  document.getElementById("pho").setAttribute("src", e.target.result);
-    // setPhoto(e.target.result);
-    // console.log(photo, "NOW");
-    // if (data) fileread.readAsBinaryString(data);
-  }
-  // console.log(photo);
-  //  console.log("after", photo);
-  // }
-  // }
-  // console.log(photo);
   return (
     <form onSubmit={handleSubmit}>
-      <img src={photo} alt="" />
+      <img src={photo} alt="fgds" />
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
@@ -104,8 +80,8 @@ function SignupFormPage() {
         <input
           type="file"
           // value={photo}
-          name="file"
-          onChange={(e) => changePhoto(e.target.files[0])}
+          // name="file"
+          // onChange={(e) => }
         />
       </label>
       <label>
