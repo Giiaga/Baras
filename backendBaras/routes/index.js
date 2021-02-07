@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const apiRouter = require("./api");
 const { requireAuth } = require("../utils/auth");
-const { User } = require("../db/models/user");
-
+// const { User } = require("../db/models/user");
+const { Baras } = require("../db/models");
 router.use("/api", apiRouter);
 
 // Static routes
@@ -41,5 +41,19 @@ router.get("/", async (req, res) => {
   // let userr = await User.findByPk(15);
   // console.log(userr);
   res.json("hisdgfg");
+});
+
+router.post("/createBaras", async (req, res) => {
+  let { relatesTo, mainText, photo, audioLink, videoLink, userId } = req.body;
+  let newBaras = await Baras.create({
+    userId,
+    relatesTo,
+    text: mainText,
+    photo,
+    music: audioLink,
+    video: videoLink,
+  });
+  console.log(newBaras);
+  return res.json(newBaras);
 });
 module.exports = router;

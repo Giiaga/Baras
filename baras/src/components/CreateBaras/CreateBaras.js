@@ -1,15 +1,25 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { letBarasOut } from "../../store/createBaras";
 
 function CreateBaras() {
+  let userId = useSelector((state) => state.session.user);
+  console.log(userId);
+  let dispatch = useDispatch();
+
   let [relatesTo, setRelatesTo] = useState();
-  let [mainText, setMainText] = useState();
-  let [photo, setPhoto] = useState();
-  let [audioLink, setAudioLink] = useState();
-  let [videoLink, setVideoLink] = useState();
+  let [mainText, setMainText] = useState(null);
+  let [photo, setPhoto] = useState(null);
+  let [audioLink, setAudioLink] = useState(null);
+  let [videoLink, setVideoLink] = useState(null);
   let [audioChoosen, setAudioChoosen] = useState(true);
   let [videoChoosen, setVideoChoosen] = useState(true);
   let [photoChoosen, setPhotoChoosen] = useState(true);
-  let submitCreateBaras = () => {};
+  let submitCreateBaras = () => {
+    dispatch(
+      letBarasOut(relatesTo, mainText, photo, audioLink, videoLink, userId.id)
+    );
+  };
 
   let addPhoto = (data) => {
     let fileread = new FileReader();
@@ -58,6 +68,8 @@ function CreateBaras() {
       </button>
       <form
         onSubmit={submitCreateBaras}
+        action="/world-baras"
+        method="POST"
         style={{ display: "flex", flexDirection: "column", width: "20%" }}
       >
         <input
