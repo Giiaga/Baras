@@ -29,12 +29,34 @@ function CreateBaras() {
           setPhotoChoosen(false);
           setAudioChoosen(true);
           setVideoChoosen(true);
+          setAudioLink("");
+          setVideoLink("");
         }}
       >
         Add Photo
       </button>
-      <button onClick={() => setAudioChoosen(true)}>Add Song</button>
-      <button onClick={() => setVideoChoosen(true)}>Add Video</button>
+      <button
+        onClick={() => {
+          setAudioChoosen(false);
+          setPhotoChoosen(true);
+          setVideoChoosen(true);
+          setPhoto("");
+          setVideoLink("");
+        }}
+      >
+        Add Song
+      </button>
+      <button
+        onClick={() => {
+          setVideoChoosen(false);
+          setPhotoChoosen(true);
+          setAudioChoosen(true);
+          setPhoto("");
+          setAudioLink("");
+        }}
+      >
+        Add Video
+      </button>
       <form
         onSubmit={submitCreateBaras}
         style={{ display: "flex", flexDirection: "column", width: "20%" }}
@@ -53,7 +75,6 @@ function CreateBaras() {
           placeholder="Photo"
         />
         <input
-          // hidden={videoChoosen}
           type="text"
           hidden={audioChoosen}
           value={audioLink}
@@ -66,7 +87,6 @@ function CreateBaras() {
           </audio>
         )}
         <input
-          // hidden={audioChoosen}
           type="text"
           hidden={videoChoosen}
           placeholder="Put video link here"
