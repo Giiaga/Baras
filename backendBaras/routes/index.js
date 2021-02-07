@@ -37,9 +37,9 @@ if (process.env.NODE_ENV !== "production") {
     return res.json({});
   });
 }
-// router.get("/", async (req, res) => {
-//   let userr = await User.findByPk(15);
-//   // console.log(userr);
-//   res.json("hi");
-// });
+router.get("/", async (req, res) => {
+  // let userr = await User.findByPk(15);
+  // console.log(userr);
+  res.json("hisdgfg");
+});
 module.exports = router;

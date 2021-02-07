@@ -8,7 +8,7 @@ function Showpic() {
   useEffect(() => {
     dispatch(showpicture());
   }, []);
-  // console.log(user);
+
   return (
     <>
       <h1>hi</h1>

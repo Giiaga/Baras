@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import PhotoUpload from "../PhotoUpload/PhotoUpload";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -50,8 +51,14 @@ function SignupFormPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <img src={photo} alt="fgds" />
+    <form
+      onSubmit={handleSubmit}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      {/* <img src={photo} alt="fgds" /> */}
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
@@ -77,12 +84,13 @@ function SignupFormPage() {
       </label>
       <label>
         Photo
-        <input
+        <PhotoUpload onNewImageBase64={(data) => setPhoto(data)} />
+        {/* <input
           type="file"
           // value={photo}
           // name="file"
-          // onChange={(e) => }
-        />
+          // onChange={(e) => changePhoto(e.target.files[0])}
+        /> */}
       </label>
       <label>
         Quote
