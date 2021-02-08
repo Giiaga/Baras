@@ -12,12 +12,24 @@ function CreateBaras() {
   let [photo, setPhoto] = useState(null);
   let [audioLink, setAudioLink] = useState(null);
   let [videoLink, setVideoLink] = useState(null);
+  let [privateBaras, setPrivate] = useState(false);
+  let [trusted, setTrusted] = useState(true);
+
   let [audioChoosen, setAudioChoosen] = useState(true);
   let [videoChoosen, setVideoChoosen] = useState(true);
   let [photoChoosen, setPhotoChoosen] = useState(true);
   let submitCreateBaras = () => {
     dispatch(
-      letBarasOut(relatesTo, mainText, photo, audioLink, videoLink, userId.id)
+      letBarasOut(
+        relatesTo,
+        mainText,
+        photo,
+        audioLink,
+        videoLink,
+        userId.id,
+        privateBaras,
+        trusted
+      )
     );
   };
 
@@ -152,6 +164,29 @@ function CreateBaras() {
           placeholder="Let it outt, if you will"
           onChange={(e) => setMainText(e.target.value)}
         ></textarea>
+        <label>
+          Private{" "}
+          <input
+            type="checkbox"
+            placeholder="Private"
+            value={privateBaras}
+            onClick={(e) =>
+              privateBaras ? setPrivate(false) : setPrivate(true)
+            }
+          />
+        </label>
+        <label>
+          Trust{" "}
+          <input
+            type="checkbox"
+            checked={trusted}
+            placeholder="Trust"
+            value={trusted}
+            onClick={(e) => {
+              trusted ? setTrusted(false) : setTrusted(true);
+            }}
+          />
+        </label>
         <button>Let it out</button>
       </form>
     </>

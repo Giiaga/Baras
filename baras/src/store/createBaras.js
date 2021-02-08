@@ -15,7 +15,9 @@ export let letBarasOut = (
   photo,
   audioLink,
   videoLink,
-  userId
+  userId,
+  privateBaras,
+  trusted
 ) => async (dispatch) => {
   let response = await fetch("/createBaras", {
     method: "POST",
@@ -29,6 +31,8 @@ export let letBarasOut = (
       audioLink,
       videoLink,
       userId,
+      privateBaras,
+      trusted,
     }),
   });
 
