@@ -7,18 +7,16 @@ import "./UserProfile.css";
 function UserProfile() {
   let dispatch = useDispatch();
   let [userAvailable, setUserAvailable] = useState(false);
+
   let history = useHistory();
 
   let loggedInUser = useSelector((state) => state.session.user);
   let user = useSelector((state) => state.user.user);
-
-  useEffect(
-    () =>
-      dispatch(getUser(loggedInUser.username)).then(() =>
-        setUserAvailable(true)
-      ),
-    []
-  );
+  let allBaras = useSelector((state) => state.user.allBaras);
+  useEffect(() => {
+    dispatch(getUser(loggedInUser.username)).then(() => setUserAvailable(true)),
+      dispatch(getUserBaras(loggedInUser.username));
+  }, []);
 
   return (
     <>
@@ -31,7 +29,18 @@ function UserProfile() {
             <div className="userNameDiv">
               <h1>{user.username}</h1>
             </div>
+            <div className="userNameDiv">
+              <p style={{ fontStyle: "italic" }}>'{user.quote}'</p>
+            </div>
+            <div className="userNameDiv">
+              <p>{user.description}</p>
+            </div>
           </div>
+          {allBaras ? (
+            <div className="allBarasDiv">{allBaras[allBaras.length - 1]}</div>
+          ) : (
+            <div className="allBarasDiv">No Baras</div>
+          )}
         </div>
       ) : (
         ""
