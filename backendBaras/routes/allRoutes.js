@@ -38,13 +38,24 @@ router.get(
   "/:username",
   requireAuth,
   asyncHandler(async (req, res) => {
-    // let { username: currentUser } = req.user;
+    let { username: currentUser } = req.user;
+    console.log(currentUser, "dffjsdk");
     let { username } = req.params;
-    // if (currentUser != username) res.redirect("/");
+    if (currentUser != username) res.redirect("/");
 
     let user = await User.findOne({ where: { username: username } });
-    console.log(user);
     return res.json(user);
+  })
+);
+
+router.get(
+  "/getBaras/:userId",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    let { userId } = req.params;
+    let allBaras = await Baras.findAll({ where: { userId: userId } });
+
+    return res.json(allBaras);
   })
 );
 module.exports = router;

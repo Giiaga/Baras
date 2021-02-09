@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getUser } from "../../store/user";
+import { getUser, allBaras } from "../../store/user";
 import "./UserProfile.css";
 
 function UserProfile() {
@@ -12,10 +12,11 @@ function UserProfile() {
 
   let loggedInUser = useSelector((state) => state.session.user);
   let user = useSelector((state) => state.user.user);
-  let allBaras = useSelector((state) => state.user.allBaras);
+  let userBaras = useSelector((state) => state.user.allBaras);
+  console.log(userBaras);
   useEffect(() => {
-    dispatch(getUser(loggedInUser.username)).then(() => setUserAvailable(true)),
-      dispatch(getUserBaras(loggedInUser.username));
+    dispatch(getUser(loggedInUser.username)).then(() => setUserAvailable(true));
+    dispatch(allBaras(loggedInUser.id));
   }, []);
 
   return (
@@ -36,8 +37,10 @@ function UserProfile() {
               <p>{user.description}</p>
             </div>
           </div>
-          {allBaras ? (
-            <div className="allBarasDiv">{allBaras[allBaras.length - 1]}</div>
+          {userBaras ? (
+            <div className="allBarasDiv">
+              {userBaras[userBaras.length - 1].relatesTo}
+            </div>
           ) : (
             <div className="allBarasDiv">No Baras</div>
           )}
