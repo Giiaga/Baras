@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { letBarasOut } from "../../store/createBaras";
+import { useHistory } from "react-router-dom";
 
 function CreateBaras() {
   let userId = useSelector((state) => state.session.user);
   console.log(userId);
   let dispatch = useDispatch();
+  let history = useHistory();
 
   let [relatesTo, setRelatesTo] = useState();
   let [mainText, setMainText] = useState(null);
@@ -18,7 +20,8 @@ function CreateBaras() {
   let [audioChoosen, setAudioChoosen] = useState(true);
   let [videoChoosen, setVideoChoosen] = useState(true);
   let [photoChoosen, setPhotoChoosen] = useState(true);
-  let submitCreateBaras = () => {
+  let submitCreateBaras = (e) => {
+    e.preventDefault();
     dispatch(
       letBarasOut(
         relatesTo,
@@ -31,6 +34,7 @@ function CreateBaras() {
         trusted
       )
     );
+    history.push("/trust/baras");
   };
 
   let addPhoto = (data) => {
@@ -80,8 +84,6 @@ function CreateBaras() {
       </button>
       <form
         onSubmit={submitCreateBaras}
-        action="/world-baras"
-        method="POST"
         style={{ display: "flex", flexDirection: "column", width: "20%" }}
       >
         <input

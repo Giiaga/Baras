@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import showpicReducer from "./quickroue";
 import createBarasReducer from "./createBaras";
+import userReducer from "./user";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   showpic: showpicReducer,
   createBaras: createBarasReducer,
+  user: userReducer,
 });
 
 let enhancer;

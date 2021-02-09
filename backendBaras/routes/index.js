@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const apiRouter = require("./api");
+let allRoutes = require("./allRoutes");
+
 const { requireAuth, setTokenCookie, restoreUser } = require("../utils/auth");
 // const { User } = require("../db/models/user");
-const { Baras } = require("../db/models");
 
+router.use("", allRoutes);
 router.use("/api", apiRouter);
 
 // Static routes
@@ -44,18 +46,4 @@ router.get("/", async (req, res) => {
   res.json("hisdgfg");
 });
 
-router.post("/createBaras", requireAuth, async (req, res, next) => {
-  // restoreUser(req, res, next);
-  let { relatesTo, mainText, photo, audioLink, videoLink, userId } = req.body;
-  let newBaras = await Baras.create({
-    userId,
-    relatesTo,
-    text: mainText,
-    photo,
-    music: audioLink,
-    video: videoLink,
-  });
-  // console.log(newBaras);
-  return res.json(newBaras);
-});
 module.exports = router;

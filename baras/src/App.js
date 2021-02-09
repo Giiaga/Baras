@@ -9,27 +9,38 @@ import EntryPage from "./components/EntryPage/EntryPage";
 import SlideMenu from "./components/SlideMenu/SlideMenu";
 import LoginForm from "./components/LoginFormModal/LoginForm";
 import Showpic from "./quicktets";
+import UserProfile from "./components/UserProfile/UserProfile";
 
 function App() {
   let user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-  }, [dispatch]);
+    if (user) {
+      setIsLoaded(true);
+      return;
+    }
+    dispatch(sessionActions.restoreUser()).then(
+      (data) => data.user && setIsLoaded(true)
+    );
+  }, [dispatch, user]);
 
   return (
     <>
       {/* <Navigation isLoaded={isLoaded} /> */}
       {user && <SlideMenu />}
+      <Route exact path="/">
+        <EntryPage />
+      </Route>
+      <Route path="/login">
+        <LoginForm />
+      </Route>
       {isLoaded && (
         <>
           <Switch>
-            <Route exact path="/">
-              <EntryPage />
-            </Route>
-            <Route path="/login">
-              <LoginForm />
+            <Route exact path="/:username">
+              <UserProfile />
             </Route>
             <Route path="/test">
               <Showpic />
