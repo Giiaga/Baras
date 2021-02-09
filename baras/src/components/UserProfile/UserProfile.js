@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getUser } from "../../store/user";
+import "./UserProfile.css";
 
 function UserProfile() {
   let dispatch = useDispatch();
@@ -20,19 +21,22 @@ function UserProfile() {
   );
 
   return (
-    <div>
-      <h1>YESSDHH</h1>
+    <>
       {userAvailable ? (
-        <div
-          className="userPhoto"
-          style={{ width: "100px", height: "100px", borderRadius: "30px" }}
-        >
-          <img src={user.photo} alt={user.username} />
+        <div className="profilePageMain">
+          <div className="userDetailDiv">
+            <div className="userPhotoDiv">
+              <img src={user.photo} alt={user.username} className="userPhoto" />
+            </div>
+            <div className="userNameDiv">
+              <h1>{user.username}</h1>
+            </div>
+          </div>
         </div>
       ) : (
         ""
       )}
-    </div>
+    </>
   );
 }
 

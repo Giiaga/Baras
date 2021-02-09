@@ -1,0 +1,21 @@
+.profilePageMain {
+}
+
+.userDetailDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.userPhotoDiv {
+  margin: auto;
+  margin-top: 20px;
+}
+
+.userPhoto {
+  width: 250px;
+  height: 250px;
+  border-radius: 100%;
+}
+.userNameDiv {
+  margin: auto;
+}
