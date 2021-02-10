@@ -19,6 +19,17 @@ export let tellStory = (userId, title, publish) => async (dispatch) => {
   return response;
 };
 
+let STORYPAGE = "addsNewStoryPageToDatabase";
+
+let storyPageAC = (data) => {
+  return {
+    type: STORYPAGE,
+    data,
+  };
+};
+
+export let storyPage = () => async (dispatch) => {};
+
 let storyReducer = (state = [], action) => {
   let newState;
   switch (action.type) {
