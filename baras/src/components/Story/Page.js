@@ -1,11 +1,17 @@
 import React from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import CreateStory from "./CreateStory";
 
 function Page() {
+  let storyId = useSelector((state) => state.story.id);
   let [showPhoto, setShowPhoto] = useState();
   let [showAudio, setShowAudio] = useState();
   let [showVideo, setShowVideo] = useState();
+  let [pageNumber, setPageNumber] = useState();
+  let [write, setWrite] = useState();
+  let [text, setText] = useState();
+
   return (
     <>
       <CreateStory
@@ -13,7 +19,8 @@ function Page() {
         grabAudio={setShowAudio}
         grabVideo={setShowVideo}
       />
-
+      <button onClick={() => setWrite(true)}>Write</button>
+      {write && <button onClick={() => setWrite(false)}>Cancel</button>}
       <div
         className="pageMainDiv"
         style={{
@@ -24,6 +31,13 @@ function Page() {
           position: "relative",
         }}
       >
+        {write ? (
+          <div>
+            <textarea onChange={(e) => setText(e.target.value)}></textarea>
+          </div>
+        ) : (
+          ""
+        )}
         {showPhoto ? (
           <div
             style={{
@@ -54,11 +68,14 @@ function Page() {
           Previous
         </button>
 
-        <button style={{ position: "absolute", top: "50%", left: "100.3%" }}>
+        <button
+          style={{ position: "absolute", top: "50%", left: "100.3%" }}
+          onClick={() => setPageNumber(pageNumber++)}
+        >
           Next
         </button>
         <p style={{ position: "absolute", top: "97%", left: "87%" }}>
-          PageNumber{1}
+          PageNumber{pageNumber}
         </p>
       </div>
     </>
