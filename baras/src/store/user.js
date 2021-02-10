@@ -14,7 +14,7 @@ export let getUser = (username) => async (dispatch) => {
 
   dispatch(getUserAC(response.data));
 
-  return response;
+  return response.data;
 };
 
 let GETBARASFORUSER = "getAllBarasForUser";
@@ -31,7 +31,7 @@ export let allBaras = (userId) => async (dispatch) => {
 
   dispatch(allBarasAC(response.data));
 
-  return response;
+  return response.data;
 };
 
 let userReducer = (state = [], action) => {

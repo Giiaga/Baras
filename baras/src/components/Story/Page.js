@@ -17,10 +17,54 @@ function Page() {
   let [pageNumber, setPageNumber] = useState();
   let [write, setWrite] = useState();
   let [text, setText] = useState();
-
+  let [moving, setMove] = useState(false);
+  if (moving) {
+    dragElement(moving);
+    // setMove(false);
+  }
   let newPageNum = useSelector((state) => state.storyPages);
 
   let saveStory = () => {};
+
+  function dragElement(elmnt) {
+    let pos1 = 0,
+      pos2 = 0,
+      pos3 = 0,
+      pos4 = 0;
+
+    if (document.getElementById(elmnt.id)) {
+      document.getElementById(elmnt.id).onmousedown = dragMouseDown;
+    } else {
+      elmnt.onmousedown = dragMouseDown;
+    }
+
+    function dragMouseDown(e) {
+      e = e || window.event;
+      e.preventDefault();
+
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
+
+      document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e) {
+      e = e || window.event;
+      e.preventDefault();
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      elmnt.style.top = elmnt.offsetTop - pos2 + "px";
+      elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
+    }
+
+    function closeDragElement() {
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
+  }
 
   let addPhoto = (data) => {
     let fileread = new FileReader();
@@ -157,6 +201,7 @@ function Page() {
         New Page
       </button>
       <div
+        // onClick={() => setMove(false)}
         className="pageMainDiv"
         style={{
           width: "210mm",
@@ -167,8 +212,30 @@ function Page() {
         }}
       >
         {write ? (
-          <div>
-            <textarea onChange={(e) => setText(e.target.value)}></textarea>
+          <div
+            id="dragWrite"
+            style={{
+              borderTop: "10px solid",
+              resize: "both",
+              // height: "",
+              position: "absolute",
+              overflow: "auto",
+              overflowY: "hidden",
+              overflowX: "hidden",
+            }}
+            onDoubleClick={(e) => setMove(e.target)}
+            // onClick={(e) => setMove(false)}
+          >
+            <textarea
+              style={{
+                width: "100%",
+                height: "100%",
+                resize: "none",
+                position: "relative",
+              }}
+              // onClick={() => console.log("sfdsjfgasjweb")}
+              onChange={(e) => setText(e.target.value)}
+            ></textarea>
           </div>
         ) : (
           ""

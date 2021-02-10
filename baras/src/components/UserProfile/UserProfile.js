@@ -13,9 +13,11 @@ function UserProfile() {
   let loggedInUser = useSelector((state) => state.session.user);
   let user = useSelector((state) => state.user.user);
   let userBaras = useSelector((state) => state.user.allBaras);
-  console.log(userBaras);
+  // console.log(userBaras);
   useEffect(() => {
-    dispatch(getUser(loggedInUser.username)).then(() => setUserAvailable(true));
+    dispatch(getUser(loggedInUser.username)).then(
+      (data) => data && setUserAvailable(true)
+    );
     dispatch(allBaras(loggedInUser.id));
   }, []);
 
@@ -37,7 +39,7 @@ function UserProfile() {
               <p>{user.description}</p>
             </div>
           </div>
-          {userBaras ? (
+          {userBaras.length > 0 ? (
             <div className="allBarasDiv">
               {userBaras[userBaras.length - 1].relatesTo}
             </div>

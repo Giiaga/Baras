@@ -38,6 +38,9 @@ function App() {
       <Route path="/login">
         <LoginForm />
       </Route>
+      <Route exact path="/signup">
+        <SignupFormPage />
+      </Route>
       {isLoaded && (
         <>
           <Switch>
@@ -52,9 +55,6 @@ function App() {
             </Route>
             <Route exact path="/story/cont">
               <Page />
-            </Route>
-            <Route exact path="/signup">
-              <SignupFormPage />
             </Route>
             <Route exact path="/:username">
               <UserProfile />
