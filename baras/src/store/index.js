@@ -4,12 +4,14 @@ import sessionReducer from "./session";
 import showpicReducer from "./quickroue";
 import createBarasReducer from "./createBaras";
 import userReducer from "./user";
+import storyReducer from "./story";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   showpic: showpicReducer,
   createBaras: createBarasReducer,
   user: userReducer,
+  story: storyReducer,
 });
 
 let enhancer;

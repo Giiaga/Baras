@@ -10,6 +10,8 @@ import SlideMenu from "./components/SlideMenu/SlideMenu";
 import LoginForm from "./components/LoginFormModal/LoginForm";
 import Showpic from "./quicktets";
 import UserProfile from "./components/UserProfile/UserProfile";
+import Page from "./components/Story/Page";
+import StoryTell from "./components/Story/StoryTell";
 
 function App() {
   let user = useSelector((state) => state.session.user);
@@ -39,15 +41,23 @@ function App() {
       {isLoaded && (
         <>
           <Switch>
+            <Route exact path="/page">
+              <Page />
+            </Route>
+            <Route exact path="/test">
+              <Showpic />
+            </Route>
+            <Route exact path="/story/tell">
+              <StoryTell />
+            </Route>
+            <Route exact path="/story/cont">
+              <Page />
+            </Route>
+            <Route exact path="/signup">
+              <SignupFormPage />
+            </Route>
             <Route exact path="/:username">
               <UserProfile />
-            </Route>
-            <Route path="/test">
-              <Showpic />
-              {/* <SlideMenu /> */}
-            </Route>
-            <Route path="/signup">
-              <SignupFormPage />
             </Route>
             <Route path="*">
               <EntryPage />

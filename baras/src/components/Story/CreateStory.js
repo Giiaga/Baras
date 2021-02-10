@@ -1,20 +1,21 @@
 import React from "react";
 import { useState } from "react";
 
-import { useSelector, useDispatch, useHistory } from "react-redux";
+import { useSelector } from "react-redux";
+// import { useHistory } from "react-router-dom";
 
-function CreateStory() {
+function CreateStory(props) {
   let userId = useSelector((state) => state.session.user);
 
-  let dispatch = useDispatch();
-  let history = useHistory();
+  // let dispatch = useDispatch();
+  // let history = useHistory();
 
-  let [relatesTo, setRelatesTo] = useState();
-  let [text, setStoryText] = useState(null);
+  // let [relatesTo, setRelatesTo] = useState();
+  // let [text, setStoryText] = useState(null);
   let [photo, setPhoto] = useState(null);
   let [audioLink, setAudioLink] = useState(null);
   let [videoLink, setVideoLink] = useState(null);
-  let [publish, setPublished] = useState(false);
+  // let [publish, setPublished] = useState(false);
 
   let [audioChoosen, setAudioChoosen] = useState(true);
   let [videoChoosen, setVideoChoosen] = useState(true);
@@ -25,6 +26,7 @@ function CreateStory() {
 
     fileread.onload = (e) => {
       setPhoto(e.target.result);
+      props.grabPhoto(e.target.result);
     };
 
     fileread.readAsDataURL(data);
@@ -65,14 +67,7 @@ function CreateStory() {
       >
         Add Video
       </button>
-      <form onSubmit={}>
-        <div>
-          <textarea
-            value={text}
-            placeholder="Write here, if you will"
-            onChange={(e) => setStoryText(e.target.value)}
-          ></textarea>
-        </div>
+      <form>
         <div>
           <input
             id="addPhotoInput"
@@ -103,7 +98,10 @@ function CreateStory() {
             type="text"
             hidden={audioChoosen}
             value={audioLink}
-            onChange={(e) => setAudioLink(e.target.value)}
+            onChange={(e) => {
+              setAudioLink(e.target.value);
+              props.grabAudio(e.target.value);
+            }}
             placeholder="Put audio link here"
           />
           <button
@@ -114,11 +112,11 @@ function CreateStory() {
             Cancel
           </button>
         </div>
-        {audioLink && (
+        {/* {audioLink && (
           <audio controls src={audioLink}>
             Sorry, your browser does not support audio being used on here
           </audio>
-        )}
+        )} */}
         <div>
           <input
             type="text"
@@ -130,18 +128,21 @@ function CreateStory() {
           <button
             hidden={videoChoosen}
             type="button"
-            onClick={() => setVideoChoosen(true)}
+            onClick={() => {
+              setVideoChoosen(true);
+              props.grabVideo();
+            }}
           >
             Cancel
           </button>
         </div>
-        {videoLink && (
+        {/* {videoLink && (
           <video controls width="300px" height="300px">
             <source src={videoLink} />
             Sorry, your browser does not support video being used on here
           </video>
-        )}
-        <label>
+        )} */}
+        {/* <label>
           Publish{" "}
           <input
             type="checkbox"
@@ -151,7 +152,7 @@ function CreateStory() {
               publish ? setPublished(false) : setPublished(true)
             }
           />
-        </label>
+        </label> */}
       </form>
     </>
   );

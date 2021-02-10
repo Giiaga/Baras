@@ -2,7 +2,7 @@ const router = require("express").Router();
 const asyncHandler = require("express-async-handler");
 const { requireAuth } = require("../utils/auth.js");
 
-const { Baras, User } = require("../db/models");
+const { Baras, User, Story } = require("../db/models");
 
 router.post(
   "/createBaras",
@@ -56,6 +56,17 @@ router.get(
     let allBaras = await Baras.findAll({ where: { userId: userId } });
 
     return res.json(allBaras);
+  })
+);
+
+// CREATE STORY
+router.post(
+  "/story/tell",
+  asyncHandler(async (req, res) => {
+    let { userId, title, publish } = req.body;
+    let story = await Story.create({ userId, title, publish });
+
+    return res.json(story);
   })
 );
 module.exports = router;
