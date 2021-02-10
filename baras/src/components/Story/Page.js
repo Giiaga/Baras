@@ -12,6 +12,10 @@ function Page() {
   let [write, setWrite] = useState();
   let [text, setText] = useState();
 
+  let newPageNum = useSelector((state) => state.storyPages);
+
+  let saveStory = () => {};
+
   return (
     <>
       <CreateStory
@@ -21,6 +25,18 @@ function Page() {
       />
       <button onClick={() => setWrite(true)}>Write</button>
       {write && <button onClick={() => setWrite(false)}>Cancel</button>}
+      <button onClick={saveStory}>Save</button>
+      <button
+        onClick={(e) => {
+          // saveStory(e, );
+          setShowAudio("");
+          setShowVideo("");
+          setShowPhoto("");
+          setWrite(false);
+        }}
+      >
+        New Page
+      </button>
       <div
         className="pageMainDiv"
         style={{
