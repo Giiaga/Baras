@@ -16,13 +16,13 @@ function Page() {
       <div
         className="pageMainDiv"
         style={{
-          width: "80%",
-          height: "80%",
+          width: "210mm",
+          height: "297mm",
           border: "1px solid",
           margin: "auto",
         }}
       >
-        <textarea></textarea>
+        <textarea style={{ maxWidth: "208.5mm" }}></textarea>
       </div>
     </>
   );
