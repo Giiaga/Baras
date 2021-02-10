@@ -22,7 +22,7 @@ module.exports = {
       text: {
         type: Sequelize.TEXT,
       },
-      image: {
+      photo: {
         type: Sequelize.TEXT,
       },
       music: {
@@ -55,16 +55,16 @@ module.exports = {
       textV: {
         type: Sequelize.INTEGER,
       },
-      imageWidth: {
+      photoWidth: {
         type: Sequelize.INTEGER,
       },
-      imageHeight: {
+      photoHeight: {
         type: Sequelize.INTEGER,
       },
-      imageH: {
+      photoH: {
         type: Sequelize.INTEGER,
       },
-      imageV: {
+      photoV: {
         type: Sequelize.INTEGER,
       },
       musicWidth: {
