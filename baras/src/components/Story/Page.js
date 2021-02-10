@@ -13,6 +13,7 @@ function Page() {
         grabAudio={setShowAudio}
         grabVideo={setShowVideo}
       />
+
       <div
         className="pageMainDiv"
         style={{
@@ -20,6 +21,7 @@ function Page() {
           height: "297mm",
           border: "1px solid",
           margin: "auto",
+          position: "relative",
         }}
       >
         {showPhoto ? (
@@ -47,7 +49,14 @@ function Page() {
         ) : (
           ""
         )}
-        <textarea style={{ maxWidth: "208.5mm" }}></textarea>
+        {/* <textarea style={{ maxWidth: "208.5mm" }}></textarea> */}
+        <button style={{ position: "absolute", top: "49%", left: "-8.9%" }}>
+          Previous
+        </button>
+
+        <button style={{ position: "absolute", top: "50%", left: "100.3%" }}>
+          Next
+        </button>
       </div>
     </>
   );
