@@ -57,6 +57,9 @@ function Page() {
         <button style={{ position: "absolute", top: "50%", left: "100.3%" }}>
           Next
         </button>
+        <p style={{ position: "absolute", top: "97%", left: "87%" }}>
+          PageNumber{1}
+        </p>
       </div>
     </>
   );
