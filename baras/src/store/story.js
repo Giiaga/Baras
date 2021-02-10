@@ -28,7 +28,71 @@ let storyPageAC = (data) => {
   };
 };
 
-export let storyPage = () => async (dispatch) => {};
+export let storyPage = (
+  pageNumber,
+  chapter,
+  storyId,
+  text,
+  image,
+  music,
+  video,
+  chapterWidth,
+  chapterHeight,
+  chapterH,
+  chapterV,
+  textWidth,
+  textHeight,
+  textH,
+  textV,
+  imageWidth,
+  imageHeight,
+  imageH,
+  imageV,
+  musicWidth,
+  musicHeight,
+  musicH,
+  musicV,
+  videoWidth,
+  videoHeight,
+  videoH,
+  videoV
+) => async (dispatch) => {
+  let response = await fetch("/story/cont", {
+    method: "POST",
+    body: JSON.stringify({
+      pageNumber,
+      chapter,
+      storyId,
+      text,
+      image,
+      music,
+      video,
+      chapterWidth,
+      chapterHeight,
+      chapterH,
+      chapterV,
+      textWidth,
+      textHeight,
+      textH,
+      textV,
+      imageWidth,
+      imageHeight,
+      imageH,
+      imageV,
+      musicWidth,
+      musicHeight,
+      musicH,
+      musicV,
+      videoWidth,
+      videoHeight,
+      videoH,
+      videoV,
+    }),
+  });
+
+  dispatch(storyPageAC(response.data));
+  return response;
+};
 
 let storyReducer = (state = [], action) => {
   let newState;
@@ -37,7 +101,10 @@ let storyReducer = (state = [], action) => {
       newState = Object.assign({}, state);
       newState.story = action.data;
       return newState;
-
+    case STORYPAGE:
+      newState = Object.assign({}, state);
+      newState.page = action.data;
+      return newState;
     default:
       return state;
   }
