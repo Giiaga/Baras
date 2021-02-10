@@ -81,7 +81,7 @@ function Page() {
         )}
         {/* <textarea style={{ maxWidth: "208.5mm" }}></textarea> */}
         <button style={{ position: "absolute", top: "49%", left: "-8.9%" }}>
-          Previous
+          Prev
         </button>
 
         <button

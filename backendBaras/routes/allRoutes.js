@@ -2,7 +2,7 @@ const router = require("express").Router();
 const asyncHandler = require("express-async-handler");
 const { requireAuth } = require("../utils/auth.js");
 
-const { Baras, User, Story } = require("../db/models");
+const { Baras, User, Story, Page } = require("../db/models");
 
 router.post(
   "/createBaras",
@@ -67,6 +67,74 @@ router.post(
     let story = await Story.create({ userId, title, publish });
 
     return res.json(story);
+  })
+);
+
+// CREATE STORY PAGE
+router.post(
+  "/story/cont",
+  asyncHandler(async (req, res) => {
+    let {
+      pageNumber,
+      chapter,
+      storyId,
+      text,
+      image,
+      music,
+      video,
+      chapterWidth,
+      chapterHeight,
+      chapterH,
+      chapterV,
+      textWidth,
+      textHeight,
+      textH,
+      textV,
+      imageWidth,
+      imageHeight,
+      imageH,
+      imageV,
+      musicWidth,
+      musicHeight,
+      musicH,
+      musicV,
+      videoWidth,
+      videoHeight,
+      videoH,
+      videoV,
+    } = req.body;
+
+    let page = await Page.create({
+      pageNumber,
+      chapter,
+      storyId,
+      text,
+      image,
+      music,
+      video,
+      chapterWidth,
+      chapterHeight,
+      chapterH,
+      chapterV,
+      textWidth,
+      textHeight,
+      textH,
+      textV,
+      imageWidth,
+      imageHeight,
+      imageH,
+      imageV,
+      musicWidth,
+      musicHeight,
+      musicH,
+      musicV,
+      videoWidth,
+      videoHeight,
+      videoH,
+      videoV,
+    });
+
+    return res.json(page);
   })
 );
 module.exports = router;
