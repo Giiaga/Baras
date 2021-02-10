@@ -19,6 +19,7 @@ function Page() {
   let [text, setText] = useState();
   let [moving, setMove] = useState(false);
   if (moving) {
+    console.log(moving);
     dragElement(moving);
     // setMove(false);
   }
@@ -223,7 +224,12 @@ function Page() {
               overflowY: "hidden",
               overflowX: "hidden",
             }}
-            onDoubleClick={(e) => setMove(e.target)}
+            draggable="true"
+            onDrag={(e) => setMove(e.target)}
+            onDragEnd={() => {
+              setMove(false);
+              console.log("egnf");
+            }}
             // onClick={(e) => setMove(false)}
           >
             <textarea
@@ -233,7 +239,7 @@ function Page() {
                 resize: "none",
                 position: "relative",
               }}
-              // onClick={() => console.log("sfdsjfgasjweb")}
+              // onClick={() => setMove(false)}
               onChange={(e) => setText(e.target.value)}
             ></textarea>
           </div>
