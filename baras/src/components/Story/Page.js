@@ -19,7 +19,7 @@ function Page() {
   let [text, setText] = useState();
   let [moving, setMove] = useState(false);
   if (moving) {
-    console.log(moving);
+    // console.log(moving);
     dragElement(moving);
     // setMove(false);
   }
@@ -223,13 +223,14 @@ function Page() {
               overflow: "auto",
               overflowY: "hidden",
               overflowX: "hidden",
+              backgroundColor: "purple",
             }}
-            draggable="true"
-            onDrag={(e) => setMove(e.target)}
-            onDragEnd={() => {
-              setMove(false);
-              console.log("egnf");
-            }}
+            // draggable="true"
+            onClick={(e) => setMove(e.target)}
+            // onDragEnd={() => {
+            //   setMove(false);
+            //   console.log("egnf");
+            // }}
             // onClick={(e) => setMove(false)}
           >
             <textarea
@@ -239,7 +240,10 @@ function Page() {
                 resize: "none",
                 position: "relative",
               }}
-              // onClick={() => setMove(false)}
+              onClick={() => {
+                setMove(false);
+                console.log("this works", moving);
+              }}
               onChange={(e) => setText(e.target.value)}
             ></textarea>
           </div>
