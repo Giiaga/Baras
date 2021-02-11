@@ -18,11 +18,13 @@ function Page() {
   let [write, setWrite] = useState();
   let [text, setText] = useState();
   let [moving, setMove] = useState(false);
-  if (moving) {
-    // console.log(moving);
+  let [SMFH, setSMFH] = useState(false);
+  console.log(SMFH);
+  if (SMFH) {
     dragElement(moving);
     // setMove(false);
   }
+  // console.log(moving, "WHEN");
   let newPageNum = useSelector((state) => state.storyPages);
 
   let saveStory = () => {};
@@ -189,7 +191,7 @@ function Page() {
       /> */}
       <button onClick={() => setWrite(true)}>Write</button>
       {write && <button onClick={() => setWrite(false)}>Cancel</button>}
-      <button onClick={saveStory}>Save</button>
+      <button onClick={() => setMove(false)}>Save</button>
       <button
         onClick={(e) => {
           // saveStory(e, );
@@ -226,7 +228,15 @@ function Page() {
               backgroundColor: "purple",
             }}
             // draggable="true"
-            onClick={(e) => setMove(e.target)}
+            // onClick={(e) => {
+            //   setMove(e.target);
+            // }}
+            // onMouseUp={() => setMove(false)}
+            onDoubleClick={(e) => {
+              setMove(e.target);
+              SMFH ? setSMFH(false) : setSMFH(true);
+            }}
+            // onMouseUp={() => setSMFH(false)}
             // onDragEnd={() => {
             //   setMove(false);
             //   console.log("egnf");
@@ -240,10 +250,14 @@ function Page() {
                 resize: "none",
                 position: "relative",
               }}
-              onClick={() => {
-                setMove(false);
-                console.log("this works", moving);
-              }}
+              // onClick={() => {
+              //   setMove(false);
+              //   // console.log("this works", moving);
+              // }}
+              // onDoubleClick={(e) => {
+              //   setMove(e.target);
+              // }}
+              // onMouseUp={() => setMove(false)}
               onChange={(e) => setText(e.target.value)}
             ></textarea>
           </div>
