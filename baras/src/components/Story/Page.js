@@ -19,55 +19,60 @@ function Page() {
   let [text, setText] = useState();
   let [moving, setMove] = useState(false);
   let [SMFH, setSMFH] = useState(false);
-  console.log(SMFH);
-  if (SMFH) {
-    dragElement(moving);
-    // setMove(false);
-  }
+  // console.log(SMFH);
+  // if (SMFH) {
+  // setMove(false);
+  // }
   // console.log(moving, "WHEN");
   let newPageNum = useSelector((state) => state.storyPages);
 
   let saveStory = () => {};
+  // if (SMFH)
 
   function dragElement(elmnt) {
-    let pos1 = 0,
+    var pos1 = 0,
       pos2 = 0,
       pos3 = 0,
       pos4 = 0;
-
-    if (document.getElementById(elmnt.id)) {
-      document.getElementById(elmnt.id).onmousedown = dragMouseDown;
+    if (document.getElementById(elmnt.id + "header")) {
+      /* if present, the header is where you move the DIV from:*/
+      document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
     } else {
+      /* otherwise, move the DIV from anywhere inside the DIV:*/
       elmnt.onmousedown = dragMouseDown;
     }
 
     function dragMouseDown(e) {
       e = e || window.event;
       e.preventDefault();
-
+      // get the mouse cursor position at startup:
       pos3 = e.clientX;
       pos4 = e.clientY;
       document.onmouseup = closeDragElement;
-
+      // call a function whenever the cursor moves:
       document.onmousemove = elementDrag;
     }
 
     function elementDrag(e) {
       e = e || window.event;
       e.preventDefault();
+      // calculate the new cursor position:
       pos1 = pos3 - e.clientX;
       pos2 = pos4 - e.clientY;
       pos3 = e.clientX;
       pos4 = e.clientY;
+      // set the element's new position:
       elmnt.style.top = elmnt.offsetTop - pos2 + "px";
       elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
     }
 
     function closeDragElement() {
+      /* stop moving when mouse button is released:*/
       document.onmouseup = null;
       document.onmousemove = null;
     }
   }
+  if (SMFH) dragElement(document.getElementById("myDiv"));
 
   let addPhoto = (data) => {
     let fileread = new FileReader();
@@ -216,33 +221,35 @@ function Page() {
       >
         {write ? (
           <div
-            id="dragWrite"
+            id="myDiv"
             style={{
-              borderTop: "10px solid",
+              border: "20px orange",
+              zIndex: "9",
+              position: "absolute",
               resize: "both",
               // height: "",
-              position: "absolute",
+              // position: "absolute",
               overflow: "auto",
               overflowY: "hidden",
               overflowX: "hidden",
-              backgroundColor: "purple",
             }}
-            // draggable="true"
-            // onClick={(e) => {
-            //   setMove(e.target);
-            // }}
-            // onMouseUp={() => setMove(false)}
-            onDoubleClick={(e) => {
-              setMove(e.target);
-              SMFH ? setSMFH(false) : setSMFH(true);
-            }}
-            // onMouseUp={() => setSMFH(false)}
-            // onDragEnd={() => {
-            //   setMove(false);
-            //   console.log("egnf");
-            // }}
-            // onClick={(e) => setMove(false)}
           >
+            DIV
+            <div
+              id="myDivheader"
+              style={{
+                // borderTop: "10px solid",
+
+                // backgroundColor: "purple",
+                cursor: "move",
+                zIndex: "10",
+                color: "transparent",
+                height: "3px",
+              }}
+              onMouseDown={() => setSMFH(true)}
+            >
+              {"color"}
+            </div>
             <textarea
               style={{
                 width: "100%",
@@ -250,16 +257,9 @@ function Page() {
                 resize: "none",
                 position: "relative",
               }}
-              // onClick={() => {
-              //   setMove(false);
-              //   // console.log("this works", moving);
-              // }}
-              // onDoubleClick={(e) => {
-              //   setMove(e.target);
-              // }}
-              // onMouseUp={() => setMove(false)}
               onChange={(e) => setText(e.target.value)}
             ></textarea>
+            {/* </div> */}
           </div>
         ) : (
           ""
