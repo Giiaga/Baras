@@ -204,7 +204,6 @@ function Page() {
         New Page
       </button>
       <div
-        // onClick={() => setMove(false)}
         className="pageMainDiv"
         style={{
           width: "210mm",
@@ -238,22 +237,18 @@ function Page() {
                   cursor: "move",
                   color: "transparent",
                 }}
-                // onMouseUp={() => setSMFH(false)}
                 onMouseDown={(e) => {
                   dragElement(document.getElementById("dragWrite"));
-                  // SMFH ? setSMFH(false) : setSMFH(true);
-                  // setMove(document.getElementById("dragWrite"));
                 }}
-                // onMouseUp={() => setSMFH(false)}
               >
                 yes
               </div>
               <textarea
                 style={{
-                  maxWidth: "209.5mm",
-                  maxHeight: "295.5mm",
                   width: "100%",
                   height: "100%",
+                  maxWidth: "209.5mm",
+                  maxHeight: "295.5mm",
                   resize: "none",
                   border: "none",
                 }}
