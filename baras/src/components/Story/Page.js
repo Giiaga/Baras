@@ -30,6 +30,7 @@ function Page() {
   let saveStory = () => {};
   if (SMFH) dragElement(document.getElementById("dragWrite"));
   function dragElement(elmnt) {
+    console.log(elmnt.getBoundingClientRect());
     let pos1 = 0,
       pos2 = 0,
       pos3 = 0,
@@ -66,8 +67,24 @@ function Page() {
       pos2 = pos4 - e.clientY;
       pos3 = e.clientX;
       pos4 = e.clientY;
-      elmnt.style.top = elmnt.offsetTop - pos2 + "px";
-      elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
+
+      if (elmnt.offsetLeft - pos1 >= 780) {
+        elmnt.style.left = 780.5 + "px";
+        elmnt.style.width = 3 + "mm";
+        elmnt.style.maxWidth = 3 + "mm";
+      } else if (elmnt.offsetLeft - pos1 < 0) {
+        elmnt.style.left = 0 + "px";
+        // elmnt.style.maxWidth = 10 + "px";
+      } else {
+        elmnt.style.width = 150 + "px";
+
+        elmnt.style.maxWidth = 209.5 + "mm";
+
+        elmnt.style.top = elmnt.offsetTop - pos2 + "px";
+        elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
+      }
+      console.log("side", elmnt.style.left);
+      // elmnt.style.left = "500px";
     }
 
     function closeDragElement() {
