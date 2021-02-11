@@ -51,7 +51,14 @@ function Page() {
 
       document.onmousemove = elementDrag;
     }
-
+    //bottom: 1166.5166931152344
+    // height: 1124.6500244140625;
+    // left: 444.2166748046875;
+    // right: 1240.050048828125;
+    // top: 41.866668701171875;
+    // width: 795.8333740234375;
+    // x: 444.2166748046875;
+    // y: 41.866668701171875;
     function elementDrag(e) {
       e = e || window.event;
       e.preventDefault();
@@ -221,6 +228,8 @@ function Page() {
                 position: "absolute",
                 resize: "both",
                 overflow: "auto",
+                overflowX: "hidden",
+                overflowY: "hidden",
                 maxWidth: "209.5mm",
                 maxHeight: "295.5mm",
                 heigh: "150px",
