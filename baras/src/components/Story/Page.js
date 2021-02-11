@@ -19,24 +19,24 @@ function Page() {
   let [text, setText] = useState();
   let [moving, setMove] = useState(false);
   let [SMFH, setSMFH] = useState(false);
-  if (SMFH) {
-    console.log(moving == true);
-    dragElement(moving);
-    // setMove(false);
-  }
+  // if (SMFH) {
+  //   console.log(moving == true);
+  //   dragElement(moving);
+  //   // setMove(false);
+  // }
   // console.log(moving, "WHEN");
   let newPageNum = useSelector((state) => state.storyPages);
 
   let saveStory = () => {};
-
+  if (SMFH) dragElement(document.getElementById("dragWrite"));
   function dragElement(elmnt) {
     let pos1 = 0,
       pos2 = 0,
       pos3 = 0,
       pos4 = 0;
 
-    if (document.getElementById(elmnt.id)) {
-      document.getElementById(elmnt.id).onmousedown = dragMouseDown;
+    if (document.getElementById(elmnt.id + "main")) {
+      document.getElementById(elmnt.id + "main").onmousedown = dragMouseDown;
     } else {
       elmnt.onmousedown = dragMouseDown;
     }
@@ -215,52 +215,52 @@ function Page() {
         }}
       >
         {write ? (
-          <div
-            id="dragWrite"
-            style={{
-              borderTop: "10px solid",
-              resize: "both",
-              // height: "",
-              position: "absolute",
-              overflow: "auto",
-              overflowY: "hidden",
-              overflowX: "hidden",
-              backgroundColor: "purple",
-            }}
-            // draggable="true"
-            // onClick={(e) => {
-            //   setMove(e.target);
-            // }}
-            // onMouseUp={() => setMove(false)}
-            onDoubleClick={(e) => {
-              // SMFH ? setSMFH(false) : setSMFH(true);
-              setMove(e.target);
-            }}
-            onMouseUp={() => setSMFH(false)}
-            // onDragEnd={() => {
-            //   setMove(false);
-            //   console.log("egnf");
-            // }}
-            // onClick={(e) => setMove(false)}
-          >
-            <textarea
+          <>
+            <div
+              id="dragWrite"
               style={{
-                width: "100%",
-                height: "100%",
-                resize: "none",
-                position: "relative",
+                position: "absolute",
+                resize: "both",
+                overflow: "auto",
+                maxWidth: "209.5mm",
+                maxHeight: "295.5mm",
+                heigh: "150px",
+                width: "150px",
+                border: "1px solid",
               }}
-              // onClick={() => {
-              //   setMove(false);
-              //   // console.log("this works", moving);
-              // }}
-              // onDoubleClick={(e) => {
-              //   setMove(e.target);
-              // }}
-              // onMouseUp={() => setMove(false)}
-              onChange={(e) => setText(e.target.value)}
-            ></textarea>
-          </div>
+            >
+              <div
+                id="dragWritemain"
+                style={{
+                  height: "3px",
+                  margin: "0",
+                  padding: "0",
+                  cursor: "move",
+                  color: "transparent",
+                }}
+                // onMouseUp={() => setSMFH(false)}
+                onMouseDown={(e) => {
+                  dragElement(document.getElementById("dragWrite"));
+                  // SMFH ? setSMFH(false) : setSMFH(true);
+                  // setMove(document.getElementById("dragWrite"));
+                }}
+                // onMouseUp={() => setSMFH(false)}
+              >
+                yes
+              </div>
+              <textarea
+                style={{
+                  maxWidth: "209.5mm",
+                  maxHeight: "295.5mm",
+                  width: "100%",
+                  height: "100%",
+                  resize: "none",
+                  border: "none",
+                }}
+                onChange={(e) => setText(e.target.value)}
+              ></textarea>
+            </div>
+          </>
         ) : (
           ""
         )}
