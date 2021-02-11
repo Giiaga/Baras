@@ -68,22 +68,29 @@ function Page() {
       pos3 = e.clientX;
       pos4 = e.clientY;
 
-      if (elmnt.offsetLeft - pos1 >= 780) {
-        elmnt.style.left = 780.5 + "px";
-        elmnt.style.width = 3 + "mm";
-        elmnt.style.maxWidth = 3 + "mm";
+      if (elmnt.offsetLeft - pos1 >= 782) {
+        // elmnt.style.left = 780.5 + "px";
+        // elmnt.style.width = 3 + "mm";
+        // elmnt.style.maxWidth = 3 + "mm";
       } else if (elmnt.offsetLeft - pos1 < 0) {
         elmnt.style.left = 0 + "px";
         // elmnt.style.maxWidth = 10 + "px";
       } else {
-        elmnt.style.width = 150 + "px";
+        //780.5 - width the remainder if it reaches then subtract the remainder - 780.5 and whatever is the reainder is the wdith
+        let remainderOffset = 780.5 - elmnt.getBoundingClientRect().width;
+        // console.log(, "REMAINDER"); //if the offleft reaches that point subtract it from 70.5 and make it the width
+        if (elmnt.offsetLeft >= remainderOffset) {
+          let remainderleft = 780.5 - elmnt.offsetLeft;
+          elmnt.style.width = remainderleft + "px";
+        }
+        // elmnt.style.width = 150 + "px";
 
-        elmnt.style.maxWidth = 209.5 + "mm";
+        // elmnt.style.maxWidth = 209.5 + "mm";
 
         elmnt.style.top = elmnt.offsetTop - pos2 + "px";
         elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
       }
-      console.log("side", elmnt.style.left);
+      // console.log("side", elmnt.style.left);
       // elmnt.style.left = "500px";
     }
 
