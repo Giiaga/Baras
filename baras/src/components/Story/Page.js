@@ -88,9 +88,10 @@ function Page() {
           let remainderleft = 780.5 - elmnt.offsetLeft;
           elmnt.style.maxWidth = remainderleft + "px";
           elmnt.style.minWidth = 5 + "px";
-          elmnt.style.width = remainderleft + "mm";
+          elmnt.style.width = remainderleft + "px";
         } else if (elmnt.offsetLeft <= remainderOffset) {
-          elmnt.style.width = remainderOffset + "mm";
+          elmnt.style.width =
+            saved > remainderOffset ? remainderOffset + "px" : saved + "px";
           elmnt.style.maxWidth = 209.5 + "mm";
           // elmnt.style.minWidth = remainderOffset + "mm";
         }
