@@ -81,7 +81,7 @@ function Page() {
       } else {
         //780.5 - width the remainder if it reaches then subtract the remainder - 780.5 and whatever is the reainder is the wdith
         let remainderOffset = 780.5 - elmnt.getBoundingClientRect().width;
-        console.log(saved, "saved", savedd, "savedd");
+        // console.log(saved, "saved", savedd, "savedd");
         // console.log(remainderOffset, 'WDITH NOW"');
         // console.log(, "REMAINDER"); //if the offleft reaches that point subtract it from 70.5 and make it the width
         if (elmnt.offsetLeft >= remainderOffset) {
@@ -92,7 +92,8 @@ function Page() {
         } else if (elmnt.offsetLeft <= remainderOffset) {
           elmnt.style.width =
             saved > remainderOffset ? remainderOffset + "px" : saved + "px";
-          elmnt.style.maxWidth = 209.5 + "mm";
+          elmnt.style.maxWidth =
+            209.5 > remainderOffset ? remainderOffset + "px" : 209.5 + "mm";
           // elmnt.style.minWidth = remainderOffset + "mm";
         }
         // elmnt.style.width = 150 + "px";
