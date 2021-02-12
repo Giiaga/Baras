@@ -76,58 +76,46 @@ function Page() {
         // elmnt.style.width = 3 + "mm";
         // elmnt.style.maxWidth = 3 + "mm";
         let remainderOffset = 790 - elmnt.getBoundingClientRect().width;
-        // console.log(saved, "saved", savedd, "savedd");
-        // console.log(remainderOffset, 'WDITH NOW"');
-        // console.log(, "REMAINDER"); //if the offleft reaches that point subtract it from 70.5 and make it the width
-        console.log("MAX OFFSET", elmnt.offsetLeft);
+
+        // console.log("MAX OFFSET", elmnt.offsetLeft);
 
         let remainderleft = 790 - elmnt.offsetLeft;
         if (elmnt.offsetLeft > remainderOffset) {
           elmnt.style.maxWidth = remainderleft + "px";
           elmnt.style.minWidth = 0 + "px";
-          elmnt.style.width = remainderleft + "px";
+          elmnt.style.width = remainderleft + "mm";
         } else if (elmnt.offsetLeft <= remainderOffset) {
-          // console.log("THIS NECVER HITS");
           elmnt.style.minWidth = 0 + "px";
 
           elmnt.style.width =
             saved > remainderleft
-              ? 790 - elmnt.offsetLeft + "px"
-              : saved + "px";
-          elmnt.style.maxWidth =
-            209.5 >= 760 - elmnt.offsetLeft
-              ? 760 - elmnt.offsetLeft + "px"
-              : 209.5 + "mm";
+              ? 790 - elmnt.offsetLeft + "mm"
+              : saved + "mm";
+          elmnt.style.maxWidth = 790 - elmnt.offsetLeft + "px";
+
           // elmnt.style.minWidth = remainderOffset + "mm";
         }
       } else if (elmnt.offsetLeft - pos1 < 0) {
         elmnt.style.left = 0 + "px";
         // elmnt.style.maxWidth = 10 + "px";
       } else {
-        //780.5 - width the remainder if it reaches then subtract the remainder - 780.5 and whatever is the reainder is the wdith
         let remainderOffset = 790 - elmnt.getBoundingClientRect().width;
-        // console.log(saved, "saved", savedd, "savedd");
-        // console.log(remainderOffset, 'WDITH NOW"');
-        // console.log(, "REMAINDER"); //if the offleft reaches that point subtract it from 70.5 and make it the width
+
         console.log("MAX OFFSET", elmnt.offsetLeft);
 
         let remainderleft = 790 - elmnt.offsetLeft;
         if (elmnt.offsetLeft > remainderOffset) {
           elmnt.style.maxWidth = remainderleft + "px";
           elmnt.style.minWidth = 0 + "px";
-          elmnt.style.width = remainderleft + "px";
+          elmnt.style.width = remainderleft + "mm";
         } else if (elmnt.offsetLeft <= remainderOffset) {
-          // console.log("THIS NECVER HITS");
           elmnt.style.minWidth = 0 + "px";
 
           elmnt.style.width =
             saved > remainderleft
-              ? 790 - elmnt.offsetLeft + "px"
-              : saved + "px";
-          elmnt.style.maxWidth =
-            209.5 >= 760 - elmnt.offsetLeft
-              ? 760 - elmnt.offsetLeft + "px"
-              : 209.5 + "mm";
+              ? 790 - elmnt.offsetLeft + "mm"
+              : saved + "mm";
+          elmnt.style.maxWidth = 790 - elmnt.offsetLeft + "px";
           // elmnt.style.minWidth = remainderOffset + "mm";
         }
         // elmnt.style.width = 150 + "px";
