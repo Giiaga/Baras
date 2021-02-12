@@ -71,33 +71,62 @@ function Page() {
       pos3 = e.clientX;
       pos4 = e.clientY;
 
-      if (elmnt.offsetLeft - pos1 >= 781) {
-        elmnt.style.left = 780.5 + "px";
+      if (elmnt.offsetLeft - pos1 >= 790) {
+        elmnt.style.left = 790 + "px";
         // elmnt.style.width = 3 + "mm";
         // elmnt.style.maxWidth = 3 + "mm";
+        let remainderOffset = 790 - elmnt.getBoundingClientRect().width;
+        // console.log(saved, "saved", savedd, "savedd");
+        // console.log(remainderOffset, 'WDITH NOW"');
+        // console.log(, "REMAINDER"); //if the offleft reaches that point subtract it from 70.5 and make it the width
+        console.log("MAX OFFSET", elmnt.offsetLeft);
+
+        let remainderleft = 790 - elmnt.offsetLeft;
+        if (elmnt.offsetLeft > remainderOffset) {
+          elmnt.style.maxWidth = remainderleft + "px";
+          elmnt.style.minWidth = 0 + "px";
+          elmnt.style.width = remainderleft + "px";
+        } else if (elmnt.offsetLeft <= remainderOffset) {
+          // console.log("THIS NECVER HITS");
+          elmnt.style.minWidth = 0 + "px";
+
+          elmnt.style.width =
+            saved > remainderleft
+              ? 790 - elmnt.offsetLeft + "px"
+              : saved + "px";
+          elmnt.style.maxWidth =
+            209.5 >= 760 - elmnt.offsetLeft
+              ? 760 - elmnt.offsetLeft + "px"
+              : 209.5 + "mm";
+          // elmnt.style.minWidth = remainderOffset + "mm";
+        }
       } else if (elmnt.offsetLeft - pos1 < 0) {
         elmnt.style.left = 0 + "px";
         // elmnt.style.maxWidth = 10 + "px";
       } else {
         //780.5 - width the remainder if it reaches then subtract the remainder - 780.5 and whatever is the reainder is the wdith
-        let remainderOffset = 780.5 - elmnt.getBoundingClientRect().width;
+        let remainderOffset = 790 - elmnt.getBoundingClientRect().width;
         // console.log(saved, "saved", savedd, "savedd");
         // console.log(remainderOffset, 'WDITH NOW"');
         // console.log(, "REMAINDER"); //if the offleft reaches that point subtract it from 70.5 and make it the width
-        if (elmnt.offsetLeft >= remainderOffset) {
-          let remainderleft = 780.5 - elmnt.offsetLeft;
+        console.log("MAX OFFSET", elmnt.offsetLeft);
+
+        let remainderleft = 790 - elmnt.offsetLeft;
+        if (elmnt.offsetLeft > remainderOffset) {
           elmnt.style.maxWidth = remainderleft + "px";
-          elmnt.style.minWidth = 5 + "px";
+          elmnt.style.minWidth = 0 + "px";
           elmnt.style.width = remainderleft + "px";
         } else if (elmnt.offsetLeft <= remainderOffset) {
           // console.log("THIS NECVER HITS");
+          elmnt.style.minWidth = 0 + "px";
+
           elmnt.style.width =
-            saved > remainderOffset
-              ? 780.5 - elmnt.offsetLeft + "px"
+            saved > remainderleft
+              ? 790 - elmnt.offsetLeft + "px"
               : saved + "px";
           elmnt.style.maxWidth =
-            209.5 >= 780.5 - elmnt.offsetLeft
-              ? 780.5 - elmnt.offsetLeft + "px"
+            209.5 >= 760 - elmnt.offsetLeft
+              ? 760 - elmnt.offsetLeft + "px"
               : 209.5 + "mm";
           // elmnt.style.minWidth = remainderOffset + "mm";
         }
