@@ -71,7 +71,7 @@ function Page() {
       pos3 = e.clientX;
       pos4 = e.clientY;
 
-      if (elmnt.offsetLeft - pos1 >= 780) {
+      if (elmnt.offsetLeft - pos1 >= 781) {
         elmnt.style.left = 780.5 + "px";
         // elmnt.style.width = 3 + "mm";
         // elmnt.style.maxWidth = 3 + "mm";
@@ -90,10 +90,15 @@ function Page() {
           elmnt.style.minWidth = 5 + "px";
           elmnt.style.width = remainderleft + "px";
         } else if (elmnt.offsetLeft <= remainderOffset) {
+          // console.log("THIS NECVER HITS");
           elmnt.style.width =
-            saved > remainderOffset ? remainderOffset + "px" : saved + "px";
+            saved > remainderOffset
+              ? 780.5 - elmnt.offsetLeft + "px"
+              : saved + "px";
           elmnt.style.maxWidth =
-            209.5 > remainderOffset ? remainderOffset + "px" : 209.5 + "mm";
+            209.5 >= 780.5 - elmnt.offsetLeft
+              ? 780.5 - elmnt.offsetLeft + "px"
+              : 209.5 + "mm";
           // elmnt.style.minWidth = remainderOffset + "mm";
         }
         // elmnt.style.width = 150 + "px";
