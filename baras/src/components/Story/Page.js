@@ -30,7 +30,10 @@ function Page() {
   let saveStory = () => {};
   if (SMFH) dragElement(document.getElementById("dragWrite"));
   function dragElement(elmnt) {
-    console.log(elmnt.getBoundingClientRect());
+    let setWidth = elmnt.getBoundingClientRect().width;
+    let saved = setWidth;
+    let savedd = saved;
+    // console.log(elmnt.getBoundingClientRect());
     let pos1 = 0,
       pos2 = 0,
       pos3 = 0,
@@ -68,8 +71,8 @@ function Page() {
       pos3 = e.clientX;
       pos4 = e.clientY;
 
-      if (elmnt.offsetLeft - pos1 >= 782) {
-        // elmnt.style.left = 780.5 + "px";
+      if (elmnt.offsetLeft - pos1 >= 780) {
+        elmnt.style.left = 780.5 + "px";
         // elmnt.style.width = 3 + "mm";
         // elmnt.style.maxWidth = 3 + "mm";
       } else if (elmnt.offsetLeft - pos1 < 0) {
@@ -78,10 +81,18 @@ function Page() {
       } else {
         //780.5 - width the remainder if it reaches then subtract the remainder - 780.5 and whatever is the reainder is the wdith
         let remainderOffset = 780.5 - elmnt.getBoundingClientRect().width;
+        console.log(saved, "saved", savedd, "savedd");
+        // console.log(remainderOffset, 'WDITH NOW"');
         // console.log(, "REMAINDER"); //if the offleft reaches that point subtract it from 70.5 and make it the width
         if (elmnt.offsetLeft >= remainderOffset) {
           let remainderleft = 780.5 - elmnt.offsetLeft;
-          elmnt.style.width = remainderleft + "px";
+          elmnt.style.maxWidth = remainderleft + "px";
+          elmnt.style.minWidth = 5 + "px";
+          elmnt.style.width = remainderleft + "mm";
+        } else if (elmnt.offsetLeft <= remainderOffset) {
+          elmnt.style.width = remainderOffset + "mm";
+          elmnt.style.maxWidth = 209.5 + "mm";
+          // elmnt.style.minWidth = remainderOffset + "mm";
         }
         // elmnt.style.width = 150 + "px";
 
@@ -264,7 +275,7 @@ function Page() {
               <div
                 id="dragWritemain"
                 style={{
-                  height: "3px",
+                  height: "13px",
                   margin: "0",
                   padding: "0",
                   cursor: "move",
