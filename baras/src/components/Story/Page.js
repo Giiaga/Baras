@@ -32,7 +32,7 @@ function Page() {
   function dragElement(elmnt) {
     let setWidth = elmnt.getBoundingClientRect().width;
     let saved = setWidth;
-    let savedd = saved;
+    // let savedd = saved;
     // console.log(elmnt.getBoundingClientRect());
     let pos1 = 0,
       pos2 = 0,
@@ -71,53 +71,76 @@ function Page() {
       pos3 = e.clientX;
       pos4 = e.clientY;
 
-      if (elmnt.offsetLeft - pos1 >= 790) {
-        elmnt.style.left = 790 + "px";
+      if (elmnt.offsetLeft - pos1 >= 789) {
+        elmnt.style.left = 791 + "px";
         // elmnt.style.width = 3 + "mm";
         // elmnt.style.maxWidth = 3 + "mm";
-        let remainderOffset = 790 - elmnt.getBoundingClientRect().width;
+        // let remainderOffset = 790 - elmnt.getBoundingClientRect().width;
 
         // console.log("MAX OFFSET", elmnt.offsetLeft);
 
-        let remainderleft = 790 - elmnt.offsetLeft;
-        if (elmnt.offsetLeft > remainderOffset) {
-          elmnt.style.maxWidth = remainderleft + "px";
-          elmnt.style.minWidth = 0 + "px";
-          elmnt.style.width = remainderleft + "mm";
-        } else if (elmnt.offsetLeft <= remainderOffset) {
-          elmnt.style.minWidth = 0 + "px";
-
-          elmnt.style.width =
-            saved > remainderleft
-              ? 790 - elmnt.offsetLeft + "mm"
-              : saved + "mm";
-          elmnt.style.maxWidth = 790 - elmnt.offsetLeft + "px";
-
-          // elmnt.style.minWidth = remainderOffset + "mm";
+        // let remainderleft = 790 - elmnt.offsetLeft;
+        //830
+        let offset = 791 - elmnt.offsetLeft;
+        if (saved > offset) {
+          console.log(offset);
+          elmnt.style.width = offset + "px";
+          elmnt.style.maxWidth = offset + "px";
+        } else {
+          elmnt.style.width = saved;
+          elmnt.style.maxWidth = 791 - elmnt.offsetLeft + "px";
+          // 791 > elmnt.offsetLeft ? 791 - elmnt.offsetLeft + "px" : 791 + "px";/
         }
+
+        // if (elmnt.offsetLeft > remainderOffset) {
+        //   elmnt.style.maxWidth = remainderleft + "px";
+        //   elmnt.style.minWidth = 0 + "px";
+        //   elmnt.style.width = saved + "mm";
+        // } else if (elmnt.offsetLeft <= remainderOffset) {
+        //   elmnt.style.minWidth = 0 + "px";
+
+        //   elmnt.style.width =
+        //     saved > remainderleft
+        //       ? 790 - elmnt.offsetLeft + "mm"
+        //       : saved + "mm";
+        //   elmnt.style.maxWidth = 790 - elmnt.offsetLeft + 5 + "px";
+
+        //   // elmnt.style.minWidth = remainderOffset + "mm";
+        // }
       } else if (elmnt.offsetLeft - pos1 < 0) {
         elmnt.style.left = 0 + "px";
         // elmnt.style.maxWidth = 10 + "px";
       } else {
-        let remainderOffset = 790 - elmnt.getBoundingClientRect().width;
-
-        console.log("MAX OFFSET", elmnt.offsetLeft);
-
-        let remainderleft = 790 - elmnt.offsetLeft;
-        if (elmnt.offsetLeft > remainderOffset) {
-          elmnt.style.maxWidth = remainderleft + "px";
-          elmnt.style.minWidth = 0 + "px";
-          elmnt.style.width = remainderleft + "mm";
-        } else if (elmnt.offsetLeft <= remainderOffset) {
-          elmnt.style.minWidth = 0 + "px";
-
-          elmnt.style.width =
-            saved > remainderleft
-              ? 790 - elmnt.offsetLeft + "mm"
-              : saved + "mm";
-          elmnt.style.maxWidth = 790 - elmnt.offsetLeft + "px";
-          // elmnt.style.minWidth = remainderOffset + "mm";
+        let offset = 791 - elmnt.offsetLeft;
+        console.log("saved", saved);
+        if (saved > offset) {
+          console.log(offset, "offset in Else");
+          elmnt.style.width = offset + "px";
+          elmnt.style.maxWidth = offset + "px";
+        } else {
+          elmnt.style.width = saved;
+          elmnt.style.maxWidth = 791 - elmnt.offsetLeft + "px";
+          console.log(791 - elmnt.offsetLeft, "offsetLEFT");
         }
+        // let remainderOffset = 790 - elmnt.getBoundingClientRect().width;
+
+        // console.log("MAX OFFSET", elmnt.offsetLeft);
+
+        // let remainderleft = 790 - elmnt.offsetLeft;
+        // if (elmnt.offsetLeft > remainderOffset) {
+        //   elmnt.style.maxWidth = remainderleft + "px";
+        //   elmnt.style.minWidth = 0 + "px";
+        //   elmnt.style.width = remainderleft + "mm";
+        // } else if (elmnt.offsetLeft <= remainderOffset) {
+        //   elmnt.style.minWidth = 0 + "px";
+
+        //   elmnt.style.width =
+        //     saved > remainderleft
+        //       ? 790 - elmnt.offsetLeft + "mm"
+        //       : saved + "mm";
+        //   elmnt.style.maxWidth = 792 - elmnt.offsetLeft + "px";
+        //   // elmnt.style.minWidth = remainderOffset + "mm";
+        // }
         // elmnt.style.width = 150 + "px";
 
         // elmnt.style.maxWidth = 209.5 + "mm";
