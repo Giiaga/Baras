@@ -18,7 +18,7 @@ function Page() {
   let [write, setWrite] = useState();
   let [text, setText] = useState();
   let [moving, setMove] = useState(false);
-  let [SMFH, setSMFH] = useState(false);
+  // let [SMFH, setSMFH] = useState(false);
   // if (SMFH) {
   //   console.log(moving == true);
   //   dragElement(moving);
@@ -28,7 +28,7 @@ function Page() {
   let newPageNum = useSelector((state) => state.storyPages);
 
   let saveStory = () => {};
-  if (SMFH) dragElement(document.getElementById("dragWrite"));
+  // if (SMFH) dragElement(document.getElementById("dragWrite"));
   function dragElement(elmnt) {
     let setWidth = elmnt.getBoundingClientRect().width;
     let saved = setWidth;
@@ -84,11 +84,11 @@ function Page() {
         let offset = 792 - elmnt.offsetLeft;
         if (saved > offset) {
           console.log(offset);
-          elmnt.style.width = offset + "px";
-          elmnt.style.maxWidth = offset + "px";
+          elmnt.style.width = offset - pos1 + "px";
+          elmnt.style.maxWidth = offset + pos1 + "px";
         } else {
           elmnt.style.width = saved;
-          elmnt.style.maxWidth = 792 - elmnt.offsetLeft + "px";
+          elmnt.style.maxWidth = 792 - elmnt.offsetLeft + pos1 + "px";
           // 792 > elmnt.offsetLeft ? 792 - elmnt.offsetLeft + "px" : 792 + "px";/
         }
 
@@ -108,30 +108,37 @@ function Page() {
         //   // elmnt.style.minWidth = remainderOffset + "mm";
         // }
       } else if (elmnt.offsetLeft - pos1 <= 0) {
-        elmnt.style.left = 0 + "px";
+        elmnt.style.left = -1 + "px";
         let offset = 792 - elmnt.offsetLeft;
         console.log("saved", saved);
         if (saved > offset) {
           console.log(offset, "offset in Else");
-          elmnt.style.width = offset + "px";
-          elmnt.style.maxWidth = offset + "px";
+          elmnt.style.width = offset + pos1 + "px";
+          elmnt.style.maxWidth = offset + pos1 + "px";
+          console.log(pos1, "pos1 in save great");
         } else {
           elmnt.style.width = saved;
-          elmnt.style.maxWidth = 792 - elmnt.offsetLeft + "px";
+          elmnt.style.maxWidth = 792 - elmnt.offsetLeft + 1 + "px";
+          console.log(pos1, "pos1 in less");
+
           console.log(792 - elmnt.offsetLeft, "offsetLEFT");
         }
         // elmnt.style.maxWidth = 10 + "px";
-      } else {
-        let offset = 792 - elmnt.offsetLeft;
+      } else if (
+        elmnt.offsetLeft - pos1 <=
+        790
+        // elmnt.offsetLeft - pos1 > 0
+      ) {
+        let offset = 793 - elmnt.offsetLeft;
         console.log("saved", saved);
         if (saved > offset) {
           console.log(offset, "offset in Else");
-          elmnt.style.width = offset + "px";
-          elmnt.style.maxWidth = offset + "px";
+          elmnt.style.width = offset - pos1 + "px";
+          elmnt.style.maxWidth = offset + pos1 + "px";
         } else {
           elmnt.style.width = saved;
-          elmnt.style.maxWidth = 792 - elmnt.offsetLeft + "px";
-          console.log(792 - elmnt.offsetLeft, "offsetLEFT");
+          elmnt.style.maxWidth = 793 - elmnt.offsetLeft + pos1 + "px";
+          // console.log(792 - elmnt.offsetLeft, "offsetLEFT");
         }
         // let remainderOffset = 790 - elmnt.getBoundingClientRect().width;
 
@@ -166,7 +173,10 @@ function Page() {
     function closeDragElement() {
       document.onmouseup = null;
       document.onmousemove = null;
+      return;
     }
+    if (document.onmouseup) return;
+    return;
   }
 
   let addPhoto = (data) => {
@@ -325,8 +335,8 @@ function Page() {
                 overflowY: "hidden",
                 maxWidth: "209.5mm",
                 maxHeight: "295.5mm",
-                heigh: "150px",
-                width: "150px",
+                // heigh: "150px",
+                // width: "150px",
                 border: "1px solid",
               }}
             >
