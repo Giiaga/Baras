@@ -71,7 +71,7 @@ function Page() {
       pos3 = e.clientX;
       pos4 = e.clientY;
 
-      if (elmnt.offsetLeft - pos1 >= 789) {
+      if (elmnt.offsetLeft - pos1 >= 790) {
         elmnt.style.left = 791 + "px";
         // elmnt.style.width = 3 + "mm";
         // elmnt.style.maxWidth = 3 + "mm";
@@ -81,15 +81,15 @@ function Page() {
 
         // let remainderleft = 790 - elmnt.offsetLeft;
         //830
-        let offset = 791 - elmnt.offsetLeft;
+        let offset = 792 - elmnt.offsetLeft;
         if (saved > offset) {
           console.log(offset);
           elmnt.style.width = offset + "px";
           elmnt.style.maxWidth = offset + "px";
         } else {
           elmnt.style.width = saved;
-          elmnt.style.maxWidth = 791 - elmnt.offsetLeft + "px";
-          // 791 > elmnt.offsetLeft ? 791 - elmnt.offsetLeft + "px" : 791 + "px";/
+          elmnt.style.maxWidth = 792 - elmnt.offsetLeft + "px";
+          // 792 > elmnt.offsetLeft ? 792 - elmnt.offsetLeft + "px" : 792 + "px";/
         }
 
         // if (elmnt.offsetLeft > remainderOffset) {
@@ -107,11 +107,9 @@ function Page() {
 
         //   // elmnt.style.minWidth = remainderOffset + "mm";
         // }
-      } else if (elmnt.offsetLeft - pos1 < 0) {
+      } else if (elmnt.offsetLeft - pos1 <= 0) {
         elmnt.style.left = 0 + "px";
-        // elmnt.style.maxWidth = 10 + "px";
-      } else {
-        let offset = 791 - elmnt.offsetLeft;
+        let offset = 792 - elmnt.offsetLeft;
         console.log("saved", saved);
         if (saved > offset) {
           console.log(offset, "offset in Else");
@@ -119,8 +117,21 @@ function Page() {
           elmnt.style.maxWidth = offset + "px";
         } else {
           elmnt.style.width = saved;
-          elmnt.style.maxWidth = 791 - elmnt.offsetLeft + "px";
-          console.log(791 - elmnt.offsetLeft, "offsetLEFT");
+          elmnt.style.maxWidth = 792 - elmnt.offsetLeft + "px";
+          console.log(792 - elmnt.offsetLeft, "offsetLEFT");
+        }
+        // elmnt.style.maxWidth = 10 + "px";
+      } else {
+        let offset = 792 - elmnt.offsetLeft;
+        console.log("saved", saved);
+        if (saved > offset) {
+          console.log(offset, "offset in Else");
+          elmnt.style.width = offset + "px";
+          elmnt.style.maxWidth = offset + "px";
+        } else {
+          elmnt.style.width = saved;
+          elmnt.style.maxWidth = 792 - elmnt.offsetLeft + "px";
+          console.log(792 - elmnt.offsetLeft, "offsetLEFT");
         }
         // let remainderOffset = 790 - elmnt.getBoundingClientRect().width;
 
