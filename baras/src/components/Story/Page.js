@@ -86,7 +86,40 @@ function Page() {
           elmnt.style.maxHeight = 1116.86 - elmnt.offsetTop + pos1 + "px";
           // 792 > elmnt.offsetLeft ? 792 - elmnt.offsetLeft + "px" : 792 + "px";/
         }
+      } else if (elmnt.offsetTop - pos1 <= 0) {
+        elmnt.style.top = 0 + "px";
+        let heightOffset = 1116.86 - elmnt.offsetTop;
+        // console.log("setWidth", setWidth);
+        if (setHeight > heightOffset) {
+          // console.log(offset, "offset in Else");
+          elmnt.style.height = heightOffset + pos1 + "px";
+          elmnt.style.maxHeight = heightOffset + pos1 + "px";
+          // console.log(pos1, "pos1 in save great");
+        } else {
+          elmnt.style.height = setHeight;
+          elmnt.style.maxHeight = 1116.86 - elmnt.offsetTop + 1 + "px";
+          // console.log(pos1, "pos1 in less");
+
+          // console.log(792 - elmnt.offsetLeft, "offsetLEFT");
+        }
+      } else if (
+        elmnt.offsetTop - pos1 <=
+        1116.86
+        // elmnt.offsetLeft - pos1 > 0
+      ) {
+        let heightOffset = 1116.86 - elmnt.offsetTop;
+        // console.log("setWidth", setWidth);
+        if (setHeight > heightOffset) {
+          // console.log(offset, "offset in Else");
+          elmnt.style.height = heightOffset - pos1 + "px";
+          elmnt.style.maxHeight = heightOffset + pos1 + "px";
+        } else {
+          elmnt.style.height = setHeight;
+          elmnt.style.maxHeight = 1116.86 - elmnt.offsetTop + pos1 + "px";
+          // console.log(792 - elmnt.offsetLeft, "offsetLEFT");
+        }
       }
+
       if (elmnt.offsetLeft - pos1 >= 790) {
         elmnt.style.left = 791 + "px";
         // elmnt.style.width = 3 + "mm";
