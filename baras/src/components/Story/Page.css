@@ -1,0 +1,4 @@
+#videoPlayer::-webkit-resizer {
+  display: none;
+  /* background-color: red; */
+}

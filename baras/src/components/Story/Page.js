@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import "./Page.css";
 // import CreateStory from "./CreateStory";
 
 function Page() {
@@ -18,6 +19,7 @@ function Page() {
   let [write, setWrite] = useState();
   let [text, setText] = useState();
   let [moving, setMove] = useState(false);
+  console.log(videoLink, "vifdj");
   // let [SMFH, setSMFH] = useState(false);
   // if (SMFH) {
   //   console.log(moving == true);
@@ -288,6 +290,7 @@ function Page() {
           type="button"
           onClick={() => {
             document.getElementById("addPhotoInput").value = "";
+            setShowPhoto("");
           }}
         >
           Clear
@@ -295,7 +298,11 @@ function Page() {
         <button
           hidden={photoChoosen}
           type="button"
-          onClick={() => setPhotoChoosen(true)}
+          onClick={() => {
+            setPhotoChoosen(true);
+            setShowPhoto("");
+            document.getElementById("addPhotoInput").value = "";
+          }}
         >
           Cancel
         </button>
@@ -330,8 +337,26 @@ function Page() {
           hidden={videoChoosen}
           placeholder="Put video link here"
           value={videoLink}
-          onChange={(e) => setVideoLink(e.target.value)}
+          onChange={(e) => {
+            if (e.target.value.length === 43) {
+              let youtubeId = e.target.value.split("v=")[1].substring(0, 11);
+              let youtubePartUrl = e.target.value.split()[0].substring(0, 24);
+              setVideoLink(youtubePartUrl + "embed/" + youtubeId);
+            }
+            // e.target.value = "";
+            e.target.placeholder = "Please enter a complete url";
+          }}
         />
+        <button
+          hidden={videoChoosen}
+          type="button"
+          onClick={() => {
+            setShowVideo();
+            setVideoLink("");
+          }}
+        >
+          Clear
+        </button>
         <button
           hidden={videoChoosen}
           type="button"
@@ -372,6 +397,40 @@ function Page() {
           position: "relative",
         }}
       >
+        {videoLink && (
+          <>
+            <div
+              id="videoPlayer"
+              style={{
+                position: "absolute",
+                resize: "both",
+                overflow: "auto",
+                overflowX: "hidden",
+                overflowY: "hidden",
+                maxWidth: "209.5mm",
+                maxHeight: "295.5mm",
+                // heigh: "150px",
+                // width: "150px",
+                // border: "1px solid",
+              }}
+            >
+              <div
+                id="videoPlayermain"
+                style={{
+                  height: "13px",
+                  margin: "0",
+                  padding: "0",
+                  cursor: "move",
+                  color: "transparent",
+                }}
+              ></div>
+
+              <iframe style={{ width: "100%", height: "100%" }} src={videoLink}>
+                {/* Sorry, your browser does not support video being used on here */}
+              </iframe>
+            </div>
+          </>
+        )}
         {write ? (
           <>
             <div
