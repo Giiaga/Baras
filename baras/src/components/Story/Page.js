@@ -313,10 +313,15 @@ function Page() {
           hidden={audioChoosen}
           value={audioLink}
           onChange={(e) => {
-            let audioSoundcloudLink = e.target.value
-              .split('src="')[1]
-              .substring(0, 82);
-            setAudioLink(audioSoundcloudLink);
+            if (e.target.value.length > 61 && e.target.value.length === 931) {
+              let audioSoundcloudLink = e.target.value
+                .split('src="')[1]
+                .substring(0, 82);
+              setAudioLink(audioSoundcloudLink);
+            } else if (e.target.value.length < 931) {
+              console.log("wh");
+              setAudioLink("");
+            }
             setShowAudio(e.target.value);
           }}
           placeholder="Put audio link here"
@@ -324,7 +329,10 @@ function Page() {
         <button
           hidden={audioChoosen}
           type="button"
-          onClick={() => setAudioChoosen(true)}
+          onClick={() => {
+            setAudioChoosen(true);
+            setAudioLink("");
+          }}
         >
           Cancel
         </button>
