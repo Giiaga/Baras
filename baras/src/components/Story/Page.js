@@ -517,13 +517,13 @@ function Page() {
               resize: "both",
               overflow: "auto",
               overflowY: "hidden",
-              border: "5px solid",
+              // border: "5px solid",
             }}
           >
             <div
               id="showPhotomain"
               style={{
-                height: "13px",
+                height: "3px",
                 margin: "0",
                 padding: "0",
                 cursor: "move",
