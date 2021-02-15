@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Page.associate = function (models) {
-    Page.belongsTo(models.Story, { foreignkey: "storyId" });
+    Page.belongsTo(models.Story, { foreignKey: "storyId" });
     // associations can be defined here
   };
   return Page;

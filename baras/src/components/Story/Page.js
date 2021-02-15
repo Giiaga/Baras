@@ -26,7 +26,7 @@ function Page() {
 
   let dispatch = useDispatch();
 
-  useEffect(() => dispatch(getPages(storyTitle)));
+  // useEffect(() => dispatch(getPages(storyTitle)));
   let saveStory = () => {
     let textMeasures = {};
     let photoMeasures = {};

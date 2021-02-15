@@ -41,7 +41,7 @@ router.get(
     let { username: currentUser } = req.user;
     // console.log(currentUser, "dffjsdk");
     let { username } = req.params;
-    if (currentUser != username) res.redirect("/");
+    if (currentUser != username) return res.redirect("/");
 
     let user = await User.findOne({ where: { username: username } });
     return res.json(user);
@@ -66,25 +66,26 @@ router.post(
     let { userId, title, publish } = req.body;
     let story = await Story.create({ userId, title, publish });
     await Page.create({ pageNumber: 1, storyId: story.id });
+    // let test = await Baras.findAll({ where: { userId: 5 } });
+    // let test = await Page.findOne();
+    // console.log("tTESTTTSTDTSDTT", test);
+
     return res.json(story);
   })
 );
 
 // STORY PAGE
-router.get(
-  "/story/:title/cont",
-  asyncHandler(async (req, res) => {
-    let { title } = req.params;
-    let titleToSearch = title.split("<:>").join(" ");
+router.get("/story/:title/cont", async (req, res) => {
+  let { title } = req.params;
+  let titleToSearch = title.split("<:>").join(" ");
 
-    // console.log(titleToSearch, "TITITIITITITITITIITITITITIITITIITITI");
-    let storyFound = await Story.findOne({ where: { title: titleToSearch } });
-    // console.log(storyFound.id, "STORY FOUND");
-    let pages = await Page.findAll();
-    console.log("PAGESSSSSSSs", pages);
-    return res.json(pages);
-  })
-);
+  // console.log(titleToSearch, "TITITIITITITITITIITITITITIITITIITITI");
+  let storyFound = await Story.findOne({ where: { title: titleToSearch } });
+  console.log(storyFound.id, "STORY FOUND");
+  let pages = await Page.findAll();
+  console.log("PAGESSSSSSSs", pages);
+  return res.json("pages");
+});
 router.post(
   "/story/cont",
   asyncHandler(async (req, res) => {
