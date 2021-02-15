@@ -67,9 +67,9 @@ function Page() {
         textV: chapterElement.top,
       };
     }
-    if (document.getElementById("showAudio")) {
+    if (document.getElementById("audioShow")) {
       let audioElement = document
-        .getElementById("showAudio")
+        .getElementById("audioShow")
         .getBoundingClientRect();
       audioMeasures = {
         width: audioElement.width,
@@ -89,11 +89,18 @@ function Page() {
         textV: videoElement.top,
       };
     }
+    console.log(
+      textMeasures,
+      audioMeasures,
+      videoMeasures,
+      chapterMeasures,
+      photoMeasures
+    );
   };
 
-  useEffect(() => {
-    console.log(textMeasures, "its changes");
-  }, [textMeasures]);
+  // useEffect(() => {
+  //   // console.log(textMeasures, "its changes");
+  // }, [textMeasures]);
   function dragElement(elmnt) {
     let setWidth = elmnt.getBoundingClientRect().width;
     let setHeight = elmnt.getBoundingClientRect().height;
