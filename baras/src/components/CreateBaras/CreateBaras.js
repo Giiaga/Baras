@@ -106,6 +106,7 @@ function CreateBaras() {
             type="button"
             onClick={() => {
               document.getElementById("addPhotoInput").value = "";
+              setPhoto("");
             }}
           >
             Clear
@@ -113,7 +114,10 @@ function CreateBaras() {
           <button
             hidden={photoChoosen}
             type="button"
-            onClick={() => setPhotoChoosen(true)}
+            onClick={() => {
+              setPhotoChoosen(true);
+              setPhoto("");
+            }}
           >
             Cancel
           </button>
