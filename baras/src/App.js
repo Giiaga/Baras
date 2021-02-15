@@ -12,6 +12,7 @@ import Showpic from "./quicktets";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Page from "./components/Story/Page";
 import StoryTell from "./components/Story/StoryTell";
+import CreateBaras from "./components/CreateBaras/CreateBaras";
 
 function App() {
   let user = useSelector((state) => state.session.user);
@@ -47,8 +48,8 @@ function App() {
             <Route exact path="/page">
               <Page />
             </Route>
-            <Route exact path="/test">
-              <Showpic />
+            <Route exact path="/createBaras">
+              <CreateBaras />
             </Route>
             <Route exact path="/story/tell">
               <StoryTell />
