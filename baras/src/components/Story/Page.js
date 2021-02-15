@@ -567,8 +567,46 @@ function Page() {
           ""
         )}
         {chapter && (
-          <div>
-            <h1>{chapter}</h1>
+          <div
+            id="showChapter"
+            style={{
+              position: "absolute",
+              minWidth: "0",
+              // height: "200px",
+              // width: "200px",
+              maxWidth: "210mm",
+              maxHeight: "1102px",
+              resize: "both",
+              overflow: "auto",
+              overflowY: "hidden",
+              overflowX: "hidden",
+              // border: "5px solid",
+            }}
+          >
+            <div
+              id="showChaptermain"
+              style={{
+                height: "3px",
+                margin: "0",
+                padding: "0",
+                cursor: "move",
+                // color: "transparent",
+              }}
+              onMouseDown={(e) => {
+                dragElement(document.getElementById("showChapter"));
+              }}
+            ></div>
+            <h1
+              style={{
+                height: "100%",
+                width: "100%",
+                fontSize: "4vw",
+                margin: "0",
+                wordBreak: "break-word",
+              }}
+            >
+              {chapter}
+            </h1>
           </div>
         )}
         {showPhoto ? (
