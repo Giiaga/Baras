@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import "./Page.css";
@@ -20,28 +20,80 @@ function Page() {
 
   // HEIGHTS AND WIDTHS AND POSITIONS
 
-  let [photoMeasures, setPhotoMeasures] = useState({});
-  let [textMeasures, setTextMeasures] = useState({});
-  let [chapterMeasures, setChapterMeasures] = useState({});
-  let [audioMeasures, setAudioMeasures] = useState({});
-  let [videoMeasures, setVideoMeasures] = useState({});
+  // let [photoMeasures, setPhotoMeasures] = useState({});
+  // let [textMeasures, setTextMeasures] = useState({});
+  // let [chapterMeasures, setChapterMeasures] = useState({});
+  // let [audioMeasures, setAudioMeasures] = useState({});
+  // let [videoMeasures, setVideoMeasures] = useState({});
   // HEIGHTS AND WIDTHS AND POSITIONS END
   let newPageNum = useSelector((state) => state.storyPages);
-
+  // console.log(textMeasures);
   let saveStory = () => {
+    let textMeasures = {};
+    let photoMeasures = {};
+    let chapterMeasures = {};
+    let audioMeasures = {};
+    let videoMeasures = {};
     if (document.getElementById("dragWrite")) {
-      // console.log("is it not");
-      let text = document.getElementById("dragWrite").getBoundingClientRect();
-      setTextMeasures({
-        width: text.width,
-        height: text.height,
-        textH: text.left,
-        textV: text.top,
-      });
+      let textElement = document
+        .getElementById("dragWrite")
+        .getBoundingClientRect();
+      textMeasures = {
+        width: textElement.width,
+        height: textElement.height,
+        textH: textElement.left,
+        textV: textElement.top,
+      };
     }
-    console.log(textMeasures);
+    if (document.getElementById("showPhoto")) {
+      let photoElement = document
+        .getElementById("showPhoto")
+        .getBoundingClientRect();
+      photoMeasures = {
+        width: photoElement.width,
+        height: photoElement.height,
+        textH: photoElement.left,
+        textV: photoElement.top,
+      };
+    }
+    if (document.getElementById("showChapter")) {
+      let chapterElement = document
+        .getElementById("showChapter")
+        .getBoundingClientRect();
+      chapterMeasures = {
+        width: chapterElement.width,
+        height: chapterElement.height,
+        textH: chapterElement.left,
+        textV: chapterElement.top,
+      };
+    }
+    if (document.getElementById("showAudio")) {
+      let audioElement = document
+        .getElementById("showAudio")
+        .getBoundingClientRect();
+      audioMeasures = {
+        width: audioElement.width,
+        height: audioElement.height,
+        textH: audioElement.left,
+        textV: audioElement.top,
+      };
+    }
+    if (document.getElementById("videoPlayer")) {
+      let videoElement = document
+        .getElementById("videoPlayer")
+        .getBoundingClientRect();
+      videoMeasures = {
+        width: videoElement.width,
+        height: videoElement.height,
+        textH: videoElement.left,
+        textV: videoElement.top,
+      };
+    }
   };
 
+  useEffect(() => {
+    console.log(textMeasures, "its changes");
+  }, [textMeasures]);
   function dragElement(elmnt) {
     let setWidth = elmnt.getBoundingClientRect().width;
     let setHeight = elmnt.getBoundingClientRect().height;
@@ -140,10 +192,6 @@ function Page() {
         elmnt.style.top = elmnt.offsetTop - pos2 + "px";
         elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
       }
-      // console.log(
-      //   // elmnt.getBoundingClientRect().width,
-      //   elmnt.getBoundingClientRect()
-      // );
     }
 
     function closeDragElement() {
@@ -371,37 +419,38 @@ function Page() {
             </div>
           </>
         )}
-        <div
-          id="audioShow"
-          style={{
-            position: "absolute",
-            resize: "both",
-            overflow: "auto",
-            overflowX: "hidden",
-            overflowY: "hidden",
-            maxWidth: "209.5mm",
-            maxHeight: "295.5mm",
-          }}
-        >
+        {audioLink && (
           <div
-            id="audioShowmain"
+            id="audioShow"
             style={{
-              height: "3px",
-              margin: "0",
-              padding: "0",
-              cursor: "move",
+              position: "absolute",
+              resize: "both",
+              overflow: "auto",
+              overflowX: "hidden",
+              overflowY: "hidden",
+              maxWidth: "209.5mm",
+              maxHeight: "295.5mm",
             }}
-            onMouseDown={(e) => {
-              dragElement(document.getElementById("audioShow"));
-            }}
-          ></div>
-          {audioLink && (
+          >
+            <div
+              id="audioShowmain"
+              style={{
+                height: "3px",
+                margin: "0",
+                padding: "0",
+                cursor: "move",
+              }}
+              onMouseDown={(e) => {
+                dragElement(document.getElementById("audioShow"));
+              }}
+            ></div>
+
             <iframe
               style={{ width: "100%", height: "100%" }}
               src={audioLink}
             ></iframe>
-          )}
-        </div>
+          </div>
+        )}
         {write ? (
           <>
             <div
