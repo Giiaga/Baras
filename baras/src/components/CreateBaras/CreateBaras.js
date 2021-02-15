@@ -160,7 +160,17 @@ function CreateBaras() {
             hidden={videoChoosen}
             placeholder="Put video link here"
             value={videoLink}
-            onChange={(e) => setVideoLink(e.target.value)}
+            onChange={(e) => {
+              if (e.target.value.length) {
+                let youtubeFindId = e.target.value.indexOf("v=");
+                let youtubePartUrl = e.target.value.split()[0].substring(0, 24);
+                let youtubeId = e.target.value.slice(youtubeFindId + 2, 43);
+
+                setVideoLink(youtubePartUrl + "embed/" + youtubeId);
+              }
+
+              e.target.placeholder = "Please enter a complete url";
+            }}
           />
           <button
             hidden={videoChoosen}
@@ -170,12 +180,11 @@ function CreateBaras() {
             Cancel
           </button>
         </div>
-        {/* {videoLink && (
-          <video controls width="300px" height="300px">
-            <source src={videoLink} />
-            Sorry, your browser does not support video being used on here
-          </video>
-        )} */}
+        {videoLink && (
+          <iframe style={{ width: "300px", height: "200px" }} src={videoLink}>
+            {/* Sorry, your browser does not support video being used on here */}
+          </iframe>
+        )}
         <textarea
           value={mainText}
           placeholder="Let it outt, if you will"
