@@ -313,14 +313,12 @@ function Page() {
           hidden={audioChoosen}
           value={audioLink}
           onChange={(e) => {
-            if (e.target.value.length > 61 && e.target.value.length === 931) {
-              let audioSoundcloudLink = e.target.value.slice(88, 170);
-              // .split('src="')[1]
-              // .substring(0, 82);
+            if (e.target.value.length > 61 && e.target.value.length <= 1000) {
+              let found = e.target.value.indexOf("http");
+              let complete = e.target.value.indexOf("&auto");
+
+              let audioSoundcloudLink = e.target.value.slice(found, complete);
               setAudioLink(audioSoundcloudLink);
-            } else {
-              // console.log("wh");
-              setAudioLink(e.target.value);
             }
             setShowAudio(e.target.value);
           }}
