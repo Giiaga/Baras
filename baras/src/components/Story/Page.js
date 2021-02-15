@@ -248,8 +248,8 @@ function Page() {
           setPhotoChoosen(false);
           setAudioChoosen(true);
           setVideoChoosen(true);
-          setAudioLink("");
-          setVideoLink("");
+          // setAudioLink("");
+          // setVideoLink("");
         }}
       >
         Add Photo
@@ -259,8 +259,8 @@ function Page() {
           setAudioChoosen(false);
           setPhotoChoosen(true);
           setVideoChoosen(true);
-          setPhoto("");
-          setVideoLink("");
+          // setPhoto("");
+          // setVideoLink("");
         }}
       >
         Add Song
@@ -270,8 +270,8 @@ function Page() {
           setVideoChoosen(false);
           setPhotoChoosen(true);
           setAudioChoosen(true);
-          setPhoto("");
-          setAudioLink("");
+          // setPhoto("");
+          // setAudioLink("");
         }}
       >
         Add Video
@@ -468,13 +468,13 @@ function Page() {
             maxHeight: "295.5mm",
             // heigh: "150px",
             // width: "150px",
-            border: "1px solid",
+            // border: "1px solid",
           }}
         >
           <div
             id="audioShowmain"
             style={{
-              height: "13px",
+              height: "3px",
               margin: "0",
               padding: "0",
               cursor: "move",
