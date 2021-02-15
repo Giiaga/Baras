@@ -361,12 +361,12 @@ function Page() {
           placeholder="Put video link here"
           value={videoLink}
           onChange={(e) => {
-            if (e.target.value.length === 43) {
-              let youtubeId = e.target.value.split("v=")[1].substring(0, 11);
+            if (e.target.value.length) {
+              let youtubeFindId = e.target.value.indexOf("v=");
               let youtubePartUrl = e.target.value.split()[0].substring(0, 24);
+              let youtubeId = e.target.value.slice(youtubeFindId + 2, 43);
+
               setVideoLink(youtubePartUrl + "embed/" + youtubeId);
-            } else {
-              setVideoLink(e.target.value);
             }
 
             e.target.placeholder = "Please enter a complete url";
