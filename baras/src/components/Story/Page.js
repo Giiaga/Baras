@@ -341,7 +341,7 @@ function Page() {
           </audio>
         )} */}
 
-      <>
+      {/* <>
         {audioLink && (
           <iframe
             // width="100%"
@@ -352,7 +352,7 @@ function Page() {
             src={audioLink}
           ></iframe>
         )}
-      </>
+      </> */}
 
       <div>
         <input
@@ -456,6 +456,48 @@ function Page() {
             </div>
           </>
         )}
+        <div
+          id="audioShow"
+          style={{
+            position: "absolute",
+            resize: "both",
+            overflow: "auto",
+            overflowX: "hidden",
+            overflowY: "hidden",
+            maxWidth: "209.5mm",
+            maxHeight: "295.5mm",
+            // heigh: "150px",
+            // width: "150px",
+            border: "1px solid",
+          }}
+        >
+          <div
+            id="audioShowmain"
+            style={{
+              height: "13px",
+              margin: "0",
+              padding: "0",
+              cursor: "move",
+              // color: "transparent",
+            }}
+            onMouseDown={(e) => {
+              dragElement(document.getElementById("audioShow"));
+            }}
+          >
+            {/* yes */}
+          </div>
+          {audioLink && (
+            <iframe
+              style={{ width: "100%", height: "100%" }}
+              // width="100%"
+              // height="166"
+              // scrolling="no"
+              // frameborder="no"
+              // allow="autoplay"
+              src={audioLink}
+            ></iframe>
+          )}
+        </div>
         {write ? (
           <>
             <div
@@ -480,13 +522,13 @@ function Page() {
                   margin: "0",
                   padding: "0",
                   cursor: "move",
-                  color: "transparent",
+                  // color: "transparent",
                 }}
                 onMouseDown={(e) => {
                   dragElement(document.getElementById("dragWrite"));
                 }}
               >
-                yes
+                {/* yes */}
               </div>
               <textarea
                 style={{
