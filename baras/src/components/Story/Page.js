@@ -266,6 +266,7 @@ function Page() {
         </button>
       </div>
       <button onClick={() => setWrite(true)}>Write</button>
+      {write && <button onClick={() => setWrite(false)}>Cancel</button>}
       <button onClick={() => setShowChapterInput(true)}>Add Chapter</button>
       {chapterInput && (
         <>
@@ -284,7 +285,6 @@ function Page() {
           </button>
         </>
       )}
-      {write && <button onClick={() => setWrite(false)}>Cancel</button>}
       <button onClick={""}>Save</button>
       <button
         onClick={(e) => {
