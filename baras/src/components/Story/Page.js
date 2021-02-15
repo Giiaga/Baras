@@ -314,9 +314,9 @@ function Page() {
           value={audioLink}
           onChange={(e) => {
             if (e.target.value.length > 61 && e.target.value.length === 931) {
-              let audioSoundcloudLink = e.target.value
-                .split('src="')[1]
-                .substring(0, 82);
+              let audioSoundcloudLink = e.target.value.slice(88, 170);
+              // .split('src="')[1]
+              // .substring(0, 82);
               setAudioLink(audioSoundcloudLink);
             } else {
               // console.log("wh");
