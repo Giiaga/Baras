@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./Page.css";
 
 function Page() {
-  let storyId = useSelector((state) => state.story.id);
+  // let storyId = useSelector((state) => state.story.id);
+  // console.log(storyId, "STROY IF");
   let [audioChoosen, setAudioChoosen] = useState(true);
   let [videoChoosen, setVideoChoosen] = useState(true);
   let [photoChoosen, setPhotoChoosen] = useState(true);
@@ -19,7 +21,12 @@ function Page() {
   let [text, setText] = useState();
 
   let newPageNum = useSelector((state) => state.storyPages);
+  let fromParam = useParams();
+  let storyTitle = fromParam.title.split("<:>").join(" ");
 
+  let dispatch = useDispatch();
+
+  useEffect(() => dispatch(getPages(storyTitle)));
   let saveStory = () => {
     let textMeasures = {};
     let photoMeasures = {};

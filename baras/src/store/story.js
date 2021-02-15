@@ -94,12 +94,32 @@ export let storyPage = (
   return response;
 };
 
+let GETPAGES = "getsPagesWhenStoryContLoads";
+
+let getPagesAC = (data) => {
+  return {
+    type: GETPAGES,
+    data,
+  };
+};
+
+export let getPages = (title) => async (dispatch) => {
+  let response = await fetch(`/story/${title}/cont`);
+  dispatch(getPagesAC(response.data));
+
+  return response.data;
+};
+
 let storyReducer = (state = [], action) => {
   let newState;
   switch (action.type) {
     case TELLSTORY:
       newState = Object.assign({}, state);
       newState.story = action.data;
+      return newState;
+    case GETPAGES:
+      newState = Object.assign({}, state);
+      newState.allPages = action.data;
       return newState;
     case STORYPAGE:
       newState = Object.assign({}, state);

@@ -39,7 +39,7 @@ router.get(
   requireAuth,
   asyncHandler(async (req, res) => {
     let { username: currentUser } = req.user;
-    console.log(currentUser, "dffjsdk");
+    // console.log(currentUser, "dffjsdk");
     let { username } = req.params;
     if (currentUser != username) res.redirect("/");
 
@@ -70,7 +70,21 @@ router.post(
   })
 );
 
-// CREATE STORY PAGE
+// STORY PAGE
+router.get(
+  "/story/:title/cont",
+  asyncHandler(async (req, res) => {
+    let { title } = req.params;
+    let titleToSearch = title.split("<:>").join(" ");
+
+    // console.log(titleToSearch, "TITITIITITITITITIITITITITIITITIITITI");
+    let storyFound = await Story.findOne({ where: { title: titleToSearch } });
+    // console.log(storyFound.id, "STORY FOUND");
+    let pages = await Page.findAll();
+    console.log("PAGESSSSSSSs", pages);
+    return res.json(pages);
+  })
+);
 router.post(
   "/story/cont",
   asyncHandler(async (req, res) => {
