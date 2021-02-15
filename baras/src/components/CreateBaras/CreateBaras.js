@@ -123,7 +123,16 @@ function CreateBaras() {
             type="text"
             hidden={audioChoosen}
             value={audioLink}
-            onChange={(e) => setAudioLink(e.target.value)}
+            onChange={(e) => {
+              if (e.target.value.length > 61 && e.target.value.length <= 1000) {
+                let found = e.target.value.indexOf("http");
+                let complete = e.target.value.indexOf("&auto");
+
+                let audioSoundcloudLink = e.target.value.slice(found, complete);
+                setAudioLink(audioSoundcloudLink);
+              }
+              // setShowAudio(e.target.value);
+            }}
             placeholder="Put audio link here"
           />
           <button
@@ -135,9 +144,15 @@ function CreateBaras() {
           </button>
         </div>
         {audioLink && (
-          <audio controls src={audioLink}>
-            Sorry, your browser does not support audio being used on here
-          </audio>
+          <iframe
+            style={{ width: "300px", height: "100px" }}
+            // width="100%"
+            // height="166"
+            // scrolling="no"
+            // frameborder="no"
+            // allow="autoplay"
+            src={audioLink}
+          ></iframe>
         )}
         <div>
           <input
