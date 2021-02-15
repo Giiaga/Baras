@@ -318,9 +318,9 @@ function Page() {
                 .split('src="')[1]
                 .substring(0, 82);
               setAudioLink(audioSoundcloudLink);
-            } else if (e.target.value.length < 931) {
-              console.log("wh");
-              setAudioLink("");
+            } else {
+              // console.log("wh");
+              setAudioLink(e.target.value);
             }
             setShowAudio(e.target.value);
           }}
