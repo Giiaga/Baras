@@ -7,6 +7,7 @@ import "./UserProfile.css";
 function UserProfile() {
   let dispatch = useDispatch();
   let [userAvailable, setUserAvailable] = useState(false);
+  let [barasAvailable, setAllBaras] = useState(false);
 
   let history = useHistory();
 
@@ -15,10 +16,10 @@ function UserProfile() {
   let userBaras = useSelector((state) => state.user.allBaras);
   // console.log(userBaras);
   useEffect(() => {
-    dispatch(getUser(loggedInUser.username)).then(
-      (data) => data && setUserAvailable(true)
-    );
-    dispatch(allBaras(loggedInUser.id));
+    dispatch(getUser(loggedInUser.username))
+      .then((data) => data && setUserAvailable(true))
+      .then(() => dispatch(allBaras(loggedInUser.id)))
+      .then(() => setAllBaras(true));
   }, []);
 
   return (
@@ -39,7 +40,7 @@ function UserProfile() {
               <p>{user.description}</p>
             </div>
           </div>
-          {userBaras.length > 0 ? (
+          {barasAvailable ? (
             <div className="allBarasDiv">
               {userBaras[userBaras.length - 1].relatesTo}
             </div>
