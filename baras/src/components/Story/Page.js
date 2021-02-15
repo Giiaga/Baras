@@ -370,7 +370,7 @@ function Page() {
             } else {
               setVideoLink(e.target.value);
             }
-            // e.target.value = "";
+
             e.target.placeholder = "Please enter a complete url";
           }}
         />
