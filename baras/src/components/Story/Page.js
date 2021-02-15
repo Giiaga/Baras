@@ -506,23 +506,41 @@ function Page() {
         )}
         {showPhoto ? (
           <div
+            id="showPhoto"
             style={{
+              position: "absolute",
               minWidth: "0",
-              height: "296.5mm",
+              height: "200px",
+              width: "200px",
+              maxWidth: "210mm",
+              maxHeight: "1102px",
               resize: "both",
               overflow: "auto",
               overflowY: "hidden",
+              border: "5px solid",
             }}
           >
-            {" "}
+            <div
+              id="showPhotomain"
+              style={{
+                height: "13px",
+                margin: "0",
+                padding: "0",
+                cursor: "move",
+                color: "transparent",
+              }}
+              onMouseDown={(e) => {
+                dragElement(document.getElementById("showPhoto"));
+              }}
+            ></div>
             <img
               src={showPhoto}
               alt={showPhoto}
               style={{
                 width: "100%",
                 height: "100%",
-                resize: "both",
-                overflow: "auto",
+                // resize: "both",
+                // overflow: "auto",
               }}
             />
           </div>

@@ -2,3 +2,11 @@
   display: none;
   /* background-color: red; */
 }
+#showPhoto::-webkit-resizer {
+  display: none;
+  /* background-color: red; */
+}
+
+/* textarea {
+  background-color: purple;
+} */
