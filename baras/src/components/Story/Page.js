@@ -313,7 +313,10 @@ function Page() {
           hidden={audioChoosen}
           value={audioLink}
           onChange={(e) => {
-            setAudioLink(e.target.value);
+            let audioSoundcloudLink = e.target.value
+              .split('src="')[1]
+              .substring(0, 82);
+            setAudioLink(audioSoundcloudLink);
             setShowAudio(e.target.value);
           }}
           placeholder="Put audio link here"
@@ -333,14 +336,16 @@ function Page() {
         )} */}
 
       <>
-        <iframe
-          // width="100%"
-          // height="166"
-          // scrolling="no"
-          // frameborder="no"
-          // allow="autoplay"
-          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/924613324&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
-        ></iframe>
+        {audioLink && (
+          <iframe
+            // width="100%"
+            // height="166"
+            // scrolling="no"
+            // frameborder="no"
+            // allow="autoplay"
+            src={audioLink}
+          ></iframe>
+        )}
       </>
 
       <div>
