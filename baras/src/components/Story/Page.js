@@ -18,16 +18,8 @@ function Page() {
   let [chapterInput, setShowChapterInput] = useState(false);
   let [text, setText] = useState();
 
-  // HEIGHTS AND WIDTHS AND POSITIONS
-
-  // let [photoMeasures, setPhotoMeasures] = useState({});
-  // let [textMeasures, setTextMeasures] = useState({});
-  // let [chapterMeasures, setChapterMeasures] = useState({});
-  // let [audioMeasures, setAudioMeasures] = useState({});
-  // let [videoMeasures, setVideoMeasures] = useState({});
-  // HEIGHTS AND WIDTHS AND POSITIONS END
   let newPageNum = useSelector((state) => state.storyPages);
-  // console.log(textMeasures);
+
   let saveStory = () => {
     let textMeasures = {};
     let photoMeasures = {};

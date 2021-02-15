@@ -65,7 +65,7 @@ router.post(
   asyncHandler(async (req, res) => {
     let { userId, title, publish } = req.body;
     let story = await Story.create({ userId, title, publish });
-
+    await Page.create({ pageNumber: 1, storyId: story.id });
     return res.json(story);
   })
 );

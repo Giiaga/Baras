@@ -54,7 +54,7 @@ function App() {
             <Route exact path="/story/tell">
               <StoryTell />
             </Route>
-            <Route exact path="/story/cont">
+            <Route exact path="/story/:title/cont">
               <Page />
             </Route>
             <Route exact path="/:username">

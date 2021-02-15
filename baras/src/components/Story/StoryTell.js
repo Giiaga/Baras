@@ -11,7 +11,8 @@ function StoryTell() {
   let history = useHistory();
   let createStory = () => {
     dispatch(tellStory(userId, title, publish));
-    return history.push("/story/cont");
+    let paramTitle = title.split(" ").join("+");
+    return history.push(`/story/${paramTitle}/cont`);
   };
   return (
     <>
