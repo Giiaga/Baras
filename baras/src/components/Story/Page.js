@@ -14,19 +14,32 @@ function Page() {
   let [showPhoto, setShowPhoto] = useState();
   let [pageNumber, setPageNumber] = useState();
   let [write, setWrite] = useState();
-  let [text, setText] = useState();
   let [chapter, setChapter] = useState();
   let [chapterInput, setShowChapterInput] = useState(false);
-  let [hei, setHeight] = useState();
+  let [text, setText] = useState();
+
+  // HEIGHTS AND WIDTHS AND POSITIONS
+
+  let [photoMeasures, setPhotoMeasures] = useState({});
+  let [textMeasures, setTextMeasures] = useState({});
+  let [chapterMeasures, setChapterMeasures] = useState({});
+  let [audioMeasures, setAudioMeasures] = useState({});
+  let [videoMeasures, setVideoMeasures] = useState({});
+  // HEIGHTS AND WIDTHS AND POSITIONS END
   let newPageNum = useSelector((state) => state.storyPages);
 
   let saveStory = () => {
-    console.log(hei);
-    // if (document.getElementById("dragWrite")) {
-    //   console.log(
-    //     document.getElementById("dragWrite").getBoundingClientRect().width
-    //   );
-    // }
+    if (document.getElementById("dragWrite")) {
+      // console.log("is it not");
+      let text = document.getElementById("dragWrite").getBoundingClientRect();
+      setTextMeasures({
+        width: text.width,
+        height: text.height,
+        textH: text.left,
+        textV: text.top,
+      });
+    }
+    console.log(textMeasures);
   };
 
   function dragElement(elmnt) {
@@ -456,10 +469,6 @@ function Page() {
               }}
               onMouseDown={(e) => {
                 dragElement(document.getElementById("showChapter"));
-                setHeight(
-                  document.getElementById("showChapter").getBoundingClientRect()
-                    .width
-                );
               }}
             ></div>
             <h1
