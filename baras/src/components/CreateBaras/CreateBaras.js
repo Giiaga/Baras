@@ -118,6 +118,20 @@ function CreateBaras() {
             Cancel
           </button>
         </div>
+        {photo && (
+          <div>
+            <img
+              src={photo}
+              alt={photo}
+              style={{
+                width: "300px",
+                height: "200px",
+                // resize: "both",
+                // overflow: "auto",
+              }}
+            />
+          </div>
+        )}
         <div>
           <input
             type="text"
