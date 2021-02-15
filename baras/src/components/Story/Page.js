@@ -18,6 +18,8 @@ function Page() {
   let [pageNumber, setPageNumber] = useState();
   let [write, setWrite] = useState();
   let [text, setText] = useState();
+  let [chapter, setChapter] = useState();
+  let [chapterInput, setShowChapterInput] = useState(false);
   // let [moving, setMove] = useState(false);
   // console.log(videoLink, "vifdj");
   // let [SMFH, setSMFH] = useState(false);
@@ -399,6 +401,24 @@ function Page() {
         grabVideo={setShowVideo}
       /> */}
       <button onClick={() => setWrite(true)}>Write</button>
+      <button onClick={() => setShowChapterInput(true)}>Add Chapter</button>
+      {chapterInput && (
+        <>
+          <input
+            type="text"
+            value={chapter}
+            onChange={(e) => setChapter(e.target.value)}
+          />
+          <button
+            onClick={() => {
+              setShowChapterInput(false);
+              setChapter("");
+            }}
+          >
+            Cancel
+          </button>
+        </>
+      )}
       {write && <button onClick={() => setWrite(false)}>Cancel</button>}
       <button onClick={""}>Save</button>
       <button
@@ -545,6 +565,11 @@ function Page() {
           </>
         ) : (
           ""
+        )}
+        {chapter && (
+          <div>
+            <h1>{chapter}</h1>
+          </div>
         )}
         {showPhoto ? (
           <div
