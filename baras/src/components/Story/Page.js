@@ -367,6 +367,8 @@ function Page() {
               let youtubeId = e.target.value.split("v=")[1].substring(0, 11);
               let youtubePartUrl = e.target.value.split()[0].substring(0, 24);
               setVideoLink(youtubePartUrl + "embed/" + youtubeId);
+            } else {
+              setVideoLink(e.target.value);
             }
             // e.target.value = "";
             e.target.placeholder = "Please enter a complete url";
