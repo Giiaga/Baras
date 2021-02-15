@@ -17,10 +17,17 @@ function Page() {
   let [text, setText] = useState();
   let [chapter, setChapter] = useState();
   let [chapterInput, setShowChapterInput] = useState(false);
-
+  let [hei, setHeight] = useState();
   let newPageNum = useSelector((state) => state.storyPages);
 
-  let saveStory = () => {};
+  let saveStory = () => {
+    console.log(hei);
+    // if (document.getElementById("dragWrite")) {
+    //   console.log(
+    //     document.getElementById("dragWrite").getBoundingClientRect().width
+    //   );
+    // }
+  };
 
   function dragElement(elmnt) {
     let setWidth = elmnt.getBoundingClientRect().width;
@@ -120,6 +127,10 @@ function Page() {
         elmnt.style.top = elmnt.offsetTop - pos2 + "px";
         elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
       }
+      // console.log(
+      //   // elmnt.getBoundingClientRect().width,
+      //   elmnt.getBoundingClientRect()
+      // );
     }
 
     function closeDragElement() {
@@ -265,7 +276,18 @@ function Page() {
           Cancel
         </button>
       </div>
-      <button onClick={() => setWrite(true)}>Write</button>
+      <button
+        onClick={() => {
+          setWrite(true);
+          // let test = document.getElementById("dragWrite");
+          // console.log(test);
+          // .getBoundingClientRect().height;
+
+          // setHeight(test);
+        }}
+      >
+        Write
+      </button>
       {write && <button onClick={() => setWrite(false)}>Cancel</button>}
       <button onClick={() => setShowChapterInput(true)}>Add Chapter</button>
       {chapterInput && (
@@ -285,7 +307,7 @@ function Page() {
           </button>
         </>
       )}
-      <button onClick={""}>Save</button>
+      <button onClick={saveStory}>Save</button>
       <button
         onClick={(e) => {
           setShowPhoto("");
@@ -434,6 +456,10 @@ function Page() {
               }}
               onMouseDown={(e) => {
                 dragElement(document.getElementById("showChapter"));
+                setHeight(
+                  document.getElementById("showChapter").getBoundingClientRect()
+                    .width
+                );
               }}
             ></div>
             <h1
