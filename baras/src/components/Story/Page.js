@@ -13,13 +13,13 @@ function Page() {
   let [audioLink, setAudioLink] = useState(null);
   let [videoLink, setVideoLink] = useState(null);
   let [showPhoto, setShowPhoto] = useState();
-  let [showAudio, setShowAudio] = useState();
-  let [showVideo, setShowVideo] = useState();
+  // let [showAudio, setShowAudio] = useState();
+  // let [showVideo, setShowVideo] = useState();
   let [pageNumber, setPageNumber] = useState();
   let [write, setWrite] = useState();
   let [text, setText] = useState();
-  let [moving, setMove] = useState(false);
-  console.log(videoLink, "vifdj");
+  // let [moving, setMove] = useState(false);
+  // console.log(videoLink, "vifdj");
   // let [SMFH, setSMFH] = useState(false);
   // if (SMFH) {
   //   console.log(moving == true);
@@ -320,7 +320,7 @@ function Page() {
               let audioSoundcloudLink = e.target.value.slice(found, complete);
               setAudioLink(audioSoundcloudLink);
             }
-            setShowAudio(e.target.value);
+            // setShowAudio(e.target.value);
           }}
           placeholder="Put audio link here"
         />
@@ -376,7 +376,7 @@ function Page() {
           hidden={videoChoosen}
           type="button"
           onClick={() => {
-            setShowVideo();
+            // setShowVideo();
             setVideoLink("");
           }}
         >
@@ -387,7 +387,7 @@ function Page() {
           type="button"
           onClick={() => {
             setVideoChoosen(true);
-            setShowVideo();
+            // setShowVideo();
           }}
         >
           Cancel
@@ -400,12 +400,12 @@ function Page() {
       /> */}
       <button onClick={() => setWrite(true)}>Write</button>
       {write && <button onClick={() => setWrite(false)}>Cancel</button>}
-      <button onClick={() => setMove(false)}>Save</button>
+      <button onClick={""}>Save</button>
       <button
         onClick={(e) => {
           // saveStory(e, );
-          setShowAudio("");
-          setShowVideo("");
+          // setShowAudio("");
+          // setShowVideo("");
           setShowPhoto("");
           setWrite(false);
         }}
