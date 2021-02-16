@@ -10,20 +10,17 @@ function Page() {
   let [audioChoosen, setAudioChoosen] = useState(true);
   let [videoChoosen, setVideoChoosen] = useState(true);
   let [photoChoosen, setPhotoChoosen] = useState(true);
-  let [photo, setPhoto] = useState("");
   let [audioLink, setAudioLink] = useState("");
   let [videoLink, setVideoLink] = useState("");
-  let [showPhoto, setShowPhoto] = useState("");
+  let [photo, setShowPhoto] = useState("");
   let [pageNumber, setPageNumber] = useState();
   let [write, setWrite] = useState("");
   let [chapter, setChapter] = useState("");
   let [chapterInput, setShowChapterInput] = useState(false);
   let [text, setText] = useState("");
   let [i, setChangePage] = useState();
-  // let [pagesAvailable, setPagesAvailable] = useState();
 
   // HEIGHTS AND WIDTHS AND POSITIONS
-
   let [photoMeasures, setPhotoMeasures] = useState({});
   let [textMeasures, setTextMeasures] = useState({});
   let [chapterMeasures, setChapterMeasures] = useState({});
@@ -33,14 +30,9 @@ function Page() {
 
   let fromParam = useParams();
   let storyTitle = fromParam.title.split("<:>").join(" ");
-  // console.log(i, "orginally", typeof pageNumber);
+
   let allPages = useSelector((state) => state.story.allPages);
 
-  // let textMeasures = {};
-  // let photoMeasures = {};
-  // let chapterMeasures = {};
-  // let audioMeasures = {};
-  // let videoMeasures = {};
   let dispatch = useDispatch();
 
   useEffect(
@@ -84,7 +76,6 @@ function Page() {
         setAudioMeasures({});
       }
       if (allPagesData.photo) {
-        setPhoto(allPagesData.photo);
         setShowPhoto(allPagesData.photo);
         setPhotoMeasures({
           width: allPagesData.photoWidth,
@@ -93,7 +84,6 @@ function Page() {
           photoV: allPagesData.photoV,
         });
       } else {
-        setPhoto("");
         setShowPhoto("");
         setPhotoMeasures({});
         document.getElementById("addPhotoInput").value = "";
@@ -221,16 +211,33 @@ function Page() {
         photoMeasures,
         audioMeasures,
         chapterMeasures,
-        videoMeasures
+        videoMeasures,
+        storyTitle,
+        photo,
+        videoLink,
+        audioLink,
+        chapter,
+        text,
+        pageNumber
       )
     );
-    console.log(
-      textMeasures,
-      audioMeasures,
-      videoMeasures,
-      chapterMeasures,
-      photoMeasures
-    );
+    //[photoChoosen, setPhotoChoosen] = useState(true);
+    // let [audioLink, setAudioLink] = useState("");
+    // let [videoLink, setVideoLink] = useState("");
+    // let [photo, setShowPhoto] = useState("");
+    // let [pageNumber, setPageNumber] = useState();
+    // let [write, setWrite] = useState("");
+    // let [chapter, setChapter] = useState("");
+    // let [chapterInput, setShowChapterInput] = useState(false);
+    // let [text, setText] = useState("");
+    // let [i, setChangePage] = useState();
+    // console.log(
+    //   textMeasures,
+    //   audioMeasures,
+    //   videoMeasures,
+    //   chapterMeasures,
+    //   photoMeasures
+    // );
   };
 
   // useEffect(() => {
@@ -349,7 +356,6 @@ function Page() {
     let fileread = new FileReader();
 
     fileread.onload = (e) => {
-      setPhoto(e.target.result);
       setShowPhoto(e.target.result);
     };
 
@@ -736,7 +742,7 @@ function Page() {
             </h1>
           </div>
         )}
-        {showPhoto ? (
+        {photo ? (
           <div
             id="showPhoto"
             style={{
@@ -779,8 +785,8 @@ function Page() {
               }}
             ></div>
             <img
-              src={showPhoto}
-              alt={showPhoto}
+              src={photo}
+              alt={photo}
               style={{
                 width: "100%",
                 height: "100%",
