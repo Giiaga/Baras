@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getPages } from "../../store/story";
+
 import "./Page.css";
 
 function Page() {
@@ -20,13 +22,19 @@ function Page() {
   let [chapterInput, setShowChapterInput] = useState(false);
   let [text, setText] = useState();
 
-  let newPageNum = useSelector((state) => state.storyPages);
   let fromParam = useParams();
   let storyTitle = fromParam.title.split("<:>").join(" ");
 
+  let allPages = useSelector((state) => state.story.allPages);
   let dispatch = useDispatch();
-
-  // useEffect(() => dispatch(getPages(storyTitle)));
+  console.log(allPages, pageNumber, "ALL PAGES");
+  useEffect(
+    () =>
+      dispatch(getPages(storyTitle)).then((response) =>
+        setPageNumber(response[response.length - 1].pageNumber)
+      ),
+    []
+  );
   let saveStory = () => {
     let textMeasures = {};
     let photoMeasures = {};
@@ -88,13 +96,13 @@ function Page() {
         textV: videoElement.top,
       };
     }
-    console.log(
-      textMeasures,
-      audioMeasures,
-      videoMeasures,
-      chapterMeasures,
-      photoMeasures
-    );
+    // console.log(
+    //   textMeasures,
+    //   audioMeasures,
+    //   videoMeasures,
+    //   chapterMeasures,
+    //   photoMeasures
+    // );
   };
 
   // useEffect(() => {
@@ -589,8 +597,8 @@ function Page() {
         >
           Next
         </button>
-        <p style={{ position: "absolute", top: "97%", left: "87%" }}>
-          PageNumber{pageNumber}
+        <p style={{ position: "absolute", top: "97%", left: "94%" }}>
+          {pageNumber}
         </p>
       </div>
     </>

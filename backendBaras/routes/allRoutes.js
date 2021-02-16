@@ -78,13 +78,10 @@ router.post(
 router.get("/story/:title/cont", async (req, res) => {
   let { title } = req.params;
   let titleToSearch = title.split("<:>").join(" ");
-
-  // console.log(titleToSearch, "TITITIITITITITITIITITITITIITITIITITI");
   let storyFound = await Story.findOne({ where: { title: titleToSearch } });
-  console.log(storyFound.id, "STORY FOUND");
-  let pages = await Page.findAll();
-  console.log("PAGESSSSSSSs", pages);
-  return res.json("pages");
+
+  let pages = await Page.findAll({ where: { storyId: storyFound.id } });
+  return res.json(pages);
 });
 router.post(
   "/story/cont",
