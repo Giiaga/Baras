@@ -75,8 +75,8 @@ let getPagesAC = (data) => {
   };
 };
 
-export let getPages = (title) => async (dispatch) => {
-  let response = await fetch(`/story/${title}/cont`);
+export let getPages = (title, userId) => async (dispatch) => {
+  let response = await fetch(`/story/${title}/cont/${userId}`);
   dispatch(getPagesAC(response.data));
 
   return response.data;

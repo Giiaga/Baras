@@ -33,15 +33,22 @@ function App() {
     <>
       {/* <Navigation isLoaded={isLoaded} /> */}
       {user && <SlideMenu />}
-      <Route exact path="/">
-        <EntryPage />
-      </Route>
-      <Route path="/login">
-        <LoginForm />
-      </Route>
-      <Route exact path="/signup">
-        <SignupFormPage />
-      </Route>
+      <Switch>
+        <Route exact path="/">
+          <EntryPage />
+        </Route>
+        <Route exact path="/login">
+          <LoginForm />
+        </Route>
+        <Route exact path="/signup">
+          <SignupFormPage />
+        </Route>
+        {!isLoaded && (
+          <Route path="*">
+            <EntryPage />
+          </Route>
+        )}
+      </Switch>
       {isLoaded && (
         <>
           <Switch>

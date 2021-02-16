@@ -76,17 +76,21 @@ router.post(
 );
 
 // STORY PAGE
-router.get("/story/:title/cont", requireAuth, async (req, res) => {
-  let { title } = req.params;
+router.get("/story/:title/cont/:userId", requireAuth, async (req, res) => {
+  let { title, userId } = req.params;
   let titleToSearch = title.split("<:>").join(" ");
-  let storyFound = await Story.findOne({ where: { title: titleToSearch } });
-  if (storyFound != true) return res.redirect("/");
+  let storyFound = await Story.findOne({
+    where: { title: titleToSearch, userId: userId },
+  });
+  console.log("STROY?", storyFound);
+  if (storyFound == null || storyFound == undefined) return res.redirect("/");
   let pages = await Page.findAll({
     where: { storyId: storyFound.id },
     order: [["pageNumber", "ASC"]],
   });
   return res.json(pages);
 });
+
 router.put(
   "/story/:title/cont",
   requireAuth,

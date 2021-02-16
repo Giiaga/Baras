@@ -19,7 +19,7 @@ function Page() {
   let [chapterInput, setShowChapterInput] = useState(false);
   let [text, setText] = useState("");
   let [i, setChangePage] = useState();
-
+  console.log(chapter, "hgsjkhdfjk");
   // HEIGHTS AND WIDTHS AND POSITIONS
   let [photoMeasures, setPhotoMeasures] = useState({});
   let [textMeasures, setTextMeasures] = useState({});
@@ -38,7 +38,7 @@ function Page() {
 
   useEffect(
     () =>
-      dispatch(getPages(storyTitle)).then((response) => {
+      dispatch(getPages(storyTitle, userId)).then((response) => {
         setPageNumber(response[response.length - 1].pageNumber);
         setChangePage(response.length - 1);
         // setText(response[response.length - 1].text);
