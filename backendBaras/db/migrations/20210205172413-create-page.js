@@ -32,64 +32,64 @@ module.exports = {
         type: Sequelize.TEXT,
       },
       chapterWidth: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       chapterHeight: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       chapterH: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       chapterV: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       textWidth: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       textHeight: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       textH: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       textV: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       photoWidth: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       photoHeight: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       photoH: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       photoV: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       musicWidth: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       musicHeight: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       musicH: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       musicV: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       videoWidth: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       videoHeight: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       videoH: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       videoV: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       createdAt: {
         allowNull: false,

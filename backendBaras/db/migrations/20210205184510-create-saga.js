@@ -29,16 +29,16 @@ module.exports = {
         references: { model: "Expresses" },
       },
       positionH: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       positionV: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       width: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       height: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
       },
       createdAt: {
         allowNull: false,

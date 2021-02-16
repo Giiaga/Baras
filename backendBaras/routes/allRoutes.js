@@ -148,7 +148,7 @@ router.put(
         videoH: videoMeasures.videoH,
         videoV: videoMeasures.videoV,
       },
-      { where: { storyId: story.id, pageNumber: pageNumber } }
+      { returning: true, where: { storyId: story.id, pageNumber: pageNumber } }
     );
 
     return res.json(page);
