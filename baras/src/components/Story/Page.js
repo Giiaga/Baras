@@ -239,7 +239,6 @@ function Page() {
   };
 
   function dragElement(elmnt) {
-    console.log(elmnt.getBoundingClientRect());
     let setWidth = elmnt.getBoundingClientRect().width;
     let setHeight = elmnt.getBoundingClientRect().height;
     let pos1 = 0,
@@ -285,7 +284,7 @@ function Page() {
           elmnt.style.maxHeight = 1116.86 - elmnt.offsetTop + pos1 + "px";
         }
       } else if (elmnt.offsetTop - pos1 <= 0) {
-        elmnt.style.top = -2 + "px";
+        elmnt.style.top = -1 + "px";
         let heightOffset = 1116.86 - elmnt.offsetTop;
         if (setHeight > heightOffset) {
           elmnt.style.height = heightOffset + pos1 + "px";
