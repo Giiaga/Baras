@@ -24,7 +24,7 @@ function Page() {
 
   let fromParam = useParams();
   let storyTitle = fromParam.title.split("<:>").join(" ");
-  console.log(i);
+  // console.log(i);
   let allPages = useSelector((state) => state.story.allPages);
 
   let dispatch = useDispatch();
@@ -36,18 +36,19 @@ function Page() {
       dispatch(getPages(storyTitle)).then((response) => {
         setPageNumber(response[response.length - 1].pageNumber);
         setChangePage(response.length - 1);
-        // setText()
+        setText(response[response.length - 1].text);
+        setPageNumber(response[response.length - 1].pageNumber);
         // setPagesAvailable(true);
       }),
     []
   );
 
+  let textMeasures = {};
+  let photoMeasures = {};
+  let chapterMeasures = {};
+  let audioMeasures = {};
+  let videoMeasures = {};
   let saveStory = () => {
-    let textMeasures = {};
-    let photoMeasures = {};
-    let chapterMeasures = {};
-    let audioMeasures = {};
-    let videoMeasures = {};
     if (document.getElementById("dragWrite")) {
       let textElement = document
         .getElementById("dragWrite")
@@ -599,11 +600,12 @@ function Page() {
           <button
             style={{ position: "absolute", top: "49%", left: "-8.9%" }}
             onClick={() => {
-              if (i > 0) {
-                setChangePage(i - 1);
+              if (i >= 0 && i < allPages.length - 1) {
+                setChangePage(i + 1);
                 setText(allPages[i].text);
+                setPageNumber(allPages[i].pageNumber);
 
-                // console.log(allPages[0].text);
+                console.log(i, "Pr", allPages[i].text);
               }
             }}
           >
@@ -616,10 +618,11 @@ function Page() {
           <button
             style={{ position: "absolute", top: "50%", left: "100.3%" }}
             onClick={() => {
-              if (i >= 0 && i < allPages.length - 1) {
-                setChangePage(i + 1);
+              if (i > 0) {
+                setChangePage(i - 1);
                 setText(allPages[i].text);
-                console.log(allPages[1].text, "NEXT");
+                setPageNumber(allPages[i].pageNumber);
+                console.log(i, allPages[1].text, "NEXT");
               }
             }}
           >
