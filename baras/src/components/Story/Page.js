@@ -7,43 +7,41 @@ import { getPages } from "../../store/story";
 import "./Page.css";
 
 function Page() {
-  // let storyId = useSelector((state) => state.story.id);
-  // console.log(storyId, "STROY IF");
   let [audioChoosen, setAudioChoosen] = useState(true);
   let [videoChoosen, setVideoChoosen] = useState(true);
   let [photoChoosen, setPhotoChoosen] = useState(true);
-  let [photo, setPhoto] = useState(null);
-  let [audioLink, setAudioLink] = useState(null);
-  let [videoLink, setVideoLink] = useState(null);
-  let [showPhoto, setShowPhoto] = useState();
-  let [pageNumber, setPageNumber] = useState();
-  let [write, setWrite] = useState();
-  let [chapter, setChapter] = useState();
+  let [photo, setPhoto] = useState("");
+  let [audioLink, setAudioLink] = useState("");
+  let [videoLink, setVideoLink] = useState("");
+  let [showPhoto, setShowPhoto] = useState("");
+  let [pageNumber, setPageNumber] = useState("");
+  let [write, setWrite] = useState("");
+  let [chapter, setChapter] = useState("");
   let [chapterInput, setShowChapterInput] = useState(false);
-  let [text, setText] = useState();
-  let [i, setChangePage] = useState();
+  let [text, setText] = useState("");
+  let [i, setChangePage] = useState("");
+  // let [pagesAvailable, setPagesAvailable] = useState();
 
   let fromParam = useParams();
   let storyTitle = fromParam.title.split("<:>").join(" ");
-
+  console.log(i);
   let allPages = useSelector((state) => state.story.allPages);
 
-  // if (allPages.length) {
-  //   allPages.forEach((content)=> {
-
-  //   })
-  // }
   let dispatch = useDispatch();
-  console.log(allPages, pageNumber, "ALL PAGES");
+  // if (pagesAvailable) {
+  //   setText("gh");
+  // }
   useEffect(
     () =>
       dispatch(getPages(storyTitle)).then((response) => {
-        // setAllPagesAvailable(true)
         setPageNumber(response[response.length - 1].pageNumber);
         setChangePage(response.length - 1);
+        // setText()
+        // setPagesAvailable(true);
       }),
     []
   );
+
   let saveStory = () => {
     let textMeasures = {};
     let photoMeasures = {};
@@ -597,22 +595,33 @@ function Page() {
         ) : (
           ""
         )}
-        {i ? (
+        {pageNumber ? (
           <button
             style={{ position: "absolute", top: "49%", left: "-8.9%" }}
-            onClick={() =>
-              i >= 0 && i < allPages.length - 1 ? setChangePage(i + 1) : {}
-            }
+            onClick={() => {
+              if (i > 0) {
+                setChangePage(i - 1);
+                setText(allPages[i].text);
+
+                // console.log(allPages[0].text);
+              }
+            }}
           >
             Prev
           </button>
         ) : (
           ""
         )}
-        {i ? (
+        {pageNumber ? (
           <button
             style={{ position: "absolute", top: "50%", left: "100.3%" }}
-            onClick={() => (i > 0 ? setChangePage(i - 1) : {})}
+            onClick={() => {
+              if (i >= 0 && i < allPages.length - 1) {
+                setChangePage(i + 1);
+                setText(allPages[i].text);
+                console.log(allPages[1].text, "NEXT");
+              }
+            }}
           >
             Next
           </button>

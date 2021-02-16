@@ -80,7 +80,10 @@ router.get("/story/:title/cont", async (req, res) => {
   let titleToSearch = title.split("<:>").join(" ");
   let storyFound = await Story.findOne({ where: { title: titleToSearch } });
 
-  let pages = await Page.findAll({ where: { storyId: storyFound.id } });
+  let pages = await Page.findAll({
+    where: { storyId: storyFound.id },
+    order: [["pageNumber", "ASC"]],
+  });
   return res.json(pages);
 });
 router.post(
