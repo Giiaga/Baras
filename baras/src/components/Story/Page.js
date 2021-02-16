@@ -500,11 +500,11 @@ function Page() {
                 width:
                   videoMeasures.width >= 0
                     ? videoMeasures.width + "px"
-                    : "auto",
+                    : "345px",
                 height:
                   videoMeasures.height >= 0
                     ? videoMeasures.height + "px"
-                    : "auto",
+                    : "234px",
                 left:
                   videoMeasures.videoH >= 0 || videoMeasures.videoH <= 0
                     ? videoMeasures.videoH + "px"
