@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPages, storyPage } from "../../store/story";
@@ -19,16 +19,17 @@ function Page() {
   let [chapterInput, setShowChapterInput] = useState(false);
   let [text, setText] = useState("");
   let [i, setChangePage] = useState();
-  console.log(chapter, "hgsjkhdfjk");
   // HEIGHTS AND WIDTHS AND POSITIONS
   let [photoMeasures, setPhotoMeasures] = useState({});
   let [textMeasures, setTextMeasures] = useState({});
   let [chapterMeasures, setChapterMeasures] = useState({});
   let [audioMeasures, setAudioMeasures] = useState({});
   let [videoMeasures, setVideoMeasures] = useState({});
+  let [error, setError] = useState(false);
   // HEIGHTS AND WIDTHS AND POSITIONS END
 
   let fromParam = useParams();
+  let history = useHistory();
   let storyTitle = fromParam.title.split("<:>").join(" ");
 
   let allPages = useSelector((state) => state.story.allPages);
@@ -39,8 +40,12 @@ function Page() {
   useEffect(
     () =>
       dispatch(getPages(storyTitle, userId)).then((response) => {
-        setPageNumber(response[response.length - 1].pageNumber);
-        setChangePage(response.length - 1);
+        if (response.error) {
+          return setError(true);
+        } else {
+          setPageNumber(response[response.length - 1].pageNumber);
+          setChangePage(response.length - 1);
+        }
         // setText(response[response.length - 1].text);
         // setPageNumber(response[response.length - 1].pageNumber);
         // setPagesAvailable(true);
@@ -363,7 +368,18 @@ function Page() {
 
     fileread.readAsDataURL(data);
   };
-
+  if (error)
+    return (
+      <div>
+        <h1>
+          STORY DOES NOT EXIST, CHECK THE SPELLING OR GO TO YOUR PROFILE AND
+          ACCESS STORY FROM THERE AND WHILE YOURE AT IT THANK{" "}
+          <a href="https://www.linkedin.com/in/josephalves/">JOE ALVES</a> CAUSE
+          YOU WERE GOING TO BE REDIRECTED TO THE HOMEPAGE UNTIL I DECIDED TO
+          GIVE "USER FRIENDLY MESSAGE" - JOE ALVES (MAYBE)
+        </h1>
+      </div>
+    );
   return (
     <>
       <button

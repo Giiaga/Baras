@@ -82,8 +82,8 @@ router.get("/story/:title/cont/:userId", requireAuth, async (req, res) => {
   let storyFound = await Story.findOne({
     where: { title: titleToSearch, userId: userId },
   });
-  console.log("STROY?", storyFound);
-  if (storyFound == null || storyFound == undefined) return res.redirect("/");
+  if (storyFound == null || storyFound == undefined)
+    return res.json({ error: "Story not found" });
   let pages = await Page.findAll({
     where: { storyId: storyFound.id },
     order: [["pageNumber", "ASC"]],
