@@ -56,10 +56,10 @@ function Page() {
       if (allPagesData.text) {
         setText(allPagesData.text);
         setTextMeasures({
-          width: allPagesData.textWidth,
-          height: allPagesData.textHeight,
-          textH: allPagesData.textH,
-          textV: allPagesData.textV,
+          width: allPagesData.textWidth - 2,
+          height: allPagesData.textHeight - 2,
+          textH: allPagesData.textH - 391.65625,
+          textV: allPagesData.textV - 44,
         });
         setWrite(true);
       } else {
@@ -126,6 +126,11 @@ function Page() {
     let videoMeasures;
     let chapterMeasures;
     let photoMeasures;
+    console.log(
+      // textMeasures,
+      "TEST",
+      document.getElementById("dragWrite").getBoundingClientRect()
+    );
     if (document.getElementById("dragWrite")) {
       let textElement = document
         .getElementById("dragWrite")
@@ -234,6 +239,7 @@ function Page() {
   };
 
   function dragElement(elmnt) {
+    console.log(elmnt.getBoundingClientRect());
     let setWidth = elmnt.getBoundingClientRect().width;
     let setHeight = elmnt.getBoundingClientRect().height;
     let pos1 = 0,
@@ -279,7 +285,7 @@ function Page() {
           elmnt.style.maxHeight = 1116.86 - elmnt.offsetTop + pos1 + "px";
         }
       } else if (elmnt.offsetTop - pos1 <= 0) {
-        elmnt.style.top = 0 + "px";
+        elmnt.style.top = -2 + "px";
         let heightOffset = 1116.86 - elmnt.offsetTop;
         if (setHeight > heightOffset) {
           elmnt.style.height = heightOffset + pos1 + "px";
