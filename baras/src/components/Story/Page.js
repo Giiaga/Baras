@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPages } from "../../store/story";
+import { getPages, storyPage } from "../../store/story";
 
 import "./Page.css";
 
@@ -124,7 +124,14 @@ function Page() {
       }
     }
   }, [i]);
-  let saveStory = () => {
+  let saveStory = (e) => {
+    e.preventDefault();
+
+    let textMeasures;
+    let audioMeasures;
+    let videoMeasures;
+    let chapterMeasures;
+    let photoMeasures;
     if (document.getElementById("dragWrite")) {
       let textElement = document
         .getElementById("dragWrite")
@@ -143,8 +150,15 @@ function Page() {
       photoMeasures = {
         width: photoElement.width,
         height: photoElement.height,
-        textH: photoElement.left,
-        textV: photoElement.top,
+        photoH: photoElement.left,
+        photoV: photoElement.top,
+      };
+    } else {
+      photoMeasures = {
+        width: null,
+        height: null,
+        photoH: null,
+        photoV: null,
       };
     }
     if (document.getElementById("showChapter")) {
@@ -154,8 +168,15 @@ function Page() {
       chapterMeasures = {
         width: chapterElement.width,
         height: chapterElement.height,
-        textH: chapterElement.left,
-        textV: chapterElement.top,
+        chapterH: chapterElement.left,
+        chapterV: chapterElement.top,
+      };
+    } else {
+      chapterMeasures = {
+        width: null,
+        height: null,
+        chapterH: null,
+        chapterV: null,
       };
     }
     if (document.getElementById("audioShow")) {
@@ -165,8 +186,15 @@ function Page() {
       audioMeasures = {
         width: audioElement.width,
         height: audioElement.height,
-        textH: audioElement.left,
-        textV: audioElement.top,
+        musicH: audioElement.left,
+        musicV: audioElement.top,
+      };
+    } else {
+      audioMeasures = {
+        width: null,
+        height: null,
+        musicH: null,
+        musicV: null,
       };
     }
     if (document.getElementById("videoPlayer")) {
@@ -176,17 +204,33 @@ function Page() {
       videoMeasures = {
         width: videoElement.width,
         height: videoElement.height,
-        textH: videoElement.left,
-        textV: videoElement.top,
+        videoH: videoElement.left,
+        videoV: videoElement.top,
+      };
+    } else {
+      videoMeasures = {
+        width: null,
+        height: null,
+        videoH: null,
+        videoV: null,
       };
     }
-    // console.log(
-    //   textMeasures,
-    //   audioMeasures,
-    //   videoMeasures,
-    //   chapterMeasures,
-    //   photoMeasures
-    // );
+    dispatch(
+      storyPage(
+        textMeasures,
+        photoMeasures,
+        audioMeasures,
+        chapterMeasures,
+        videoMeasures
+      )
+    );
+    console.log(
+      textMeasures,
+      audioMeasures,
+      videoMeasures,
+      chapterMeasures,
+      photoMeasures
+    );
   };
 
   // useEffect(() => {
