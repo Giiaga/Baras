@@ -14,35 +14,38 @@ function Page() {
   let [audioLink, setAudioLink] = useState("");
   let [videoLink, setVideoLink] = useState("");
   let [showPhoto, setShowPhoto] = useState("");
-  let [pageNumber, setPageNumber] = useState("");
+  let [pageNumber, setPageNumber] = useState();
   let [write, setWrite] = useState("");
   let [chapter, setChapter] = useState("");
   let [chapterInput, setShowChapterInput] = useState(false);
   let [text, setText] = useState("");
-  let [i, setChangePage] = useState("");
+  let [i, setChangePage] = useState();
   // let [pagesAvailable, setPagesAvailable] = useState();
 
   let fromParam = useParams();
   let storyTitle = fromParam.title.split("<:>").join(" ");
-  console.log(i, "orginally");
+  // console.log(i, "orginally", typeof pageNumber);
   let allPages = useSelector((state) => state.story.allPages);
 
   let dispatch = useDispatch();
-  // if (pagesAvailable) {
-  //   setText("gh");
-  // }
+
   useEffect(
     () =>
       dispatch(getPages(storyTitle)).then((response) => {
         setPageNumber(response[response.length - 1].pageNumber);
         setChangePage(response.length - 1);
-        setText(response[response.length - 1].text);
-        setPageNumber(response[response.length - 1].pageNumber);
+        // setText(response[response.length - 1].text);
+        // setPageNumber(response[response.length - 1].pageNumber);
         // setPagesAvailable(true);
       }),
     []
   );
-
+  useEffect(() => {
+    if (i >= 0) {
+      console.log(i, "WAHT");
+      setText(allPages[i].text);
+    }
+  }, [i]);
   let textMeasures = {};
   let photoMeasures = {};
   let chapterMeasures = {};
@@ -603,13 +606,13 @@ function Page() {
               if (i > 0) {
                 setChangePage(i - 1);
                 // i--;
-                if (i == 1) {
-                  console.log("okay");
-                }
-                setText(allPages[i].text);
-                setPageNumber(allPages[i].pageNumber);
+                //   if (i == 1) {
+                //     console.log("okay");
+                // //   }
+                // setText(allPages[i].text);
+                // setPageNumber(allPages[i].pageNumber);
 
-                console.log(i, "Pr", allPages[i].text);
+                //   console.log(i, "Pr", allPages[i].text);
               }
             }}
           >
@@ -625,9 +628,11 @@ function Page() {
               if (i >= 0 && i < allPages.length - 1) {
                 setChangePage(i + 1);
                 // i++;
-                setText(allPages[i].text);
-                setPageNumber(allPages[i].pageNumber);
-                console.log(i, allPages[1].text, "NEXT");
+                //   // i++;
+                // setText(allPages[i].text);
+                // setPageNumber(allPages[i].pageNumber);
+                //   console.log(i, allPages[1].text, "NEXT");
+                // }
               }
             }}
           >
