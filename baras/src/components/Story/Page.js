@@ -22,11 +22,25 @@ function Page() {
   let [i, setChangePage] = useState();
   // let [pagesAvailable, setPagesAvailable] = useState();
 
+  // HEIGHTS AND WIDTHS AND POSITIONS
+
+  // let [photoMeasures, setPhotoMeasures] = useState({});
+  // let [textMeasures, setTextMeasures] = useState({});
+  // let [chapterMeasures, setChapterMeasures] = useState({});
+  // let [audioMeasures, setAudioMeasures] = useState({});
+  // let [videoMeasures, setVideoMeasures] = useState({});
+  // HEIGHTS AND WIDTHS AND POSITIONS END
+
   let fromParam = useParams();
   let storyTitle = fromParam.title.split("<:>").join(" ");
   // console.log(i, "orginally", typeof pageNumber);
   let allPages = useSelector((state) => state.story.allPages);
 
+  let textMeasures = {};
+  let photoMeasures = {};
+  let chapterMeasures = {};
+  let audioMeasures = {};
+  let videoMeasures = {};
   let dispatch = useDispatch();
 
   useEffect(
@@ -45,36 +59,70 @@ function Page() {
       let allPagesData = allPages[i];
       if (allPagesData.text) {
         setText(allPagesData.text);
+        textMeasures = {
+          width: allPagesData.textWidth,
+          height: allPagesData.textHeight,
+          textH: allPagesData.textH,
+          textV: allPagesData.textV,
+        };
         setWrite(true);
       } else {
         setWrite(false);
+        textMeasures = {};
         setText("");
       }
       if (allPagesData.music) {
         setAudioLink(allPagesData.music);
+        audioMeasures = {
+          width: allPagesData.audioWidth,
+          height: allPagesData.audioHeight,
+          audioH: allPagesData.audioH,
+          audioV: allPagesData.audioV,
+        };
       } else {
         setAudioLink("");
+        audioMeasures = {};
       }
       if (allPagesData.photo) {
         setPhoto(allPagesData.photo);
+        photoMeasures = {
+          width: allPagesData.photoWidth,
+          height: allPagesData.photoHeight,
+          photoH: allPagesData.photoH,
+          photoV: allPagesData.photoV,
+        };
         // console.log("PHOTHOHTOS");
+      } else {
+        setPhoto("");
+        photoMeasures = {};
+        document.getElementById("addPhotoInput").value = "";
       }
       if (allPagesData.video) {
         setVideoLink(allPagesData.video);
-        console.log(allPagesData.video, "WHY");
+        videoMeasures = {
+          width: allPagesData.videoWidth,
+          height: allPagesData.videoHeight,
+          videoH: allPagesData.videoH,
+          videoV: allPagesData.videoV,
+        };
       } else {
         setVideoLink("");
+        videoMeasures = {};
       }
       if (allPagesData.chapter) {
         setChapter(allPagesData.chapter);
+        chapterMeasures = {
+          width: allPagesData.chapterWidth,
+          height: allPagesData.chapterHeight,
+          chapterH: allPagesData.chapterH,
+          chapterV: allPagesData.chapterV,
+        };
+      } else {
+        setChapter("");
+        chapterMeasures = {};
       }
     }
   }, [i]);
-  let textMeasures = {};
-  let photoMeasures = {};
-  let chapterMeasures = {};
-  let audioMeasures = {};
-  let videoMeasures = {};
   let saveStory = () => {
     if (document.getElementById("dragWrite")) {
       let textElement = document
@@ -625,8 +673,9 @@ function Page() {
         )}
         {pageNumber ? (
           <button
+            hidden={i === 0 ? true : false}
             style={{ position: "absolute", top: "49%", left: "-8.9%" }}
-            onClick={() => {
+            onClick={(e) => {
               if (i > 0) {
                 setChangePage(i - 1);
                 // setVideoLink("");
@@ -648,8 +697,9 @@ function Page() {
         )}
         {pageNumber ? (
           <button
+            hidden={i === allPages.length - 1 ? true : false}
             style={{ position: "absolute", top: "50%", left: "100.3%" }}
-            onClick={() => {
+            onClick={(e) => {
               if (i >= 0 && i < allPages.length - 1) {
                 setChangePage(i + 1);
                 // setVideoLink("");
