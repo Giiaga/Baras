@@ -55,9 +55,10 @@ export let storyPage = (
   videoWidth,
   videoHeight,
   videoH,
-  videoV
+  videoV,
+  title
 ) => async (dispatch) => {
-  let response = await fetch("/story/cont", {
+  let response = await fetch(`/story/${title}/cont`, {
     method: "POST",
     body: JSON.stringify({
       pageNumber,

@@ -21,17 +21,26 @@ function Page() {
   let [chapter, setChapter] = useState();
   let [chapterInput, setShowChapterInput] = useState(false);
   let [text, setText] = useState();
+  let [i, setChangePage] = useState();
 
   let fromParam = useParams();
   let storyTitle = fromParam.title.split("<:>").join(" ");
 
   let allPages = useSelector((state) => state.story.allPages);
+
+  // if (allPages.length) {
+  //   allPages.forEach((content)=> {
+
+  //   })
+  }
   let dispatch = useDispatch();
   console.log(allPages, pageNumber, "ALL PAGES");
   useEffect(
     () =>
-      dispatch(getPages(storyTitle)).then((response) =>
-        setPageNumber(response[response.length - 1].pageNumber)
+      dispatch(getPages(storyTitle)).then((response) => {
+        setPageNumber(response[response.length - 1].pageNumber);
+        setChangePage(response.length - 1)
+      }
       ),
     []
   );
@@ -501,6 +510,7 @@ function Page() {
                   resize: "none",
                   border: "none",
                 }}
+                value={text}
                 onChange={(e) => setText(e.target.value)}
               ></textarea>
             </div>
@@ -587,16 +597,18 @@ function Page() {
         ) : (
           ""
         )}
-        <button style={{ position: "absolute", top: "49%", left: "-8.9%" }}>
+        {allPages.length ? <button style={{ position: "absolute", top: "49%", left: "-8.9%" }}
+        onClick={()=> i >= 0 && i < allPages.length - 1 ? setChangePage(i + 1) : {}}>
           Prev
         </button>
-
-        <button
+: '' }
+       {allPages.length ? <button
           style={{ position: "absolute", top: "50%", left: "100.3%" }}
-          onClick={() => setPageNumber(pageNumber++)}
+          onClick={() => { i > 0 ? setChangePage(i - 1) : {} }}
         >
           Next
         </button>
+        : '' }
         <p style={{ position: "absolute", top: "97%", left: "94%" }}>
           {pageNumber}
         </p>
