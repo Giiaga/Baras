@@ -32,6 +32,7 @@ function Page() {
   let storyTitle = fromParam.title.split("<:>").join(" ");
 
   let allPages = useSelector((state) => state.story.allPages);
+  let userId = useSelector((state) => state.session.user.id);
 
   let dispatch = useDispatch();
 
@@ -207,6 +208,7 @@ function Page() {
     }
     dispatch(
       storyPage(
+        userId,
         textMeasures,
         photoMeasures,
         audioMeasures,

@@ -62,6 +62,7 @@ router.get(
 // CREATE STORY
 router.post(
   "/story/tell",
+  requireAuth,
   asyncHandler(async (req, res) => {
     let { userId, title, publish } = req.body;
     let story = await Story.create({ userId, title, publish });
@@ -75,78 +76,72 @@ router.post(
 );
 
 // STORY PAGE
-router.get("/story/:title/cont", async (req, res) => {
+router.get("/story/:title/cont", requireAuth, async (req, res) => {
   let { title } = req.params;
   let titleToSearch = title.split("<:>").join(" ");
   let storyFound = await Story.findOne({ where: { title: titleToSearch } });
-
+  if (storyFound != true) return res.redirect("/");
   let pages = await Page.findAll({
     where: { storyId: storyFound.id },
     order: [["pageNumber", "ASC"]],
   });
   return res.json(pages);
 });
-router.post(
-  "/story/cont",
+router.put(
+  "/story/:title/cont",
+  requireAuth,
   asyncHandler(async (req, res) => {
     let {
-      pageNumber,
-      chapter,
-      storyId,
-      text,
-      image,
-      music,
+      userId,
+      textMeasures,
+      photoMeasures,
+      audioMeasures,
+      chapterMeasures,
+      videoMeasures,
+      title,
+      photo,
       video,
-      chapterWidth,
-      chapterHeight,
-      chapterH,
-      chapterV,
-      textWidth,
-      textHeight,
-      textH,
-      textV,
-      imageWidth,
-      imageHeight,
-      imageH,
-      imageV,
-      musicWidth,
-      musicHeight,
-      musicH,
-      musicV,
-      videoWidth,
-      videoHeight,
-      videoH,
-      videoV,
+      audio,
+      chapter,
+      text,
+      pageNumber,
     } = req.body;
-
-    let page = await Page.create({
+    //search story id
+    let story = await Story.findOne({
+      where: {
+        userId: userId,
+        title: title,
+      },
+    });
+    if (!story) return res.redirect("/");
+    let page = await Page.update({
       pageNumber,
       chapter,
-      storyId,
+      storyId: story.id,
       text,
-      image,
-      music,
+      photo,
+      music: audio,
       video,
-      chapterWidth,
-      chapterHeight,
-      chapterH,
-      chapterV,
-      textWidth,
-      textHeight,
-      textH,
-      textV,
-      imageWidth,
-      imageHeight,
-      imageH,
-      imageV,
-      musicWidth,
-      musicHeight,
-      musicH,
-      musicV,
-      videoWidth,
-      videoHeight,
-      videoH,
-      videoV,
+      chapterWidth: chapterMeasures.width,
+      chapterHeight: chapterMeasures.height,
+      chapterH: chapterMeasures.chapterH,
+      chapterV: chapterMeasures.chapterV,
+      textWidth: textMeasures.width,
+      textHeight: textMeasures.height,
+      textH: textMeasures.textH,
+      textV: textMeasures.textV,
+      photoWidth: photoMeasures,
+      photoHeight: photoMeasures,
+      photoH: photoMeasures,
+      photoV: photoMeasures,
+      musicWidth: audioMeasures.width,
+      musicHeight: audioMeasures.height,
+      musicH: audioMeasures.musicH,
+      musicV: audioMeasures.musicV,
+      videoWidth: videoMeasures.width,
+      videoHeight: videoMeasures.height,
+      videoH: videoMeasures.videoH,
+      videoV: videoMeasures.videoV,
     });
 
     return res.json(page);
