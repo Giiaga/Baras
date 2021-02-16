@@ -52,6 +52,9 @@ function App() {
       {isLoaded && (
         <>
           <Switch>
+            <Route exact path="/feelGood">
+              <EntryPage />
+            </Route>
             <Route exact path="/page">
               <Page />
             </Route>

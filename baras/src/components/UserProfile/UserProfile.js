@@ -19,8 +19,8 @@ function UserProfile() {
     dispatch(getUser(loggedInUser.username))
       .then((data) => data && setUserAvailable(true))
       .then(() => dispatch(allBaras(loggedInUser.id)))
-      .then(() => setAllBaras(true));
-  }, []);
+      .then((data) => data.length && setAllBaras(true));
+  }, [dispatch]);
 
   return (
     <>
