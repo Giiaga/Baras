@@ -76,8 +76,8 @@ function Page() {
         setAudioMeasures({
           width: allPagesData.audioWidth,
           height: allPagesData.audioHeight,
-          audioH: allPagesData.audioH,
-          audioV: allPagesData.audioV,
+          musicH: allPagesData.musicH,
+          musicV: allPagesData.musicV,
         });
       } else {
         setAudioLink("");
@@ -495,6 +495,22 @@ function Page() {
                 overflowY: "hidden",
                 maxWidth: "209.5mm",
                 maxHeight: "295.5mm",
+                width:
+                  videoMeasures.width >= 0
+                    ? videoMeasures.width + "px"
+                    : "auto",
+                height:
+                  videoMeasures.height >= 0
+                    ? videoMeasures.height + "px"
+                    : "auto",
+                left:
+                  videoMeasures.videoH >= 0 || videoMeasures.videoH <= 0
+                    ? videoMeasures.videoH + "px"
+                    : "auto",
+                top:
+                  videoMeasures.videoV >= 0 || videoMeasures.videoV <= 0
+                    ? videoMeasures.videoV + "px"
+                    : "auto",
               }}
             >
               <div
@@ -526,6 +542,20 @@ function Page() {
               overflowY: "hidden",
               maxWidth: "209.5mm",
               maxHeight: "295.5mm",
+              width:
+                audioMeasures.width >= 0 ? audioMeasures.width + "px" : "auto",
+              height:
+                audioMeasures.height >= 0
+                  ? audioMeasures.height + "px"
+                  : "auto",
+              left:
+                audioMeasures.musicH >= 0 || audioMeasures.musicH <= 0
+                  ? audioMeasures.musicH + "px"
+                  : "auto",
+              top:
+                audioMeasures.musicV >= 0 || audioMeasures.musicV <= 0
+                  ? audioMeasures.musicV + "px"
+                  : "auto",
             }}
           >
             <div
@@ -617,6 +647,22 @@ function Page() {
               overflow: "auto",
               overflowY: "hidden",
               overflowX: "hidden",
+              width:
+                chapterMeasures.width >= 0
+                  ? chapterMeasures.width + "px"
+                  : "auto",
+              height:
+                chapterMeasures.height >= 0
+                  ? chapterMeasures.height + "px"
+                  : "auto",
+              left:
+                chapterMeasures.chapterH >= 0 || chapterMeasures.chapterH <= 0
+                  ? chapterMeasures.chapterH + "px"
+                  : "auto",
+              top:
+                chapterMeasures.chapterV >= 0 || chapterMeasures.chapterV <= 0
+                  ? chapterMeasures.chapterV + "px"
+                  : "auto",
             }}
           >
             <div
@@ -650,13 +696,25 @@ function Page() {
             style={{
               position: "absolute",
               minWidth: "0",
-              height: "200px",
-              width: "200px",
               maxWidth: "210mm",
               maxHeight: "1102px",
               resize: "both",
               overflow: "auto",
               overflowY: "hidden",
+              width:
+                photoMeasures.width >= 0 ? photoMeasures.width + "px" : "200px",
+              height:
+                photoMeasures.height >= 0
+                  ? photoMeasures.height + "px"
+                  : "200px",
+              left:
+                photoMeasures.photoH >= 0 || photoMeasures.photoH <= 0
+                  ? photoMeasures.photoH + "px"
+                  : "auto",
+              top:
+                photoMeasures.photoV >= 0 || photoMeasures.photoV <= 0
+                  ? photoMeasures.photoV + "px"
+                  : "auto",
             }}
           >
             <div
