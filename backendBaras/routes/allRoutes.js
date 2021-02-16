@@ -83,7 +83,7 @@ router.get("/story/:title/cont/:userId", requireAuth, async (req, res) => {
     where: { title: titleToSearch, userId: userId },
   });
   if (storyFound == null || storyFound == undefined)
-    return res.json({ message: "Story not found" });
+    return res.json({ error: "Story not found" });
   let pages = await Page.findAll({
     where: { storyId: storyFound.id },
     order: [["pageNumber", "ASC"]],
@@ -117,36 +117,39 @@ router.put(
         title: title,
       },
     });
-    if (!story) return res.redirect("/");
-    let page = await Page.update({
-      pageNumber,
-      chapter,
-      storyId: story.id,
-      text,
-      photo,
-      music: audio,
-      video,
-      chapterWidth: chapterMeasures.width,
-      chapterHeight: chapterMeasures.height,
-      chapterH: chapterMeasures.chapterH,
-      chapterV: chapterMeasures.chapterV,
-      textWidth: textMeasures.width,
-      textHeight: textMeasures.height,
-      textH: textMeasures.textH,
-      textV: textMeasures.textV,
-      photoWidth: photoMeasures,
-      photoHeight: photoMeasures,
-      photoH: photoMeasures,
-      photoV: photoMeasures,
-      musicWidth: audioMeasures.width,
-      musicHeight: audioMeasures.height,
-      musicH: audioMeasures.musicH,
-      musicV: audioMeasures.musicV,
-      videoWidth: videoMeasures.width,
-      videoHeight: videoMeasures.height,
-      videoH: videoMeasures.videoH,
-      videoV: videoMeasures.videoV,
-    });
+    // if (!story) return res.redirect("/");
+    let page = await Page.update(
+      {
+        pageNumber,
+        chapter,
+        storyId: story.id,
+        text,
+        photo,
+        music: audio,
+        video,
+        chapterWidth: chapterMeasures.width,
+        chapterHeight: chapterMeasures.height,
+        chapterH: chapterMeasures.chapterH,
+        chapterV: chapterMeasures.chapterV,
+        textWidth: textMeasures.width,
+        textHeight: textMeasures.height,
+        textH: textMeasures.textH,
+        textV: textMeasures.textV,
+        photoWidth: photoMeasures,
+        photoHeight: photoMeasures,
+        photoH: photoMeasures,
+        photoV: photoMeasures,
+        musicWidth: audioMeasures.width,
+        musicHeight: audioMeasures.height,
+        musicH: audioMeasures.musicH,
+        musicV: audioMeasures.musicV,
+        videoWidth: videoMeasures.width,
+        videoHeight: videoMeasures.height,
+        videoH: videoMeasures.videoH,
+        videoV: videoMeasures.videoV,
+      },
+      { where: { storyId: story.id, pageNumber: pageNumber } }
+    );
 
     return res.json(page);
   })

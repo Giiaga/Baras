@@ -46,15 +46,13 @@ function Page() {
           setPageNumber(response[response.length - 1].pageNumber);
           setChangePage(response.length - 1);
         }
-        // setText(response[response.length - 1].text);
-        // setPageNumber(response[response.length - 1].pageNumber);
-        // setPagesAvailable(true);
       }),
     []
   );
   useEffect(() => {
     if (i >= 0) {
       let allPagesData = allPages[i];
+      setPageNumber(allPagesData.pageNumber);
       if (allPagesData.text) {
         setText(allPagesData.text);
         setTextMeasures({
@@ -211,6 +209,10 @@ function Page() {
         videoV: null,
       };
     }
+    let sameChapter;
+    if (!chapter) {
+      sameChapter = allPages[allPages.length - 1].chapter;
+    } else sameChapter = chapter;
     dispatch(
       storyPage(
         userId,
@@ -223,33 +225,14 @@ function Page() {
         photo,
         videoLink,
         audioLink,
-        chapter,
+        sameChapter,
         text,
         pageNumber
       )
     );
-    //[photoChoosen, setPhotoChoosen] = useState(true);
-    // let [audioLink, setAudioLink] = useState("");
-    // let [videoLink, setVideoLink] = useState("");
-    // let [photo, setShowPhoto] = useState("");
-    // let [pageNumber, setPageNumber] = useState();
-    // let [write, setWrite] = useState("");
-    // let [chapter, setChapter] = useState("");
-    // let [chapterInput, setShowChapterInput] = useState(false);
-    // let [text, setText] = useState("");
-    // let [i, setChangePage] = useState();
-    // console.log(
-    //   textMeasures,
-    //   audioMeasures,
-    //   videoMeasures,
-    //   chapterMeasures,
-    //   photoMeasures
-    // );
+    return;
   };
 
-  // useEffect(() => {
-  //   // console.log(textMeasures, "its changes");
-  // }, [textMeasures]);
   function dragElement(elmnt) {
     let setWidth = elmnt.getBoundingClientRect().width;
     let setHeight = elmnt.getBoundingClientRect().height;

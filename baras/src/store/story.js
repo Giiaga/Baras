@@ -44,7 +44,7 @@ export let storyPage = (
   pageNumber
 ) => async (dispatch) => {
   let response = await fetch(`/story/${title}/cont`, {
-    method: "POST",
+    method: "PUT",
     body: JSON.stringify({
       userId,
       textMeasures,
