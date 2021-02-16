@@ -24,7 +24,7 @@ function Page() {
 
   let fromParam = useParams();
   let storyTitle = fromParam.title.split("<:>").join(" ");
-  // console.log(i);
+  console.log(i, "orginally");
   let allPages = useSelector((state) => state.story.allPages);
 
   let dispatch = useDispatch();
@@ -600,8 +600,12 @@ function Page() {
           <button
             style={{ position: "absolute", top: "49%", left: "-8.9%" }}
             onClick={() => {
-              if (i >= 0 && i < allPages.length) {
+              if (i > 0) {
                 setChangePage(i - 1);
+                // i--;
+                if (i == 1) {
+                  console.log("okay");
+                }
                 setText(allPages[i].text);
                 setPageNumber(allPages[i].pageNumber);
 
@@ -618,8 +622,9 @@ function Page() {
           <button
             style={{ position: "absolute", top: "50%", left: "100.3%" }}
             onClick={() => {
-              if (i >= 0 && i < allPages.length) {
+              if (i >= 0 && i < allPages.length - 1) {
                 setChangePage(i + 1);
+                // i++;
                 setText(allPages[i].text);
                 setPageNumber(allPages[i].pageNumber);
                 console.log(i, allPages[1].text, "NEXT");
