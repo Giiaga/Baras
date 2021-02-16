@@ -42,8 +42,32 @@ function Page() {
   );
   useEffect(() => {
     if (i >= 0) {
-      console.log(i, "WAHT");
-      setText(allPages[i].text);
+      let allPagesData = allPages[i];
+      if (allPagesData.text) {
+        setText(allPagesData.text);
+        setWrite(true);
+      } else {
+        setWrite(false);
+        setText("");
+      }
+      if (allPagesData.music) {
+        setAudioLink(allPagesData.music);
+      } else {
+        setAudioLink("");
+      }
+      if (allPagesData.photo) {
+        setPhoto(allPagesData.photo);
+        // console.log("PHOTHOHTOS");
+      }
+      if (allPagesData.video) {
+        setVideoLink(allPagesData.video);
+        console.log(allPagesData.video, "WHY");
+      } else {
+        setVideoLink("");
+      }
+      if (allPagesData.chapter) {
+        setChapter(allPagesData.chapter);
+      }
     }
   }, [i]);
   let textMeasures = {};
@@ -605,6 +629,7 @@ function Page() {
             onClick={() => {
               if (i > 0) {
                 setChangePage(i - 1);
+                // setVideoLink("");
                 // i--;
                 //   if (i == 1) {
                 //     console.log("okay");
@@ -627,6 +652,8 @@ function Page() {
             onClick={() => {
               if (i >= 0 && i < allPages.length - 1) {
                 setChangePage(i + 1);
+                // setVideoLink("");
+
                 // i++;
                 //   // i++;
                 // setText(allPages[i].text);
