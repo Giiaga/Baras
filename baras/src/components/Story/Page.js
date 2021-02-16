@@ -74,8 +74,8 @@ function Page() {
       if (allPagesData.music) {
         setAudioLink(allPagesData.music);
         setAudioMeasures({
-          width: allPagesData.audioWidth,
-          height: allPagesData.audioHeight,
+          width: allPagesData.musicWidth,
+          height: allPagesData.musicHeight,
           musicH: allPagesData.musicH,
           musicV: allPagesData.musicV,
         });
@@ -85,6 +85,7 @@ function Page() {
       }
       if (allPagesData.photo) {
         setPhoto(allPagesData.photo);
+        setShowPhoto(allPagesData.photo);
         setPhotoMeasures({
           width: allPagesData.photoWidth,
           height: allPagesData.photoHeight,
@@ -93,6 +94,7 @@ function Page() {
         });
       } else {
         setPhoto("");
+        setShowPhoto("");
         setPhotoMeasures({});
         document.getElementById("addPhotoInput").value = "";
       }
@@ -702,9 +704,11 @@ function Page() {
               overflow: "auto",
               overflowY: "hidden",
               width:
-                photoMeasures.width >= 0 ? photoMeasures.width + "px" : "200px",
+                photoMeasures.width >= 0 || photoMeasures.width <= 0
+                  ? photoMeasures.width + "px"
+                  : "200px",
               height:
-                photoMeasures.height >= 0
+                photoMeasures.height >= 0 || photoMeasures.height <= 0
                   ? photoMeasures.height + "px"
                   : "200px",
               left:
