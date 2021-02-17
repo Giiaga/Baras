@@ -467,10 +467,18 @@ function Page() {
         >
           Write
         </button>
-        <button onClick={saveStory}>Save</button>
+        <button
+          onClick={(e) => {
+            document.getElementById("allTheButtons").style.top = -50 + "%";
+            saveStory(e);
+          }}
+        >
+          Save
+        </button>
         <button
           value={"newPage"}
           onClick={(e) => {
+            document.getElementById("allTheButtons").style.top = -50 + "%";
             saveStory(e);
           }}
         >
@@ -493,6 +501,9 @@ function Page() {
             id="addPhotoInput"
             type="file"
             hidden={photoChoosen}
+            onClick={() =>
+              (document.getElementById("allTheButtons").style.top = -50 + "%")
+            }
             style={{
               width: "178px",
               marginBottom: "5px",
@@ -534,6 +545,9 @@ function Page() {
             hidden={audioChoosen}
             style={{ width: "173px", marginTop: "5px", marginBottom: "5px" }}
             value={audioLink}
+            onClick={() =>
+              (document.getElementById("allTheButtons").style.top = -50 + "%")
+            }
             onChange={(e) => {
               if (e.target.value.length > 61 && e.target.value.length <= 1000) {
                 let found = e.target.value.indexOf("http");
@@ -576,6 +590,9 @@ function Page() {
             placeholder="Put video link here"
             value={videoLink}
             style={{ width: "173px", marginTop: "5px", marginBottom: "5px" }}
+            onClick={() =>
+              (document.getElementById("allTheButtons").style.top = -50 + "%")
+            }
             onChange={(e) => {
               if (e.target.value.length) {
                 let youtubeFindId = e.target.value.indexOf("v=");
@@ -618,6 +635,9 @@ function Page() {
               type="text"
               value={chapter}
               maxLength="100"
+              onClick={() =>
+                (document.getElementById("allTheButtons").style.top = -50 + "%")
+              }
               onChange={(e) => setChapter(e.target.value)}
               placeholder="Chapter"
             />
