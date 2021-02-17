@@ -154,6 +154,7 @@ router.post(
         plain: true,
       }
     );
+    console.log(page, "PAGES", typeof page);
 
     let lastPage = await Page.findOne({
       where: { storyId: story.id },
@@ -165,7 +166,7 @@ router.post(
       chapter,
     });
 
-    return res.json({ pageUpdated: page, newPage: newPage });
+    return res.json({ pageUpdated: page[1], newPage: newPage });
   })
 );
 router.put(
@@ -231,8 +232,8 @@ router.put(
         where: { storyId: story.id, pageNumber: pageNumber },
       }
     );
-
-    return res.json(page);
+    console.log(page, "PAGES", typeof page);
+    return res.json(page[1]);
   })
 );
 module.exports = router;
