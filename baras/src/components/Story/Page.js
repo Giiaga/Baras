@@ -50,7 +50,7 @@ function Page() {
           setChangePage(response.length - 1);
         }
       }),
-    []
+    [dispatch]
   );
   useEffect(() => {
     if (i >= 0) {
@@ -227,7 +227,6 @@ function Page() {
     } else sameChapter = chapter;
 
     if (e.target.value == "newPage") {
-      console.log("ONLY NEWPAGE JDSKF");
       dispatch(
         newPage(
           userId,
@@ -244,7 +243,7 @@ function Page() {
           text,
           pageNumber
         )
-      );
+      ).then((data) => data && setChangePage(i + 1));
       return;
     } else {
       dispatch(

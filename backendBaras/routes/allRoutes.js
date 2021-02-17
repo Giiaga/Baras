@@ -232,7 +232,7 @@ router.put(
         where: { storyId: story.id, pageNumber: pageNumber },
       }
     );
-    console.log(page, "PAGES", typeof page);
+
     return res.json(page[1]);
   })
 );

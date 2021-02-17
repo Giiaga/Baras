@@ -63,7 +63,7 @@ export let storyPage = (
   });
 
   dispatch(storyPageAC(response.data));
-  console.log(response.data, "DATAAAAAAAAAAAAAADHGIFK");
+
   return response;
 };
 
@@ -146,18 +146,16 @@ let storyReducer = (state = [], action) => {
       let index = newState.allPages.findIndex(
         (page) => page.pageNumber === action.data.pageNumber
       );
-      console.log(index, "FROM HSDGFGKJR");
       newState.allPages[index] = action.data;
       return newState;
 
     case CREATENEWPAGE:
       newState = Object.assign({}, state);
-      newState.allPages.find((page, i) => {
-        if (page.pageNumber === action.data.pageUpdated.pageNumber) {
-          return (newState.allPages[i] = action.data.pageUpdated);
-        }
-      });
-      // newState.allPages.push(action.data.pageUpdated);
+      let i = newState.allPages.findIndex(
+        (page) => page.pageNumber === action.data.pageUpdated.pageNumber
+      );
+      newState.allPages[i] = action.data.pageUpdated;
+
       newState.allPages.push(action.data.newPage);
       return newState;
 
