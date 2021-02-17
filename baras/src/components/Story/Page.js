@@ -390,14 +390,7 @@ function Page() {
 
     fileread.readAsDataURL(data);
   };
-  let [showButtons, setShowButtons] = useState(true);
-
-  // if (!showButtons) {
-  //   document.getElementById("allTheButtons").style.top == -50 + "%" ||
-  //   document.getElementById("allTheButtons").style.top != -50 + "%"
-  //     ? (document.getElementById("allTheButtons").style.top = 0 + "%")
-  //     : (document.getElementById("allTheButtons").style.top = -50 + "%");
-  // }
+  // let [showButtons, setShowButtons] = useState(true);
 
   if (error)
     return (
@@ -416,13 +409,9 @@ function Page() {
       <div
         className="addButtonDiv"
         onClick={() => {
-          // showButtons ? setShowButtons(false) : setShowButtons(true);
           if (
             document.getElementById("allTheButtons").style.top ===
             -50 + "%"
-            // document.getElementById("allTheButtons").style.top ===
-            // -50 + "%"
-            // document.getElementById("allTheButtons").style.top != -50 + "%"
           ) {
             document.getElementById("allTheButtons").style.top = 0 + "%";
           } else document.getElementById("allTheButtons").style.top = -50 + "%";
@@ -434,12 +423,12 @@ function Page() {
       <div
         className="allTheButtons"
         id="allTheButtons"
-        // hidden={showButtons}
-        style={
-          // !showButtons
-          { position: "absolute", top: "-50%", left: "75.5%", zIndex: "1" }
-          // : { display: "none" }
-        }
+        style={{
+          position: "absolute",
+          top: "-50%",
+          left: "75.5%",
+          zIndex: "1",
+        }}
       >
         <button id="firstButton" onClick={() => setShowChapterInput(true)}>
           Add Chapter
@@ -537,13 +526,14 @@ function Page() {
         <button
           hidden={photoChoosen}
           type="button"
+          className="cancelButtons"
           onClick={() => {
             setPhotoChoosen(true);
             setShowPhoto("");
             document.getElementById("addPhotoInput").value = "";
           }}
         >
-          Cancel
+          X
         </button>
       </div>
       <div>
@@ -564,13 +554,14 @@ function Page() {
         />
         <button
           hidden={audioChoosen}
+          className="cancelButtons"
           type="button"
           onClick={() => {
             setAudioChoosen(true);
             setAudioLink("");
           }}
         >
-          Cancel
+          X
         </button>
       </div>
       <div>
@@ -602,12 +593,13 @@ function Page() {
         </button>
         <button
           hidden={videoChoosen}
+          className="cancelButtons"
           type="button"
           onClick={() => {
             setVideoChoosen(true);
           }}
         >
-          Cancel
+          X
         </button>
       </div>
       {/* <button
@@ -624,12 +616,13 @@ function Page() {
       </button> */}
       {write && (
         <button
+          className="cancelButtons"
           onClick={() => {
             setWrite(false);
             setText("");
           }}
         >
-          Cancel
+          X
         </button>
       )}
       {/* <button onClick={() => setShowChapterInput(true)}>Add Chapter</button> */}
@@ -642,12 +635,13 @@ function Page() {
             onChange={(e) => setChapter(e.target.value)}
           />
           <button
+            className="cancelButtons"
             onClick={() => {
               setShowChapterInput(false);
               setChapter("");
             }}
           >
-            Cancel
+            X
           </button>
         </>
       )}

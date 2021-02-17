@@ -89,3 +89,28 @@
   outline: none;
   background-color: transparent;
 }
+
+.cancelButtons {
+  margin-left: 2px;
+  width: 18px;
+  height: 18px;
+  background-color: rgb(255, 171, 115);
+  border: 1px solid rgb(255, 158, 68);
+  border-radius: 30px;
+  padding-left: 4.6px;
+  color: white;
+  font-size: 11px;
+}
+
+.cancelButtons:hover {
+  color: rgb(255, 171, 115);
+  background-color: white;
+  border: 1px solid rgb(255, 171, 115);
+}
+
+.cancelButtons:focus {
+  /* color: rgb(255, 171, 115); */
+  /* background-color: white; */
+  /* border: none; */
+  outline: none;
+}
