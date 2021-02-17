@@ -226,7 +226,7 @@ function Page() {
       sameChapter = allPages[allPages.length - 1].chapter;
     } else sameChapter = chapter;
 
-    if (newPageDispatch) {
+    if (e.target.value == "newPage") {
       dispatch(
         newPage(
           userId,
@@ -562,10 +562,12 @@ function Page() {
       )}
       <button onClick={saveStory}>Save</button>
       <button
+        value={"newPage"}
         onClick={(e) => {
-          setShowPhoto("");
-          setWrite(false);
-          setNewPageDispatch(true);
+          // setShowPhoto("");
+          // setWrite(false);
+          // setNewPageDispatch(true);
+          saveStory(e);
         }}
       >
         New Page

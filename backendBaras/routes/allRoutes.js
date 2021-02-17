@@ -150,11 +150,20 @@ router.post(
       },
       { returning: true, where: { storyId: story.id, pageNumber: pageNumber } }
     );
-
+    console.log(
+      "NEW PFGHKSGHSDFJGKSDFJGSDFg",
+      page.pageNumber,
+      typeof page.pageNumber
+    );
+    let lastPage = await Page.findOne({
+      where: { storyId: story.id, userId: userId },
+      order: [["pageNumber", "DESC"]],
+    });
     let newPage = await Page.create({
       storyId: story.id,
-      pageNumber: page.pageNumber,
+      pageNumber: lastPage.pageNumber + 1,
     });
+
     return res.json({ pageUpdated: page, newPage: newPage });
   })
 );
