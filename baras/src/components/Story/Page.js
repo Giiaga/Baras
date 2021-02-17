@@ -552,6 +552,7 @@ function Page() {
           <input
             type="text"
             value={chapter}
+            maxLength="100"
             onChange={(e) => setChapter(e.target.value)}
           />
           <button
@@ -784,7 +785,7 @@ function Page() {
               style={{
                 height: "100%",
                 width: "100%",
-                fontSize: "4vw",
+                fontSize: "3vw",
                 margin: "0",
                 wordBreak: "break-word",
               }}
