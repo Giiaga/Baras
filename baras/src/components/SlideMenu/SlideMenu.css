@@ -4,16 +4,27 @@
   height: 70%;
   background-color: lightblue;
   position: fixed;
-  top: 0%;
-  left: 15%;
+  top: -70%;
+  left: 0%;
   /* overflow-x: hidden; */
   transition: 2s;
+  z-index: 1;
 }
 
+.closeButton {
+  margin-left: 83%;
+  color: white;
+  position: absolute;
+  top: 95%;
+}
+.closeButton:hover {
+  color: rgb(136, 77, 18);
+}
 .menuButton {
   position: absolute;
-  top: 14%;
-  left: 15%;
+  top: 0%;
+  left: 0%;
+  /* transition: 2s; */
 }
 
 .menuList {
