@@ -477,6 +477,172 @@ function Page() {
           New Page
         </button>
       </div>
+
+      {/* ALL INPUTS */}
+      <div
+        className="inputDiv"
+        style={{
+          position: "absolute",
+          top: "5.8%",
+          left: "5%",
+          width: "255px",
+        }}
+      >
+        <div>
+          <input
+            id="addPhotoInput"
+            type="file"
+            hidden={photoChoosen}
+            style={{
+              width: "178px",
+              marginBottom: "5px",
+              marginTop: "5px",
+              marginLeft: "5px",
+            }}
+            onChange={(e) => addPhoto(e.target.files[0])}
+            placeholder="Photo"
+          />
+          <button
+            hidden={photoChoosen}
+            className="clearButtons"
+            style={{ marginLeft: "2px", marginRight: "2px" }}
+            type="button"
+            onClick={() => {
+              document.getElementById("addPhotoInput").value = "";
+              setShowPhoto("");
+            }}
+          >
+            <i class="fas fa-broom"></i>
+          </button>
+          <button
+            hidden={photoChoosen}
+            type="button"
+            className="cancelButtons"
+            onClick={() => {
+              setPhotoChoosen(true);
+              setShowPhoto("");
+              document.getElementById("addPhotoInput").value = "";
+            }}
+          >
+            X
+          </button>
+        </div>
+        <div>
+          <input
+            type="text"
+            className="inputStyles"
+            hidden={audioChoosen}
+            style={{ width: "173px", marginTop: "5px", marginBottom: "5px" }}
+            value={audioLink}
+            onChange={(e) => {
+              if (e.target.value.length > 61 && e.target.value.length <= 1000) {
+                let found = e.target.value.indexOf("http");
+                let complete = e.target.value.indexOf("&auto");
+
+                let audioSoundcloudLink = e.target.value.slice(found, complete);
+                setAudioLink(audioSoundcloudLink);
+              }
+            }}
+            placeholder="Put audio link here"
+          />
+          <button
+            hidden={audioChoosen}
+            className="clearButtons"
+            style={{ marginLeft: "2px", marginRight: "2px" }}
+            type="button"
+            onClick={() => {
+              setAudioLink("");
+            }}
+          >
+            <i class="fas fa-broom"></i>
+          </button>
+          <button
+            hidden={audioChoosen}
+            className="cancelButtons"
+            type="button"
+            onClick={() => {
+              setAudioChoosen(true);
+              setAudioLink("");
+            }}
+          >
+            X
+          </button>
+        </div>
+        <div>
+          <input
+            type="text"
+            hidden={videoChoosen}
+            className="inputStyles"
+            placeholder="Put video link here"
+            value={videoLink}
+            style={{ width: "173px", marginTop: "5px", marginBottom: "5px" }}
+            onChange={(e) => {
+              if (e.target.value.length) {
+                let youtubeFindId = e.target.value.indexOf("v=");
+                let youtubePartUrl = e.target.value.split()[0].substring(0, 24);
+                let youtubeId = e.target.value.slice(youtubeFindId + 2, 43);
+
+                setVideoLink(youtubePartUrl + "embed/" + youtubeId);
+              }
+
+              e.target.placeholder = "Please enter a complete url";
+            }}
+          />
+          <button
+            hidden={videoChoosen}
+            className="clearButtons"
+            style={{ marginLeft: "2px", marginRight: "2px" }}
+            type="button"
+            onClick={() => {
+              setVideoLink("");
+            }}
+          >
+            <i class="fas fa-broom"></i>
+          </button>
+          <button
+            hidden={videoChoosen}
+            className="cancelButtons"
+            type="button"
+            onClick={() => {
+              setVideoChoosen(true);
+            }}
+          >
+            X
+          </button>
+        </div>
+        {chapterInput && (
+          <>
+            <input
+              className="inputStyles"
+              style={{ width: "173px" }}
+              type="text"
+              value={chapter}
+              maxLength="100"
+              onChange={(e) => setChapter(e.target.value)}
+              placeholder="Chapter"
+            />
+            <button
+              className="clearButtons"
+              style={{ marginLeft: "2px", marginRight: "2px" }}
+              type="button"
+              onClick={() => {
+                setChapter("");
+              }}
+            >
+              <i class="fas fa-broom"></i>
+            </button>
+            <button
+              className="cancelButtons"
+              onClick={() => {
+                setShowChapterInput(false);
+                setChapter("");
+              }}
+            >
+              X
+            </button>
+          </>
+        )}
+      </div>
       {/* ALL BUTTONS */}
       {/* <button
         onClick={() => {
@@ -505,7 +671,7 @@ function Page() {
       >
         Add Video
       </button> */}
-      <div>
+      {/* <div>
         <input
           id="addPhotoInput"
           type="file"
@@ -626,7 +792,7 @@ function Page() {
         >
           X
         </button>
-      </div>
+      </div> */}
       {/* <button
         onClick={() => {
           setWrite(true);
@@ -660,7 +826,7 @@ function Page() {
         </div>
       )}
       {/* <button onClick={() => setShowChapterInput(true)}>Add Chapter</button> */}
-      {chapterInput && (
+      {/* {chapterInput && (
         <>
           <input
             className="inputStyles"
@@ -680,7 +846,7 @@ function Page() {
             X
           </button>
         </>
-      )}
+      )} */}
       {/* <button onClick={saveStory}>Save</button> */}
       {/* <button
         value={"newPage"}
