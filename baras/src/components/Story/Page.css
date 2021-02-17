@@ -26,7 +26,7 @@
 }
 
 .add:hover {
-  color: rgb(255, 72, 0);
+  color: rgb(252, 187, 161);
 }
 .addButtonDiv {
   height: 35px;
@@ -34,6 +34,9 @@
   background-color: rgb(194, 194, 194);
   border: rgb(190, 190, 190) solid 2px;
   border-radius: 4px;
+  position: absolute;
+  left: 72.4%;
+  top: 0.3%;
 }
 
 .addButtonDiv:hover {
