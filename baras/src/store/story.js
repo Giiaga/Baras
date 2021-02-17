@@ -147,8 +147,8 @@ let storyReducer = (state = [], action) => {
 
     case CREATENEWPAGE:
       newState = Object.assign({}, state);
-      // newState.allPages.push(action.data.pageUpdated);
-      // newState.allPages.push(action.data.newPage);
+      newState.allPages.push(action.data.pageUpdated);
+      newState.allPages.push(action.data.newPage);
       return newState;
 
     default:

@@ -138,8 +138,8 @@ function Page() {
       textMeasures = {
         width: textElement.width - 2,
         height: textElement.height - 2,
-        textH: textElement.left - 391.65625,
-        textV: textElement.top - 44,
+        textH: textElement.left - 392.65625,
+        textV: textElement.top - 43,
       };
     } else {
       textMeasures = {
@@ -156,8 +156,8 @@ function Page() {
       photoMeasures = {
         width: photoElement.width - 2,
         height: photoElement.height - 2,
-        photoH: photoElement.left - 391.65625,
-        photoV: photoElement.top - 44,
+        photoH: photoElement.left - 392.65625,
+        photoV: photoElement.top - 43,
       };
     } else {
       photoMeasures = {
@@ -174,8 +174,8 @@ function Page() {
       chapterMeasures = {
         width: chapterElement.width - 2,
         height: chapterElement.height - 2,
-        chapterH: chapterElement.left - 391.65625,
-        chapterV: chapterElement.top - 44,
+        chapterH: chapterElement.left - 392.65625,
+        chapterV: chapterElement.top - 43,
       };
     } else {
       chapterMeasures = {
@@ -192,8 +192,8 @@ function Page() {
       audioMeasures = {
         width: audioElement.width - 2,
         height: audioElement.height - 2,
-        musicH: audioElement.left - 391.65625,
-        musicV: audioElement.top - 44,
+        musicH: audioElement.left - 392.65625,
+        musicV: audioElement.top - 43,
       };
     } else {
       audioMeasures = {
@@ -210,8 +210,8 @@ function Page() {
       videoMeasures = {
         width: videoElement.width - 2,
         height: videoElement.height - 2,
-        videoH: videoElement.left - 391.65625,
-        videoV: videoElement.top - 44,
+        videoH: videoElement.left - 392.65625,
+        videoV: videoElement.top - 43,
       };
     } else {
       videoMeasures = {
@@ -227,6 +227,7 @@ function Page() {
     } else sameChapter = chapter;
 
     if (e.target.value == "newPage") {
+      console.log("ONLY NEWPAGE JDSKF");
       dispatch(
         newPage(
           userId,
@@ -243,7 +244,7 @@ function Page() {
           text,
           pageNumber
         )
-      ).then(() => setNewPageDispatch(false));
+      );
       return;
     } else {
       dispatch(

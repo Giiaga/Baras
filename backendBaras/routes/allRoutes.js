@@ -148,20 +148,21 @@ router.post(
         videoH: videoMeasures.videoH,
         videoV: videoMeasures.videoV,
       },
-      { returning: true, where: { storyId: story.id, pageNumber: pageNumber } }
+      {
+        where: { storyId: story.id, pageNumber: pageNumber },
+        returning: true,
+        plain: true,
+      }
     );
-    console.log(
-      "NEW PFGHKSGHSDFJGKSDFJGSDFg",
-      page.pageNumber,
-      typeof page.pageNumber
-    );
+
     let lastPage = await Page.findOne({
-      where: { storyId: story.id, userId: userId },
+      where: { storyId: story.id },
       order: [["pageNumber", "DESC"]],
     });
     let newPage = await Page.create({
       storyId: story.id,
       pageNumber: lastPage.pageNumber + 1,
+      chapter,
     });
 
     return res.json({ pageUpdated: page, newPage: newPage });
@@ -224,7 +225,11 @@ router.put(
         videoH: videoMeasures.videoH,
         videoV: videoMeasures.videoV,
       },
-      { returning: true, where: { storyId: story.id, pageNumber: pageNumber } }
+      {
+        returning: true,
+        plain: true,
+        where: { storyId: story.id, pageNumber: pageNumber },
+      }
     );
 
     return res.json(page);
