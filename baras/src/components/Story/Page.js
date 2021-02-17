@@ -510,7 +510,12 @@ function Page() {
           id="addPhotoInput"
           type="file"
           hidden={photoChoosen}
-          style={{ width: "182px", marginBottom: "5px", marginTop: "5px" }}
+          style={{
+            width: "182px",
+            marginBottom: "5px",
+            marginTop: "5px",
+            marginLeft: "5px",
+          }}
           onChange={(e) => addPhoto(e.target.files[0])}
           placeholder="Photo"
         />
@@ -542,6 +547,7 @@ function Page() {
       <div>
         <input
           type="text"
+          className="inputStyles"
           hidden={audioChoosen}
           style={{ width: "173px", marginTop: "5px", marginBottom: "5px" }}
           value={audioLink}
@@ -583,6 +589,7 @@ function Page() {
         <input
           type="text"
           hidden={videoChoosen}
+          className="inputStyles"
           placeholder="Put video link here"
           value={videoLink}
           style={{ width: "173px", marginTop: "5px", marginBottom: "5px" }}
@@ -656,6 +663,7 @@ function Page() {
       {chapterInput && (
         <>
           <input
+            className="inputStyles"
             type="text"
             value={chapter}
             maxLength="100"

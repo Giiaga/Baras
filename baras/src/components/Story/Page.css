@@ -1,15 +1,10 @@
 #videoPlayer::-webkit-resizer {
   display: none;
-  /* background-color: red; */
 }
 #showPhoto::-webkit-resizer {
   display: none;
-  /* background-color: red; */
 }
 
-/* textarea {
-  background-color: purple;
-} */
 .nextBackIcons {
   color: rgba(218, 208, 208, 0.842);
 }
@@ -43,13 +38,6 @@
   background-color: rgb(168, 167, 167);
   border: 2px solid rgb(168, 167, 167);
 }
-/* .test {
-  background-color: rgb(189, 185, 185);
-  padding-right: 8px;
-  padding-left: 3px;
-  border: 3px solid rgba(216, 215, 215, 0.452);
-  border-radius: 20px;
-}  */
 
 .allTheButtons {
   width: 9.45%;
@@ -57,8 +45,6 @@
   display: flex;
   flex-direction: column;
   border-radius: 3px;
-  /* position: absolute;
-  top: -50%; */
   transition: 0.7s;
 }
 
@@ -75,8 +61,6 @@
   color: white;
 }
 .allTheButtons button:focus {
-  /* color: white; */
-  /* border: none; */
   outline: none;
   background-color: transparent;
 }
@@ -109,15 +93,12 @@
 }
 
 .cancelButtons:focus {
-  /* color: rgb(255, 171, 115); */
-  /* background-color: white; */
-  /* border: none; */
   outline: none;
 }
 
 #addPhotoInput::-webkit-file-upload-button {
   width: 55px;
-  border: rgba(255, 109, 25, 0.479) 2px solid;
+  border: rgb(255, 210, 192) 2px solid;
   border-radius: 3px;
   padding-left: 2px;
   background-color: transparent;
@@ -139,4 +120,18 @@
 
 .fa-broom:hover {
   color: rgb(255, 194, 170);
+}
+
+.inputStyles {
+  border: none;
+  border-bottom: 1px solid rgb(255, 194, 170);
+  margin-left: 5px;
+  color: rgb(148, 145, 141);
+}
+.inputStyles:focus {
+  outline: none;
+}
+
+.inputStyles::placeholder {
+  color: rgb(187, 125, 101);
 }
