@@ -20,6 +20,7 @@ function Page() {
   let [text, setText] = useState("");
   let [i, setChangePage] = useState();
   // HEIGHTS AND WIDTHS AND POSITIONS
+
   let [photoMeasures, setPhotoMeasures] = useState({});
   let [textMeasures, setTextMeasures] = useState({});
   let [chapterMeasures, setChapterMeasures] = useState({});
@@ -172,8 +173,8 @@ function Page() {
         .getElementById("showChapter")
         .getBoundingClientRect();
       chapterMeasures = {
-        width: chapterElement.width - 2,
-        height: chapterElement.height - 2,
+        width: chapterElement.width,
+        height: chapterElement.height,
         chapterH: chapterElement.left - 392.65625,
         chapterV: chapterElement.top - 43,
       };

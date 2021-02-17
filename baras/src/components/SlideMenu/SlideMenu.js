@@ -12,10 +12,11 @@ function SlideMenu() {
   let menuButton;
   if (showMenu) {
     menuButton = { left: 0 };
+    // document.getElementById("menu").style.width = 300 + "px";
   }
   return (
     <>
-      <div hidden={showMenu} className="menu">
+      <div className="menu" id="menu">
         <div className="menuList">
           <h4 onClick={() => (window.location.href = `${user.username}`)}>
             Me
@@ -43,6 +44,11 @@ function SlideMenu() {
         style={menuButton}
         onClick={() => {
           showMenu ? setShowMenu(false) : setShowMenu(true);
+          if (document.getElementById("menu").style.top === 0) {
+            document.getElementById("menu").style.top = 15 + "%";
+          } else {
+            document.getElementById("menu").style.top = 0 + "%";
+          }
         }}
       >
         Show
