@@ -91,6 +91,73 @@ router.get("/story/:title/cont/:userId", requireAuth, async (req, res) => {
   return res.json(pages);
 });
 
+router.post(
+  "/story/:title/cont/newPage",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    let {
+      userId,
+      textMeasures,
+      photoMeasures,
+      audioMeasures,
+      chapterMeasures,
+      videoMeasures,
+      title,
+      photo,
+      video,
+      audio,
+      chapter,
+      text,
+      pageNumber,
+    } = req.body;
+
+    let story = await Story.findOne({
+      where: {
+        userId: userId,
+        title: title,
+      },
+    });
+
+    let page = await Page.update(
+      {
+        pageNumber,
+        chapter,
+        storyId: story.id,
+        text,
+        photo,
+        music: audio,
+        video,
+        chapterWidth: chapterMeasures.width,
+        chapterHeight: chapterMeasures.height,
+        chapterH: chapterMeasures.chapterH,
+        chapterV: chapterMeasures.chapterV,
+        textWidth: textMeasures.width,
+        textHeight: textMeasures.height,
+        textH: textMeasures.textH,
+        textV: textMeasures.textV,
+        photoWidth: photoMeasures.width,
+        photoHeight: photoMeasures.height,
+        photoH: photoMeasures.photoH,
+        photoV: photoMeasures.photoV,
+        musicWidth: audioMeasures.width,
+        musicHeight: audioMeasures.height,
+        musicH: audioMeasures.musicH,
+        musicV: audioMeasures.musicV,
+        videoWidth: videoMeasures.width,
+        videoHeight: videoMeasures.height,
+        videoH: videoMeasures.videoH,
+        videoV: videoMeasures.videoV,
+      },
+      { returning: true, where: { storyId: story.id, pageNumber: pageNumber } }
+    );
+
+    let newPage = await Page.create({
+      storyId: story.id,
+      pageNumber: page.pageNumber,
+    });
+    return res.json({ pageUpdated: page, newPage: newPage });
+  })
+);
 router.put(
   "/story/:title/cont",
   requireAuth,

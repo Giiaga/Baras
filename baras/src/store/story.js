@@ -82,6 +82,53 @@ export let getPages = (title, userId) => async (dispatch) => {
   return response.data;
 };
 
+let CREATENEWPAGE = "createsNewPageUpdatesLastPage";
+
+let newPageAC = (data) => {
+  return {
+    type: CREATENEWPAGE,
+    data, // GETS OBJECT pageUpdated, newPage
+  };
+};
+
+export let newPage = (
+  userId,
+  textMeasures,
+  photoMeasures,
+  audioMeasures,
+  chapterMeasures,
+  videoMeasures,
+  title,
+  photo,
+  video,
+  audio,
+  chapter,
+  text,
+  pageNumber
+) => async (dispatch) => {
+  let response = await fetch("/story/:title/cont/newPage", {
+    method: "POST",
+    body: JSON.stringify({
+      userId,
+      textMeasures,
+      photoMeasures,
+      audioMeasures,
+      chapterMeasures,
+      videoMeasures,
+      title,
+      photo,
+      video,
+      audio,
+      chapter,
+      text,
+      pageNumber,
+    }),
+  });
+
+  dispatch(newPageAC(response.data));
+
+  return response.data;
+};
 let storyReducer = (state = [], action) => {
   let newState;
   switch (action.type) {
@@ -97,6 +144,13 @@ let storyReducer = (state = [], action) => {
       newState = Object.assign({}, state);
       newState.page = action.data;
       return newState;
+
+    case CREATENEWPAGE:
+      newState = Object.assign({}, state);
+      // newState.allPages.push(action.data.pageUpdated);
+      // newState.allPages.push(action.data.newPage);
+      return newState;
+
     default:
       return state;
   }

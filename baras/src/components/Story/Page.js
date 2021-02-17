@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPages, storyPage } from "../../store/story";
+import { getPages, storyPage, newPage } from "../../store/story";
 
 import "./Page.css";
 
@@ -26,6 +26,9 @@ function Page() {
   let [audioMeasures, setAudioMeasures] = useState({});
   let [videoMeasures, setVideoMeasures] = useState({});
   let [error, setError] = useState(false);
+
+  // THIS DECIDES WHETER NEWPAGE THUNK WILL DISPATCH OR STORYPAGE
+  let [newPageDispatch, setNewPageDispatch] = useState(false);
   // HEIGHTS AND WIDTHS AND POSITIONS END
 
   let fromParam = useParams();
@@ -222,24 +225,46 @@ function Page() {
     if (!chapter) {
       sameChapter = allPages[allPages.length - 1].chapter;
     } else sameChapter = chapter;
-    dispatch(
-      storyPage(
-        userId,
-        textMeasures,
-        photoMeasures,
-        audioMeasures,
-        chapterMeasures,
-        videoMeasures,
-        storyTitle,
-        photo,
-        videoLink,
-        audioLink,
-        sameChapter,
-        text,
-        pageNumber
-      )
-    );
-    return;
+
+    if (newPageDispatch) {
+      dispatch(
+        newPage(
+          userId,
+          textMeasures,
+          photoMeasures,
+          audioMeasures,
+          chapterMeasures,
+          videoMeasures,
+          storyTitle,
+          photo,
+          videoLink,
+          audioLink,
+          sameChapter,
+          text,
+          pageNumber
+        )
+      ).then(() => setNewPageDispatch(false));
+      return;
+    } else {
+      dispatch(
+        storyPage(
+          userId,
+          textMeasures,
+          photoMeasures,
+          audioMeasures,
+          chapterMeasures,
+          videoMeasures,
+          storyTitle,
+          photo,
+          videoLink,
+          audioLink,
+          sameChapter,
+          text,
+          pageNumber
+        )
+      );
+      return;
+    }
   };
 
   function dragElement(elmnt) {
@@ -540,6 +565,7 @@ function Page() {
         onClick={(e) => {
           setShowPhoto("");
           setWrite(false);
+          setNewPageDispatch(true);
         }}
       >
         New Page
