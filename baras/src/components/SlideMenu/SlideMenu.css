@@ -6,7 +6,6 @@
   position: absolute;
   top: -70%;
   left: 0%;
-  /* overflow-x: hidden; */
   transition: 2s;
   z-index: 1;
 }
@@ -21,10 +20,12 @@
   color: rgb(136, 77, 18);
 }
 .menuButton {
+  width: 15%;
   position: absolute;
   top: 0%;
   left: 0%;
-  /* transition: 2s; */
+  font-stretch: ultra-expanded;
+  font-size: large;
 }
 
 .menuList {

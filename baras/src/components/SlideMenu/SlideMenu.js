@@ -7,7 +7,7 @@ import "./SlideMenu.css";
 function SlideMenu() {
   let user = useSelector((state) => state.session.user);
   let dispatch = useDispatch();
-  // let [showMenu, setShowMenu] = useState(true);
+  let [showMenu, setShowMenu] = useState(false);
   let history = useHistory();
   // let menuButton;
   // if (showMenu) {
@@ -42,6 +42,7 @@ function SlideMenu() {
         <p
           className="closeButton"
           onClick={() => {
+            setShowMenu(false);
             if ((document.getElementById("menu").style.top = 0 + "%")) {
               document.getElementById("menu").style.top = -70 + "%";
             }
@@ -51,9 +52,11 @@ function SlideMenu() {
         </p>
       </div>
       <button
+        hidden={showMenu}
         className="menuButton"
         id="menuButton"
         onClick={() => {
+          setShowMenu(true);
           if (
             document.getElementById("menu").style.top == -70 + "%" ||
             document.getElementById("menu").style.top != -70 + "%"
@@ -63,7 +66,7 @@ function SlideMenu() {
           }
         }}
       >
-        Show
+        V
       </button>
     </>
   );
