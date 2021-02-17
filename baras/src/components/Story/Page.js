@@ -390,6 +390,15 @@ function Page() {
 
     fileread.readAsDataURL(data);
   };
+  let [showButtons, setShowButtons] = useState(true);
+
+  // if (!showButtons) {
+  //   document.getElementById("allTheButtons").style.top == -50 + "%" ||
+  //   document.getElementById("allTheButtons").style.top != -50 + "%"
+  //     ? (document.getElementById("allTheButtons").style.top = 0 + "%")
+  //     : (document.getElementById("allTheButtons").style.top = -50 + "%");
+  // }
+
   if (error)
     return (
       <div>
@@ -404,10 +413,83 @@ function Page() {
     );
   return (
     <>
-      <div className="addButtonDiv">
+      <div
+        className="addButtonDiv"
+        onClick={() => {
+          // showButtons ? setShowButtons(false) : setShowButtons(true);
+          if (
+            document.getElementById("allTheButtons").style.top ===
+            -50 + "%"
+            // document.getElementById("allTheButtons").style.top ===
+            // -50 + "%"
+            // document.getElementById("allTheButtons").style.top != -50 + "%"
+          ) {
+            document.getElementById("allTheButtons").style.top = 0 + "%";
+          } else document.getElementById("allTheButtons").style.top = -50 + "%";
+        }}
+      >
         <i class="fas fa-feather add"></i>
       </div>
-      <button
+      {/* SHOW BUTTONS BUTTON */}
+      <div
+        className="allTheButtons"
+        id="allTheButtons"
+        // hidden={showButtons}
+        style={
+          // !showButtons
+          { position: "absolute", top: "-50%", left: "75.5%", zIndex: "1" }
+          // : { display: "none" }
+        }
+      >
+        <button id="firstButton" onClick={() => setShowChapterInput(true)}>
+          Add Chapter
+        </button>
+        <button
+          onClick={() => {
+            setPhotoChoosen(false);
+            setAudioChoosen(true);
+            setVideoChoosen(true);
+          }}
+        >
+          Add Photo
+        </button>
+        <button
+          onClick={() => {
+            setAudioChoosen(false);
+            setPhotoChoosen(true);
+            setVideoChoosen(true);
+          }}
+        >
+          Add Song
+        </button>
+        <button
+          onClick={() => {
+            setVideoChoosen(false);
+            setPhotoChoosen(true);
+            setAudioChoosen(true);
+          }}
+        >
+          Add Video
+        </button>
+        <button
+          onClick={() => {
+            setWrite(true);
+          }}
+        >
+          Write
+        </button>
+        <button onClick={saveStory}>Save</button>
+        <button
+          value={"newPage"}
+          onClick={(e) => {
+            saveStory(e);
+          }}
+        >
+          New Page
+        </button>
+      </div>
+      {/* ALL BUTTONS */}
+      {/* <button
         onClick={() => {
           setPhotoChoosen(false);
           setAudioChoosen(true);
@@ -415,8 +497,8 @@ function Page() {
         }}
       >
         Add Photo
-      </button>
-      <button
+      </button> */}
+      {/* <button
         onClick={() => {
           setAudioChoosen(false);
           setPhotoChoosen(true);
@@ -433,7 +515,7 @@ function Page() {
         }}
       >
         Add Video
-      </button>
+      </button> */}
       <div>
         <input
           id="addPhotoInput"
@@ -528,7 +610,7 @@ function Page() {
           Cancel
         </button>
       </div>
-      <button
+      {/* <button
         onClick={() => {
           setWrite(true);
           // let test = document.getElementById("dragWrite");
@@ -539,7 +621,7 @@ function Page() {
         }}
       >
         Write
-      </button>
+      </button> */}
       {write && (
         <button
           onClick={() => {
@@ -550,7 +632,7 @@ function Page() {
           Cancel
         </button>
       )}
-      <button onClick={() => setShowChapterInput(true)}>Add Chapter</button>
+      {/* <button onClick={() => setShowChapterInput(true)}>Add Chapter</button> */}
       {chapterInput && (
         <>
           <input
@@ -569,8 +651,8 @@ function Page() {
           </button>
         </>
       )}
-      <button onClick={saveStory}>Save</button>
-      <button
+      {/* <button onClick={saveStory}>Save</button> */}
+      {/* <button
         value={"newPage"}
         onClick={(e) => {
           // setShowPhoto("");
@@ -580,7 +662,7 @@ function Page() {
         }}
       >
         New Page
-      </button>
+      </button> */}
       <div
         className="pageMainDiv"
         style={{
@@ -588,6 +670,7 @@ function Page() {
           height: "297mm",
           border: "1px solid",
           margin: "auto",
+          marginTop: "42px",
           position: "relative",
         }}
       >
