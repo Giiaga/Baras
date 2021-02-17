@@ -10,17 +10,40 @@
 /* textarea {
   background-color: purple;
 } */
-.fas {
+.nextBackIcons {
   color: rgba(218, 208, 208, 0.842);
 }
-.fas:hover {
+.nextBackIcons:hover {
   color: rgba(104, 94, 94, 0.493);
 }
 
+.add {
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+  padding-left: 3px;
+  padding-top: 2px;
+  transition: color 1s;
+}
+
+.add:hover {
+  color: rgb(255, 72, 0);
+}
+.addButtonDiv {
+  height: 35px;
+  width: 38px;
+  background-color: rgb(194, 194, 194);
+  border: rgb(190, 190, 190) solid 2px;
+  border-radius: 4px;
+}
+
+.addButtonDiv:hover {
+  background-color: rgb(168, 167, 167);
+  border: 2px solid rgb(168, 167, 167);
+}
 /* .test {
   background-color: rgb(189, 185, 185);
   padding-right: 8px;
   padding-left: 3px;
   border: 3px solid rgba(216, 215, 215, 0.452);
   border-radius: 20px;
-} */
+}  */

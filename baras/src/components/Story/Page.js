@@ -404,6 +404,9 @@ function Page() {
     );
   return (
     <>
+      <div className="addButtonDiv">
+        <i class="fas fa-feather add"></i>
+      </div>
       <button
         onClick={() => {
           setPhotoChoosen(false);
@@ -860,7 +863,10 @@ function Page() {
               }
             }}
           >
-            <i class="fas fa-chevron-left" style={{ fontSize: "55px" }}></i>
+            <i
+              class="fas fa-chevron-left nextBackIcons"
+              style={{ fontSize: "55px" }}
+            ></i>
           </div>
         ) : (
           ""
@@ -875,7 +881,10 @@ function Page() {
               }
             }}
           >
-            <i class="fas fa-chevron-right" style={{ fontSize: "55px" }}></i>
+            <i
+              class="fas fa-chevron-right nextBackIcons"
+              style={{ fontSize: "55px" }}
+            ></i>
           </div>
         ) : (
           ""
