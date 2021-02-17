@@ -130,6 +130,8 @@
   border: none;
   border-bottom: 1px solid rgb(255, 182, 153);
   margin-left: 5px;
+  margin-bottom: 5px;
+  margin-top: 5px;
   color: rgb(148, 145, 141);
   background-color: transparent;
 }

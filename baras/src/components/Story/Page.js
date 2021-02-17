@@ -650,6 +650,8 @@ function Page() {
               marginTop: "5px",
               marginBottom: "5px",
               paddingLeft: "2px",
+              width: "120px",
+              height: "15px",
             }}
             onClick={() => {
               setWrite(false);
