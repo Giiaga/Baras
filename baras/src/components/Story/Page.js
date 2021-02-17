@@ -850,32 +850,33 @@ function Page() {
           ""
         )}
         {pageNumber ? (
-          <button
+          <div
+            className="test"
             hidden={i === 0 ? true : false}
-            style={{ position: "absolute", top: "49%", left: "-8.9%" }}
+            style={{ position: "absolute", top: "50%", left: "-5.9%" }}
             onClick={(e) => {
               if (i > 0) {
                 setChangePage(i - 1);
               }
             }}
           >
-            Prev
-          </button>
+            <i class="fas fa-chevron-left" style={{ fontSize: "55px" }}></i>
+          </div>
         ) : (
           ""
         )}
         {pageNumber ? (
-          <button
+          <div
+            style={{ position: "absolute", top: "50%", left: "101.3%" }}
             hidden={i === allPages.length - 1 ? true : false}
-            style={{ position: "absolute", top: "50%", left: "100.3%" }}
             onClick={(e) => {
               if (i >= 0 && i < allPages.length - 1) {
                 setChangePage(i + 1);
               }
             }}
           >
-            Next
-          </button>
+            <i class="fas fa-chevron-right" style={{ fontSize: "55px" }}></i>
+          </div>
         ) : (
           ""
         )}
