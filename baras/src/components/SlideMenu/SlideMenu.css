@@ -3,7 +3,7 @@
   width: 15%;
   height: 70%;
   background-color: lightblue;
-  position: fixed;
+  position: absolute;
   top: -70%;
   left: 0%;
   /* overflow-x: hidden; */
@@ -15,7 +15,7 @@
   margin-left: 83%;
   color: white;
   position: absolute;
-  top: 95%;
+  top: 93%;
 }
 .closeButton:hover {
   color: rgb(136, 77, 18);

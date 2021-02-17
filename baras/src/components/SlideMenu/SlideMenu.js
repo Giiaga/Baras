@@ -7,13 +7,14 @@ import "./SlideMenu.css";
 function SlideMenu() {
   let user = useSelector((state) => state.session.user);
   let dispatch = useDispatch();
-  let [showMenu, setShowMenu] = useState(true);
+  // let [showMenu, setShowMenu] = useState(true);
   let history = useHistory();
   // let menuButton;
   // if (showMenu) {
   //   menuButton = { left: 0 };
   //   // document.getElementById("menu").style.width = 300 + "px";
   // }
+  console.log("hjsdfghdfkgjhsdlfkg");
   return (
     <>
       <div className="menu" id="menu">
@@ -38,8 +39,7 @@ function SlideMenu() {
             Logout
           </h4>
         </div>
-        <a
-          href="javascript:void(0)"
+        <p
           className="closeButton"
           onClick={() => {
             if ((document.getElementById("menu").style.top = 0 + "%")) {
@@ -48,24 +48,19 @@ function SlideMenu() {
           }}
         >
           close
-        </a>
+        </p>
       </div>
       <button
         className="menuButton"
         id="menuButton"
-        // style={menuButton}
         onClick={() => {
-          // showMenu ? setShowMenu(false) : setShowMenu(true);
-          // document.getElementById("menuButton").style.top === 2 + "%"
-          //   ? (document.getElementById("menuButton").style.top = 15 + "%")
-          //   : (document.getElementById("menuButton").style.top = 2 + "%");
-          if (document.getElementById("menu").style.top === -70 + "%") {
+          if (
+            document.getElementById("menu").style.top == -70 + "%" ||
+            document.getElementById("menu").style.top != -70 + "%"
+          ) {
+            console.log("weird");
             document.getElementById("menu").style.top = 0 + "%";
           }
-          // } else if ((document.getElementById("menu").style.top = 0 + "%")) {
-          //   document.getElementById("menu").style.top = -70 + "%";
-          //   document.getElementById("menuButton").style.top = 0 + "%";
-          // }
         }}
       >
         Show
