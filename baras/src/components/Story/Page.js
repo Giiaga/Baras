@@ -243,7 +243,11 @@ function Page() {
           text,
           pageNumber
         )
-      ).then((data) => data && setChangePage(i + 1));
+      ).then((data) =>
+        data && i < data.newPage.pageNumber - 2
+          ? setChangePage(data.newPage.pageNumber - 1)
+          : setChangePage(i + 1)
+      );
       return;
     } else {
       dispatch(
