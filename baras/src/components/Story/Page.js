@@ -53,7 +53,7 @@ function Page() {
     if (i >= 0) {
       let allPagesData = allPages[i];
       setPageNumber(allPagesData.pageNumber);
-      if (allPagesData.text) {
+      if (allPagesData.textH || allPagesData.text) {
         setText(allPagesData.text);
         setTextMeasures({
           width: allPagesData.textWidth - 2,
@@ -128,8 +128,8 @@ function Page() {
     let photoMeasures;
     console.log(
       // textMeasures,
-      "TEST",
-      document.getElementById("dragWrite").getBoundingClientRect()
+      "TEST"
+      // document.getElementById("dragWrite").getBoundingClientRect()
     );
     if (document.getElementById("dragWrite")) {
       let textElement = document
@@ -140,6 +140,13 @@ function Page() {
         height: textElement.height,
         textH: textElement.left,
         textV: textElement.top,
+      };
+    } else {
+      textMeasures = {
+        width: null,
+        height: null,
+        textH: null,
+        textV: null,
       };
     }
     if (document.getElementById("showPhoto")) {
@@ -503,7 +510,16 @@ function Page() {
       >
         Write
       </button>
-      {write && <button onClick={() => setWrite(false)}>Cancel</button>}
+      {write && (
+        <button
+          onClick={() => {
+            setWrite(false);
+            setText("");
+          }}
+        >
+          Cancel
+        </button>
+      )}
       <button onClick={() => setShowChapterInput(true)}>Add Chapter</button>
       {chapterInput && (
         <>
