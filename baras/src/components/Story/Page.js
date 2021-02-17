@@ -59,10 +59,10 @@ function Page() {
       if (allPagesData.textH || allPagesData.text) {
         setText(allPagesData.text);
         setTextMeasures({
-          width: allPagesData.textWidth - 2,
-          height: allPagesData.textHeight - 2,
-          textH: allPagesData.textH - 391.65625,
-          textV: allPagesData.textV - 44,
+          width: allPagesData.textWidth,
+          height: allPagesData.textHeight,
+          textH: allPagesData.textH,
+          textV: allPagesData.textV,
         });
         setWrite(true);
       } else {
@@ -73,10 +73,10 @@ function Page() {
       if (allPagesData.music) {
         setAudioLink(allPagesData.music);
         setAudioMeasures({
-          width: allPagesData.musicWidth - 2,
-          height: allPagesData.musicHeight - 2,
-          musicH: allPagesData.musicH - 391.65625,
-          musicV: allPagesData.musicV - 44,
+          width: allPagesData.musicWidth,
+          height: allPagesData.musicHeight,
+          musicH: allPagesData.musicH,
+          musicV: allPagesData.musicV,
         });
       } else {
         setAudioLink("");
@@ -85,10 +85,10 @@ function Page() {
       if (allPagesData.photo) {
         setShowPhoto(allPagesData.photo);
         setPhotoMeasures({
-          width: allPagesData.photoWidth - 2,
-          height: allPagesData.photoHeight - 2,
-          photoH: allPagesData.photoH - 391.65625,
-          photoV: allPagesData.photoV - 44,
+          width: allPagesData.photoWidth,
+          height: allPagesData.photoHeight,
+          photoH: allPagesData.photoH,
+          photoV: allPagesData.photoV,
         });
       } else {
         setShowPhoto("");
@@ -98,10 +98,10 @@ function Page() {
       if (allPagesData.video) {
         setVideoLink(allPagesData.video);
         setVideoMeasures({
-          width: allPagesData.videoWidth - 2,
-          height: allPagesData.videoHeight - 2,
-          videoH: allPagesData.videoH - 391.65625,
-          videoV: allPagesData.videoV - 44,
+          width: allPagesData.videoWidth,
+          height: allPagesData.videoHeight,
+          videoH: allPagesData.videoH,
+          videoV: allPagesData.videoV,
         });
       } else {
         setVideoLink("");
@@ -110,10 +110,10 @@ function Page() {
       if (allPagesData.chapter) {
         setChapter(allPagesData.chapter);
         setChapterMeasures({
-          width: allPagesData.chapterWidth - 2,
-          height: allPagesData.chapterHeight - 2,
-          chapterH: allPagesData.chapterH - 391.65625,
-          chapterV: allPagesData.chapterV - 44,
+          width: allPagesData.chapterWidth,
+          height: allPagesData.chapterHeight,
+          chapterH: allPagesData.chapterH,
+          chapterV: allPagesData.chapterV,
         });
       } else {
         setChapter("");
@@ -136,10 +136,10 @@ function Page() {
         .getElementById("dragWrite")
         .getBoundingClientRect();
       textMeasures = {
-        width: textElement.width,
-        height: textElement.height,
-        textH: textElement.left,
-        textV: textElement.top,
+        width: textElement.width - 2,
+        height: textElement.height - 2,
+        textH: textElement.left - 391.65625,
+        textV: textElement.top - 44,
       };
     } else {
       textMeasures = {
@@ -154,10 +154,10 @@ function Page() {
         .getElementById("showPhoto")
         .getBoundingClientRect();
       photoMeasures = {
-        width: photoElement.width,
-        height: photoElement.height,
-        photoH: photoElement.left,
-        photoV: photoElement.top,
+        width: photoElement.width - 2,
+        height: photoElement.height - 2,
+        photoH: photoElement.left - 391.65625,
+        photoV: photoElement.top - 44,
       };
     } else {
       photoMeasures = {
@@ -172,10 +172,10 @@ function Page() {
         .getElementById("showChapter")
         .getBoundingClientRect();
       chapterMeasures = {
-        width: chapterElement.width,
-        height: chapterElement.height,
-        chapterH: chapterElement.left,
-        chapterV: chapterElement.top,
+        width: chapterElement.width - 2,
+        height: chapterElement.height - 2,
+        chapterH: chapterElement.left - 391.65625,
+        chapterV: chapterElement.top - 44,
       };
     } else {
       chapterMeasures = {
@@ -190,10 +190,10 @@ function Page() {
         .getElementById("audioShow")
         .getBoundingClientRect();
       audioMeasures = {
-        width: audioElement.width,
-        height: audioElement.height,
-        musicH: audioElement.left,
-        musicV: audioElement.top,
+        width: audioElement.width - 2,
+        height: audioElement.height - 2,
+        musicH: audioElement.left - 391.65625,
+        musicV: audioElement.top - 44,
       };
     } else {
       audioMeasures = {
@@ -208,10 +208,10 @@ function Page() {
         .getElementById("videoPlayer")
         .getBoundingClientRect();
       videoMeasures = {
-        width: videoElement.width,
-        height: videoElement.height,
-        videoH: videoElement.left,
-        videoV: videoElement.top,
+        width: videoElement.width - 2,
+        height: videoElement.height - 2,
+        videoH: videoElement.left - 391.65625,
+        videoV: videoElement.top - 44,
       };
     } else {
       videoMeasures = {
