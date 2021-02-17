@@ -9,26 +9,57 @@ function SlideMenu() {
   let dispatch = useDispatch();
   let [showMenu, setShowMenu] = useState(false);
   let history = useHistory();
-  // let menuButton;
-  // if (showMenu) {
-  //   menuButton = { left: 0 };
-  //   // document.getElementById("menu").style.width = 300 + "px";
-  // }
-  console.log("hjsdfghdfkgjhsdlfkg");
+
   return (
     <>
       <div className="menu" id="menu">
         <div className="menuList">
-          <h4 onClick={() => (window.location.href = `${user.username}`)}>
+          <h4
+            onClick={() => {
+              document.getElementById("menu").style.top = -70 + "%";
+              setShowMenu(false);
+              history.push(`/${user.username}`);
+            }}
+          >
             Me
           </h4>
-          <h4 onClick={() => (window.location.href = "/world-baras")}>
+          <h4
+            onClick={() => {
+              document.getElementById("menu").style.top = -70 + "%";
+              setShowMenu(false);
+              history.push("/world-baras");
+            }}
+          >
             World Baras
           </h4>
-          <h4 onClick={() => (window.location.href = "/trust-baras")}>
+          <h4
+            onClick={() => {
+              document.getElementById("menu").style.top = -70 + "%";
+              setShowMenu(false);
+              history.push("/trust-baras");
+            }}
+          >
             Trusted Baras
           </h4>
-          <h4 onClick={() => (window.location.href = "/trust")}>Trust</h4>
+          <h4
+            onClick={() => {
+              document.getElementById("menu").style.transition = 0 + "s";
+              document.getElementById("menu").style.top = -70 + "%";
+              setShowMenu(false);
+              history.push("/trust");
+            }}
+          >
+            Trust
+          </h4>
+          <h4
+            onClick={() => {
+              document.getElementById("menu").style.top = -70 + "%";
+              setShowMenu(false);
+              history.push("/story/tell");
+            }}
+          >
+            Story
+          </h4>
           <h4
             onClick={() =>
               dispatch(sessionActions.logout()).then(() =>
@@ -56,12 +87,12 @@ function SlideMenu() {
         className="menuButton"
         id="menuButton"
         onClick={() => {
+          document.getElementById("menu").style.transition = 2 + "s";
           setShowMenu(true);
           if (
             document.getElementById("menu").style.top == -70 + "%" ||
             document.getElementById("menu").style.top != -70 + "%"
           ) {
-            console.log("weird");
             document.getElementById("menu").style.top = 0 + "%";
           }
         }}
