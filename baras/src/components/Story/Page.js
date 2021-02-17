@@ -436,8 +436,8 @@ function Page() {
         <button
           onClick={() => {
             setPhotoChoosen(false);
-            setAudioChoosen(true);
-            setVideoChoosen(true);
+            // setAudioChoosen(true);
+            // setVideoChoosen(true);
           }}
         >
           Add Photo
@@ -445,8 +445,8 @@ function Page() {
         <button
           onClick={() => {
             setAudioChoosen(false);
-            setPhotoChoosen(true);
-            setVideoChoosen(true);
+            // setPhotoChoosen(true);
+            // setVideoChoosen(true);
           }}
         >
           Add Song
@@ -454,8 +454,8 @@ function Page() {
         <button
           onClick={() => {
             setVideoChoosen(false);
-            setPhotoChoosen(true);
-            setAudioChoosen(true);
+            // setPhotoChoosen(true);
+            // setAudioChoosen(true);
           }}
         >
           Add Video
@@ -510,18 +510,21 @@ function Page() {
           id="addPhotoInput"
           type="file"
           hidden={photoChoosen}
+          style={{ width: "182px", marginBottom: "5px", marginTop: "5px" }}
           onChange={(e) => addPhoto(e.target.files[0])}
           placeholder="Photo"
         />
         <button
           hidden={photoChoosen}
+          className="clearButtons"
+          style={{ marginLeft: "2px", marginRight: "2px" }}
           type="button"
           onClick={() => {
             document.getElementById("addPhotoInput").value = "";
             setShowPhoto("");
           }}
         >
-          Clear
+          <i class="fas fa-broom"></i>
         </button>
         <button
           hidden={photoChoosen}
@@ -540,6 +543,7 @@ function Page() {
         <input
           type="text"
           hidden={audioChoosen}
+          style={{ width: "173px", marginTop: "5px", marginBottom: "5px" }}
           value={audioLink}
           onChange={(e) => {
             if (e.target.value.length > 61 && e.target.value.length <= 1000) {
@@ -552,6 +556,17 @@ function Page() {
           }}
           placeholder="Put audio link here"
         />
+        <button
+          hidden={audioChoosen}
+          className="clearButtons"
+          style={{ marginLeft: "2px", marginRight: "2px" }}
+          type="button"
+          onClick={() => {
+            setAudioLink("");
+          }}
+        >
+          <i class="fas fa-broom"></i>
+        </button>
         <button
           hidden={audioChoosen}
           className="cancelButtons"
@@ -570,6 +585,7 @@ function Page() {
           hidden={videoChoosen}
           placeholder="Put video link here"
           value={videoLink}
+          style={{ width: "173px", marginTop: "5px", marginBottom: "5px" }}
           onChange={(e) => {
             if (e.target.value.length) {
               let youtubeFindId = e.target.value.indexOf("v=");
@@ -584,12 +600,14 @@ function Page() {
         />
         <button
           hidden={videoChoosen}
+          className="clearButtons"
+          style={{ marginLeft: "2px", marginRight: "2px" }}
           type="button"
           onClick={() => {
             setVideoLink("");
           }}
         >
-          Clear
+          <i class="fas fa-broom"></i>
         </button>
         <button
           hidden={videoChoosen}
@@ -615,15 +633,24 @@ function Page() {
         Write
       </button> */}
       {write && (
-        <button
-          className="cancelButtons"
-          onClick={() => {
-            setWrite(false);
-            setText("");
-          }}
-        >
-          X
-        </button>
+        <div>
+          Remove Write
+          <button
+            className="cancelButtons"
+            // style={{
+            //   position: "absolute",
+            //   left: "81.5%",
+            //   zIndex: "1",
+            //   top: "16.38%",
+            // }}
+            onClick={() => {
+              setWrite(false);
+              setText("");
+            }}
+          >
+            X
+          </button>
+        </div>
       )}
       {/* <button onClick={() => setShowChapterInput(true)}>Add Chapter</button> */}
       {chapterInput && (
@@ -633,6 +660,7 @@ function Page() {
             value={chapter}
             maxLength="100"
             onChange={(e) => setChapter(e.target.value)}
+            placeholder="Chapter"
           />
           <button
             className="cancelButtons"

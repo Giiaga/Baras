@@ -114,3 +114,29 @@
   /* border: none; */
   outline: none;
 }
+
+#addPhotoInput::-webkit-file-upload-button {
+  width: 55px;
+  border: rgba(255, 109, 25, 0.479) 2px solid;
+  border-radius: 3px;
+  padding-left: 2px;
+  background-color: transparent;
+  color: rgb(117, 117, 117);
+}
+
+#addPhotoInput::-webkit-file-upload-button:hover {
+  background-color: rgb(255, 194, 170);
+  color: white;
+}
+
+.clearButtons {
+  background-color: transparent;
+  border: none;
+}
+.clearButtons:focus {
+  outline: none;
+}
+
+.fa-broom:hover {
+  color: rgb(255, 194, 170);
+}
