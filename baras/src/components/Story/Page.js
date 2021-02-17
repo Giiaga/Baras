@@ -642,6 +642,32 @@ function Page() {
             </button>
           </>
         )}
+        {write && (
+          <div
+            style={{
+              color: "rgb(255, 245, 238)",
+              marginLeft: "5px",
+              marginTop: "5px",
+              marginBottom: "5px",
+              paddingLeft: "2px",
+            }}
+            onClick={() => {
+              setWrite(false);
+              setText("");
+            }}
+          >
+            Remove Write{" "}
+            <button
+              className="cancelButtons"
+              onClick={() => {
+                setWrite(false);
+                setText("");
+              }}
+            >
+              X
+            </button>
+          </div>
+        )}
       </div>
       {/* ALL BUTTONS */}
       {/* <button
@@ -805,7 +831,7 @@ function Page() {
       >
         Write
       </button> */}
-      {write && (
+      {/* {write && (
         <div>
           Remove Write
           <button
@@ -824,7 +850,7 @@ function Page() {
             X
           </button>
         </div>
-      )}
+      )} */}
       {/* <button onClick={() => setShowChapterInput(true)}>Add Chapter</button> */}
       {/* {chapterInput && (
         <>
