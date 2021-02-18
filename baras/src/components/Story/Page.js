@@ -743,6 +743,9 @@ function Page() {
                   cursor: "move",
                   color: "transparent",
                 }}
+                onMouseDown={(e) => {
+                  dragElement(document.getElementById("videoPlayer"));
+                }}
               ></div>
 
               <iframe

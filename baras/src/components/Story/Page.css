@@ -1,11 +1,23 @@
 #videoPlayer::-webkit-resizer {
   display: none;
 }
+#audioShow:hover {
+  border: 3px solid black;
+}
+#videoPlayer:hover {
+  border: 3px solid black;
+}
 #showPhoto::-webkit-resizer {
   display: none;
 }
+#showPhoto:hover {
+  border: 1px solid;
+}
 #showChapter::-webkit-resizer {
   display: none;
+}
+#showChapter:hover {
+  border: 1px solid;
 }
 /* #dragWritemain:hover {
   border-bottom: 1px solid gray;
