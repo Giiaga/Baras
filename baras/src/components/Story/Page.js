@@ -110,7 +110,7 @@ function Page() {
       }
       if (allPagesData.chapter) {
         if (i > 0 && allPagesData.chapter === allPages[i - 1].chapter) {
-          setChapter(false);
+          setChapter("");
           setChapterMeasures({});
         } else {
           setChapter(allPagesData.chapter);
