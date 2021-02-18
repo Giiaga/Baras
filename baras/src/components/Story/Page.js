@@ -671,16 +671,17 @@ function Page() {
               marginBottom: "5px",
               paddingLeft: "2px",
               width: "120px",
-              height: "15px",
+              height: "18px",
             }}
             onClick={() => {
               setWrite(false);
               setText("");
             }}
           >
-            Remove Write{" "}
+            <p style={{ display: "inline" }}>Remove Write </p>
             <button
               className="cancelButtons"
+              style={{ marginBottom: "3px" }}
               onClick={() => {
                 setWrite(false);
                 setText("");
