@@ -29,11 +29,11 @@ function Page() {
   let [error, setError] = useState(false);
 
   // THIS DECIDES WHETER NEWPAGE THUNK WILL DISPATCH OR STORYPAGE
-  let [newPageDispatch, setNewPageDispatch] = useState(false);
+  // let [newPageDispatch, setNewPageDispatch] = useState(false);
   // HEIGHTS AND WIDTHS AND POSITIONS END
 
   let fromParam = useParams();
-  let history = useHistory();
+  // let history = useHistory();
   let storyTitle = fromParam.title.split("<:>").join(" ");
 
   let allPages = useSelector((state) => state.story.allPages);
@@ -109,13 +109,18 @@ function Page() {
         setVideoMeasures({});
       }
       if (allPagesData.chapter) {
-        setChapter(allPagesData.chapter);
-        setChapterMeasures({
-          width: allPagesData.chapterWidth,
-          height: allPagesData.chapterHeight,
-          chapterH: allPagesData.chapterH,
-          chapterV: allPagesData.chapterV,
-        });
+        if (i > 0 && allPagesData.chapter === allPages[i - 1].chapter) {
+          setChapter(false);
+          setChapterMeasures({});
+        } else {
+          setChapter(allPagesData.chapter);
+          setChapterMeasures({
+            width: allPagesData.chapterWidth,
+            height: allPagesData.chapterHeight,
+            chapterH: allPagesData.chapterH,
+            chapterV: allPagesData.chapterV,
+          });
+        }
       } else {
         setChapter("");
         setChapterMeasures({});
@@ -223,7 +228,7 @@ function Page() {
       };
     }
     let sameChapter;
-    if (!chapter) {
+    if (!chapter && i != 0) {
       sameChapter = allPages[allPages.length - 1].chapter;
     } else sameChapter = chapter;
 
@@ -739,7 +744,7 @@ function Page() {
               <div
                 id="videoPlayermain"
                 style={{
-                  height: "13px",
+                  height: "3px",
                   margin: "0",
                   padding: "0",
                   cursor: "move",
