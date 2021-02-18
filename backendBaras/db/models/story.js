@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
           len: [0, 100],
         },
       },
+      private: { type: DataTypes.BOOLEAN, defaultValue: false },
+      trusted: { type: DataTypes.BOOLEAN, defaultValue: true },
       published: { type: DataTypes.BOOLEAN, defaultValue: false },
     },
     {}
