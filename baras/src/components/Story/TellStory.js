@@ -31,39 +31,105 @@ function TellStory({ title, setTellStory }) {
     <>
       <Modal onClose={() => setTellStory(false)}>
         {!published && (
-          <>
-            <h1>Do you want to publish this?</h1>
-            <label>
-              Yes, share with the world!
+          <div
+            style={{
+              height: "400px",
+              width: "600px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-around",
+            }}
+          >
+            <h1 style={{ marginLeft: "auto", marginRight: "auto" }}>
+              Do you want to publish this?
+            </h1>
+            <div style={{ height: "20px", display: "flex" }}>
+              <label
+                style={{
+                  marginLeft: "100px",
+                  marginTop: "0",
+                  fontSize: "large",
+                }}
+              >
+                Yes, share with the world!{" "}
+              </label>
               <input
                 type="checkbox"
                 id="worldShare"
+                style={{
+                  width: "18px",
+                  height: "18px",
+                  marginLeft: "10px",
+                  marginBottom: "0",
+                  alignSelf: "flex-end",
+                }}
                 checked={worldShare}
                 onChange={checkOrNot}
               />
-            </label>
-            <label>
-              Yes, Trusted only
+            </div>
+            <div style={{ height: "20px", display: "flex" }}>
+              <label
+                style={{
+                  marginLeft: "100px",
+                  marginTop: "0",
+                  fontSize: "large",
+                }}
+              >
+                Yes, Trusted only
+              </label>
               <input
                 type="checkbox"
                 id="trustShare"
+                style={{
+                  width: "18px",
+                  height: "18px",
+                  marginLeft: "10px",
+                  marginBottom: "0",
+                  alignSelf: "flex-end",
+                }}
                 checked={trustShare}
                 onChange={checkOrNot}
               />
-            </label>
-            <label>
-              For me only
+            </div>
+            <div style={{ height: "20px", display: "flex" }}>
+              <label
+                style={{
+                  marginLeft: "100px",
+                  marginTop: "0",
+                  fontSize: "large",
+                }}
+              >
+                For Me only{" "}
+              </label>
               <input
                 type="checkbox"
                 id="selfShare"
+                style={{
+                  width: "18px",
+                  height: "18px",
+                  marginLeft: "10px",
+                  marginBottom: "0",
+                  alignSelf: "flex-end",
+                }}
                 checked={selfShare}
                 onChange={checkOrNot}
               />
-            </label>
-            <button type="button" onClick={() => setPublished(true)}>
-              Let it out^
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setPublished(true)}
+              style={{
+                width: "70px",
+                height: "40px",
+                marginLeft: "auto",
+                marginRight: "70px",
+                marginBottom: "0",
+              }}
+            >
+              Let it out
             </button>
-          </>
+          </div>
         )}
         {published && (
           <>
