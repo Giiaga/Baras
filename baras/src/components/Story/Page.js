@@ -549,13 +549,13 @@ function Page() {
               (document.getElementById("allTheButtons").style.top = -50 + "%")
             }
             onChange={(e) => {
-              if (e.target.value.length > 61 && e.target.value.length <= 1000) {
+              if (e.target.value.length > 50 && e.target.value.length <= 1000) {
                 let found = e.target.value.indexOf("http");
                 let complete = e.target.value.indexOf("&auto");
 
                 let audioSoundcloudLink = e.target.value.slice(found, complete);
                 setAudioLink(audioSoundcloudLink);
-              }
+              } else setAudioLink(e.target.value);
             }}
             placeholder="Put audio link here"
           />
@@ -600,6 +600,8 @@ function Page() {
                 let youtubeId = e.target.value.slice(youtubeFindId + 2, 43);
 
                 setVideoLink(youtubePartUrl + "embed/" + youtubeId);
+              } else {
+                setVideoLink(e.target.value);
               }
 
               e.target.placeholder = "Please enter a complete url";
