@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPages, storyPage, newPage } from "../../store/story";
 
 import "./Page.css";
+import TellStory from "./TellStory";
 
 function Page() {
   let [audioChoosen, setAudioChoosen] = useState(true);
@@ -19,6 +20,8 @@ function Page() {
   let [chapterInput, setShowChapterInput] = useState(false);
   let [text, setText] = useState("");
   let [i, setChangePage] = useState();
+
+  let [tellStory, setTellStory] = useState(false);
   // HEIGHTS AND WIDTHS AND POSITIONS
 
   let [photoMeasures, setPhotoMeasures] = useState({});
@@ -411,6 +414,9 @@ function Page() {
     );
   return (
     <>
+      {tellStory && (
+        <TellStory title={storyTitle} setTellStory={setTellStory} />
+      )}
       <div
         className="addButtonDiv"
         onClick={() => {
@@ -488,6 +494,15 @@ function Page() {
           }}
         >
           New Page
+        </button>
+        <button
+          onClick={(e) => {
+            setTellStory(true);
+            document.getElementById("allTheButtons").style.top = -50 + "%";
+            saveStory(e);
+          }}
+        >
+          Tell Story
         </button>
       </div>
 
