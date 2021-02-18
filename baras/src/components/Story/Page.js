@@ -523,7 +523,7 @@ function Page() {
               setShowPhoto("");
             }}
           >
-            <i class="fas fa-broom"></i>
+            <i className="fas fa-broom"></i>
           </button>
           <button
             hidden={photoChoosen}
@@ -568,7 +568,7 @@ function Page() {
               setAudioLink("");
             }}
           >
-            <i class="fas fa-broom"></i>
+            <i className="fas fa-broom"></i>
           </button>
           <button
             hidden={audioChoosen}
@@ -614,7 +614,7 @@ function Page() {
               setVideoLink("");
             }}
           >
-            <i class="fas fa-broom"></i>
+            <i className="fas fa-broom"></i>
           </button>
           <button
             hidden={videoChoosen}
@@ -649,7 +649,7 @@ function Page() {
                 setChapter("");
               }}
             >
-              <i class="fas fa-broom"></i>
+              <i className="fas fa-broom"></i>
             </button>
             <button
               className="cancelButtons"
@@ -692,221 +692,6 @@ function Page() {
         )}
       </div>
       {/* ALL BUTTONS */}
-      {/* <button
-        onClick={() => {
-          setPhotoChoosen(false);
-          setAudioChoosen(true);
-          setVideoChoosen(true);
-        }}
-      >
-        Add Photo
-      </button> */}
-      {/* <button
-        onClick={() => {
-          setAudioChoosen(false);
-          setPhotoChoosen(true);
-          setVideoChoosen(true);
-        }}
-      >
-        Add Song
-      </button>
-      <button
-        onClick={() => {
-          setVideoChoosen(false);
-          setPhotoChoosen(true);
-          setAudioChoosen(true);
-        }}
-      >
-        Add Video
-      </button> */}
-      {/* <div>
-        <input
-          id="addPhotoInput"
-          type="file"
-          hidden={photoChoosen}
-          style={{
-            width: "182px",
-            marginBottom: "5px",
-            marginTop: "5px",
-            marginLeft: "5px",
-          }}
-          onChange={(e) => addPhoto(e.target.files[0])}
-          placeholder="Photo"
-        />
-        <button
-          hidden={photoChoosen}
-          className="clearButtons"
-          style={{ marginLeft: "2px", marginRight: "2px" }}
-          type="button"
-          onClick={() => {
-            document.getElementById("addPhotoInput").value = "";
-            setShowPhoto("");
-          }}
-        >
-          <i class="fas fa-broom"></i>
-        </button>
-        <button
-          hidden={photoChoosen}
-          type="button"
-          className="cancelButtons"
-          onClick={() => {
-            setPhotoChoosen(true);
-            setShowPhoto("");
-            document.getElementById("addPhotoInput").value = "";
-          }}
-        >
-          X
-        </button>
-      </div>
-      <div>
-        <input
-          type="text"
-          className="inputStyles"
-          hidden={audioChoosen}
-          style={{ width: "173px", marginTop: "5px", marginBottom: "5px" }}
-          value={audioLink}
-          onChange={(e) => {
-            if (e.target.value.length > 61 && e.target.value.length <= 1000) {
-              let found = e.target.value.indexOf("http");
-              let complete = e.target.value.indexOf("&auto");
-
-              let audioSoundcloudLink = e.target.value.slice(found, complete);
-              setAudioLink(audioSoundcloudLink);
-            }
-          }}
-          placeholder="Put audio link here"
-        />
-        <button
-          hidden={audioChoosen}
-          className="clearButtons"
-          style={{ marginLeft: "2px", marginRight: "2px" }}
-          type="button"
-          onClick={() => {
-            setAudioLink("");
-          }}
-        >
-          <i class="fas fa-broom"></i>
-        </button>
-        <button
-          hidden={audioChoosen}
-          className="cancelButtons"
-          type="button"
-          onClick={() => {
-            setAudioChoosen(true);
-            setAudioLink("");
-          }}
-        >
-          X
-        </button>
-      </div>
-      <div>
-        <input
-          type="text"
-          hidden={videoChoosen}
-          className="inputStyles"
-          placeholder="Put video link here"
-          value={videoLink}
-          style={{ width: "173px", marginTop: "5px", marginBottom: "5px" }}
-          onChange={(e) => {
-            if (e.target.value.length) {
-              let youtubeFindId = e.target.value.indexOf("v=");
-              let youtubePartUrl = e.target.value.split()[0].substring(0, 24);
-              let youtubeId = e.target.value.slice(youtubeFindId + 2, 43);
-
-              setVideoLink(youtubePartUrl + "embed/" + youtubeId);
-            }
-
-            e.target.placeholder = "Please enter a complete url";
-          }}
-        />
-        <button
-          hidden={videoChoosen}
-          className="clearButtons"
-          style={{ marginLeft: "2px", marginRight: "2px" }}
-          type="button"
-          onClick={() => {
-            setVideoLink("");
-          }}
-        >
-          <i class="fas fa-broom"></i>
-        </button>
-        <button
-          hidden={videoChoosen}
-          className="cancelButtons"
-          type="button"
-          onClick={() => {
-            setVideoChoosen(true);
-          }}
-        >
-          X
-        </button>
-      </div> */}
-      {/* <button
-        onClick={() => {
-          setWrite(true);
-          // let test = document.getElementById("dragWrite");
-          // console.log(test);
-          // .getBoundingClientRect().height;
-
-          // setHeight(test);
-        }}
-      >
-        Write
-      </button> */}
-      {/* {write && (
-        <div>
-          Remove Write
-          <button
-            className="cancelButtons"
-            // style={{
-            //   position: "absolute",
-            //   left: "81.5%",
-            //   zIndex: "1",
-            //   top: "16.38%",
-            // }}
-            onClick={() => {
-              setWrite(false);
-              setText("");
-            }}
-          >
-            X
-          </button>
-        </div>
-      )} */}
-      {/* <button onClick={() => setShowChapterInput(true)}>Add Chapter</button> */}
-      {/* {chapterInput && (
-        <>
-          <input
-            className="inputStyles"
-            type="text"
-            value={chapter}
-            maxLength="100"
-            onChange={(e) => setChapter(e.target.value)}
-            placeholder="Chapter"
-          />
-          <button
-            className="cancelButtons"
-            onClick={() => {
-              setShowChapterInput(false);
-              setChapter("");
-            }}
-          >
-            X
-          </button>
-        </>
-      )} */}
-      {/* <button onClick={saveStory}>Save</button> */}
-      {/* <button
-        value={"newPage"}
-        onClick={(e) => {
-          // setShowPhoto("");
-          // setWrite(false);
-          // setNewPageDispatch(true);
-          saveStory(e);
-        }}
-      >
-        New Page
-      </button> */}
       <div
         className="pageMainDiv"
         style={{
@@ -1016,6 +801,7 @@ function Page() {
           <>
             <div
               id="dragWrite"
+              className="what"
               style={{
                 position: "absolute",
                 resize: "both",
@@ -1024,7 +810,7 @@ function Page() {
                 overflowY: "hidden",
                 maxWidth: "209.5mm",
                 maxHeight: "295.5mm",
-                border: "1px solid",
+                // border: "1px solid",
                 width:
                   textMeasures.width >= 0 ? textMeasures.width + "px" : "auto",
                 height:

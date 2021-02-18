@@ -4,7 +4,21 @@
 #showPhoto::-webkit-resizer {
   display: none;
 }
-
+#showChapter::-webkit-resizer {
+  display: none;
+}
+/* #dragWritemain:hover {
+  border-bottom: 1px solid gray;
+} */
+.what:hover {
+  border: 1px solid grey;
+}
+textarea {
+  outline: none;
+  border: none;
+  padding-left: 10px;
+  font-size: 14px;
+}
 .nextBackIcons {
   color: rgba(218, 208, 208, 0.842);
 }
@@ -76,6 +90,7 @@
 
 .cancelButtons {
   margin-left: 2px;
+  margin-bottom: 3px;
   width: 18px;
   height: 18px;
   background-color: rgb(255, 171, 115);
