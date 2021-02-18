@@ -9,10 +9,24 @@ let tellStoryAC = (data) => {
   };
 };
 
-export let tellStory = (userId, title, publish) => async (dispatch) => {
+export let tellStory = (
+  userId,
+  title,
+  publish,
+  worldShare,
+  trustShare,
+  selfShare
+) => async (dispatch) => {
   let response = await fetch("/story/tell", {
     method: "POST",
-    body: JSON.stringify({ userId, title, publish }),
+    body: JSON.stringify({
+      userId,
+      title,
+      publish,
+      worldShare,
+      trustShare,
+      selfShare,
+    }),
   });
 
   dispatch(tellStoryAC(response.data));

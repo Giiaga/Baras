@@ -1,15 +1,26 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Modal } from "../../Modals/Modal";
+import { tellStory } from "../../store/story";
 
 function TellStory({ title, setTellStory }) {
   let history = useHistory();
+  let dispatch = useDispatch();
+
+  let userId = useSelector((state) => state.session.user.id);
 
   let [trustShare, setTrustShare] = useState(false);
   let [worldShare, setWorldShare] = useState(true);
   let [selfShare, setSelfShare] = useState(false);
   let [published, setPublished] = useState(false);
+
+  function tellTheStory(e) {
+    e.preventDefault();
+
+    dispatch(tellStory(userId, title, true, worldShare, trustShare, selfShare));
+  }
 
   function checkOrNot(e) {
     if (e.target.id === "trustShare") {
@@ -121,7 +132,10 @@ function TellStory({ title, setTellStory }) {
 
             <button
               type="button"
-              onClick={() => setPublished(true)}
+              onClick={(e) => {
+                tellTheStory(e);
+                setPublished(true);
+              }}
               style={{
                 width: "70px",
                 height: "40px",

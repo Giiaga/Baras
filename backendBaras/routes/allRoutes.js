@@ -64,12 +64,72 @@ router.post(
   "/story/tell",
   requireAuth,
   asyncHandler(async (req, res) => {
-    let { userId, title, publish } = req.body;
+    let {
+      userId,
+      title,
+      publish,
+      worldShare,
+      trustShare,
+      selfShare,
+    } = req.body;
+    let storyFound = await Story.findOne({
+      where: { userId: userId, title: title },
+    });
+    if (selfShare && trustShare) {
+      let storyUpdate = await Story.update(
+        { publish: true, private: true, trusted: true },
+        {
+          returning: true,
+          plain: true,
+          where: {
+            title: title,
+            userId: userId,
+          },
+        }
+      );
+      return res.json(storyUpdate);
+    } else if (worldShare && trustShare) {
+      let storyUpdate = await Story.update(
+        { publish: true, private: false, trusted: true },
+        {
+          returning: true,
+          plain: true,
+          where: {
+            title: title,
+            userId: userId,
+          },
+        }
+      );
+      return res.json(storyUpdate);
+    } else if (worldShare || trustShare) {
+      let storyUpdate = await Story.update(
+        { publish: true, private: false, trusted: true },
+        {
+          returning: true,
+          plain: true,
+          where: {
+            title: title,
+            userId: userId,
+          },
+        }
+      );
+      return res.json(storyUpdate);
+    } else if (selfShare) {
+      let storyUpdate = await Story.update(
+        { publish: true, private: true, trusted: false },
+        {
+          returning: true,
+          plain: true,
+          where: {
+            title: title,
+            userId: userId,
+          },
+        }
+      );
+      return res.json(storyUpdate);
+    }
     let story = await Story.create({ userId, title, publish });
     await Page.create({ pageNumber: 1, storyId: story.id });
-    // let test = await Baras.findAll({ where: { userId: 5 } });
-    // let test = await Page.findOne();
-    // console.log("tTESTTTSTDTSDTT", test);
 
     return res.json(story);
   })
@@ -154,7 +214,6 @@ router.post(
         plain: true,
       }
     );
-    console.log(page, "PAGES", typeof page);
 
     let lastPage = await Page.findOne({
       where: { storyId: story.id },
