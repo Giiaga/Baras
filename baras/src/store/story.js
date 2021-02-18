@@ -30,7 +30,7 @@ export let tellStory = (
   });
 
   dispatch(tellStoryAC(response.data));
-  return response;
+  return response.data;
 };
 
 let STORYPAGE = "addsNewStoryPageToDatabase";

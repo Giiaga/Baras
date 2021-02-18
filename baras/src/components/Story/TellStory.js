@@ -9,17 +9,19 @@ function TellStory({ title, setTellStory }) {
   let history = useHistory();
   let dispatch = useDispatch();
 
-  let userId = useSelector((state) => state.session.user.id);
+  let user = useSelector((state) => state.session.user);
 
   let [trustShare, setTrustShare] = useState(false);
   let [worldShare, setWorldShare] = useState(true);
   let [selfShare, setSelfShare] = useState(false);
   let [published, setPublished] = useState(false);
-
+  let [timing, setTiming] = useState(5);
   function tellTheStory(e) {
     e.preventDefault();
 
-    dispatch(tellStory(userId, title, true, worldShare, trustShare, selfShare));
+    dispatch(
+      tellStory(user.id, title, true, worldShare, trustShare, selfShare)
+    ).then((data) => data && setPublished(true));
   }
 
   function checkOrNot(e) {
@@ -41,6 +43,16 @@ function TellStory({ title, setTellStory }) {
     }
   }
 
+  function time() {
+    let numb = 6;
+    let clear = setInterval(() => {
+      setTiming(timing - 1);
+    }, 1000);
+    if (timing === 0) {
+      clearInterval(clear);
+     return history.push(`/story/${title}`);
+    }
+  }
   return (
     <>
       <Modal onClose={() => setTellStory(false)}>
@@ -134,7 +146,6 @@ function TellStory({ title, setTellStory }) {
               type="button"
               onClick={(e) => {
                 tellTheStory(e);
-                setPublished(true);
               }}
               style={{
                 width: "70px",
@@ -150,7 +161,12 @@ function TellStory({ title, setTellStory }) {
         )}
         {published && (
           <>
-            <h1>No Words</h1>
+            <h1>
+              "{title}" by <small>{user.username}</small> has been published to
+              your wishes.
+            </h1>
+            <p>You are Life! Don't ever forget that</p>
+            <small>{timing}</small>
           </>
         )}
       </Modal>
