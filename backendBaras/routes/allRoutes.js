@@ -72,12 +72,13 @@ router.post(
       trustShare,
       selfShare,
     } = req.body;
-    let storyFound = await Story.findOne({
-      where: { userId: userId, title: title },
-    });
+    // console.log(publish, worldShare, trustShare, selfShare, "CHECKKKKKK");
+    // let storyFound = await Story.findOne({
+    //   where: { userId: userId, title: title },
+    // });
     if (selfShare && trustShare) {
       let storyUpdate = await Story.update(
-        { publish: true, private: true, trusted: true },
+        { published: true, private: true, trusted: true },
         {
           returning: true,
           plain: true,
@@ -90,7 +91,7 @@ router.post(
       return res.json(storyUpdate);
     } else if (worldShare && trustShare) {
       let storyUpdate = await Story.update(
-        { publish: true, private: false, trusted: true },
+        { published: true, private: false, trusted: true },
         {
           returning: true,
           plain: true,
@@ -103,7 +104,7 @@ router.post(
       return res.json(storyUpdate);
     } else if (worldShare || trustShare) {
       let storyUpdate = await Story.update(
-        { publish: true, private: false, trusted: true },
+        { published: true, private: false, trusted: true },
         {
           returning: true,
           plain: true,
@@ -116,7 +117,7 @@ router.post(
       return res.json(storyUpdate);
     } else if (selfShare) {
       let storyUpdate = await Story.update(
-        { publish: true, private: true, trusted: false },
+        { published: true, private: true, trusted: false },
         {
           returning: true,
           plain: true,

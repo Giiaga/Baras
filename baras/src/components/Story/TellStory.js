@@ -16,6 +16,7 @@ function TellStory({ title, setTellStory }) {
   let [selfShare, setSelfShare] = useState(false);
   let [published, setPublished] = useState(false);
   let [timing, setTiming] = useState(5);
+
   function tellTheStory(e) {
     e.preventDefault();
 
@@ -44,14 +45,14 @@ function TellStory({ title, setTellStory }) {
   }
 
   function time() {
-    let numb = 6;
     let clear = setInterval(() => {
       setTiming(timing - 1);
     }, 1000);
-    if (timing === 0) {
+    let clearTime = setTimeout(() => {
       clearInterval(clear);
-     return history.push(`/story/${title}`);
-    }
+    }, 5000);
+    clearTimeout(clearTime);
+    return history.push(`/story/${title}`);
   }
   return (
     <>
@@ -144,9 +145,7 @@ function TellStory({ title, setTellStory }) {
 
             <button
               type="button"
-              onClick={(e) => {
-                tellTheStory(e);
-              }}
+              onClick={tellTheStory}
               style={{
                 width: "70px",
                 height: "40px",
@@ -161,6 +160,7 @@ function TellStory({ title, setTellStory }) {
         )}
         {published && (
           <>
+            {time()}
             <h1>
               "{title}" by <small>{user.username}</small> has been published to
               your wishes.
