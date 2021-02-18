@@ -21,9 +21,12 @@ function TellStory({ title, setTellStory }) {
         setWorldShare(false);
       } else setWorldShare(true);
     } else {
-      if (selfShare) {
-        setSelfShare(false);
-      } else setSelfShare(true);
+      if ((worldShare && trustShare) || worldShare) {
+      } else {
+        if (selfShare) {
+          setSelfShare(false);
+        } else setSelfShare(true);
+      }
     }
   }
 

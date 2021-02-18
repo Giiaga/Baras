@@ -17,6 +17,14 @@ module.exports = {
         type: Sequelize.STRING(100),
         allowNull: true,
       },
+      private: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      trusted: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true,
+      },
       published: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
