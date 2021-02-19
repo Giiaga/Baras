@@ -61,3 +61,7 @@
   width: 50px;
   font-style: italic;
 }
+
+#tets:hover {
+  color: rgb(233, 233, 233) !important;
+}

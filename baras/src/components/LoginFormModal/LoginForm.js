@@ -12,7 +12,10 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [login, setLogin] = useState(true);
+  const [demo, setDemo] = useState(false);
+
   let history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -23,6 +26,10 @@ function LoginForm() {
       });
   };
 
+  if (demo) {
+    handleSubmit(demo);
+    setDemo(false);
+  }
   return (
     <>
       {!user ? (
@@ -157,6 +164,7 @@ function LoginForm() {
               </p>
             </div>
             <span
+              id="tets"
               type="button"
               style={{
                 position: "absolute",
@@ -167,8 +175,13 @@ function LoginForm() {
                 marginBottom: "0",
                 paddingBottom: "0",
                 textDecoration: "underline",
-                color: "#9c1a8b",
+                color: "#551a8b",
                 fontSize: "15px",
+              }}
+              onClick={(e) => {
+                setCredential("giiaga");
+                setPassword("password");
+                setDemo(e);
               }}
             >
               Demo
