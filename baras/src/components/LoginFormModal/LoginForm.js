@@ -156,6 +156,23 @@ function LoginForm() {
                 You are Life
               </p>
             </div>
+            <span
+              type="button"
+              style={{
+                position: "absolute",
+                left: "44%",
+                top: "88%",
+                border: "none",
+                borderRadius: "1px",
+                marginBottom: "0",
+                paddingBottom: "0",
+                textDecoration: "underline",
+                color: "#9c1a8b",
+                fontSize: "15px",
+              }}
+            >
+              Demo
+            </span>
             <NavLink
               className="signupLogin"
               to="/signup"
