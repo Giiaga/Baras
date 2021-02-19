@@ -204,6 +204,25 @@ function LoginForm() {
             <div
               style={{
                 position: "absolute",
+                left: "-45%",
+                top: "30%",
+                width: "200px",
+                transform: "rotate(90deg)",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "40px",
+                  width: "340px",
+                  fontStyle: "italic",
+                }}
+              >
+                You
+              </p>
+            </div>
+            <div
+              style={{
+                position: "absolute",
                 left: "0%",
                 top: "106%",
                 width: "200px",
@@ -299,8 +318,8 @@ function LoginForm() {
             <div
               style={{
                 position: "absolute",
-                left: "300%",
-                top: "170%",
+                left: "293%",
+                top: "171%",
                 width: "200px",
                 transform: "rotate(-120deg)",
               }}
@@ -337,7 +356,7 @@ function LoginForm() {
             <div
               style={{
                 position: "absolute",
-                left: "311%",
+                left: "280%",
                 top: "95%",
                 width: "200px",
                 transform: "rotate(40deg)",
@@ -465,6 +484,63 @@ function LoginForm() {
                 }}
               >
                 You really are Great. See it!
+              </p>
+            </div>
+            <div
+              style={{
+                position: "absolute",
+                left: "345%",
+                top: "163%",
+                width: "150px",
+                transform: "rotate(12deg)",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "40px",
+                  width: "190px",
+                  fontStyle: "italic",
+                }}
+              >
+                Allow Yourself
+              </p>
+            </div>
+            <div
+              style={{
+                position: "absolute",
+                left: "340%",
+                top: "80%",
+                width: "150px",
+                transform: "rotate(-12deg)",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "40px",
+                  width: "190px",
+                  fontStyle: "italic",
+                }}
+              >
+                See Life In You
+              </p>
+            </div>
+            <div
+              style={{
+                position: "absolute",
+                left: "355%",
+                top: "113%",
+                width: "150px",
+                transform: "rotate(-12deg)",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "40px",
+                  width: "190px",
+                  fontStyle: "italic",
+                }}
+              >
+                Be You
               </p>
             </div>
             <div
@@ -642,7 +718,7 @@ function LoginForm() {
               style={{
                 position: "absolute",
                 left: "50%",
-                top: "130%",
+                top: "125%",
                 width: "200px",
                 transform: "rotate(-10deg)",
               }}
