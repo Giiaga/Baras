@@ -5,14 +5,19 @@ import { tellStory } from "../../store/story";
 
 function StoryTell() {
   let [publish, setPublished] = useState(false);
-  let [title, setTitle] = useState();
+  let [title, setTitle] = useState("");
   let userId = useSelector((state) => state.session.user.id);
   let dispatch = useDispatch();
   let history = useHistory();
-  let createStory = () => {
-    dispatch(tellStory(userId, title, publish));
-    let paramTitle = title.split(" ").join("<:>");
-    return history.push(`/story/${paramTitle}/cont`);
+  let createStory = (e) => {
+    e.preventDefault();
+    dispatch(tellStory(userId, title, publish)).then((data) => {
+      let paramTitle = title.split(" ").join("<:>");
+      if (data) {
+        return history.push(`/story/${paramTitle}/cont`);
+      }
+      // return history.push(`/story/${paramTitle}/cont`);
+    });
   };
   return (
     <>

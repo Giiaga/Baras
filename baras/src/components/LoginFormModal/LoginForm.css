@@ -1,0 +1,63 @@
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 300px;
+}
+
+.inputs {
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid rgb(143, 142, 142);
+  background-color: orange;
+}
+
+.inputs:focus {
+  background-color: orange;
+  outline: none;
+  border-bottom: 1px solid rgb(146, 141, 130);
+}
+.buttonLogin {
+  width: 100px;
+  height: 20px;
+  margin: 10px auto auto auto;
+  border: none;
+  border-radius: 1px;
+}
+
+.loginLabels {
+  margin-left: 73px;
+  margin-bottom: 1px;
+  color: white;
+  font-size: large;
+  font-style: italic;
+}
+
+.signupLogin {
+  position: absolute;
+  left: 43%;
+  top: 80%;
+}
+
+.barasLogin {
+  position: absolute;
+  left: 399.5%;
+  top: 110%;
+  font-size: 200px;
+}
+
+.quoteDiv {
+  position: absolute;
+  top: 70%;
+  left: 400%;
+  /* width: 100px; */
+}
+
+.quoteDiv p {
+  font-size: 40px;
+  width: 50px;
+  font-style: italic;
+}
