@@ -18,7 +18,11 @@ function AllTrust() {
 
   function removeTrusted(e, userId, trustedId) {
     e.preventDefault();
-    dispatch(removeTrust(userId, trustedId));
+    dispatch(removeTrust(userId, trustedId)).then(() =>
+      dispatch(allTrust(userId)).then(
+        (data) => !data.length && setAllTrustAvailable(false)
+      )
+    );
   }
 
   return (
