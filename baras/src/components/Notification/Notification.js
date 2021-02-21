@@ -7,6 +7,7 @@ import trustReducer, { addTrust } from "../../store/trust";
 function Notifications() {
   let [notificationAvailable, setNotifications] = useState(false);
   let [notificationSuccess, setNotificationSuccess] = useState(false);
+  let [notAddedNotification, setNotAddedNotification] = useState(false);
 
   let notifications = useSelector(
     (state) => state.notifications.allNotifications
@@ -15,29 +16,30 @@ function Notifications() {
   let dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(allNotifications(userId)).then(
-      (data) => data.length && setNotifications(true)
-    );
-  }, [dispatch]);
-
-  useEffect(() => {
     dispatch(allNotifications(userId)).then((data) => {
-      if (!data.length) {
+      if (data.length) {
+        setNotifications(true);
+      } else {
         setNotifications(false);
       }
     });
-  }, [confirmTrust, dontTrust]);
+  }, [dispatch, notificationSuccess, notAddedNotification]);
 
   function confirmTrust(e, userId, trustedId) {
     e.preventDefault();
-    dispatch(addTrust(userId, trustedId)).then(() =>
-      setNotificationSuccess(true)
-    );
+    dispatch(addTrust(userId, trustedId)).then(() => {
+      setNotificationSuccess(true);
+      setNotAddedNotification(false);
+    });
   }
 
   function dontTrust(e, userId, trustedId) {
     e.preventDefault();
-    dispatch(removeNotification(userId, trustedId));
+    dispatch(removeNotification(userId, trustedId)).then(() => {
+      setNotAddedNotification(true);
+
+      setNotificationSuccess(false);
+    });
   }
 
   return (
@@ -50,6 +52,11 @@ function Notifications() {
                 {notificationSuccess && (
                   <div>
                     Trusted <NavLink to="/trust">Trust</NavLink>
+                  </div>
+                )}
+                {notAddedNotification && (
+                  <div>
+                    Not Added <NavLink to="/trust">Trust</NavLink>
                   </div>
                 )}
                 <div>{notif.notification.notification}</div>

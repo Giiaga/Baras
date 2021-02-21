@@ -359,8 +359,8 @@ router.post(
     let { userId, trustedId } = req.body;
     await Notifying.destroy({
       where: {
-        userId,
-        trustedId,
+        userId: userId,
+        trustedId: trustedId,
         type: "trustRequest",
       },
     });
