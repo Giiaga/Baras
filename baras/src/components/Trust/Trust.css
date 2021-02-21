@@ -26,10 +26,10 @@
 }
 
 #usernameDetail {
-  color: rgb(255, 154, 96);
+  color: #f37227d7;
   text-decoration: underline;
 }
 #usernameDetail:hover {
-  color: rgba(172, 136, 107, 0.877);
+  color: rgba(216, 152, 100, 0.877);
   text-decoration: underline;
 }
