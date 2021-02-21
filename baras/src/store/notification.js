@@ -1,21 +1,21 @@
 import { fetch } from "./csrf";
 
-let SENDNOTIFICATION = "sendsNotification";
+let REMOVENOTIFICATION = "removesNotificationWhenClickedDontTrust";
 
-let sendNotificationAC = (data) => {
+let removeNotificationAC = (data) => {
   return {
-    type: SENDNOTIFICATION,
+    type: REMOVENOTIFICATION,
     data,
   };
 };
 
-export let sendNotification = (data) => async (dispatch) => {
-  let response = await fetch("/notification", {
+export let removeNotification = (userId, trustedId) => async (dispatch) => {
+  let response = await fetch("/notification/remove", {
     method: "POST",
-    body: JSON.stringify(),
+    body: JSON.stringify({ userId, trustedId }),
   });
 
-  dispatch(sendNotificationAC(response.data));
+  dispatch(removeNotificationAC(response.data));
 
   return response.data;
 };
@@ -40,10 +40,9 @@ let notificationReducer = (state = {}, action) => {
   let newState;
 
   switch (action.type) {
-    case SENDNOTIFICATION:
+    case REMOVENOTIFICATION:
       newState = Object.assign({}, state);
-      newState.sendNotification = action.data;
-      return newState;
+      return state;
     case ALLNOTIFICATIONS:
       newState = Object.assign({}, state);
       newState.allNotifications = action.data;

@@ -309,6 +309,13 @@ router.post(
       userId: trustedId,
       trustedId: userId,
     });
+    await Notifying.destroy({
+      where: {
+        userId,
+        trustedId,
+        type: "trustRequest",
+      },
+    });
     return res.json(addTrust);
   })
 );
@@ -339,11 +346,26 @@ router.get(
           notification: tempNotification[i],
         });
       }
-      console.log(allNotifications);
-      // let trusted = await User.findByPk(allNotifications[0].trustedId);
 
       return res.json(allNotifications);
     }
+  })
+);
+
+router.post(
+  "/notification/remove",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    let { userId, trustedId } = req.body;
+    await Notifying.destroy({
+      where: {
+        userId,
+        trustedId,
+        type: "trustRequest",
+      },
+    });
+
+    return res.json({ message: "Successful" });
   })
 );
 module.exports = router;
