@@ -63,6 +63,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   User.associate = function (models) {
+    User.hasMany(models.Notification, { foreignKey: "userId" });
     User.hasMany(models.Express, { foreignKey: "userId" });
     User.hasMany(models.PrivateChat, { foreignKey: "senderId" });
     User.hasMany(models.PrivateChat, { foreignKey: "recieverId" });

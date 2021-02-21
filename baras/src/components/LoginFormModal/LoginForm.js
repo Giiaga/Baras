@@ -12,24 +12,36 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [login, setLogin] = useState(true);
-  const [demo, setDemo] = useState(false);
+  // const [demo, setDemo] = useState(false);
 
   let history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors([]);
-    return dispatch(sessionActions.login({ credential, password }))
-      .then(() => history.push("/trust-baras"))
-      .catch((res) => {
-        if (res.data && res.data.errors) setErrors(res.data.errors);
-      });
+    if (e.target.id === "demo") {
+      setErrors([]);
+      return dispatch(
+        sessionActions.login({ credential: "giiaga", password: "password" })
+      )
+        .then(() => history.push("/trust-baras"))
+        .catch((res) => {
+          if (res.data && res.data.errors) setErrors(res.data.errors);
+        });
+    } else {
+      setErrors([]);
+      return dispatch(sessionActions.login({ credential, password }))
+        .then(() => history.push("/trust-baras"))
+        .catch((res) => {
+          if (res.data && res.data.errors) setErrors(res.data.errors);
+        });
+    }
   };
 
-  if (demo) {
-    handleSubmit(demo);
-    setDemo(false);
-  }
+  // if (demo) {
+  //   handleSubmit(demo);
+  //   setLogin(false);
+  //   setDemo(false);
+  // }
   return (
     <>
       {!user ? (
@@ -59,7 +71,7 @@ function LoginForm() {
               />
               <button
                 type="submit"
-                onClick={() => setLogin(false)}
+                // onClick={() => setLogin(false)}
                 className="buttonLogin"
               >
                 Log In
@@ -150,6 +162,7 @@ function LoginForm() {
                 left: "70%",
                 top: "-4%",
                 width: "200px",
+                zIndex: 0,
                 transform: "rotate(-10deg)",
               }}
             >
@@ -772,7 +785,7 @@ function LoginForm() {
               </p>
             </div>
             <span
-              id="tets"
+              id="demo"
               type="button"
               style={{
                 position: "absolute",
@@ -789,7 +802,8 @@ function LoginForm() {
               onClick={(e) => {
                 setCredential("giiaga");
                 setPassword("password");
-                setDemo(e);
+                // setDemo(true);
+                handleSubmit(e);
               }}
             >
               Demo

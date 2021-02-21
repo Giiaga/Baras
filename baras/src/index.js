@@ -9,9 +9,9 @@ import App from "./App";
 import { ModalProvider } from "./Modals/Modal";
 
 import configureStore from "./store";
-import { restoreCSRF, fetch } from "./store/csrf";
+import { restoreCSRF } from "./store/csrf";
 
-import * as sessionActions from "./store/session";
+// import * as sessionActions from "./store/session";
 
 const store = configureStore();
 

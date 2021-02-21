@@ -43,19 +43,16 @@ function Page() {
   let userId = useSelector((state) => state.session.user.id);
 
   let dispatch = useDispatch();
-
-  useEffect(
-    () =>
-      dispatch(getPages(storyTitle, userId)).then((response) => {
-        if (response.error) {
-          return setError(true);
-        } else {
-          setPageNumber(response[response.length - 1].pageNumber);
-          setChangePage(response.length - 1);
-        }
-      }),
-    [dispatch]
-  );
+  useEffect(() => {
+    return dispatch(getPages(storyTitle, userId)).then((response) => {
+      if (response.error) {
+        return setError(true);
+      } else {
+        setPageNumber(response[response.length - 1].pageNumber);
+        setChangePage(response.length - 1);
+      }
+    });
+  }, []);
   useEffect(() => {
     if (i >= 0) {
       let allPagesData = allPages[i];

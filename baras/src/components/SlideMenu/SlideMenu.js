@@ -61,11 +61,10 @@ function SlideMenu() {
             Story
           </h4>
           <h4
-            onClick={() =>
-              dispatch(sessionActions.logout()).then(() =>
-                history.push("/feelGood")
-              )
-            }
+            onClick={() => {
+              history.push("/feelGood");
+              return dispatch(sessionActions.logout());
+            }}
           >
             Logout
           </h4>

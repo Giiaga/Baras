@@ -5,6 +5,8 @@ import showpicReducer from "./quickroue";
 import createBarasReducer from "./createBaras";
 import userReducer from "./user";
 import storyReducer from "./story";
+import trustReducer from "./trust";
+import notificationReducer from "./notification";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -12,6 +14,8 @@ const rootReducer = combineReducers({
   createBaras: createBarasReducer,
   user: userReducer,
   story: storyReducer,
+  trust: trustReducer,
+  notifications: notificationReducer,
 });
 
 let enhancer;

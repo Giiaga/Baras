@@ -8,7 +8,8 @@ import * as sessionActions from "./store/session";
 import EntryPage from "./components/EntryPage/EntryPage";
 import SlideMenu from "./components/SlideMenu/SlideMenu";
 import LoginForm from "./components/LoginFormModal/LoginForm";
-import Showpic from "./quicktets";
+// import Showpic from "./quicktets";
+import Notification from "./components/Notification/Notification";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Page from "./components/Story/Page";
 import StoryTell from "./components/Story/StoryTell";
@@ -52,6 +53,9 @@ function App() {
       {isLoaded && (
         <>
           <Switch>
+            <Route exact path="/notification">
+              <Notification />
+            </Route>
             <Route exact path="/feelGood">
               <EntryPage />
             </Route>

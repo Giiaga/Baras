@@ -2,7 +2,7 @@ const router = require("express").Router();
 const asyncHandler = require("express-async-handler");
 const { requireAuth } = require("../utils/auth.js");
 
-const { Baras, User, Story, Page } = require("../db/models");
+const { Baras, User, Story, Page, Trust } = require("../db/models");
 
 router.post(
   "/createBaras",
@@ -296,4 +296,21 @@ router.put(
     return res.json(page[1]);
   })
 );
+
+// TRUST ROUTES
+router.post(
+  "/add/trust",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    let { userId, trustedId } = req.body;
+
+    let addTrust = await Trust.create({ userId: userId, trustedId: trustedId });
+    await Trust.create({
+      userId: trustedId,
+      trustedId: userId,
+    });
+    return res.json(addTrust);
+  })
+);
+
 module.exports = router;
