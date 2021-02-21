@@ -15,6 +15,7 @@ import Page from "./components/Story/Page";
 import StoryTell from "./components/Story/StoryTell";
 import CreateBaras from "./components/CreateBaras/CreateBaras";
 import AllTrust from "./components/Trust/Trust";
+import Message from "./components/Message/Message";
 
 function App() {
   let user = useSelector((state) => state.session.user);
@@ -59,6 +60,9 @@ function App() {
             </Route>
             <Route exact path="/notification">
               <Notification />
+            </Route>
+            <Route exact path="/message">
+              <Message />
             </Route>
             <Route exact path="/feelGood">
               <EntryPage />
