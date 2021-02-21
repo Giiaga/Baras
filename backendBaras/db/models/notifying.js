@@ -1,7 +1,7 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const Notification = sequelize.define(
-    "Notification",
+  const Notifying = sequelize.define(
+    "Notifying",
     {
       userId: { type: DataTypes.INTEGER, allowNull: false },
       trustedId: { type: DataTypes.INTEGER, allowNull: true },
@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  Notification.associate = function (models) {
-    Notification.hasMany(models.User, { foreignKey: "userId" });
+  Notifying.associate = function (models) {
+    Notifying.hasMany(models.User, { foreignKey: "userId" });
   };
-  return Notification;
+  return Notifying;
 };
