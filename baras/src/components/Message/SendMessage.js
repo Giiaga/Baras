@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { Redirect, useParams } from "react-router-dom";
 
-import { getFollowers, sendMessage } from "../../store/Messages";
+import { getFollowers, sendMessage } from "../../store/message";
 import "./SendMessage.css";
 
 function SendMessage(props) {
@@ -13,7 +13,7 @@ function SendMessage(props) {
   let [state, setState] = useState(false);
   //   let [textValuess, setTextValuess] = useState(false);
 
-  let allData = useSelector((state) => state.messages.trusted);
+  let allData = useSelector((state) => state.message.trusted);
   // console.log(allData);
   useEffect(() => {
     dispatch(getFollowers(userId)).then(() => setState(true));

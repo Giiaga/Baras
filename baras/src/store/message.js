@@ -1,123 +1,65 @@
 import { fetch } from "./csrf";
 
-const GET_ALL_MESSAGES = "allMEssagesForUserReturn";
-const GET_S_USER_MESSAGES = "getspecificusermessages";
-let SUBMIT_THE_FORM = "submitstheformTextfromUser";
+let GETALLMESSAGES = "getsAllMessagesForUser";
 
-const getAllMessagesAC = (data) => {
+let getAllMessagesAC = (data) => {
   return {
-    type: GET_ALL_MESSAGES,
+    type: GETALLMESSAGES,
     data,
   };
 };
-const getSpecificUserMessagesAC = (data) => {
-  return {
-    type: GET_S_USER_MESSAGES,
-    data,
-  };
-};
-let submitTheFormAC = (data) => {
-  return {
-    type: SUBMIT_THE_FORM,
-    data,
-  };
-};
-const SUBMIT_THE_SEND_FORM = "submitthesendmessage";
-let submitTheSendMessageAC = (data) => {
-  return {
-    type: SUBMIT_THE_SEND_FORM,
-    data,
-  };
-};
-export const submitTheForm = (data, userId, sentToId) => async (dispatch) => {
-  let request = await fetch("/privateChat/submitTheForm", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ data, userId, sentToId }),
-  });
 
-  dispatch(submitTheFormAC(request.data));
-
-  return request.data;
-};
-export const getSpecificUserMessages = (userId, userClicked) => async (
-  dispatch
-) => {
-  const response = await fetch(`/privateChat/${userId}/${userClicked}/chat`);
-
-  dispatch(getSpecificUserMessagesAC(response));
-  return response.data;
-};
-
-export const getAllMessages = (userId) => async (dispatch) => {
-  const response = await fetch(`/privateChat/${userId}`);
+export let getAllMessages = (userId) => async (dispatch) => {
+  let response = await fetch(`/privateChat/${userId}`);
 
   dispatch(getAllMessagesAC(response.data));
-  return;
-};
-
-const GET_FOLLOWERS_FOR_SEND_MESSAGE_TO = "recievesUsersFollowedOrFollowing";
-
-const getFollowersAC = (data) => {
-  return {
-    type: GET_FOLLOWERS_FOR_SEND_MESSAGE_TO,
-    data,
-  };
-};
-
-export const getFollowers = (userId) => async (dispatch) => {
-  const response = await fetch(`/privateChat/${userId}/message`);
-
-  dispatch(getFollowersAC(response.data));
 
   return response.data;
 };
 
-export const sendMessage = (userId, sendToId, textvalue) => async (
+let GETUSERSPECIFICMESSAGE = "specificUserMessageWhenClickedOnAMessage";
+
+let getSpecificUserMessageAC = (data) => {
+  return {
+    type: GETUSERSPECIFICMESSAGE,
+    data,
+  };
+};
+
+export let getSpecificUserMessage = (userId, clickedUser) => async (
   dispatch
 ) => {
-  const request = await fetch(`/privateChat/${userId}/sendMessage`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ userId, sendToId, textvalue }),
-  });
+  let response = await fetch(`/privateChat/${userId}/${1}/chat`);
 
-  dispatch(submitTheSendMessageAC(request.data));
+  dispatch(getSpecificUserMessageAC(response.data));
 
-  return request.data;
+  return response.data;
 };
-const messageReducer = (state = {}, action) => {
-  let changedState;
+
+let SUBMITMESSAGE = "submitMessageFromMainMessagePage";
+
+let submitTheFormAC = (data) => {
+  return {
+    type: SUBMITMESSAGE,
+    data,
+  };
+};
+
+export let submitTheForm = () => async (dispatch) => {
+  let response = await fetch("/");
+};
+let messageReducer = (state = [], action) => {
+  let newState;
   switch (action.type) {
-    case GET_ALL_MESSAGES:
-      changedState = Object.assign({}, state);
-      changedState.allMessages = action.data;
-      return changedState;
-    case GET_S_USER_MESSAGES:
-      changedState = Object.assign({}, state);
-      changedState.specificUserMessages = action.data;
-      return changedState;
-    case SUBMIT_THE_FORM:
-      changedState = Object.assign({}, state);
-      changedState.specificUserMessages.sentMessages.unshift(action.data);
-      changedState.allMessages.sentMessages.unshift(action.data);
-      return changedState;
-    case GET_FOLLOWERS_FOR_SEND_MESSAGE_TO:
-      changedState = Object.assign({}, state);
-      changedState.trusted = action.data;
-      return changedState;
-    case SUBMIT_THE_SEND_FORM:
-      changedState = Object.assign({}, state);
-      changedState.allMessages.sentMessages.unshift(action.data);
-      return changedState;
-    // case SUBMIT_THE_FORM:
-    //   changedState = Object.assign({}, state);
-    //   changedState.allMessages = action.data;
-    //   return changedState;
+    case GETALLMESSAGES:
+      newState = Object.assign({}, state);
+      newState.allMessages = action.data;
+      return newState;
+    case GETUSERSPECIFICMESSAGE:
+      newState = Object.assign({}, state);
+      newState.specificUserMessage = action.data;
+      return newState;
+
     default:
       return state;
   }

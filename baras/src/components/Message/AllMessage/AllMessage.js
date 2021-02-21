@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllMessages } from "../../../store/Messages";
-import { Modal } from "../../../context/Modal";
+import { getAllMessages } from "../../../store/message";
+import { Modal } from "../../../Modals/Modal";
 import "./AllMessage.css";
 import SendMessage from "../SendMessage";
 
 function AllMessages(props) {
+  let userId = useSelector((state) => state.session.user.id);
+  let messages = useSelector((state) => state.message.allMessages);
+  console.log("AT ALLL");
   let [showModal, setShowModel] = useState(false);
 
   let dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllMessages(props.state.userId));
-  }, [dispatch]);
-
-  let messages = useSelector((state) => state.messages.allMessages);
+    console.log("does it");
+    dispatch(getAllMessages(userId));
+  }, []);
 
   useEffect(() => {
-    dispatch(getAllMessages(props.state.userId));
+    console.log("yes so");
+
+    dispatch(getAllMessages(userId));
     props.state.setReplacer(false);
   }, [props.state.replacer]);
 
@@ -124,7 +128,7 @@ function AllMessages(props) {
             className="listOfMessagesDiv"
             onClick={() => {
               props.state.setMessageOpen(true);
-              props.state.setUserClicked(each.User.id);
+              props.state.setUserClicked(each.recieverId);
             }}
           >
             <img src={each.User.photo} alt={each.User.username} />
@@ -193,11 +197,14 @@ function AllMessages(props) {
               ""
             )}
           </div>
-          {messages
-            ? conversations(messages.sentMessage, messages.recievedMessage).map(
-                (d, i) => d
-              )
-            : console.log("yusd")}
+          {messages ? (
+            conversations(
+              messages.sentMessage,
+              messages.recievedMessage
+            ).map((d, i) => <div>WTHHHGDFG</div>)
+          ) : (
+            <div>ITDSGNKSDG</div>
+          )}
         </div>
       ) : (
         ""

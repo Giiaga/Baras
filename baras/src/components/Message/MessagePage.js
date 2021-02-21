@@ -2,8 +2,8 @@ import React from "react";
 import { useState } from "react";
 // import { useParams } from "react-router-dom";
 
-import AllMessages from "./AllMessages/AllMessages";
-import Messages from "../Messages/Messages";
+import AllMessages from "./AllMessage/AllMessage";
+import Message from "../Message/Message";
 import "./Message.css";
 import { useSelector } from "react-redux";
 // import { useSelector } from "react-redux";
@@ -28,7 +28,7 @@ function MessagesPage() {
         }}
       />
       {messageOpen ? (
-        <Messages replace={setReplacer} user={userClicked} />
+        <Message replace={setReplacer} user={userClicked} />
       ) : (
         <div
           className="messagesPage"

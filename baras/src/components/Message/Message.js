@@ -2,22 +2,22 @@ import React, { useEffect, useState } from "react";
 import TypeMessage from "./TypeMessage";
 import "./Message.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getSpecificUserMessages } from "../../store/message";
+import { getSpecificUserMessage } from "../../store/message";
 
-function Messages(props) {
+function Message(props) {
   let userId = useSelector((state) => state.session.user.id);
 
   const [onChangeSubmitButton, setOnChangeSubmitButton] = useState(false);
   const [messageAvailable, setMessageAvailable] = useState(false);
 
-  const specificUserMessages = useSelector(
-    (state) => state.message.specificUserMessages
+  const specificUserMessage = useSelector(
+    (state) => state.message.specificUserMessage
   );
 
   let dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getSpecificUserMessages(userId, props.user)).then(
+    dispatch(getSpecificUserMessage(userId, props.user)).then(
       (data) => data.length && setMessageAvailable(true)
     );
     setOnChangeSubmitButton(false);
@@ -66,8 +66,8 @@ function Messages(props) {
         <div className="mainMessagesDiv">
           {messageAvailable
             ? messagesArray(
-                specificUserMessages.recievedMessage,
-                specificUserMessages.sentMessage
+                specificUserMessage.recievedMessage,
+                specificUserMessage.sentMessage
               ).map((message) =>
                 message.senderId != userId ? (
                   <div key={message.id} className="senderMessageBlock">
@@ -97,4 +97,4 @@ function Messages(props) {
   );
 }
 
-export default Messages;
+export default Message;
