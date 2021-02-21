@@ -25,13 +25,13 @@ function AllTrust() {
         everyTrust.map((trust) => (
           <div key={trust.id}>
             <img
-              src={trust.photo}
-              alt={trust.username}
-              style={{ width: "60px", height: "60px", borderRadius: "20px" }}
+              src={trust.trusted.photo}
+              alt={trust.trusted.username}
+              style={{ width: "90px", height: "90px", borderRadius: "90px" }}
             />
             <div>
-              <p>{trust.username}</p>
-              <p>Trusted Since: {trust.createdAt}</p>
+              <p>{trust.trusted.username}</p>
+              <p>Trusted Since: {trust.Trust.createdAt}</p>
             </div>
             <div>
               <button>Message</button>
