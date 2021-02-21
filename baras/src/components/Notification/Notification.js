@@ -23,7 +23,7 @@ function Notifications() {
           <div>
             {notif.type === "trustRequest" ? (
               <div>
-                <div>{notif.notif}</div>
+                <div>{notif.notification}</div>
                 <div>{notif.trustedId}</div>
                 <button>Trust</button> <button>Don't Trust</button>{" "}
               </div>

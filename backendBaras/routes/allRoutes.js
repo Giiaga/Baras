@@ -317,15 +317,31 @@ router.post(
 
 router.get(
   "/notifications/:userId",
-  // requireAuth,
+  requireAuth,
   asyncHandler(async (req, res) => {
     let { userId } = req.params;
     let user = req.user;
-    let allNotifications;
-    console.log("hithierhtgdfg", user, userId);
-    if (userId === user) {
-      console.log("NOT HIHTIHT");
-      allNotifications = await Notifying.findAll({ where: { userId: userId } });
+    let allNotifications = [];
+    let tempNotification;
+
+    if (userId == user.id) {
+      tempNotification = await Notifying.findAll({
+        where: { userId: userId },
+      });
+
+      for (let i = 0; i < tempNotification.length; i++) {
+        let sentUser = await User.findOne({
+          where: { id: tempNotification[i].trustedId },
+        });
+
+        allNotifications.push({
+          sentUser: sentUser,
+          notification: tempNotification[i],
+        });
+      }
+      console.log(allNotifications);
+      // let trusted = await User.findByPk(allNotifications[0].trustedId);
+
       return res.json(allNotifications);
     }
   })
