@@ -322,7 +322,9 @@ router.get(
     let { userId } = req.params;
     let user = req.user;
     let allNotifications;
+    console.log("hithierhtgdfg", user, userId);
     if (userId === user) {
+      console.log("NOT HIHTIHT");
       allNotifications = await Notifying.findAll({ where: { userId: userId } });
       return res.json(allNotifications);
     }

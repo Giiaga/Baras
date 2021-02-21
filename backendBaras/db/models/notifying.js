@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Notifying.associate = function (models) {
-    Notifying.hasMany(models.User, { foreignKey: "userId" });
+    Notifying.belongsTo(models.User, { foreignKey: "userId" });
   };
   return Notifying;
 };

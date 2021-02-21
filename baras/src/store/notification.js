@@ -30,7 +30,7 @@ let allNotificationsAC = (data) => {
 };
 
 export let allNotifications = (userId) => async (dispatch) => {
-  let response = await fetch(`/noitifications/${userId}`);
+  let response = await fetch(`/notifications/${userId}`);
 
   dispatch(allNotificationsAC(response.data));
 
