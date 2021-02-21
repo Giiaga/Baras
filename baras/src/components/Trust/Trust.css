@@ -1,0 +1,17 @@
+.TrustMainDiv {
+  display: flex;
+  width: 60%;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.TrustDetails {
+  margin-left: 2%;
+}
+
+.TrustButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 3%;
+}

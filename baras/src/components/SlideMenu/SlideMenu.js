@@ -86,7 +86,7 @@ function SlideMenu() {
         className="menuButton"
         id="menuButton"
         onClick={() => {
-          document.getElementById("menu").style.transition = 2 + "s";
+          document.getElementById("menu").style.transition = 1.1 + "s";
           setShowMenu(true);
           if (
             document.getElementById("menu").style.top == -70 + "%" ||
