@@ -2,7 +2,7 @@ const router = require("express").Router();
 const asyncHandler = require("express-async-handler");
 const { requireAuth } = require("../utils/auth.js");
 
-const { Baras, User, Story, Page, Trust, Notification } = require("../db/models");
+const { Baras, User, Story, Page, Trust, Notifying } = require("../db/models");
 
 router.post(
   "/createBaras",
@@ -318,17 +318,14 @@ router.post(
 router.get(
   "/notifications/:userId",
   requireAuth,
-  asyncHandler(
-    async(req, (res) => {
-      let { userId } = req.params;
-      let user = req.user
-      let allNotifications;
-      if (userId === user) {
-        allNotifications = await Notification.findAll({where: {userId: userId}})
-        return res.json(allNotifications)
-      }
-
-    })
-  )
+  asyncHandler(async (req, res) => {
+    let { userId } = req.params;
+    let user = req.user;
+    let allNotifications;
+    if (userId === user) {
+      allNotifications = await Notifying.findAll({ where: { userId: userId } });
+      return res.json(allNotifications);
+    }
+  })
 );
 module.exports = router;
