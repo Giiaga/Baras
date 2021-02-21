@@ -310,7 +310,7 @@ router.get(
     });
     for (let i = 0; i < Trusts.length; i++) {
       let trusted = await User.findOne({ where: { id: Trusts[i].trustedId } });
-      allTrust.push(trusted);
+      allTrust.push({ Trust: Trusts[i], trusted });
     }
     return res.json(allTrust);
   })
