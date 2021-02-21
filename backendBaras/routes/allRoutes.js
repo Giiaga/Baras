@@ -2,7 +2,15 @@ const router = require("express").Router();
 const asyncHandler = require("express-async-handler");
 const { requireAuth } = require("../utils/auth.js");
 
-const { Baras, User, Story, Page, Trust, Notifying } = require("../db/models");
+const {
+  Baras,
+  User,
+  Story,
+  Page,
+  Trust,
+  Notifying,
+  PrivateChat,
+} = require("../db/models");
 
 router.post(
   "/createBaras",
@@ -394,6 +402,41 @@ router.post(
     });
 
     return res.json({ message: "Successful" });
+  })
+);
+
+// MESSAGES
+
+router.get(
+  "/privateChat/:userId",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    let { userId } = req.params;
+
+    let recievedMessage = await PrivateChat.findAll({
+      where: { recieverId: userId },
+    });
+    let sentMessage = await PrivateChat.findAll({
+      where: { senderId: userId },
+    });
+
+    return res.json({ recievedMessage, sentMessage });
+  })
+);
+
+router.get(
+  "/privateChat/:userId/:senderId/chat",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    let { userId, senderId } = req.params;
+    let recievedMessage = await PrivateChat.findAll({
+      where: { recieverId: userId, senderId: senderId },
+    });
+    let sentMessage = await PrivateChat.findAll({
+      where: { senderId: userId, recieverId: senderId },
+    });
+
+    return res.json({ recievedMessage, sentMessage });
   })
 );
 module.exports = router;
