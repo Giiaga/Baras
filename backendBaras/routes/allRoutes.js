@@ -317,7 +317,7 @@ router.post(
 
 router.get(
   "/notifications/:userId",
-  requireAuth,
+  // requireAuth,
   asyncHandler(async (req, res) => {
     let { userId } = req.params;
     let user = req.user;

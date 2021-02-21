@@ -19,12 +19,12 @@ function Notifications() {
   return (
     <>
       {notificationAvailable ? (
-        notifications.map((notification) => (
+        notifications.map((notif) => (
           <div>
-            {notification.type === "trustRequest" ? (
+            {notif.type === "trustRequest" ? (
               <div>
-                <div>{notification.notification}</div>
-                <div>{notification.trustedId}</div>
+                <div>{notif.notif}</div>
+                <div>{notif.trustedId}</div>
                 <button>Trust</button> <button>Don't Trust</button>{" "}
               </div>
             ) : (
