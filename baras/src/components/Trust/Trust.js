@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { allTrust, removeTrust } from "../../store/trust";
 import "./Trust.css";
 
 function AllTrust() {
   let everyTrust = useSelector((state) => state.trust.allTrust);
   let userId = useSelector((state) => state.session.user.id);
+  let history = useHistory();
 
   let [allTrustAvailable, setAllTrustAvailable] = useState(false);
 
@@ -33,7 +35,7 @@ function AllTrust() {
           style={{
             marginLeft: "auto",
             marginRight: "auto",
-            width: "400px",
+            width: "380px",
             fontSize: "80px",
             marginBottom: "30px",
             marginTop: "30px",
@@ -57,7 +59,14 @@ function AllTrust() {
                 }}
               />
               <div className="TrustDetails">
-                <p>{trust.trusted.username}</p>
+                <p
+                  id="usernameDetail"
+                  onClick={() =>
+                    history.push(`/${trust.trusted.username}/detail`)
+                  }
+                >
+                  {trust.trusted.username}
+                </p>
                 <p>Trusted Since: {trust.Trust.createdAt}</p>
               </div>
               <div className="TrustButtons">
@@ -72,7 +81,9 @@ function AllTrust() {
           </div>
         ))
       ) : (
-        <div>CREATE</div>
+        <div>
+          <h1>Find Trust</h1>
+        </div>
       )}
     </>
   );

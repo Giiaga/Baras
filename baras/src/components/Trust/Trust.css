@@ -24,3 +24,12 @@
   justify-content: space-around;
   margin-left: 12%;
 }
+
+#usernameDetail {
+  color: rgb(255, 154, 96);
+  text-decoration: underline;
+}
+#usernameDetail:hover {
+  color: rgba(172, 136, 107, 0.877);
+  text-decoration: underline;
+}
