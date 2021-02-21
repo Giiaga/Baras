@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { allTrust } from "../../store/trust";
+import { allTrust, removeTrust } from "../../store/trust";
 
 function AllTrust() {
   let everyTrust = useSelector((state) => state.trust.allTrust);
@@ -12,9 +12,14 @@ function AllTrust() {
 
   useEffect(() => {
     dispatch(allTrust(userId)).then(
-      (data) => data && setAllTrustAvailable(true)
+      (data) => data.length && setAllTrustAvailable(true)
     );
   }, [dispatch]);
+
+  function removeTrusted(e, userId, trustedId) {
+    e.preventDefault();
+    dispatch(removeTrust(userId, trustedId));
+  }
 
   return (
     <>
@@ -35,7 +40,11 @@ function AllTrust() {
             </div>
             <div>
               <button>Message</button>
-              <button>Remove Trust</button>
+              <button
+                onClick={(e) => removeTrusted(e, userId, trust.trusted.id)}
+              >
+                Remove Trust
+              </button>
             </div>
           </div>
         ))

@@ -31,7 +31,7 @@ let removeTrustAC = (data) => {
 
 export let removeTrust = (userId, trustedId) => async (dispatch) => {
   let response = await fetch("/remove/trust", {
-    method: "POST",
+    method: "DELETE",
     body: JSON.stringify({ userId, trustedId }),
   });
 
@@ -67,7 +67,7 @@ let trustReducer = (state = {}, action) => {
       return newState;
     case REMOVETRUST:
       newState = Object.assign({}, state);
-
+      return newState;
     case ALLTRUST:
       newState = Object.assign({}, state);
       newState.allTrust = action.data;

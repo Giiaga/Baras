@@ -337,6 +337,17 @@ router.post(
   })
 );
 
+router.delete(
+  "/remove/trust",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    let { userId, trustedId } = req.body;
+    await Trust.destroy({ where: { userId: userId, trustedId } });
+    await Trust.destroy({ where: { userId: trustedId, trustedId: userId } });
+
+    return res.json({ message: "Done" });
+  })
+);
 // NOTIFICATIONS
 
 router.get(
