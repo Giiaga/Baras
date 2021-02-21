@@ -298,6 +298,23 @@ router.put(
 );
 
 // TRUST ROUTES
+
+router.get(
+  "/trust/all/:userId",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    let { userId } = req.params;
+    let allTrust = [];
+    let Trusts = await Trust.findAll({
+      where: { userId },
+    });
+    for (let i = 0; i < Trusts.length; i++) {
+      let trusted = await User.findOne({ where: { id: Trusts[i].trustedId } });
+      allTrust.push(trusted);
+    }
+    return res.json(allTrust);
+  })
+);
 router.post(
   "/add/trust",
   requireAuth,
