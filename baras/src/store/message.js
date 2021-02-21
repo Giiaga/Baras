@@ -4,10 +4,10 @@ const GET_ALL_MESSAGES = "allMEssagesForUserReturn";
 const GET_S_USER_MESSAGES = "getspecificusermessages";
 let SUBMIT_THE_FORM = "submitstheformTextfromUser";
 
-const getAllMessagesAC = (messages) => {
+const getAllMessagesAC = (data) => {
   return {
     type: GET_ALL_MESSAGES,
-    messages: messages,
+    data,
   };
 };
 const getSpecificUserMessagesAC = (data) => {
@@ -16,34 +16,31 @@ const getSpecificUserMessagesAC = (data) => {
     data,
   };
 };
-let submitTheFormAC = (formValue) => {
+let submitTheFormAC = (data) => {
   return {
     type: SUBMIT_THE_FORM,
-    formValue,
+    data,
   };
 };
 const SUBMIT_THE_SEND_FORM = "submitthesendmessage";
-let submitTheSendMessageAC = (formValue) => {
+let submitTheSendMessageAC = (data) => {
   return {
     type: SUBMIT_THE_SEND_FORM,
-    formValue,
+    data,
   };
 };
-export const submitTheForm = (formValue, userId, sentToId) => async (
-  dispatch
-) => {
-  let converUserId = Number(userId);
-
-  let request = await fetch("/dm/submitTheForm", {
+export const submitTheForm = (data, userId, sentToId) => async (dispatch) => {
+  let request = await fetch("/privateChat/submitTheForm", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ formValue, converUserId, sentToId }),
+    body: JSON.stringify({ data, userId, sentToId }),
   });
-  let convertJson = await request.json();
-  dispatch(submitTheFormAC(convertJson));
-  return;
+
+  dispatch(submitTheFormAC(request.data));
+
+  return request.data;
 };
 export const getSpecificUserMessages = (userId, userClicked) => async (
   dispatch
@@ -71,7 +68,7 @@ const getFollowersAC = (data) => {
 };
 
 export const getFollowers = (userId) => async (dispatch) => {
-  const response = await fetch(`/dm/${userId}/message`);
+  const response = await fetch(`/privateChat/${userId}/message`);
 
   dispatch(getFollowersAC(response.data));
 
@@ -81,23 +78,24 @@ export const getFollowers = (userId) => async (dispatch) => {
 export const sendMessage = (userId, sendToId, textvalue) => async (
   dispatch
 ) => {
-  const request = await fetch(`/dm/${userId}/sendMessage`, {
+  const request = await fetch(`/privateChat/${userId}/sendMessage`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ userId, sendToId, textvalue }),
   });
-  const convertJson = await request.json();
-  dispatch(submitTheSendMessageAC(convertJson));
-  return;
+
+  dispatch(submitTheSendMessageAC(request.data));
+
+  return request.data;
 };
 const messageReducer = (state = {}, action) => {
   let changedState;
   switch (action.type) {
     case GET_ALL_MESSAGES:
       changedState = Object.assign({}, state);
-      changedState.allMessages = action.messages;
+      changedState.allMessages = action.data;
       return changedState;
     case GET_S_USER_MESSAGES:
       changedState = Object.assign({}, state);
@@ -105,20 +103,20 @@ const messageReducer = (state = {}, action) => {
       return changedState;
     case SUBMIT_THE_FORM:
       changedState = Object.assign({}, state);
-      changedState.specificUserMessages.sentMessages.unshift(action.formValue);
-      changedState.allMessages.sentMessages.unshift(action.formValue);
+      changedState.specificUserMessages.sentMessages.unshift(action.data);
+      changedState.allMessages.sentMessages.unshift(action.data);
       return changedState;
     case GET_FOLLOWERS_FOR_SEND_MESSAGE_TO:
       changedState = Object.assign({}, state);
-      changedState.allFollowers = action.data;
+      changedState.trusted = action.data;
       return changedState;
     case SUBMIT_THE_SEND_FORM:
       changedState = Object.assign({}, state);
-      changedState.allMessages.sentMessages.unshift(action.formValue);
+      changedState.allMessages.sentMessages.unshift(action.data);
       return changedState;
     // case SUBMIT_THE_FORM:
     //   changedState = Object.assign({}, state);
-    //   changedState.allMessages = action.formValue;
+    //   changedState.allMessages = action.data;
     //   return changedState;
     default:
       return state;

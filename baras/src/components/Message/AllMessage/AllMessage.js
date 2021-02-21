@@ -6,18 +6,20 @@ import "./AllMessage.css";
 import SendMessage from "../SendMessage";
 
 function AllMessages(props) {
-  // let [messagesDelivered, setMessagesDelivered] = useState(false);
   let [showModal, setShowModel] = useState(false);
 
   let dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllMessages(props.state.userId));
-  }, []);
+  }, [dispatch]);
+
   let messages = useSelector((state) => state.messages.allMessages);
+
   useEffect(() => {
     dispatch(getAllMessages(props.state.userId));
     props.state.setReplacer(false);
   }, [props.state.replacer]);
+
   function conversations(sent, recieved) {
     let holder = [];
 
@@ -25,7 +27,7 @@ function AllMessages(props) {
       //RECIEVERS
       let recievers = [];
       for (let i = 0; i < sent.length; i++) {
-        recievers.push(sent[i].recipientId);
+        recievers.push(sent[i].recieverId);
       }
 
       //in the recievers user will never the recipient
@@ -82,7 +84,7 @@ function AllMessages(props) {
         for (let j = 0; j < Random.length; j++) {
           if (
             Random[j].senderId == matched[i] ||
-            Random[j].recipientId == matched[i]
+            Random[j].recieverId == matched[i]
           ) {
             holder.push(Random[j]);
             break;
@@ -94,7 +96,7 @@ function AllMessages(props) {
         for (let i = 0; i < Random.length; i++) {
           if (
             Random[i].senderId == unmatched[j] ||
-            Random[i].recipientId == unmatched[j]
+            Random[i].recieverId == unmatched[j]
           ) {
             holder.push(Random[i]);
             break;
@@ -121,14 +123,13 @@ function AllMessages(props) {
             key={each.createdAt}
             className="listOfMessagesDiv"
             onClick={() => {
-              console.log(each.recipientId);
               props.state.setMessageOpen(true);
-              props.state.setUserClicked(each.recipientId);
+              props.state.setUserClicked(each.User.id);
             }}
           >
-            <img src={each.recieverPP} alt={each.recieverUsername} />
+            <img src={each.User.photo} alt={each.User.username} />
             <div className="messageDetail">
-              <p style={{ fontSize: "14px" }}>{each.recieverUsername}</p>
+              <p style={{ fontSize: "14px" }}>{each.User.username}</p>
               <p
                 style={{
                   fontSize: "13px",
@@ -148,15 +149,15 @@ function AllMessages(props) {
             key={each.createdAt}
             className="listOfMessagesDiv"
             onClick={() => {
-              console.log(each.recipientId);
+              console.log(each.User.id);
 
               props.state.setMessageOpen(true);
               props.state.setUserClicked(each.senderId);
             }}
           >
-            <img src={each.senderPP} alt={each.senderPP} />
+            <img src={each.User.photo} alt={each.User.photo} />
             <div className="messageDetail">
-              <p style={{ fontSize: "14px" }}>{each.senderUsername}</p>
+              <p style={{ fontSize: "14px" }}>{each.User.username}</p>
               <p
                 style={{
                   fontSize: "13px",
@@ -193,10 +194,9 @@ function AllMessages(props) {
             )}
           </div>
           {messages
-            ? conversations(
-                messages.sentMessages,
-                messages.recievedMessages
-              ).map((d, i) => d)
+            ? conversations(messages.sentMessage, messages.recievedMessage).map(
+                (d, i) => d
+              )
             : console.log("yusd")}
         </div>
       ) : (

@@ -11,7 +11,7 @@ function TypeMessage(props) {
   const [formValue, setFormValue] = useState();
   let dispatch = useDispatch();
   let test = props.sentToId;
-  console.log(userId);
+
   const submittingtheForm = (e, formValue, userId, test) => {
     e.preventDefault();
     dispatch(submitTheForm(formValue, userId, test));
@@ -21,11 +21,7 @@ function TypeMessage(props) {
   };
   return (
     <div className="messageContainer">
-      <form
-        method="post"
-        action={`/dm/submitTheForm`}
-        onSubmit={(e) => submittingtheForm(e, formValue, userId, test)}
-      >
+      <form onSubmit={(e) => submittingtheForm(e, formValue, userId, test)}>
         <textarea
           value={formValue}
           placeholder="Message"

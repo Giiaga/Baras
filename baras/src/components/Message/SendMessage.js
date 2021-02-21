@@ -13,7 +13,7 @@ function SendMessage(props) {
   let [state, setState] = useState(false);
   //   let [textValuess, setTextValuess] = useState(false);
 
-  let allData = useSelector((state) => state.messages.allFollowers);
+  let allData = useSelector((state) => state.messages.trusted);
   // console.log(allData);
   useEffect(() => {
     dispatch(getFollowers(userId)).then(() => setState(true));
@@ -30,11 +30,7 @@ function SendMessage(props) {
   return (
     <div className="sendMessageForm">
       {state ? (
-        <form
-          onSubmit={(e) => sendText(e, userId, selectValue, textValue)}
-          method="post"
-          action={`/dm/${userId}`}
-        >
+        <form onSubmit={(e) => sendText(e, userId, selectValue, textValue)}>
           <select
             onChange={(e) => setSelectValue(e.target.value)}
             placeholder="Send To..."

@@ -11,14 +11,14 @@ function Messages(props) {
   const [messageAvailable, setMessageAvailable] = useState(false);
 
   const specificUserMessages = useSelector(
-    (state) => state.messages.specificUserMessages
+    (state) => state.message.specificUserMessages
   );
 
   let dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getSpecificUserMessages(userId, props.user)).then(
-      (data) => data && setMessageAvailable(true)
+      (data) => data.length && setMessageAvailable(true)
     );
     setOnChangeSubmitButton(false);
   }, [props.user, onChangeSubmitButton]);
