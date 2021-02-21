@@ -10,10 +10,10 @@ const getAllMessagesAC = (messages) => {
     messages: messages,
   };
 };
-const getSpecificUserMessagesAC = (spmessages) => {
+const getSpecificUserMessagesAC = (data) => {
   return {
     type: GET_S_USER_MESSAGES,
-    spmessages,
+    data,
   };
 };
 let submitTheFormAC = (formValue) => {
@@ -48,15 +48,16 @@ export const submitTheForm = (formValue, userId, sentToId) => async (
 export const getSpecificUserMessages = (userId, userClicked) => async (
   dispatch
 ) => {
-  const fetchRequest = await fetch(`/dm/${userId}/${userClicked}/specificUser`);
-  const convertJson = await fetchRequest.json();
-  dispatch(getSpecificUserMessagesAC(convertJson));
-  return;
+  const response = await fetch(`/privateChat/${userId}/${userClicked}/chat`);
+
+  dispatch(getSpecificUserMessagesAC(response));
+  return response.data;
 };
+
 export const getAllMessages = (userId) => async (dispatch) => {
-  const fetchRequest = await fetch(`/dm/${userId}`);
-  const convertJson = await fetchRequest.json();
-  dispatch(getAllMessagesAC(convertJson));
+  const response = await fetch(`/privateChat/${userId}`);
+
+  dispatch(getAllMessagesAC(response.data));
   return;
 };
 
@@ -70,10 +71,11 @@ const getFollowersAC = (data) => {
 };
 
 export const getFollowers = (userId) => async (dispatch) => {
-  const returnResponse = await fetch(`/dm/${userId}/message`);
-  const response = await returnResponse.json();
-  dispatch(getFollowersAC(response));
-  return;
+  const response = await fetch(`/dm/${userId}/message`);
+
+  dispatch(getFollowersAC(response.data));
+
+  return response.data;
 };
 
 export const sendMessage = (userId, sendToId, textvalue) => async (
@@ -99,7 +101,7 @@ const messageReducer = (state = {}, action) => {
       return changedState;
     case GET_S_USER_MESSAGES:
       changedState = Object.assign({}, state);
-      changedState.specificUserMessages = action.spmessages;
+      changedState.specificUserMessages = action.data;
       return changedState;
     case SUBMIT_THE_FORM:
       changedState = Object.assign({}, state);

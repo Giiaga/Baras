@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 import AllMessages from "./AllMessages/AllMessages";
 import Messages from "../Messages/Messages";
-import "./Messages.css";
+import "./Message.css";
 import { useSelector } from "react-redux";
 // import { useSelector } from "react-redux";
 

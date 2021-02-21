@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+// import { useParams } from "react-router-dom";
 
-import { submitTheForm } from "../../store/Messages";
-import "./Messages.css";
+import { submitTheForm } from "../../store/message";
+import "./Message.css";
 
 function TypeMessage(props) {
-  let { userId } = useParams();
+  let userId = useSelector((state) => state.session.user.id);
   const [typed, setTyped] = useState(true);
   const [formValue, setFormValue] = useState();
   let dispatch = useDispatch();

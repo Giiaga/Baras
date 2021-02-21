@@ -7,6 +7,7 @@ import userReducer from "./user";
 import storyReducer from "./story";
 import trustReducer from "./trust";
 import notificationReducer from "./notification";
+import messageReducer from "./message";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   story: storyReducer,
   trust: trustReducer,
   notifications: notificationReducer,
+  message: messageReducer,
 });
 
 let enhancer;

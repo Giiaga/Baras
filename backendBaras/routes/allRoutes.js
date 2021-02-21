@@ -431,12 +431,17 @@ router.get(
     let { userId, senderId } = req.params;
     let recievedMessage = await PrivateChat.findAll({
       where: { recieverId: userId, senderId: senderId },
+      include: [User],
     });
     let sentMessage = await PrivateChat.findAll({
       where: { senderId: userId, recieverId: senderId },
+      include: [User],
     });
 
     return res.json({ recievedMessage, sentMessage });
   })
 );
+
+// router.post('/messageSent')
+
 module.exports = router;

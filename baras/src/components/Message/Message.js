@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
 import TypeMessage from "./TypeMessage";
-import "./Messages.css";
-import { useParams } from "react-router-dom";
+import "./Message.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getSpecificUserMessages } from "../../store/Messages";
-
-// import AllMessages from "./AllMessages/AllMessages";
+import { getSpecificUserMessages } from "../../store/message";
 
 function Messages(props) {
-  // let loggedInUser = 4;
-  let { userId } = useParams();
+  let userId = useSelector((state) => state.session.user.id);
+
   const [onChangeSubmitButton, setOnChangeSubmitButton] = useState(false);
-  // console.log(props.user.userClicked);
-  // console.log("state", onChangeSubmitButton);
+  const [messageAvailable, setMessageAvailable] = useState(false);
+
   const specificUserMessages = useSelector(
     (state) => state.messages.specificUserMessages
   );
@@ -20,10 +17,12 @@ function Messages(props) {
   let dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getSpecificUserMessages(userId, props.user));
+    dispatch(getSpecificUserMessages(userId, props.user)).then(
+      (data) => data && setMessageAvailable(true)
+    );
     setOnChangeSubmitButton(false);
   }, [props.user, onChangeSubmitButton]);
-  // console.log(specificUserMessages);
+
   const messagesArray = (recievedMessages, sentMessages) => {
     let test = [...recievedMessages];
     let test1 = [...sentMessages];
@@ -65,14 +64,14 @@ function Messages(props) {
 
       <div className="wrapEverything">
         <div className="mainMessagesDiv">
-          {specificUserMessages
+          {messageAvailable
             ? messagesArray(
-                specificUserMessages.recievedMessages,
-                specificUserMessages.sentMessages
+                specificUserMessages.recievedMessage,
+                specificUserMessages.sentMessage
               ).map((message) =>
-                message.senderId != Number(userId) ? (
+                message.senderId != userId ? (
                   <div key={message.id} className="senderMessageBlock">
-                    <img src={message.senderPP} alt={message.senderUsername} />
+                    <img src={message.User.photo} alt={message.User.username} />
                     <div className="senderMessageDiv">
                       <p>{message.text} </p>
                     </div>
