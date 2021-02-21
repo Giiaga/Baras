@@ -14,6 +14,7 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import Page from "./components/Story/Page";
 import StoryTell from "./components/Story/StoryTell";
 import CreateBaras from "./components/CreateBaras/CreateBaras";
+import AllTrust from "./components/Trust/Trust";
 
 function App() {
   let user = useSelector((state) => state.session.user);
@@ -53,6 +54,9 @@ function App() {
       {isLoaded && (
         <>
           <Switch>
+            <Route exact path="/trust">
+              <AllTrust />
+            </Route>
             <Route exact path="/notification">
               <Notification />
             </Route>

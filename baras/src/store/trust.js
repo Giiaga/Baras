@@ -40,6 +40,23 @@ export let removeTrust = (userId, trustedId) => async (dispatch) => {
   return response.data;
 };
 
+let ALLTRUST = "getsAllTrust";
+
+let allTrustAC = (data) => {
+  return {
+    type: ALLTRUST,
+    data,
+  };
+};
+
+export let allTrust = (userId) => async (dispatch) => {
+  let response = await fetch(`/trust/all/${userId}`);
+
+  dispatch(allTrustAC(response.data));
+
+  return response.data;
+};
+
 let trustReducer = (state = {}, action) => {
   let newState;
 
@@ -50,6 +67,12 @@ let trustReducer = (state = {}, action) => {
       return newState;
     case REMOVETRUST:
       newState = Object.assign({}, state);
+
+    case ALLTRUST:
+      newState = Object.assign({}, state);
+      newState.allTrust = action.data;
+      return newState;
+
     default:
       return state;
   }
