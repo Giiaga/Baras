@@ -17,6 +17,10 @@ module.exports = {
         type: Sequelize.STRING(100),
         allowNull: true,
       },
+      photo: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
       private: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
