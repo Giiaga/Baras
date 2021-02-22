@@ -121,7 +121,8 @@ function AllMessages(props) {
 
     let allDivs = [];
     holder.forEach((each) => {
-      if (each.senderId == props.state.userId) {
+      if (each.senderId == userId) {
+        console.log(each, "SendeferId matches UserId");
         allDivs.push(
           <div
             key={each.createdAt}
@@ -194,20 +195,19 @@ function AllMessages(props) {
                 />
               </Modal>
             ) : (
-              ""
+              <div>WHATHTST</div>
             )}
           </div>
           {messages ? (
-            conversations(
-              messages.sentMessage,
-              messages.recievedMessage
-            ).map((d, i) => <div>WTHHHGDFG</div>)
+            conversations(messages.sentMessage, messages.recievedMessage).map(
+              (d, i) => d
+            )
           ) : (
             <div>ITDSGNKSDG</div>
           )}
         </div>
       ) : (
-        ""
+        <div>WHY NOT</div>
       )}
     </>
   );
