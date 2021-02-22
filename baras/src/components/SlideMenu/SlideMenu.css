@@ -20,12 +20,23 @@
   color: rgb(136, 77, 18);
 }
 .menuButton {
-  width: 15%;
+  width: 3%;
   position: absolute;
   top: 0%;
   left: 0%;
   font-stretch: ultra-expanded;
   font-size: large;
+  border: solid 1px orange;
+  background-color: rgb(75, 73, 70);
+  border-radius: 5px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 17px;
+  color: orange;
+}
+
+.menuButton:focus {
+  outline: none;
 }
 
 .menuList {

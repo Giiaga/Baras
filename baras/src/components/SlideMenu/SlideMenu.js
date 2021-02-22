@@ -71,6 +71,15 @@ function SlideMenu() {
           </h4>
           <h4
             onClick={() => {
+              document.getElementById("menu").style.top = -70 + "%";
+              setShowMenu(false);
+              history.push("/notification");
+            }}
+          >
+            Notification
+          </h4>
+          <h4
+            onClick={() => {
               history.push("/feelGood");
               return dispatch(sessionActions.logout());
             }}

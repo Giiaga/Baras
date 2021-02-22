@@ -70,7 +70,9 @@ function AllTrust() {
                 <p>Trusted Since: {trust.Trust.createdAt}</p>
               </div>
               <div className="TrustButtons">
-                <button>Message</button>
+                <button onClick={() => history.push("/message")}>
+                  Message
+                </button>
                 <button
                   onClick={(e) => removeTrusted(e, userId, trust.trusted.id)}
                 >

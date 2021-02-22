@@ -97,7 +97,9 @@ function Notifications() {
               Trusted <NavLink to="/trust">Trust</NavLink>
             </div>
           )} */}
-          <div>NO NOTIFS</div>
+          <div style={{ fontSize: "100px", position: "absolute", left: "25%" }}>
+            NO NOTIFICATION
+          </div>
         </>
       )}
     </>
