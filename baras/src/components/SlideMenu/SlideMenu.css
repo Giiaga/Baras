@@ -2,19 +2,21 @@
   margin-top: 0;
   width: 15%;
   height: 70%;
-  background-color: lightblue;
+  background-color: rgba(255, 225, 168, 0.829);
   position: absolute;
   top: -70%;
   left: 0%;
   transition: 0s;
   z-index: 1;
+  border-bottom-right-radius: 24px;
 }
 
 .closeButton {
-  margin-left: 83%;
-  color: white;
+  margin-left: 84%;
+  color: rgb(255, 255, 255);
   position: absolute;
-  top: 93%;
+  top: 91%;
+  transform: rotate(-35deg);
 }
 .closeButton:hover {
   color: rgb(136, 77, 18);
@@ -49,8 +51,9 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 5px;
+  color: rgb(0, 0, 0);
 }
 
 .menuList > h4:hover {
-  color: rgb(160, 108, 11);
+  color: rgb(231, 165, 41);
 }
