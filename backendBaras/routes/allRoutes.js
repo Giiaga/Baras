@@ -436,11 +436,11 @@ router.get(
     let { userId, senderId } = req.params;
     let recievedMessage = await PrivateChat.findAll({
       where: { recieverId: userId, senderId: senderId },
-      include: [User],
+      include: [{ model: User, as: "reciever" }],
     });
     let sentMessage = await PrivateChat.findAll({
       where: { senderId: userId, recieverId: senderId },
-      include: [User],
+      include: [{ model: User, as: "sender" }],
     });
 
     return res.json({ recievedMessage, sentMessage });

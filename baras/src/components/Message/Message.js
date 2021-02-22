@@ -15,10 +15,10 @@ function Message(props) {
   );
 
   let dispatch = useDispatch();
-
+  console.log(specificUserMessage, "FIRJHSHGF");
   useEffect(() => {
     dispatch(getSpecificUserMessage(userId, props.user)).then(
-      (data) => data.length && setMessageAvailable(true)
+      (data) => data && setMessageAvailable(true)
     );
     setOnChangeSubmitButton(false);
   }, [props.user, onChangeSubmitButton]);
@@ -58,6 +58,7 @@ function Message(props) {
 
     return array;
   };
+
   return (
     <>
       {/* <AllMessages /> */}
@@ -70,15 +71,21 @@ function Message(props) {
                 specificUserMessage.sentMessage
               ).map((message) =>
                 message.senderId != userId ? (
-                  <div key={message.id} className="senderMessageBlock">
-                    <img src={message.User.photo} alt={message.User.username} />
-                    <div className="senderMessageDiv">
-                      <p>{message.text} </p>
+                  <>
+                    {console.log("hihsdfshfids", message)}
+                    <div key={message.id} className="senderMessageBlock">
+                      <img
+                        src={message.reciever.photo}
+                        alt={message.reciever.username}
+                      />
+                      <div className="senderMessageDiv">
+                        <p>{message.message} </p>
+                      </div>
                     </div>
-                  </div>
+                  </>
                 ) : (
                   <div key={message.id} className="userMessageBlock">
-                    <p>{message.text}</p>
+                    <p>{message.message}</p>
                   </div>
                 )
               )

@@ -154,7 +154,7 @@ function AllMessages(props) {
             key={each.createdAt}
             className="listOfMessagesDiv"
             onClick={() => {
-              console.log(each.sender.id);
+              console.log(each.senderId, "SENDERNERN");
 
               props.state.setMessageOpen(true);
               props.state.setUserClicked(each.senderId);

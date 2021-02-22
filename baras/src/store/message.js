@@ -29,7 +29,7 @@ let getSpecificUserMessageAC = (data) => {
 export let getSpecificUserMessage = (userId, clickedUser) => async (
   dispatch
 ) => {
-  let response = await fetch(`/privateChat/${userId}/${1}/chat`);
+  let response = await fetch(`/privateChat/${userId}/${clickedUser}/chat`);
 
   dispatch(getSpecificUserMessageAC(response.data));
 
