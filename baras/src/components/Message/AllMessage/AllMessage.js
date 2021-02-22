@@ -17,6 +17,10 @@ function AllMessages(props) {
     dispatch(getAllMessages(userId));
   }, [dispatch]);
 
+  // let setIn = setInterval(() => {
+  //   console.log("hieh");
+  // }, 10000);
+  // useEffect(() => dispatch(getAllMessages(userId)), [setIn]);
   useEffect(() => {
     console.log("yes so");
 

@@ -15,7 +15,7 @@ function Message(props) {
   );
 
   let dispatch = useDispatch();
-  console.log(specificUserMessage, "FIRJHSHGF");
+
   useEffect(() => {
     dispatch(getSpecificUserMessage(userId, props.user)).then(
       (data) => data && setMessageAvailable(true)
