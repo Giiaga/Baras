@@ -1,5 +1,6 @@
 .allMessagesContainer {
-  margin-left: 200px;
+  margin-left: 15%;
+  margin-top: 2%;
   border: 1px solid;
   width: 300px !important;
   height: 547px;
@@ -20,8 +21,9 @@
 .inboxDisplayDiv div {
   position: absolute;
   top: 5px;
-  left: 83.5%;
+  left: 30.5%;
   width: 45px;
+  top: 5.2%;
   text-align: center;
   background-color: rgba(0, 0, 255, 0.055);
   border: 1px solid rgba(0, 0, 0, 0.068);

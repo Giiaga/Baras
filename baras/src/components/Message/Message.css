@@ -102,8 +102,8 @@
   outline: none;
 }
 .messageContainer form button {
-  width: 42px;
-  height: 44px;
+  width: 56px;
+  height: 47px;
   padding-left: 0;
   padding-right: 0;
   padding-top: 2px;
@@ -112,8 +112,8 @@
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.14);
   position: absolute;
-  top: 503px;
-  left: 636px;
+  top: 501px;
+  left: 643px;
   /* align-self: flex-start; */
 }
 
@@ -121,6 +121,9 @@
   border: 1px solid rgba(0, 0, 0, 0.11);
   width: 700px !important;
   margin-left: 35.3%;
+  position: absolute;
+  top: 4.4%;
+  left: -1.5%;
   border-radius: 10px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -130,4 +133,7 @@
 
 .messagesPage {
   width: 700px !important;
+  position: absolute;
+  top: 4.4%;
+  left: -2%;
 }

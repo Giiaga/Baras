@@ -41,6 +41,9 @@ function MessagesPage() {
             borderBottomRightRadius: "0",
             height: "548.7px",
             borderBottom: "none",
+            position: "absolute",
+            top: "4.4%",
+            left: "-2%",
           }}
         ></div>
       )}

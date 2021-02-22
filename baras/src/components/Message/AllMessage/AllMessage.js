@@ -16,14 +16,12 @@ function AllMessages(props) {
     console.log("does it");
     dispatch(getAllMessages(userId));
   }, [dispatch]);
-
-  // let setIn = setInterval(() => {
-  //   console.log("hieh");
-  // }, 10000);
-  // useEffect(() => dispatch(getAllMessages(userId)), [setIn]);
+  // let [i, setI] = useState(0);
+  // setInterval(() => {
+  //   setI(i++);
+  // }, 5000);
+  // useEffect(() => dispatch(getAllMessages(userId)), [i]);
   useEffect(() => {
-    console.log("yes so");
-
     dispatch(getAllMessages(userId));
     props.state.setReplacer(false);
   }, [props.state.replacer]);
@@ -125,7 +123,6 @@ function AllMessages(props) {
     let allDivs = [];
     holder.forEach((each) => {
       if (each.senderId === userId) {
-        console.log(each, "FIRST");
         allDivs.push(
           <div
             key={each.createdAt}
@@ -152,7 +149,6 @@ function AllMessages(props) {
           </div>
         );
       } else {
-        console.log(each, "ELSE");
         allDivs.push(
           <div
             key={each.createdAt}
