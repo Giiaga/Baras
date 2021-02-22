@@ -69,6 +69,7 @@ let messageReducer = (state = [], action) => {
       return newState;
     case SUBMITMESSAGE:
       newState = Object.assign({}, state);
+      newState.allMessages.push(action.data);
       return newState;
     default:
       return state;
