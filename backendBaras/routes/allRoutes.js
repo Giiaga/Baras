@@ -413,21 +413,16 @@ router.get(
   asyncHandler(async (req, res) => {
     let { userId } = req.params;
 
-    let recievedMessage = [];
-    let userRecieved = await PrivateChat.findAll({
+    let recievedMessage = await PrivateChat.findAll({
       where: { recieverId: userId },
+      include: [{ model: User, as: "sender" }],
     });
-    for (let i = 0; i < userRecieved.length; i++) {
-      let user = await User.findOne({
-        where: { id: userRecieved[i].senderId },
-      });
-      recievedMessage.push({ recievedMessage: userRecieved[i], sender: user });
-    }
 
     let sentMessage = await PrivateChat.findAll({
       where: { senderId: userId },
-      include: [User],
+      include: [{ model: User, as: "reciever" }],
     });
+
     return res.json({ recievedMessage, sentMessage });
   })
 );

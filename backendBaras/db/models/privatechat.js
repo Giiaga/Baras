@@ -10,8 +10,14 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   PrivateChat.associate = function (models) {
-    PrivateChat.belongsTo(models.User, { foreignKey: "senderId" });
-    PrivateChat.belongsTo(models.User, { foreignKey: "recieverId" });
+    PrivateChat.belongsTo(models.User, {
+      as: "sender",
+      foreignKey: "senderId",
+    });
+    PrivateChat.belongsTo(models.User, {
+      as: "reciever",
+      foreignKey: "recieverId",
+    });
     // associations can be defined here
   };
   return PrivateChat;

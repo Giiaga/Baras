@@ -8,14 +8,14 @@ import SendMessage from "../SendMessage";
 function AllMessages(props) {
   let userId = useSelector((state) => state.session.user.id);
   let messages = useSelector((state) => state.message.allMessages);
-  console.log("AT ALLL");
+  console.log("AT ALLL", messages);
   let [showModal, setShowModel] = useState(false);
 
   let dispatch = useDispatch();
   useEffect(() => {
     console.log("does it");
     dispatch(getAllMessages(userId));
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     console.log("yes so");
@@ -26,7 +26,6 @@ function AllMessages(props) {
 
   function conversations(sent, recieved) {
     let holder = [];
-
     if (sent.length && recieved.length) {
       //RECIEVERS
       let recievers = [];
@@ -121,8 +120,8 @@ function AllMessages(props) {
 
     let allDivs = [];
     holder.forEach((each) => {
-      if (each.senderId == userId) {
-        console.log(each, "SendeferId matches UserId");
+      if (each.senderId === userId) {
+        console.log(each, "FIRST");
         allDivs.push(
           <div
             key={each.createdAt}
@@ -132,9 +131,9 @@ function AllMessages(props) {
               props.state.setUserClicked(each.recieverId);
             }}
           >
-            <img src={each.User.photo} alt={each.User.username} />
+            <img src={each.reciever.photo} alt={each.reciever.username} />
             <div className="messageDetail">
-              <p style={{ fontSize: "14px" }}>{each.User.username}</p>
+              <p style={{ fontSize: "14px" }}>{each.reciever.username}</p>
               <p
                 style={{
                   fontSize: "13px",
@@ -143,26 +142,27 @@ function AllMessages(props) {
                   paddingTop: "2px",
                 }}
               >
-                {each.text.slice(0, 20)}
+                {each.message.slice(0, 20)}
               </p>
             </div>
           </div>
         );
       } else {
+        console.log(each, "ELSE");
         allDivs.push(
           <div
             key={each.createdAt}
             className="listOfMessagesDiv"
             onClick={() => {
-              console.log(each.User.id);
+              console.log(each.sender.id);
 
               props.state.setMessageOpen(true);
               props.state.setUserClicked(each.senderId);
             }}
           >
-            <img src={each.User.photo} alt={each.User.photo} />
+            <img src={each.sender.photo} alt={each.sender.photo} />
             <div className="messageDetail">
-              <p style={{ fontSize: "14px" }}>{each.User.username}</p>
+              <p style={{ fontSize: "14px" }}>{each.sender.username}</p>
               <p
                 style={{
                   fontSize: "13px",
@@ -171,7 +171,7 @@ function AllMessages(props) {
                   paddingTop: "2px",
                 }}
               >
-                {each.text.slice(0, 20)}
+                {each.message.slice(0, 20)}
               </p>
             </div>
           </div>
@@ -195,19 +195,17 @@ function AllMessages(props) {
                 />
               </Modal>
             ) : (
-              <div>WHATHTST</div>
+              ""
             )}
           </div>
-          {messages ? (
-            conversations(messages.sentMessage, messages.recievedMessage).map(
-              (d, i) => d
-            )
-          ) : (
-            <div>ITDSGNKSDG</div>
-          )}
+          {messages
+            ? conversations(messages.sentMessage, messages.recievedMessage).map(
+                (d, i) => d
+              )
+            : ""}
         </div>
       ) : (
-        <div>WHY NOT</div>
+        ""
       )}
     </>
   );
