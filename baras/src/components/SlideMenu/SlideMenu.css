@@ -13,13 +13,13 @@
 
 .closeButton {
   margin-left: 84%;
-  color: rgb(255, 255, 255);
+  color: rgba(112, 110, 110, 0.5);
   position: absolute;
-  top: 91%;
+  top: 91.5%;
   transform: rotate(-35deg);
 }
 .closeButton:hover {
-  color: rgb(136, 77, 18);
+  color: rgb(255, 255, 255);
 }
 .menuButton {
   width: 3%;
