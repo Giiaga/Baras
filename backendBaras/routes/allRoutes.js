@@ -447,6 +447,20 @@ router.get(
   })
 );
 
-// router.post('/messageSent')
+router.post(
+  "/sendMessage",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    let { formValue, userId, sendToId } = req.body;
+
+    let messageCreated = await PrivateChat.create({
+      message: formValue,
+      senderId: userId,
+      recieverId: sendToId,
+    });
+
+    return res.json(messageCreated);
+  })
+);
 
 module.exports = router;

@@ -45,8 +45,16 @@ let submitTheFormAC = (data) => {
   };
 };
 
-export let submitTheForm = () => async (dispatch) => {
-  let response = await fetch("/");
+export let submitTheForm = (formValue, userId, sendToId) => async (
+  dispatch
+) => {
+  let response = await fetch("/sendMessage", {
+    method: "POST",
+    body: JSON.stringify({ formValue, userId, sendToId }),
+  });
+
+  dispatch(submitTheFormAC(response.data));
+  return response.data;
 };
 let messageReducer = (state = [], action) => {
   let newState;
@@ -59,7 +67,9 @@ let messageReducer = (state = [], action) => {
       newState = Object.assign({}, state);
       newState.specificUserMessage = action.data;
       return newState;
-
+    case SUBMITMESSAGE:
+      newState = Object.assign({}, state);
+      return newState;
     default:
       return state;
   }

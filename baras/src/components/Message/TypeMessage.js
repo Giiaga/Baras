@@ -10,18 +10,17 @@ function TypeMessage(props) {
   const [typed, setTyped] = useState(true);
   const [formValue, setFormValue] = useState();
   let dispatch = useDispatch();
-  let test = props.sentToId;
 
-  const submittingtheForm = (e, formValue, userId, test) => {
+  const submittingtheForm = (e) => {
     e.preventDefault();
-    dispatch(submitTheForm(formValue, userId, test));
+    dispatch(submitTheForm(formValue, userId, props.sentToId));
     setFormValue("");
     props.state(true);
     props.replacer(true);
   };
   return (
     <div className="messageContainer">
-      <form onSubmit={(e) => submittingtheForm(e, formValue, userId, test)}>
+      <form onSubmit={submittingtheForm}>
         <textarea
           value={formValue}
           placeholder="Message"
