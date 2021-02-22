@@ -412,13 +412,21 @@ router.get(
   requireAuth,
   asyncHandler(async (req, res) => {
     let { userId } = req.params;
-    console.log("first routeGDHISHDGKSHGK hits");
 
-    let recievedMessage = await PrivateChat.findAll({
+    let recievedMessage = [];
+    let userRecieved = await PrivateChat.findAll({
       where: { recieverId: userId },
     });
+    for (let i = 0; i < userRecieved.length; i++) {
+      let user = await User.findOne({
+        where: { id: userRecieved[i].senderId },
+      });
+      recievedMessage.push({ recievedMessage: userRecieved[i], sender: user });
+    }
+
     let sentMessage = await PrivateChat.findAll({
       where: { senderId: userId },
+      include: [User],
     });
     return res.json({ recievedMessage, sentMessage });
   })
