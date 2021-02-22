@@ -17,7 +17,7 @@ function SendMessage(props) {
   console.log(allData);
   useEffect(() => {
     dispatch(getTrust(userId)).then(() => setState(true));
-  }, []);
+  }, [dispatch]);
   const sendText = (e, userId, selectValue, textValue) => {
     e.preventDefault();
     dispatch(sendMessage(userId, selectValue, textValue));
@@ -37,7 +37,9 @@ function SendMessage(props) {
           >
             <option>Send To...</option>
             {allData.map((each) => (
-              <option value={each}>{each}</option>
+              <option value={each.Trusted.id} key={each.Trusted.username}>
+                {each.Trusted.username}
+              </option>
             ))}
           </select>
           <textarea

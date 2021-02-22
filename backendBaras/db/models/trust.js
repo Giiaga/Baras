@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Trust.associate = function (models) {
-    Trust.belongsTo(models.User, { foreignKey: "userId" });
-    Trust.belongsTo(models.User, { foreignKey: "trustedId" });
+    Trust.belongsTo(models.User, { as: "UserItSelf", foreignKey: "userId" });
+    Trust.belongsTo(models.User, { as: "Trusted", foreignKey: "trustedId" });
     Trust.belongsToMany(models.Baras, {
       through: "BarasTrustedJoins",
       otherKey: "barasId",

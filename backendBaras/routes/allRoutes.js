@@ -454,9 +454,9 @@ router.post(
     let { formValue, userId, sendToId, message, sendTo } = req.body;
     if (message && sendTo) {
       let messageCreated = await PrivateChat.create({
-        message: formValue,
+        message: message,
         senderId: userId,
-        recieverId: sendToId,
+        recieverId: sendTo,
       });
 
       return res.json(messageCreated);
@@ -471,4 +471,18 @@ router.post(
   })
 );
 
+router.get(
+  "/getTrust/:userId",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    let { userId } = req.params;
+
+    let allTrust = await Trust.findAll({
+      where: { userId },
+      include: [{ model: User, as: "Trusted" }],
+    });
+
+    return res.json(allTrust);
+  })
+);
 module.exports = router;

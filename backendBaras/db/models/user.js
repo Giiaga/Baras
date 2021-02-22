@@ -71,8 +71,8 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Story, { foreignKey: "userId" });
     User.hasMany(models.BarasLikes, { foreignKey: "userId" });
     User.hasMany(models.BarasComments, { foreignKey: "userId" });
-    User.hasMany(models.Trust, { foreignKey: "userId" });
-    User.hasMany(models.Trust, { foreignKey: "trustedId" });
+    User.hasMany(models.Trust, { as: "UserItSelf", foreignKey: "userId" });
+    User.hasMany(models.Trust, { as: "Trusted", foreignKey: "trustedId" });
     User.hasMany(models.Baras, { foreignKey: "userId" });
     // associations can be defined here
   };
