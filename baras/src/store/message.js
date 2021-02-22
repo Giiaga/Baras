@@ -56,6 +56,43 @@ export let submitTheForm = (formValue, userId, sendToId) => async (
   dispatch(submitTheFormAC(response.data));
   return response.data;
 };
+
+let SENDMESSAGE = "THISISTHEPOPUPWHENCLICKCREATEMESSAGE";
+
+let sendMessageAC = (data) => {
+  return {
+    type: SENDMESSAGE,
+    data,
+  };
+};
+
+export let sendMessage = (userId, sendTo, message) => async (dispatch) => {
+  let response = await fetch("/sendMessage", {
+    method: "POST",
+    body: JSON.stringify({ userId, sendTo, message }),
+  });
+
+  dispatch(sendMessageAC(response.data));
+
+  return response.data;
+};
+
+let GETTRUST = "getAllTrustOfUserForDropDownToSendMessage";
+
+let getTrustAC = (data) => {
+  return {
+    type: GETTRUST,
+    data,
+  };
+};
+
+export let getTrust = (userId) => async (dispatch) => {
+  let response = await fetch(`/getTrust/${userId}`);
+
+  dispatch(getTrustAC(response.data));
+
+  return response.data;
+};
 let messageReducer = (state = [], action) => {
   let newState;
   switch (action.type) {
@@ -67,10 +104,15 @@ let messageReducer = (state = [], action) => {
       newState = Object.assign({}, state);
       newState.specificUserMessage = action.data;
       return newState;
-    case SUBMITMESSAGE:
+    case SUBMITMESSAGE || SENDMESSAGE:
       newState = Object.assign({}, state);
-      newState.allMessages.push(action.data);
+      newState.allMessages.sentMessage.push(action.data);
       return newState;
+    case GETTRUST:
+      newState = Object.assign({}, state);
+      newState.allTrust = action.data;
+      return newState;
+
     default:
       return state;
   }

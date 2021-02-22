@@ -22,8 +22,7 @@ function AllMessages(props) {
   // }, 5000);
   // useEffect(() => dispatch(getAllMessages(userId)), [i]);
   useEffect(() => {
-    dispatch(getAllMessages(userId));
-    props.state.setReplacer(false);
+    dispatch(getAllMessages(userId)).then(() => props.state.setReplacer(false));
   }, [props.state.replacer]);
 
   function conversations(sent, recieved) {
@@ -188,7 +187,7 @@ function AllMessages(props) {
             <h2>Inbox</h2>
             <div onClick={() => setShowModel(true)}>Create</div>
             {showModal ? (
-              <Modal>
+              <Modal onClose={() => setShowModel(false)}>
                 <SendMessage
                   replacer={props.state.setReplacer}
                   setModelState={setShowModel}
