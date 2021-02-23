@@ -32,10 +32,12 @@ module.exports = {
       private: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
+        allowNull: false,
       },
       trusted: {
         type: Sequelize.BOOLEAN,
         defaultValue: true,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

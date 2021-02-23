@@ -17,6 +17,7 @@ import CreateBaras from "./components/CreateBaras/CreateBaras";
 import AllTrust from "./components/Trust/Trust";
 import MessagesPage from "./components/Message/MessagePage";
 import { allNotifications } from "./store/notification";
+import WorldBaras from "./components/WorldBaras/WorldBaras";
 
 function App() {
   let user = useSelector((state) => state.session.user);
@@ -62,6 +63,9 @@ function App() {
       {isLoaded && (
         <>
           <Switch>
+            <Route exact path="/world/Baras">
+              <WorldBaras />
+            </Route>
             <Route exact path="/trust">
               <AllTrust />
             </Route>
