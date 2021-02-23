@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import "./SlideMenu.css";
 
-function SlideMenu() {
+function SlideMenu({ totalNotif }) {
   let user = useSelector((state) => state.session.user);
   let dispatch = useDispatch();
   let [showMenu, setShowMenu] = useState(false);
@@ -87,6 +87,20 @@ function SlideMenu() {
           >
             Notification
           </h4>
+          {totalNotif > 0 && (
+            <div
+              style={{
+                position: "absolute",
+                top: "71.5%",
+                left: "70%",
+                color: "orange",
+                width: "10px",
+                border: "1px solid orange",
+              }}
+            >
+              {totalNotif}
+            </div>
+          )}
           <h4
             onClick={() => {
               history.push("/feelGood");

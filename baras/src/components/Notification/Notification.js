@@ -5,7 +5,7 @@ import { allNotifications, removeNotification } from "../../store/notification";
 import { addTrust } from "../../store/trust";
 import "./Notification.css";
 
-function Notifications() {
+function Notifications({ totalNotif }) {
   let [notificationAvailable, setNotifications] = useState(false);
   let [notificationSuccess, setNotificationSuccess] = useState(false);
   let [notAddedNotification, setNotAddedNotification] = useState(false);
@@ -24,7 +24,7 @@ function Notifications() {
         setNotifications(false);
       }
     });
-  }, [dispatch, notificationSuccess, notAddedNotification]);
+  }, [dispatch, notificationSuccess, notAddedNotification, totalNotif]);
 
   function confirmTrust(e, userId, trustedId) {
     e.preventDefault();

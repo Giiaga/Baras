@@ -16,15 +16,20 @@ import StoryTell from "./components/Story/StoryTell";
 import CreateBaras from "./components/CreateBaras/CreateBaras";
 import AllTrust from "./components/Trust/Trust";
 import MessagesPage from "./components/Message/MessagePage";
+import { allNotifications } from "./store/notification";
 
 function App() {
   let user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [totalNotif, setTotalNotif] = useState(0);
 
   useEffect(() => {
     if (user) {
       setIsLoaded(true);
+      dispatch(allNotifications(user.id)).then(
+        (data) => data && setTotalNotif(data.length)
+      );
       return;
     }
     dispatch(sessionActions.restoreUser()).then(
@@ -35,10 +40,7 @@ function App() {
   return (
     <>
       {/* <Navigation isLoaded={isLoaded} /> */}
-      {user && <SlideMenu />}
-      {/* <audio controls autoPlay>
-        <source src="strings.mp3" type="audio/mp3" />
-      </audio> */}
+      {user && <SlideMenu totalNotif={totalNotif} />}
       <Switch>
         <Route exact path="/">
           <EntryPage />
@@ -62,7 +64,7 @@ function App() {
               <AllTrust />
             </Route>
             <Route exact path="/notification">
-              <Notification />
+              <Notification totalNotif={totalNotif} />
             </Route>
             <Route exact path="/message">
               <MessagesPage />

@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./EntryPage.css";
 
 function EntryPage() {
   let user = useSelector((state) => state.session.user);
-
   let history = useHistory();
   //  let fileread = new FileReader();
   //  if (photo) {
