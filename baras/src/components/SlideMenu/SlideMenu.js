@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import "./SlideMenu.css";
 
-function SlideMenu({ totalNotif }) {
+function SlideMenu({ totalNotif, setTotalNotif }) {
   let user = useSelector((state) => state.session.user);
   let dispatch = useDispatch();
   let [showMenu, setShowMenu] = useState(false);
@@ -93,12 +93,22 @@ function SlideMenu({ totalNotif }) {
                 position: "absolute",
                 top: "71.5%",
                 left: "70%",
-                color: "orange",
-                width: "10px",
-                border: "1px solid orange",
+                width: "15px",
+                height: "15px",
+                borderRadius: "15px",
+                paddingBottom: "1px",
+                backgroundColor: "orange",
               }}
             >
-              {totalNotif}
+              <span
+                style={{
+                  paddingLeft: "30%",
+                  fontSize: "12px",
+                  color: "white",
+                }}
+              >
+                {totalNotif}
+              </span>
             </div>
           )}
           <h4

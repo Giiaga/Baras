@@ -40,7 +40,9 @@ function App() {
   return (
     <>
       {/* <Navigation isLoaded={isLoaded} /> */}
-      {user && <SlideMenu totalNotif={totalNotif} />}
+      {user && (
+        <SlideMenu totalNotif={totalNotif} setTotalNotif={setTotalNotif} />
+      )}
       <Switch>
         <Route exact path="/">
           <EntryPage />
@@ -64,7 +66,10 @@ function App() {
               <AllTrust />
             </Route>
             <Route exact path="/notification">
-              <Notification totalNotif={totalNotif} />
+              <Notification
+                totalNotif={totalNotif}
+                setTotalNotif={setTotalNotif}
+              />
             </Route>
             <Route exact path="/message">
               <MessagesPage />

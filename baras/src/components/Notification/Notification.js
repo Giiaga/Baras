@@ -5,10 +5,10 @@ import { allNotifications, removeNotification } from "../../store/notification";
 import { addTrust } from "../../store/trust";
 import "./Notification.css";
 
-function Notifications({ totalNotif }) {
+function Notifications({ totalNotif, setTotalNotif }) {
   let [notificationAvailable, setNotifications] = useState(false);
-  let [notificationSuccess, setNotificationSuccess] = useState(false);
-  let [notAddedNotification, setNotAddedNotification] = useState(false);
+  // let [notificationSuccess, setNotificationSuccess] = useState(false);
+  // let [notAddedNotification, setNotAddedNotification] = useState(false);
 
   let notifications = useSelector(
     (state) => state.notifications.allNotifications
@@ -24,22 +24,23 @@ function Notifications({ totalNotif }) {
         setNotifications(false);
       }
     });
-  }, [dispatch, notificationSuccess, notAddedNotification, totalNotif]);
+  }, [dispatch, totalNotif]);
 
   function confirmTrust(e, userId, trustedId) {
     e.preventDefault();
     dispatch(addTrust(userId, trustedId)).then(() => {
-      setNotificationSuccess(true);
-      setNotAddedNotification(false);
+      // setNotificationSuccess(true);
+      setTotalNotif(totalNotif - 1);
+      // setNotAddedNotification(false);
     });
   }
 
   function dontTrust(e, userId, trustedId) {
     e.preventDefault();
     dispatch(removeNotification(userId, trustedId)).then(() => {
-      setNotAddedNotification(true);
-
-      setNotificationSuccess(false);
+      // setNotAddedNotification(true);
+      setTotalNotif(totalNotif - 1);
+      // setNotificationSuccess(false);
     });
   }
 
@@ -55,16 +56,16 @@ function Notifications({ totalNotif }) {
               <div key={notif.notification.id} className="notificationMainDiv">
                 {notif.notification.type === "trustRequest" ? (
                   <div className="trustRequest">
-                    {notificationSuccess && (
+                    {/* {notificationSuccess && (
                       <div>
                         Trusted <NavLink to="/trust">Trust</NavLink>
                       </div>
-                    )}
-                    {notAddedNotification && (
+                    )} */}
+                    {/* {notAddedNotification && (
                       <div>
                         Not Added <NavLink to="/trust">Trust</NavLink>
                       </div>
-                    )}
+                    )} */}
                     <div className="userImage">
                       <img
                         src={notif.sentUser.photo}
@@ -99,13 +100,14 @@ function Notifications({ totalNotif }) {
                     </button>{" "}
                   </div>
                 ) : (
-                  <div>
-                    {notificationSuccess && (
-                      <div>
-                        Trusted <NavLink to="/trust">Trust</NavLink>
-                      </div>
-                    )}
-                  </div>
+                  ""
+                  // <div>
+                  //   {notificationSuccess && (
+                  //     <div>
+                  //       Trusted <NavLink to="/trust">Trust</NavLink>
+                  //     </div>
+                  //   )}
+                  // </div>
                 )}
               </div>
             </>
