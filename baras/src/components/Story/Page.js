@@ -863,6 +863,7 @@ function Page() {
                 }}
               ></div>
               <textarea
+                placeholder="Write"
                 style={{
                   width: "100%",
                   height: "100%",

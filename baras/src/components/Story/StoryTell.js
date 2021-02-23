@@ -14,6 +14,7 @@ function StoryTell() {
   let history = useHistory();
 
   let createStory = (e) => {
+    console.log(publish, "INT ETHRDFJK");
     e.preventDefault();
     dispatch(tellStory(userId, title, publish)).then((data) => {
       let paramTitle = title.split(" ").join("<:>");
@@ -40,11 +41,11 @@ function StoryTell() {
           placeholder="Title"
           onChange={(e) => setTitle(e.target.value)}
         />
-        <label>
+        <label id="storyTellFormPhoto">
           Photo
           <input type="file" onChange={(e) => changePhoto(e.target.files[0])} />
         </label>
-        <label>
+        <label id="publishForm">
           Publish{" "}
           <input
             type="checkbox"
@@ -58,8 +59,8 @@ function StoryTell() {
           <div
             style={{
               border: "1px solid orange",
-              maxHeight: "600px",
-              maxWidth: "600px",
+              marginTop: "1%",
+              margin: "auto",
               height: "300px",
               width: "300px",
               minHeight: "100px",

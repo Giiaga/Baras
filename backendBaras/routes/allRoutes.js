@@ -137,7 +137,7 @@ router.post(
       );
       return res.json(storyUpdate);
     }
-    let story = await Story.create({ userId, title, publish });
+    let story = await Story.create({ userId, title, published: publish });
     await Page.create({ pageNumber: 1, storyId: story.id });
 
     return res.json(story);

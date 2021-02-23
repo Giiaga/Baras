@@ -31,6 +31,9 @@ textarea {
   padding-left: 10px;
   font-size: 14px;
 }
+.pageMainDiv {
+  border-color: orange !important;
+}
 .nextBackIcons {
   color: rgba(218, 208, 208, 0.842);
 }

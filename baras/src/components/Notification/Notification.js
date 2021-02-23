@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { allNotifications, removeNotification } from "../../store/notification";
-import trustReducer, { addTrust } from "../../store/trust";
+import { addTrust } from "../../store/trust";
+import "./Notification.css";
 
 function Notifications() {
   let [notificationAvailable, setNotifications] = useState(false);
@@ -46,48 +47,59 @@ function Notifications() {
     <>
       {notificationAvailable ? (
         notifications.map((notif) => (
-          <div>
-            {notif.notification.type === "trustRequest" ? (
-              <div>
-                {notificationSuccess && (
-                  <div>
-                    Trusted <NavLink to="/trust">Trust</NavLink>
+          <>
+            {/* <h1 style={{ width: "200px", margin: "auto", fontSize: "50px" }}>
+              Notification
+            </h1> */}
+            <div key={notif.notification.id} className="notificationMainDiv">
+              {notif.notification.type === "trustRequest" ? (
+                <div className="trustRequest">
+                  {notificationSuccess && (
+                    <div>
+                      Trusted <NavLink to="/trust">Trust</NavLink>
+                    </div>
+                  )}
+                  {notAddedNotification && (
+                    <div>
+                      Not Added <NavLink to="/trust">Trust</NavLink>
+                    </div>
+                  )}
+                  <div className="trustRequestUsername">
+                    <NavLink to={`/${notif.sentUser.username}/Trust`}>
+                      {notif.sentUser.username}
+                    </NavLink>{" "}
+                    <span id="spanning">asked to be Trusted</span>
                   </div>
-                )}
-                {notAddedNotification && (
-                  <div>
-                    Not Added <NavLink to="/trust">Trust</NavLink>
-                  </div>
-                )}
-                <div>{notif.notification.notification}</div>
-                <div>{notif.sentUser.username}</div>
-                <button
-                  onClick={(e) => confirmTrust(e, userId, notif.sentUser.id)}
-                >
-                  Trust
-                </button>{" "}
-                <button
-                  onClick={(e) => {
-                    dontTrust(
-                      e,
-                      notif.notification.userId,
-                      notif.notification.trustedId
-                    );
-                  }}
-                >
-                  Don't Trust
-                </button>{" "}
-              </div>
-            ) : (
-              <div>
-                {notificationSuccess && (
-                  <div>
-                    Trusted <NavLink to="/trust">Trust</NavLink>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
+                  <button
+                    id="trustRequestTrustButton"
+                    onClick={(e) => confirmTrust(e, userId, notif.sentUser.id)}
+                  >
+                    Trust
+                  </button>{" "}
+                  <button
+                    id="dontTrust"
+                    onClick={(e) => {
+                      dontTrust(
+                        e,
+                        notif.notification.userId,
+                        notif.notification.trustedId
+                      );
+                    }}
+                  >
+                    Don't Trust
+                  </button>{" "}
+                </div>
+              ) : (
+                <div>
+                  {notificationSuccess && (
+                    <div>
+                      Trusted <NavLink to="/trust">Trust</NavLink>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </>
         ))
       ) : (
         <>

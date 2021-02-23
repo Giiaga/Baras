@@ -1,0 +1,56 @@
+.notificationMainDiv {
+  width: 31%;
+  position: relative;
+  margin: auto;
+  margin-top: 5%;
+}
+
+.trustRequest {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 202, 104, 0.712);
+  border-radius: 10px;
+  height: 50px;
+}
+
+.trustRequestUsername {
+  margin-bottom: auto;
+  margin-left: 2%;
+  margin-top: auto;
+}
+
+.trustRequest button {
+  width: 10%;
+  align-self: flex-end;
+  position: absolute;
+  top: 20%;
+  margin-right: 10px;
+  border: 1px solid orange;
+  border-radius: 10px;
+  background-color: rgb(250, 243, 229);
+  color: rgb(126, 126, 126);
+}
+
+.trustRequest button:focus {
+  outline-color: rgba(247, 164, 10, 0.13);
+}
+
+#trustRequestTrustButton {
+  left: 75%;
+  position: absolute;
+  top: 18%;
+  height: 67%;
+}
+
+#dontTrust {
+  height: 67%;
+  font-size: 12px;
+}
+
+#spanning {
+  margin-left: 1px;
+  color: rgba(68, 68, 68, 0.877);
+  font-size: 14px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
