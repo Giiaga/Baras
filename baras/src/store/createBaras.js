@@ -19,7 +19,7 @@ export let letBarasOut = (
   privateBaras,
   trusted
 ) => async (dispatch) => {
-  let response = await fetch("/createBaras", {
+  let response = await fetch("/letBarasOut", {
     method: "POST",
     // headers: {
     //   "Content-Type": "application/json",

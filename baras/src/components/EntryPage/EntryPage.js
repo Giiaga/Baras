@@ -1,9 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import "./EntryPage.css";
 
 function EntryPage() {
   let user = useSelector((state) => state.session.user);
+
+  let history = useHistory();
   //  let fileread = new FileReader();
   //  if (photo) {
   //    fileread.onload = (e) =>
@@ -24,9 +27,7 @@ function EntryPage() {
         <div className="buttonDiv">
           <button
             onClick={() =>
-              user
-                ? (window.location.href = "/world-baras")
-                : (window.location.href = "/login")
+              user ? history.push("/world-baras") : history.push("/login")
             }
           >
             Let it out

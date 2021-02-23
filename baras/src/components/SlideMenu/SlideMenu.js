@@ -18,6 +18,15 @@ function SlideMenu() {
             onClick={() => {
               document.getElementById("menu").style.top = -70 + "%";
               setShowMenu(false);
+              history.push(`/letBarasOut`);
+            }}
+          >
+            Let Baras Out
+          </h4>
+          <h4
+            onClick={() => {
+              document.getElementById("menu").style.top = -70 + "%";
+              setShowMenu(false);
               history.push(`/${user.username}`);
             }}
           >

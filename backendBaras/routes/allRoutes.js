@@ -13,7 +13,7 @@ const {
 } = require("../db/models");
 
 router.post(
-  "/createBaras",
+  "/letBarasOut",
   requireAuth,
   asyncHandler(async (req, res, next) => {
     let {

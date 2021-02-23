@@ -36,6 +36,9 @@ function App() {
     <>
       {/* <Navigation isLoaded={isLoaded} /> */}
       {user && <SlideMenu />}
+      {/* <audio controls autoPlay>
+        <source src="strings.mp3" type="audio/mp3" />
+      </audio> */}
       <Switch>
         <Route exact path="/">
           <EntryPage />
@@ -70,7 +73,7 @@ function App() {
             <Route exact path="/page">
               <Page />
             </Route>
-            <Route exact path="/createBaras">
+            <Route exact path="/letBarasOut">
               <CreateBaras />
             </Route>
             <Route exact path="/story/tell">

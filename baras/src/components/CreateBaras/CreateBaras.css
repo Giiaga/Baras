@@ -1,3 +1,11 @@
+.createBarasMain {
+  background-color: rgba(255, 166, 0, 0.26);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
 .addButtons {
   width: 30.3%;
   margin-left: 3%;
@@ -17,16 +25,19 @@
   border: none;
   border-bottom: 1px solid orange;
   font-size: large;
+  background-color: transparent;
 }
 
 #relatesTo:focus {
   border-bottom: 1px solid orange;
   outline: none;
+  background-color: transparent;
 }
 
 #BarasTextArea {
   margin-top: 8% !important;
   border-bottom: 1px solid rgb(190, 162, 109);
+  background-color: transparent;
 }
 
 #letItOutButton {
@@ -41,6 +52,7 @@
 
 #letItOutButton:hover {
   color: orange;
+  border: 1px solid rgba(255, 166, 0, 0.562);
 }
 
 #privateBaras {

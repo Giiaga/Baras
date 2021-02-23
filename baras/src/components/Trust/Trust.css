@@ -24,6 +24,19 @@
   justify-content: space-around;
   margin-left: 12%;
 }
+.TrustButtons button {
+  border: none;
+  border-radius: 10px;
+  color: rgb(231, 154, 9);
+  height: 24%;
+}
+.TrustButtons button:focus {
+  outline-color: orange;
+}
+.TrustButtons button:hover {
+  background-color: orange;
+  color: white;
+}
 
 #usernameDetail {
   color: #f37227d7;
