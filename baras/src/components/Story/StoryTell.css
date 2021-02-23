@@ -1,0 +1,26 @@
+.storyTellForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.storyTellForm > input {
+  border: none;
+  border-bottom: 1px solid rgb(255, 211, 128);
+  color: rgb(49, 49, 49);
+  width: 300px;
+  height: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: auto;
+  margin-top: 100px;
+  padding-left: 5px;
+}
+.storyTellForm > input:focus {
+  outline: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  padding-left: 5px;
+}
