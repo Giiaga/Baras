@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { letBarasOut } from "../../store/createBaras";
 import { useHistory } from "react-router-dom";
+import "./CreateBaras.css";
 
 function CreateBaras() {
   let userId = useSelector((state) => state.session.user);
@@ -49,78 +50,111 @@ function CreateBaras() {
 
   return (
     <>
-      <button
-        onClick={() => {
-          setPhotoChoosen(false);
-          setAudioChoosen(true);
-          setVideoChoosen(true);
-          setAudioLink("");
-          setVideoLink("");
-        }}
-      >
-        Add Photo
-      </button>
-      <button
-        onClick={() => {
-          setAudioChoosen(false);
-          setPhotoChoosen(true);
-          setVideoChoosen(true);
-          setPhoto("");
-          setVideoLink("");
-        }}
-      >
-        Add Song
-      </button>
-      <button
-        onClick={() => {
-          setVideoChoosen(false);
-          setPhotoChoosen(true);
-          setAudioChoosen(true);
-          setPhoto("");
-          setAudioLink("");
-        }}
-      >
-        Add Video
-      </button>
       <form
+        className="barasForm"
         onSubmit={submitCreateBaras}
         style={{ display: "flex", flexDirection: "column", width: "20%" }}
       >
         <input
+          id="relatesTo"
           type="text"
           required
           value={relatesTo}
           onChange={(e) => setRelatesTo(e.target.value)}
           placeholder="Relates to"
         />
-        <div>
-          <input
-            id="addPhotoInput"
-            type="file"
-            hidden={photoChoosen}
-            onChange={(e) => addPhoto(e.target.files[0])}
-            placeholder="Photo"
-          />
-          <button
-            hidden={photoChoosen}
-            type="button"
-            onClick={() => {
-              document.getElementById("addPhotoInput").value = "";
-              setPhoto("");
-            }}
-          >
-            Clear
-          </button>
-          <button
-            hidden={photoChoosen}
-            type="button"
-            onClick={() => {
-              setPhotoChoosen(true);
-              setPhoto("");
-            }}
-          >
-            Cancel
-          </button>
+        <div className="inputDataDiv">
+          <div className="inputDataInputs">
+            <input
+              id="addPhotoInput"
+              style={{ width: "70%" }}
+              type="file"
+              hidden={photoChoosen}
+              onChange={(e) => addPhoto(e.target.files[0])}
+              placeholder="Photo"
+            />
+            <button
+              className="photoInputClear"
+              hidden={photoChoosen}
+              type="button"
+              onClick={() => {
+                document.getElementById("addPhotoInput").value = "";
+                setPhoto("");
+              }}
+            >
+              <i class="fas fa-broom"></i>
+            </button>
+            <button
+              className="photoInputCancel"
+              hidden={photoChoosen}
+              type="button"
+              onClick={() => {
+                setPhotoChoosen(true);
+                setPhoto("");
+              }}
+            >
+              <i class="fas fa-window-close"></i>{" "}
+            </button>
+          </div>
+          <div className="inputDataInputs">
+            <input
+              type="text"
+              hidden={audioChoosen}
+              value={audioLink}
+              onChange={(e) => {
+                if (
+                  e.target.value.length > 61 &&
+                  e.target.value.length <= 1000
+                ) {
+                  let found = e.target.value.indexOf("http");
+                  let complete = e.target.value.indexOf("&auto");
+
+                  let audioSoundcloudLink = e.target.value.slice(
+                    found,
+                    complete
+                  );
+                  setAudioLink(audioSoundcloudLink);
+                }
+              }}
+              placeholder="Put audio link here"
+            />
+            <button
+              hidden={audioChoosen}
+              type="button"
+              onClick={() => setAudioChoosen(true)}
+            >
+              Cancel
+            </button>
+          </div>
+
+          <div className="inputDataInputs">
+            <input
+              type="text"
+              hidden={videoChoosen}
+              placeholder="Put video link here"
+              value={videoLink}
+              onChange={(e) => {
+                if (e.target.value.length) {
+                  let youtubeFindId = e.target.value.indexOf("v=");
+                  let youtubePartUrl = e.target.value
+                    .split()[0]
+                    .substring(0, 24);
+                  let youtubeId = e.target.value.slice(youtubeFindId + 2, 43);
+
+                  setVideoLink(youtubePartUrl + "embed/" + youtubeId);
+                }
+
+                e.target.placeholder = "Please enter a complete url";
+              }}
+            />
+            <button
+              hidden={videoChoosen}
+              type="button"
+              onClick={() => setVideoChoosen(true)}
+            >
+              Cancel
+            </button>
+          </div>
         </div>
         {photo && (
           <div>
@@ -128,87 +162,75 @@ function CreateBaras() {
               src={photo}
               alt={photo}
               style={{
-                width: "300px",
+                width: "100%",
                 height: "200px",
-                // resize: "both",
-                // overflow: "auto",
               }}
             />
           </div>
         )}
-        <div>
-          <input
-            type="text"
-            hidden={audioChoosen}
-            value={audioLink}
-            onChange={(e) => {
-              if (e.target.value.length > 61 && e.target.value.length <= 1000) {
-                let found = e.target.value.indexOf("http");
-                let complete = e.target.value.indexOf("&auto");
-
-                let audioSoundcloudLink = e.target.value.slice(found, complete);
-                setAudioLink(audioSoundcloudLink);
-              }
-              // setShowAudio(e.target.value);
-            }}
-            placeholder="Put audio link here"
-          />
-          <button
-            hidden={audioChoosen}
-            type="button"
-            onClick={() => setAudioChoosen(true)}
-          >
-            Cancel
-          </button>
-        </div>
         {audioLink && (
           <iframe
             style={{ width: "300px", height: "100px" }}
-            // width="100%"
-            // height="166"
-            // scrolling="no"
-            // frameborder="no"
-            // allow="autoplay"
             src={audioLink}
           ></iframe>
         )}
-        <div>
-          <input
-            type="text"
-            hidden={videoChoosen}
-            placeholder="Put video link here"
-            value={videoLink}
-            onChange={(e) => {
-              if (e.target.value.length) {
-                let youtubeFindId = e.target.value.indexOf("v=");
-                let youtubePartUrl = e.target.value.split()[0].substring(0, 24);
-                let youtubeId = e.target.value.slice(youtubeFindId + 2, 43);
-
-                setVideoLink(youtubePartUrl + "embed/" + youtubeId);
-              }
-
-              e.target.placeholder = "Please enter a complete url";
-            }}
-          />
-          <button
-            hidden={videoChoosen}
-            type="button"
-            onClick={() => setVideoChoosen(true)}
-          >
-            Cancel
-          </button>
-        </div>
         {videoLink && (
-          <iframe style={{ width: "300px", height: "200px" }} src={videoLink}>
-            {/* Sorry, your browser does not support video being used on here */}
-          </iframe>
+          <iframe
+            style={{ width: "300px", height: "200px" }}
+            src={videoLink}
+          ></iframe>
         )}
         <textarea
+          id="BarasTextArea"
           value={mainText}
           placeholder="Let it outt, if you will"
           onChange={(e) => setMainText(e.target.value)}
         ></textarea>
-        <label>
+        <div style={{ alignSelf: "flex-end", marginTop: "1%" }}>
+          <button
+            type="button"
+            style={{ color: "orange" }}
+            className="addButtons"
+            onClick={() => {
+              setPhotoChoosen(false);
+              setAudioChoosen(true);
+              setVideoChoosen(true);
+              setAudioLink("");
+              setVideoLink("");
+            }}
+          >
+            <i class="fas fa-image"></i>{" "}
+          </button>
+          <button
+            type="button"
+            className="addButtons"
+            style={{ color: "orange" }}
+            onClick={() => {
+              setAudioChoosen(false);
+              setPhotoChoosen(true);
+              setVideoChoosen(true);
+              setPhoto("");
+              setVideoLink("");
+            }}
+          >
+            <i class="fab fa-soundcloud"></i>{" "}
+          </button>
+          <button
+            type="button"
+            style={{ color: "orange" }}
+            className="addButtons"
+            onClick={() => {
+              setVideoChoosen(false);
+              setPhotoChoosen(true);
+              setAudioChoosen(true);
+              setPhoto("");
+              setAudioLink("");
+            }}
+          >
+            <i class="fab fa-youtube"></i>{" "}
+          </button>
+        </div>
+        <label id="privateBaras">
           Private{" "}
           <input
             type="checkbox"
@@ -219,7 +241,7 @@ function CreateBaras() {
             }
           />
         </label>
-        <label>
+        <label id="trustBaras">
           Trust{" "}
           <input
             type="checkbox"
@@ -231,7 +253,7 @@ function CreateBaras() {
             }}
           />
         </label>
-        <button>Let it out</button>
+        <button id="letItOutButton">Let it out</button>
       </form>
     </>
   );

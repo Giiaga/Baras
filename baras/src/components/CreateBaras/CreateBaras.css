@@ -1,0 +1,88 @@
+.addButtons {
+  width: 30.3%;
+  margin-left: 3%;
+  margin-top: 4%;
+  border-radius: 3px;
+  border: none;
+  border-bottom: 1px solid orange;
+  background-color: rgb(255, 249, 235);
+}
+
+.barasForm {
+  margin: auto;
+  margin-top: 5%;
+}
+
+#relatesTo {
+  border: none;
+  border-bottom: 1px solid orange;
+  font-size: large;
+}
+
+#relatesTo:focus {
+  border-bottom: 1px solid orange;
+  outline: none;
+}
+
+#BarasTextArea {
+  margin-top: 8% !important;
+  border-bottom: 1px solid rgb(190, 162, 109);
+}
+
+#letItOutButton {
+  width: 30%;
+  align-self: flex-end;
+  margin-top: 5%;
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  color: rgba(87, 85, 81, 0.479);
+}
+
+#letItOutButton:hover {
+  color: orange;
+}
+
+#privateBaras {
+  color: rgba(99, 98, 96, 0.637);
+  margin-bottom: 1%;
+}
+
+#privateBaras:hover {
+  color: rgb(73, 71, 68);
+}
+
+#trustBaras {
+  color: rgba(99, 98, 96, 0.637);
+}
+
+#trustBaras:hover {
+  color: rgb(73, 71, 68);
+}
+#trustBaras > input {
+  margin-left: 5%;
+}
+
+.inputDataDiv {
+  width: 300px;
+  height: 50px;
+  background-color: rgb(255, 246, 230);
+  border-radius: 10px;
+  border: 1px solid rgb(255, 230, 183);
+  position: absolute;
+  left: 65%;
+  top: 12%;
+}
+
+.inputDataInputs {
+  margin-left: 3%;
+  margin-top: 1%;
+}
+
+.photoInputClear {
+  margin-left: 5.5%;
+  margin-top: 4%;
+}
+.photoInputCancel {
+  margin-left: 1%;
+}
