@@ -7,7 +7,7 @@
 
 .trustRequest {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   border: 1px solid rgba(255, 202, 104, 0.712);
   border-radius: 10px;
   height: 50px;
@@ -38,11 +38,12 @@
 #trustRequestTrustButton {
   left: 75%;
   position: absolute;
-  top: 18%;
+  top: 19%;
   height: 67%;
 }
 
 #dontTrust {
+  left: 87%;
   height: 67%;
   font-size: 12px;
 }
@@ -53,4 +54,17 @@
   font-size: 14px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.userImage {
+  width: 8%;
+  height: 80%;
+  margin-top: 0.9%;
+  margin-left: 5px;
+}
+.userImage > img {
+  border: 1px solid orange;
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
 }

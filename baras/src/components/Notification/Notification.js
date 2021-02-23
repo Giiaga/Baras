@@ -64,6 +64,12 @@ function Notifications() {
                       Not Added <NavLink to="/trust">Trust</NavLink>
                     </div>
                   )}
+                  <div className="userImage">
+                    <img
+                      src={notif.sentUser.photo}
+                      alt={notif.sentUser.username}
+                    />
+                  </div>
                   <div className="trustRequestUsername">
                     <NavLink to={`/${notif.sentUser.username}/Trust`}>
                       {notif.sentUser.username}
