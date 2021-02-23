@@ -184,13 +184,23 @@ function CreateBaras() {
         )}
         {audioLink && (
           <iframe
-            style={{ width: "300px", height: "100px" }}
+            style={{
+              width: "300px",
+              height: "100px",
+              margin: "auto",
+              marginTop: "4%",
+            }}
             src={audioLink}
           ></iframe>
         )}
         {videoLink && (
           <iframe
-            style={{ width: "300px", height: "200px" }}
+            style={{
+              width: "300px",
+              height: "200px",
+              margin: "auto",
+              marginTop: "4%",
+            }}
             src={videoLink}
           ></iframe>
         )}
