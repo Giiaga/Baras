@@ -178,6 +178,8 @@ function CreateBaras() {
               style={{
                 width: "100%",
                 height: "200px",
+                margin: "auto",
+                marginTop: "4%",
               }}
             />
           </div>
