@@ -117,6 +117,8 @@ function CreateBaras() {
                     complete
                   );
                   setAudioLink(audioSoundcloudLink);
+                } else {
+                  setAudioLink(e.target.value);
                 }
               }}
               placeholder="Put audio link here"
