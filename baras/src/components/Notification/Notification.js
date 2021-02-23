@@ -46,67 +46,71 @@ function Notifications() {
   return (
     <>
       {notificationAvailable ? (
-        notifications.map((notif) => (
-          <>
-            {/* <h1 style={{ width: "200px", margin: "auto", fontSize: "50px" }}>
+        <div style={{ marginTop: "5%" }}>
+          {notifications.map((notif) => (
+            <>
+              {/* <h1 style={{ width: "200px", margin: "auto", fontSize: "50px" }}>
               Notification
             </h1> */}
-            <div key={notif.notification.id} className="notificationMainDiv">
-              {notif.notification.type === "trustRequest" ? (
-                <div className="trustRequest">
-                  {notificationSuccess && (
-                    <div>
-                      Trusted <NavLink to="/trust">Trust</NavLink>
+              <div key={notif.notification.id} className="notificationMainDiv">
+                {notif.notification.type === "trustRequest" ? (
+                  <div className="trustRequest">
+                    {notificationSuccess && (
+                      <div>
+                        Trusted <NavLink to="/trust">Trust</NavLink>
+                      </div>
+                    )}
+                    {notAddedNotification && (
+                      <div>
+                        Not Added <NavLink to="/trust">Trust</NavLink>
+                      </div>
+                    )}
+                    <div className="userImage">
+                      <img
+                        src={notif.sentUser.photo}
+                        alt={notif.sentUser.username}
+                      />
                     </div>
-                  )}
-                  {notAddedNotification && (
-                    <div>
-                      Not Added <NavLink to="/trust">Trust</NavLink>
+                    <div className="trustRequestUsername">
+                      <NavLink to={`/${notif.sentUser.username}/Trust`}>
+                        {notif.sentUser.username}
+                      </NavLink>{" "}
+                      <span id="spanning">asked to be Trusted</span>
                     </div>
-                  )}
-                  <div className="userImage">
-                    <img
-                      src={notif.sentUser.photo}
-                      alt={notif.sentUser.username}
-                    />
+                    <button
+                      id="trustRequestTrustButton"
+                      onClick={(e) =>
+                        confirmTrust(e, userId, notif.sentUser.id)
+                      }
+                    >
+                      Trust
+                    </button>{" "}
+                    <button
+                      id="dontTrust"
+                      onClick={(e) => {
+                        dontTrust(
+                          e,
+                          notif.notification.userId,
+                          notif.notification.trustedId
+                        );
+                      }}
+                    >
+                      Don't Trust
+                    </button>{" "}
                   </div>
-                  <div className="trustRequestUsername">
-                    <NavLink to={`/${notif.sentUser.username}/Trust`}>
-                      {notif.sentUser.username}
-                    </NavLink>{" "}
-                    <span id="spanning">asked to be Trusted</span>
+                ) : (
+                  <div>
+                    {notificationSuccess && (
+                      <div>
+                        Trusted <NavLink to="/trust">Trust</NavLink>
+                      </div>
+                    )}
                   </div>
-                  <button
-                    id="trustRequestTrustButton"
-                    onClick={(e) => confirmTrust(e, userId, notif.sentUser.id)}
-                  >
-                    Trust
-                  </button>{" "}
-                  <button
-                    id="dontTrust"
-                    onClick={(e) => {
-                      dontTrust(
-                        e,
-                        notif.notification.userId,
-                        notif.notification.trustedId
-                      );
-                    }}
-                  >
-                    Don't Trust
-                  </button>{" "}
-                </div>
-              ) : (
-                <div>
-                  {notificationSuccess && (
-                    <div>
-                      Trusted <NavLink to="/trust">Trust</NavLink>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          </>
-        ))
+                )}
+              </div>
+            </>
+          ))}
+        </div>
       ) : (
         <>
           {/* {notificationSuccess && (
