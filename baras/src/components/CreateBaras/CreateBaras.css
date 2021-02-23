@@ -86,3 +86,30 @@
 .photoInputCancel {
   margin-left: 1%;
 }
+
+.audioInput {
+  border: none;
+  border-bottom: 1px solid orange;
+  background-color: transparent;
+  margin-top: 4%;
+}
+.audioInput:focus {
+  outline: none;
+}
+
+.audioInputCancel {
+  margin-left: 25%;
+}
+.videoInput {
+  border: none;
+  border-bottom: 1px solid orange;
+  background-color: transparent;
+  margin-top: 4%;
+}
+.videoInput:focus {
+  outline: none;
+}
+
+.videoInputCancel {
+  margin-left: 25%;
+}

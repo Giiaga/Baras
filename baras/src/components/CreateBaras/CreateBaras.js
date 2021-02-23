@@ -21,6 +21,7 @@ function CreateBaras() {
   let [audioChoosen, setAudioChoosen] = useState(true);
   let [videoChoosen, setVideoChoosen] = useState(true);
   let [photoChoosen, setPhotoChoosen] = useState(true);
+  let [inputsChoosen, setInputsChoosen] = useState(true);
   let submitCreateBaras = (e) => {
     e.preventDefault();
     dispatch(
@@ -63,7 +64,7 @@ function CreateBaras() {
           onChange={(e) => setRelatesTo(e.target.value)}
           placeholder="Relates to"
         />
-        <div className="inputDataDiv">
+        <div className="inputDataDiv" hidden={inputsChoosen}>
           <div className="inputDataInputs">
             <input
               id="addPhotoInput"
@@ -91,6 +92,7 @@ function CreateBaras() {
               onClick={() => {
                 setPhotoChoosen(true);
                 setPhoto("");
+                setInputsChoosen(true);
               }}
             >
               <i class="fas fa-window-close"></i>{" "}
@@ -99,6 +101,7 @@ function CreateBaras() {
           <div className="inputDataInputs">
             <input
               type="text"
+              className="audioInput"
               hidden={audioChoosen}
               value={audioLink}
               onChange={(e) => {
@@ -119,16 +122,21 @@ function CreateBaras() {
               placeholder="Put audio link here"
             />
             <button
+              className="audioInputCancel"
               hidden={audioChoosen}
               type="button"
-              onClick={() => setAudioChoosen(true)}
+              onClick={() => {
+                setAudioChoosen(true);
+                setInputsChoosen(true);
+              }}
             >
-              Cancel
+              <i class="fas fa-window-close"></i>{" "}
             </button>
           </div>
 
           <div className="inputDataInputs">
             <input
+              className="videoInput"
               type="text"
               hidden={videoChoosen}
               placeholder="Put video link here"
@@ -148,11 +156,15 @@ function CreateBaras() {
               }}
             />
             <button
+              className="videoInputCancel"
               hidden={videoChoosen}
               type="button"
-              onClick={() => setVideoChoosen(true)}
+              onClick={() => {
+                setVideoChoosen(true);
+                setInputsChoosen(true);
+              }}
             >
-              Cancel
+              <i class="fas fa-window-close"></i>{" "}
             </button>
           </div>
         </div>
@@ -192,6 +204,7 @@ function CreateBaras() {
             style={{ color: "orange" }}
             className="addButtons"
             onClick={() => {
+              setInputsChoosen(false);
               setPhotoChoosen(false);
               setAudioChoosen(true);
               setVideoChoosen(true);
@@ -206,6 +219,8 @@ function CreateBaras() {
             className="addButtons"
             style={{ color: "orange" }}
             onClick={() => {
+              setInputsChoosen(false);
+
               setAudioChoosen(false);
               setPhotoChoosen(true);
               setVideoChoosen(true);
@@ -220,6 +235,8 @@ function CreateBaras() {
             style={{ color: "orange" }}
             className="addButtons"
             onClick={() => {
+              setInputsChoosen(false);
+
               setVideoChoosen(false);
               setPhotoChoosen(true);
               setAudioChoosen(true);
