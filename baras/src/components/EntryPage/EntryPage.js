@@ -26,7 +26,7 @@ function EntryPage() {
         <div className="buttonDiv">
           <button
             onClick={() =>
-              user ? history.push("/world-baras") : history.push("/login")
+              user ? history.push("/world/Baras") : history.push("/login")
             }
           >
             Let it out

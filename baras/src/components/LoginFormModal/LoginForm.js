@@ -23,14 +23,14 @@ function LoginForm() {
       return dispatch(
         sessionActions.login({ credential: "giiaga", password: "password" })
       )
-        .then(() => history.push("/trust-baras"))
+        .then(() => history.push("/trust/Baras"))
         .catch((res) => {
           if (res.data && res.data.errors) setErrors(res.data.errors);
         });
     } else {
       setErrors([]);
       return dispatch(sessionActions.login({ credential, password }))
-        .then(() => history.push("/trust-baras"))
+        .then(() => history.push("/trust/Baras"))
         .catch((res) => {
           if (res.data && res.data.errors) setErrors(res.data.errors);
         });
@@ -818,7 +818,7 @@ function LoginForm() {
           </Modal>
         </>
       ) : (
-        history.push("/trust-baras")
+        history.push("/trust/Baras")
       )}
     </>
   );
