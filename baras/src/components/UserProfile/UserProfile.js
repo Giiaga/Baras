@@ -16,10 +16,12 @@ function UserProfile() {
   let userBaras = useSelector((state) => state.user.allBaras);
   // console.log(userBaras);
   useEffect(() => {
-    dispatch(getUser(loggedInUser.username))
-      .then((data) => data && setUserAvailable(true))
-      .then(() => dispatch(allBaras(loggedInUser.id)))
-      .then((data) => data.length && setAllBaras(true));
+    if (loggedInUser != undefined) {
+      dispatch(getUser(loggedInUser.username))
+        .then((data) => data && setUserAvailable(true))
+        .then(() => dispatch(allBaras(loggedInUser.id)))
+        .then((data) => data.length && setAllBaras(true));
+    }
   }, [dispatch]);
 
   return (
