@@ -9,6 +9,7 @@ import trustReducer from "./trust";
 import notificationReducer from "./notification";
 import messageReducer from "./message";
 import worldBarasReducer from "./worldBaras";
+import thoughtsReducer from "./thoughts";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   notifications: notificationReducer,
   message: messageReducer,
   worldBaras: worldBarasReducer,
+  thoughts: thoughtsReducer,
 });
 
 let enhancer;

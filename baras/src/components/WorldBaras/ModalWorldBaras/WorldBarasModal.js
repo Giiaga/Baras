@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import renderModalWorldBaras from "./renderModalWorldBaras";
+import "./OnlyPhotoModal.css";
+import Thoughts from "../../Thoughts/Thoughts";
 
 function WorldBarasModal({ modalBaras, setBarasModal }) {
   return (
@@ -10,6 +12,7 @@ function WorldBarasModal({ modalBaras, setBarasModal }) {
       >
         <i className="fas fa-times"></i>
       </button>
+      <Thoughts BarasId={modalBaras.id} />
       <div>{renderModalWorldBaras(modalBaras)}</div>
     </>
   );

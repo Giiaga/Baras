@@ -10,6 +10,7 @@ const {
   Trust,
   Notifying,
   PrivateChat,
+  BarasComments,
 } = require("../db/models");
 
 router.post(
@@ -502,4 +503,20 @@ router.get(
   })
 );
 
+// THOUGHTS
+
+router.get(
+  "/allThoughts/:BarasId",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    let { BarasId } = req.params;
+
+    let allThoughts = await BarasComments.findAll({
+      where: { barasId: BarasId },
+      include: [User],
+    });
+
+    return res.json(allThoughts);
+  })
+);
 module.exports = router;

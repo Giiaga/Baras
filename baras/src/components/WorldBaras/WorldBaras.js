@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getWorldBaras } from "../../store/worldBaras";
 import renderWorldBaras from "./renderWorldBarasFunction";
 import { Modal } from "../../Modals/Modal";
-import WorldBarasModal from "./WorldBarasModal";
+import WorldBarasModal from "./ModalWorldBaras/WorldBarasModal";
 
 import "./WorldBaras.css";
 import "./OnlyPhoto.css";
