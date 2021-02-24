@@ -485,4 +485,20 @@ router.get(
     return res.json(allTrust);
   })
 );
+
+// WORLD BARAS
+
+router.get(
+  "/world/Baras",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    let worldBaras = await Baras.findAll({
+      where: { private: false },
+      include: [User],
+    });
+
+    return res.json(worldBaras);
+  })
+);
+
 module.exports = router;

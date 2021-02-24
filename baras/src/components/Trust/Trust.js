@@ -67,7 +67,7 @@ function AllTrust() {
                 >
                   {trust.trusted.username}
                 </p>
-                <p>Trusted Since: {trust.Trust.createdAt}</p>
+                <p>Trusted Since: {trust.Trust.createdAt.slice(0, 10)}</p>
               </div>
               <div className="TrustButtons">
                 <button onClick={() => history.push("/message")}>

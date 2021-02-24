@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getWorldBaras } from "../../store/worldBaras";
+import renderWorldBaras from "./renderWorldBarasFunction";
 
 import "./WorldBaras.css";
 
@@ -10,10 +11,10 @@ function WorldBaras() {
   let [worldBarasAvailable, setWorldBarasAvailable] = useState(false);
 
   let dispatch = useDispatch();
-
+  console.log(worldBaras);
   useEffect(() => {
     dispatch(getWorldBaras()).then(
-      (data) => data && setWorldBarasAvailable(true)
+      (data) => data.length && setWorldBarasAvailable(true)
     );
   }, [dispatch]);
   return (
@@ -21,7 +22,10 @@ function WorldBaras() {
       <div className="headingDivWorldBaras">
         <h1>World Baras</h1>
       </div>
-      {worldBarasAvailable && <div></div>}
+      {worldBarasAvailable &&
+        renderWorldBaras(worldBaras).map((eachBaras) => (
+          <div key={eachBaras.id}>{eachBaras}</div>
+        ))}
     </>
   );
 }
