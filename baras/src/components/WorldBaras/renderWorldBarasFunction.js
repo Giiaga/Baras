@@ -4,23 +4,28 @@ function renderWorldBaras(worldBaras) {
   let styledWorldBaras = [];
   worldBaras.map((eachBaras) => {
     if (!eachBaras.photo && !eachBaras.music && !eachBaras.video) {
-      if (eachBaras.text.length > 0) {
+      if (eachBaras.text) {
         styledWorldBaras.push(
           <div className="onlyTextBarasDiv">
             <div className="relatesToTextOnlyDiv">
               <h3>{eachBaras.relatesTo}</h3>
             </div>
             <div className="textTextOnlyDiv">
-              <p>{eachBaras.text}</p>
+              <p>{eachBaras.text.slice(0, 574)}</p>
             </div>
             <div className="usernameTextOnlyDiv">
               <span>by</span>{" "}
-              <NavLink to={`/${eachBaras.User.username}/user`}>
+              <NavLink
+                style={{ color: "rgb(131, 129, 125)" }}
+                className="navlink"
+                style={{ color: "rgb(131, 129, 125)" }}
+                to={`/${eachBaras.User.username}/user`}
+              >
                 {eachBaras.User.username}
               </NavLink>
             </div>
             <div className="createdAtTextOnlyDiv">
-              <span>{eachBaras.createdAt.slice(0, 16)}</span>
+              <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
             </div>
           </div>
         );
@@ -33,12 +38,15 @@ function renderWorldBaras(worldBaras) {
             <div className="textTextOnlyDiv"></div>
             <div className="usernameTextOnlyDiv">
               <span>by</span>{" "}
-              <NavLink to={`/${eachBaras.User.username}/user`}>
+              <NavLink
+                style={{ color: "rgb(131, 129, 125)" }}
+                to={`/${eachBaras.User.username}/user`}
+              >
                 {eachBaras.User.username}
               </NavLink>
             </div>
             <div className="createdAtTextOnlyDiv">
-              <span>let out: {eachBaras.createdAt.slice(0, 16)}</span>
+              <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
             </div>
           </div>
         );
@@ -56,16 +64,19 @@ function renderWorldBaras(worldBaras) {
               <img src={eachBaras.photo} alt={eachBaras.relatesTo} />
             </div>
             <div className="textPhotoDiv">
-              <p>{eachBaras.text}</p>
+              <p>{eachBaras.text.slice(0, 287)}</p>
             </div>
             <div className="usernamePhotoDiv">
               <span>by</span>{" "}
-              <NavLink to={`/${eachBaras.User.username}/user`}>
+              <NavLink
+                style={{ color: "rgb(131, 129, 125)" }}
+                to={`/${eachBaras.User.username}/user`}
+              >
                 {eachBaras.User.username}
               </NavLink>
             </div>
             <div className="createdAtPhotoDiv">
-              <span>let out: {eachBaras.createdAt.slice(0, 16)}</span>
+              <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
             </div>
           </div>
         );
@@ -80,12 +91,15 @@ function renderWorldBaras(worldBaras) {
             </div>
             <div className="usernamePhotoDiv">
               <span>by</span>{" "}
-              <NavLink to={`/${eachBaras.User.username}/user`}>
+              <NavLink
+                style={{ color: "rgb(131, 129, 125)" }}
+                to={`/${eachBaras.User.username}/user`}
+              >
                 {eachBaras.User.username}
               </NavLink>
             </div>
             <div className="createdAtPhotoDiv">
-              <span>let out: {eachBaras.createdAt.slice(0, 16)}</span>
+              <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
             </div>
           </div>
         );
@@ -106,12 +120,15 @@ function renderWorldBaras(worldBaras) {
             </div>
             <div className="usernameVideoDiv">
               <span>by</span>{" "}
-              <NavLink to={`/${eachBaras.User.username}/user`}>
+              <NavLink
+                style={{ color: "rgb(131, 129, 125)" }}
+                to={`/${eachBaras.User.username}/user`}
+              >
                 {eachBaras.User.username}
               </NavLink>
             </div>
             <div className="createdAtVideoDiv">
-              <span>let out: {eachBaras.createdAt.slice(0, 16)}</span>
+              <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
             </div>
           </div>
         );
@@ -126,12 +143,15 @@ function renderWorldBaras(worldBaras) {
             </div>
             <div className="usernameVideoDiv">
               <span>by</span>{" "}
-              <NavLink to={`/${eachBaras.User.username}/user`}>
+              <NavLink
+                style={{ color: "rgb(131, 129, 125)" }}
+                to={`/${eachBaras.User.username}/user`}
+              >
                 {eachBaras.User.username}
               </NavLink>
             </div>
             <div className="createdAtVideoDiv">
-              <span>let out: {eachBaras.createdAt.slice(0, 16)}</span>
+              <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
             </div>
           </div>
         );
@@ -148,16 +168,19 @@ function renderWorldBaras(worldBaras) {
               <iframe src={eachBaras.music}></iframe>
             </div>
             <div className="textMusicDiv">
-              <p>{eachBaras.text}</p>
+              <p>{eachBaras.text.slice(0, 287)}</p>
             </div>
             <div className="usernameMusicDiv">
               <span>by</span>{" "}
-              <NavLink to={`/${eachBaras.User.username}/user`}>
+              <NavLink
+                style={{ color: "rgb(131, 129, 125)" }}
+                to={`/${eachBaras.User.username}/user`}
+              >
                 {eachBaras.User.username}
               </NavLink>
             </div>
             <div className="createdAtMusicDiv">
-              <span>let out: {eachBaras.createdAt.slice(0, 16)}</span>
+              <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
             </div>
           </div>
         );
@@ -172,12 +195,15 @@ function renderWorldBaras(worldBaras) {
             </div>
             <div className="usernameMusicDiv">
               <span>by</span>{" "}
-              <NavLink to={`/${eachBaras.User.username}/user`}>
+              <NavLink
+                style={{ color: "rgb(131, 129, 125)" }}
+                to={`/${eachBaras.User.username}/user`}
+              >
                 {eachBaras.User.username}
               </NavLink>
             </div>
             <div className="createdAtMusicDiv">
-              <span>let out: {eachBaras.createdAt.slice(0, 16)}</span>
+              <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
             </div>
           </div>
         );

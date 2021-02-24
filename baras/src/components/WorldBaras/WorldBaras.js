@@ -6,6 +6,8 @@ import renderWorldBaras from "./renderWorldBarasFunction";
 import "./WorldBaras.css";
 import "./OnlyPhoto.css";
 import "./OnlyVideo.css";
+import "./OnlyMusic.css";
+import "./OnlyText.css";
 
 function WorldBaras() {
   let worldBaras = useSelector((state) => state.worldBaras.worldBaras);

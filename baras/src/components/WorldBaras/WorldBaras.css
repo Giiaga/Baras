@@ -9,7 +9,15 @@
   margin-bottom: 2%;
   width: 30.2%;
   height: 339.09px;
-  border: 1px solid orange;
+  border: 1px solid rgb(255, 206, 115);
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 18px;
+  border-radius: 5px;
+}
+
+.eachWorldBarasMainDiv {
+  background-color: rgba(214, 214, 213, 0.685);
+}
+.eachWorldBarasMainDiv:nth-child(even) {
+  background-color: rgba(255, 224, 167, 0.664);
 }

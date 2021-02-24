@@ -1,0 +1,43 @@
+.onlyTextBarasDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 15% 78% 5%;
+  grid-template-areas:
+    "relatesTo relatesTo"
+    "texts texts"
+    "createdAt user";
+  height: 100%;
+}
+
+.relatesToTextOnlyDiv {
+  grid-area: relatesTo;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-bottom: 1px solid rgb(255, 214, 138);
+}
+
+.textTextOnlyDiv {
+  grid-area: texts;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.usernameTextOnlyDiv {
+  grid-area: user;
+  margin-left: auto;
+  margin-right: 2%;
+  font-size: medium;
+  color: rgba(255, 166, 0, 0.815);
+}
+
+.createdAtTextOnlyDiv {
+  grid-area: createdAt;
+  margin-left: 2%;
+  margin-bottom: 0%;
+  margin-top: 3%;
+  font-size: small;
+}
+
+.usernameTextOnlyDiv:hover {
+  color: orange;
+}

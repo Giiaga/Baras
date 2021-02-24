@@ -7,6 +7,7 @@
     "photo texts"
     "createdAt user";
   height: 100%;
+  /* background-color: rgba(255, 224, 167, 0.664); */
 }
 
 .relatesToPhotoDiv {
@@ -19,7 +20,8 @@
 .photoPhotoDiv {
   grid-area: photo;
   width: 99%;
-  margin-top: 1%;
+  margin-top: 8.5%;
+  padding-left: 1%;
   margin-bottom: auto;
   /* height: 25.5%; */
   /* border: 1px solid orange; */
@@ -31,7 +33,7 @@
 
 .textPhotoDiv {
   grid-area: texts;
-  padding-left: 5%;
+  padding-left: 4%;
   /* border: 1px solid orange; */
   height: 100%;
   padding-right: 2%;
@@ -54,4 +56,8 @@
   margin-bottom: 0;
   margin-top: 3%;
   padding-left: 1%;
+}
+
+.usernamePhotoDiv:hover {
+  color: orange;
 }
