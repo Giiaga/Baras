@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getAllThoughts } from "../../store/thoughts";
+import renderThoughts from "./renderThoughtsModal";
 
 import "./Thoughts.css";
+import "./OnlyPhotoThought.css";
 
 function Thoughts({ BarasId }) {
   let [thoughtsAvailable, setThoughtsAvailable] = useState(false);
@@ -16,11 +18,14 @@ function Thoughts({ BarasId }) {
       (data) => data && setThoughtsAvailable(true)
     );
   }, [dispatch]);
-  console.log(allThoughts);
+
   return (
     <>
-      <div>HFDGHFUGK</div>
-      {thoughtsAvailable && <div>t5ytghkdfjvpa hfbk 9yfhk</div>}
+      <div className="thoughtsMainDiv">
+        {thoughtsAvailable && (
+          <div>{renderThoughts(allThoughts).map((thought) => thought)}</div>
+        )}
+      </div>
     </>
   );
 }

@@ -13,7 +13,7 @@ import "./OnlyText.css";
 
 function WorldBaras(props) {
   let worldBaras = useSelector((state) => state.worldBaras.worldBaras);
-  let [showModal, setShowModal] = useState(false);
+  // let [showModal, setShowModal] = useState(false);
   let [worldBarasAvailable, setWorldBarasAvailable] = useState(false);
   let [modalBaras, setBarasModal] = useState();
 

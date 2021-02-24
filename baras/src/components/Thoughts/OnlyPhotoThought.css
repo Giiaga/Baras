@@ -1,0 +1,38 @@
+/*  ONLY PHOTO THOUGHT */
+
+.mainThoughtDiv {
+  width: 100%;
+  height: 40%;
+  border: 1px solid;
+}
+
+.thoughtUserImage {
+  width: 3%;
+  height: 5%;
+  background-color: orange;
+}
+
+.thoughtUserImage img {
+  width: 100%;
+  height: 100%;
+  background-color: orange;
+  border-radius: 100px;
+}
+
+/* #Userimage {
+  background-color: orange;
+
+  width: 100%;
+  height: 100%;
+  border-radius: 10%;
+} */
+
+.thoughtImageDiv {
+  width: 10%;
+  height: 10%;
+}
+
+.thoughtImageDiv img {
+  width: 100%;
+  height: 100%;
+}
