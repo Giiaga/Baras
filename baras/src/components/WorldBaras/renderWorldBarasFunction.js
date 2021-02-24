@@ -5,7 +5,8 @@ function renderWorldBaras(worldBaras) {
   worldBaras.map((eachBaras) => {
     if (!eachBaras.photo && !eachBaras.music && !eachBaras.video) {
       if (eachBaras.text) {
-        styledWorldBaras.push(
+        styledWorldBaras.push([
+          eachBaras,
           <div className="onlyTextBarasDiv">
             <div className="relatesToTextOnlyDiv">
               <h3>{eachBaras.relatesTo}</h3>
@@ -27,10 +28,11 @@ function renderWorldBaras(worldBaras) {
             <div className="createdAtTextOnlyDiv">
               <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
             </div>
-          </div>
-        );
+          </div>,
+        ]);
       } else {
-        styledWorldBaras.push(
+        styledWorldBaras.push([
+          eachBaras,
           <div className="onlyTextBarasDiv">
             <div className="relatesToTextOnlyDiv">
               <h3>{eachBaras.relatesTo}</h3>
@@ -48,14 +50,15 @@ function renderWorldBaras(worldBaras) {
             <div className="createdAtTextOnlyDiv">
               <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
             </div>
-          </div>
-        );
+          </div>,
+        ]);
       }
     }
 
     if (eachBaras.photo) {
       if (eachBaras.text) {
-        styledWorldBaras.push(
+        styledWorldBaras.push([
+          eachBaras,
           <div className="photoBarasDiv">
             <div className="relatesToPhotoDiv">
               <h3>{eachBaras.relatesTo}</h3>
@@ -78,10 +81,11 @@ function renderWorldBaras(worldBaras) {
             <div className="createdAtPhotoDiv">
               <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
             </div>
-          </div>
-        );
+          </div>,
+        ]);
       } else {
-        styledWorldBaras.push(
+        styledWorldBaras.push([
+          eachBaras,
           <div className="photoBarasDiv">
             <div className="relatesToPhotoDiv">
               <h3>{eachBaras.relatesTo}</h3>
@@ -101,13 +105,14 @@ function renderWorldBaras(worldBaras) {
             <div className="createdAtPhotoDiv">
               <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
             </div>
-          </div>
-        );
+          </div>,
+        ]);
       }
     }
     if (eachBaras.video) {
       if (eachBaras.text) {
-        styledWorldBaras.push(
+        styledWorldBaras.push([
+          eachBaras,
           <div className="videoBarasDiv">
             <div className="relatesToVideoDiv">
               <h3>{eachBaras.relatesTo}</h3>
@@ -130,10 +135,11 @@ function renderWorldBaras(worldBaras) {
             <div className="createdAtVideoDiv">
               <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
             </div>
-          </div>
-        );
+          </div>,
+        ]);
       } else {
-        styledWorldBaras.push(
+        styledWorldBaras.push([
+          eachBaras,
           <div className="videoBarasDiv">
             <div className="relatesToVideoDiv">
               <h3>{eachBaras.relatesTo}</h3>
@@ -153,13 +159,14 @@ function renderWorldBaras(worldBaras) {
             <div className="createdAtVideoDiv">
               <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
             </div>
-          </div>
-        );
+          </div>,
+        ]);
       }
     }
     if (eachBaras.music) {
       if (eachBaras.text) {
-        styledWorldBaras.push(
+        styledWorldBaras.push([
+          eachBaras,
           <div className="musicBarasDiv">
             <div className="relatesToMusicDiv">
               <h3>{eachBaras.relatesTo}</h3>
@@ -182,10 +189,11 @@ function renderWorldBaras(worldBaras) {
             <div className="createdAtMusicDiv">
               <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
             </div>
-          </div>
-        );
+          </div>,
+        ]);
       } else {
-        styledWorldBaras.push(
+        styledWorldBaras.push([
+          eachBaras,
           <div className="musicBarasDiv">
             <div className="relatesToMusicDiv">
               <h3>{eachBaras.relatesTo}</h3>
@@ -205,8 +213,8 @@ function renderWorldBaras(worldBaras) {
             <div className="createdAtMusicDiv">
               <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
             </div>
-          </div>
-        );
+          </div>,
+        ]);
       }
     }
   });
