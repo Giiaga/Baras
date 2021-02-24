@@ -7,17 +7,16 @@
     "video texts"
     "createdAt user";
   height: 100%;
-  /* background-color: rgba(255, 224, 167, 0.664); */
 }
 
-.videoBarasDiv:hover {
+/* .videoBarasDiv:hover {
   background-color: rgba(0, 0, 0, 0.856);
-}
+} */
 .relatesToVideoDiv {
   grid-area: relatesTo;
   margin-left: 2%;
   margin-right: 2%;
-  border-bottom: 1px solid orange;
+  border-bottom: 1px solid rgba(255, 166, 0, 0.664);
 }
 
 .videoVideoDiv {

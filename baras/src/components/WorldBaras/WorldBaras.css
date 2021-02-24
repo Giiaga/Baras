@@ -1,7 +1,12 @@
+.headingDivWorldBaras {
+  width: 11.5%;
+  margin: auto;
+  color: rgb(255, 189, 65);
+}
+
 .worldBarasMainDiv {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
 }
 
 .eachWorldBarasMainDiv {
@@ -16,7 +21,7 @@
 }
 
 .eachWorldBarasMainDiv {
-  background-color: rgba(214, 214, 213, 0.685);
+  background-color: rgba(212, 212, 212, 0.685);
 }
 .eachWorldBarasMainDiv:nth-child(even) {
   background-color: rgba(255, 224, 167, 0.664);
