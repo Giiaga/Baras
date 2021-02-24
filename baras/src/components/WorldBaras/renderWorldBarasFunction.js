@@ -14,6 +14,7 @@ function renderWorldBaras(worldBaras) {
               <p>{eachBaras.text}</p>
             </div>
             <div className="usernameTextOnlyDiv">
+              <span>by</span>{" "}
               <NavLink to={`/${eachBaras.User.username}/user`}>
                 {eachBaras.User.username}
               </NavLink>
@@ -31,12 +32,13 @@ function renderWorldBaras(worldBaras) {
             </div>
             <div className="textTextOnlyDiv"></div>
             <div className="usernameTextOnlyDiv">
+              <span>by</span>{" "}
               <NavLink to={`/${eachBaras.User.username}/user`}>
                 {eachBaras.User.username}
               </NavLink>
             </div>
             <div className="createdAtTextOnlyDiv">
-              <span>{eachBaras.createdAt.slice(0, 16)}</span>
+              <span>let out: {eachBaras.createdAt.slice(0, 16)}</span>
             </div>
           </div>
         );
@@ -57,12 +59,13 @@ function renderWorldBaras(worldBaras) {
               <p>{eachBaras.text}</p>
             </div>
             <div className="usernamePhotoDiv">
+              <span>by</span>{" "}
               <NavLink to={`/${eachBaras.User.username}/user`}>
                 {eachBaras.User.username}
               </NavLink>
             </div>
             <div className="createdAtPhotoDiv">
-              <span>{eachBaras.createdAt.slice(0, 16)}</span>
+              <span>let out: {eachBaras.createdAt.slice(0, 16)}</span>
             </div>
           </div>
         );
@@ -76,12 +79,13 @@ function renderWorldBaras(worldBaras) {
               <img src={eachBaras.photo} alt={eachBaras.relatesTo} />
             </div>
             <div className="usernamePhotoDiv">
+              <span>by</span>{" "}
               <NavLink to={`/${eachBaras.User.username}/user`}>
                 {eachBaras.User.username}
               </NavLink>
             </div>
             <div className="createdAtPhotoDiv">
-              <span>{eachBaras.createdAt.slice(0, 16)}</span>
+              <span>let out: {eachBaras.createdAt.slice(0, 16)}</span>
             </div>
           </div>
         );
@@ -101,12 +105,13 @@ function renderWorldBaras(worldBaras) {
               <p>{eachBaras.text.slice(0, 287)}</p>
             </div>
             <div className="usernameVideoDiv">
+              <span>by</span>{" "}
               <NavLink to={`/${eachBaras.User.username}/user`}>
                 {eachBaras.User.username}
               </NavLink>
             </div>
             <div className="createdAtVideoDiv">
-              <span>{eachBaras.createdAt.slice(0, 16)}</span>
+              <span>let out: {eachBaras.createdAt.slice(0, 16)}</span>
             </div>
           </div>
         );
@@ -120,12 +125,13 @@ function renderWorldBaras(worldBaras) {
               <iframe src={eachBaras.video}></iframe>
             </div>
             <div className="usernameVideoDiv">
+              <span>by</span>{" "}
               <NavLink to={`/${eachBaras.User.username}/user`}>
                 {eachBaras.User.username}
               </NavLink>
             </div>
             <div className="createdAtVideoDiv">
-              <span>{eachBaras.createdAt.slice(0, 16)}</span>
+              <span>let out: {eachBaras.createdAt.slice(0, 16)}</span>
             </div>
           </div>
         );
@@ -145,12 +151,13 @@ function renderWorldBaras(worldBaras) {
               <p>{eachBaras.text}</p>
             </div>
             <div className="usernameMusicDiv">
+              <span>by</span>{" "}
               <NavLink to={`/${eachBaras.User.username}/user`}>
                 {eachBaras.User.username}
               </NavLink>
             </div>
             <div className="createdAtMusicDiv">
-              <span>{eachBaras.createdAt.slice(0, 16)}</span>
+              <span>let out: {eachBaras.createdAt.slice(0, 16)}</span>
             </div>
           </div>
         );
@@ -164,12 +171,13 @@ function renderWorldBaras(worldBaras) {
               <iframe src={eachBaras.music}></iframe>
             </div>
             <div className="usernameMusicDiv">
+              <span>by</span>{" "}
               <NavLink to={`/${eachBaras.User.username}/user`}>
                 {eachBaras.User.username}
               </NavLink>
             </div>
             <div className="createdAtMusicDiv">
-              <span>{eachBaras.createdAt.slice(0, 16)}</span>
+              <span>let out: {eachBaras.createdAt.slice(0, 16)}</span>
             </div>
           </div>
         );

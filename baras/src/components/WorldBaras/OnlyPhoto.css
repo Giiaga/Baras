@@ -1,24 +1,28 @@
 .photoBarasDiv {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 8% 44% 8%;
+  grid-template-rows: 15% 78% 5%;
   grid-template-areas:
     "relatesTo relatesTo"
     "photo texts"
     "createdAt user";
-  /* height: 40%; */
+  height: 100%;
 }
 
 .relatesToPhotoDiv {
   grid-area: relatesTo;
   margin-left: 2%;
+  margin-right: 2%;
+  border-bottom: 1px solid orange;
 }
 
 .photoPhotoDiv {
   grid-area: photo;
   width: 99%;
-  height: 25.5%;
-  border: 1px solid orange;
+  margin-top: 1%;
+  margin-bottom: auto;
+  /* height: 25.5%; */
+  /* border: 1px solid orange; */
 }
 
 .photoPhotoDiv img {
@@ -28,20 +32,26 @@
 .textPhotoDiv {
   grid-area: texts;
   padding-left: 5%;
-  border: 1px solid orange;
-  height: 40%;
+  /* border: 1px solid orange; */
+  height: 100%;
+  padding-right: 2%;
 }
 
 .textPhotoDiv p {
   height: 90%;
-  overflow: auto;
+  overflow: hidden;
 }
 .usernamePhotoDiv {
   grid-area: user;
   margin-left: auto;
   margin-right: 3%;
+  font-size: medium;
 }
 
 .createdAtPhotoDiv {
   grid-area: createdAt;
+  font-size: small;
+  margin-bottom: 0;
+  margin-top: 3%;
+  padding-left: 1%;
 }

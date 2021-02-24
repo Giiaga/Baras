@@ -9,21 +9,22 @@
   height: 100%;
 }
 
+.videoBarasDiv:hover {
+  background-color: rgba(0, 0, 0, 0.856);
+}
 .relatesToVideoDiv {
   grid-area: relatesTo;
   margin-left: 2%;
   margin-right: 2%;
   border-bottom: 1px solid orange;
 }
-.relatesToVideoDiv h3 {
-  width: 100%;
-}
 
 .videoVideoDiv {
   grid-area: video;
   width: 99%;
   /* height: 25.5%; */
-  margin-top: 9%;
+  margin-top: 1%;
+  /* padding-left: 1%; */
   margin-bottom: auto;
   /* border: 1px solid orange; */
 }
@@ -48,8 +49,13 @@
   grid-area: user;
   margin-left: auto;
   margin-right: 3%;
+  font-size: medium;
 }
 
 .createdAtVideoDiv {
   grid-area: createdAt;
+  font-size: small;
+  margin-bottom: 0;
+  margin-top: 3%;
+  padding-left: 1%;
 }
