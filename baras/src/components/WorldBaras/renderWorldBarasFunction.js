@@ -98,7 +98,7 @@ function renderWorldBaras(worldBaras) {
               <iframe src={eachBaras.video}></iframe>
             </div>
             <div className="textVideoDiv">
-              <p>{eachBaras.text}</p>
+              <p>{eachBaras.text.slice(0, 287)}</p>
             </div>
             <div className="usernameVideoDiv">
               <NavLink to={`/${eachBaras.User.username}/user`}>
