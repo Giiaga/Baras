@@ -1,0 +1,38 @@
+.photoBarasDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "relatesTo relatesTo"
+    "photo texts"
+    "createdAt user";
+}
+
+.relatesToPhotoDiv {
+  grid-area: relatesTo;
+  margin-left: 2%;
+}
+
+.photoPhotoDiv {
+  grid-area: photo;
+  width: 99%;
+  height: 30%;
+}
+.photoPhotoDiv img {
+  width: 100%;
+  height: 100%;
+}
+
+.textPhotoDiv {
+  grid-area: texts;
+  padding-left: 5%;
+}
+
+.usernamePhotoDiv {
+  grid-area: user;
+  margin-left: auto;
+  margin-right: 3%;
+}
+
+.createdAtPhotoDiv {
+  grid-area: createdAt;
+}

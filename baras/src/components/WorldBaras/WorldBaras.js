@@ -4,7 +4,7 @@ import { getWorldBaras } from "../../store/worldBaras";
 import renderWorldBaras from "./renderWorldBarasFunction";
 
 import "./WorldBaras.css";
-
+import "./OnlyPhoto.css";
 function WorldBaras() {
   let worldBaras = useSelector((state) => state.worldBaras.worldBaras);
 
@@ -22,10 +22,14 @@ function WorldBaras() {
       <div className="headingDivWorldBaras">
         <h1>World Baras</h1>
       </div>
-      {worldBarasAvailable &&
-        renderWorldBaras(worldBaras).map((eachBaras) => (
-          <div key={eachBaras.id}>{eachBaras}</div>
-        ))}
+      <div className="worldBarasMainDiv">
+        {worldBarasAvailable &&
+          renderWorldBaras(worldBaras).map((eachBaras) => (
+            <div key={eachBaras.id} className="eachWorldBarasMainDiv">
+              {eachBaras}
+            </div>
+          ))}
+      </div>
     </>
   );
 }

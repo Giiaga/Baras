@@ -1,0 +1,14 @@
+.worldBarasMainDiv {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+}
+
+.eachWorldBarasMainDiv {
+  margin-left: 2%;
+  margin-bottom: 2%;
+  width: 30.2%;
+  border: 1px solid orange;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 18px;
+}
