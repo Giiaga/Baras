@@ -494,6 +494,7 @@ router.get(
   asyncHandler(async (req, res) => {
     let worldBaras = await Baras.findAll({
       where: { private: false },
+      order: [["updatedAt", "DESC"]],
       include: [User],
     });
 

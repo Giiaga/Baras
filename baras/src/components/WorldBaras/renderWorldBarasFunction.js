@@ -54,7 +54,7 @@ function renderWorldBaras(worldBaras) {
     }
 
     if (eachBaras.photo) {
-      if (eachBaras.text.length > 0) {
+      if (eachBaras.text) {
         styledWorldBaras.push(
           <div className="photoBarasDiv">
             <div className="relatesToPhotoDiv">
@@ -106,7 +106,7 @@ function renderWorldBaras(worldBaras) {
       }
     }
     if (eachBaras.video) {
-      if (eachBaras.text.length > 0) {
+      if (eachBaras.text) {
         styledWorldBaras.push(
           <div className="videoBarasDiv">
             <div className="relatesToVideoDiv">
@@ -158,7 +158,7 @@ function renderWorldBaras(worldBaras) {
       }
     }
     if (eachBaras.music) {
-      if (eachBaras.text.length > 0) {
+      if (eachBaras.text) {
         styledWorldBaras.push(
           <div className="musicBarasDiv">
             <div className="relatesToMusicDiv">
