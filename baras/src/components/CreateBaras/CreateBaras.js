@@ -84,7 +84,7 @@ function CreateBaras() {
                   setPhoto("");
                 }}
               >
-                <i class="fas fa-broom"></i>
+                <i className="fas fa-broom"></i>
               </button>
               <button
                 className="photoInputCancel"
@@ -96,7 +96,7 @@ function CreateBaras() {
                   setInputsChoosen(true);
                 }}
               >
-                <i class="fas fa-window-close"></i>{" "}
+                <i className="fas fa-window-close"></i>{" "}
               </button>
             </div>
             <div className="inputDataInputs">
@@ -133,7 +133,7 @@ function CreateBaras() {
                   setInputsChoosen(true);
                 }}
               >
-                <i class="fas fa-window-close"></i>{" "}
+                <i className="fas fa-window-close"></i>{" "}
               </button>
             </div>
 
@@ -167,7 +167,7 @@ function CreateBaras() {
                   setInputsChoosen(true);
                 }}
               >
-                <i class="fas fa-window-close"></i>{" "}
+                <i className="fas fa-window-close"></i>{" "}
               </button>
             </div>
           </div>
@@ -227,7 +227,7 @@ function CreateBaras() {
                 setVideoLink("");
               }}
             >
-              <i class="fas fa-image"></i>{" "}
+              <i className="fas fa-image"></i>{" "}
             </button>
             <button
               type="button"
@@ -243,7 +243,7 @@ function CreateBaras() {
                 setVideoLink("");
               }}
             >
-              <i class="fab fa-soundcloud"></i>{" "}
+              <i className="fab fa-soundcloud"></i>{" "}
             </button>
             <button
               type="button"
@@ -259,7 +259,7 @@ function CreateBaras() {
                 setAudioLink("");
               }}
             >
-              <i class="fab fa-youtube"></i>{" "}
+              <i className="fab fa-youtube"></i>{" "}
             </button>
           </div>
           <label id="privateBaras">

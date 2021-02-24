@@ -425,7 +425,7 @@ function Page() {
           } else document.getElementById("allTheButtons").style.top = -50 + "%";
         }}
       >
-        <i class="fas fa-feather add"></i>
+        <i className="fas fa-feather add"></i>
       </div>
       {/* SHOW BUTTONS BUTTON */}
       <div
@@ -1001,7 +1001,7 @@ function Page() {
             }}
           >
             <i
-              class="fas fa-chevron-left nextBackIcons"
+              className="fas fa-chevron-left nextBackIcons"
               style={{ fontSize: "55px" }}
             ></i>
           </div>
@@ -1019,7 +1019,7 @@ function Page() {
             }}
           >
             <i
-              class="fas fa-chevron-right nextBackIcons"
+              className="fas fa-chevron-right nextBackIcons"
               style={{ fontSize: "55px" }}
             ></i>
           </div>

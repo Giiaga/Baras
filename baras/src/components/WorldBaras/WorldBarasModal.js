@@ -1,9 +1,16 @@
 import React, { useState } from "react";
+import renderModalWorldBaras from "./renderModalWorldBaras";
 
-function WorldBarasModal({ modalBaras }) {
+function WorldBarasModal({ modalBaras, setBarasModal }) {
   return (
     <>
-      <div>{modalBaras.User.username}</div>
+      <button
+        className="closeButtonWorldBarasModal"
+        onClick={() => setBarasModal()}
+      >
+        <i className="fas fa-times"></i>
+      </button>
+      <div>{renderModalWorldBaras(modalBaras)}</div>
     </>
   );
 }

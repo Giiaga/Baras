@@ -48,7 +48,10 @@ function WorldBaras(props) {
       </div>
       {modalBaras && (
         <Modal>
-          <WorldBarasModal modalBaras={modalBaras} />
+          <WorldBarasModal
+            modalBaras={modalBaras}
+            setBarasModal={setBarasModal}
+          />
         </Modal>
       )}
     </>
