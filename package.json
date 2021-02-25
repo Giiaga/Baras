@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "heroku-postbuild": "npm run build --prefix frontend",
+    "heroku-postbuild": "npm run build --prefix baras",
     "install": "npm --prefix backendBaras install backend && npm --prefix baras install frontend",
     "dev:backend": "npm install --prefix backendBaras start",
     "dev:frontend": "npm install --prefix baras start",
