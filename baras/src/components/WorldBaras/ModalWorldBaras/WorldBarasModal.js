@@ -6,6 +6,7 @@ import renderModalWorldBaras from "./renderModalWorldBaras";
 import "./OnlyPhotoModal.css";
 import "./OnlyVideoModal.css";
 import "./OnlyMusicModal.css";
+import "./OnlyTextModal.css";
 
 import Thoughts from "../../Thoughts/Thoughts";
 

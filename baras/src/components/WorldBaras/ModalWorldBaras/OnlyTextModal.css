@@ -1,0 +1,22 @@
+.modalTextTextDiv {
+  border-radius: 3px;
+  width: 94%;
+  margin-left: 1%;
+  height: 372px;
+  border: 1px solid;
+  padding-left: 1.5%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.modalTextMusicDiv p {
+  color: rgb(44, 44, 44);
+  font-size: large;
+}
+
+.modalUsernameTextDiv {
+  margin-left: 90.2%;
+  margin-right: 4.1%;
+  font-size: large;
+}

@@ -141,6 +141,47 @@ function renderModalWorldBaras(Baras) {
       ]);
     }
   }
+  if (Baras.text) {
+    styledWorldBaras.push([
+      <div className="modalMusicBarasDiv">
+        <div className="modalRelatesToMusicDiv">
+          <h3>{Baras.relatesTo}</h3>
+        </div>
+
+        <div className="modalTextTextDiv">
+          <p>{Baras.text}</p>
+        </div>
+        <div className="modalUsernameTextDiv">
+          <NavLink
+            style={{ color: "rgb(131, 129, 125)" }}
+            to={`/${Baras.User.username}/user`}
+          >
+            {Baras.User.username}
+          </NavLink>
+        </div>
+      </div>,
+    ]);
+  } else {
+    styledWorldBaras.push([
+      <div className="modalMusicBarasDiv">
+        <div className="modalRelatesToMusicDiv">
+          <h3>{Baras.relatesTo}</h3>
+        </div>
+        <div className="modalMusicMusicDiv">
+          <img src={Baras.music} alt={Baras.relatesTo} />
+        </div>
+        <div className="modalUsernameMusicDiv">
+          <span>by</span>{" "}
+          <NavLink
+            style={{ color: "rgb(131, 129, 125)" }}
+            to={`/${Baras.User.username}/user`}
+          >
+            {Baras.User.username}
+          </NavLink>
+        </div>
+      </div>,
+    ]);
+  }
 
   return styledWorldBaras[0];
 }
