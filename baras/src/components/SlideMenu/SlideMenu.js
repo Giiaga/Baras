@@ -45,7 +45,7 @@ function SlideMenu({ totalNotif, setTotalNotif }) {
             onClick={() => {
               document.getElementById("menu").style.top = -70 + "%";
               setShowMenu(false);
-              history.push("/trust/Baras");
+              history.push("/Trust/Baras");
             }}
           >
             Trusted Baras

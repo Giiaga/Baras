@@ -35,7 +35,7 @@ function CreateBaras() {
         trusted
       )
     );
-    history.push("/trust/baras");
+    history.push("/Trust/baras");
   };
 
   let addPhoto = (data) => {

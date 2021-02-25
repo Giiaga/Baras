@@ -25,11 +25,11 @@ function LoginForm() {
       ).catch((res) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       });
-      return history.push("/trust/Baras");
+      return history.push("/Trust/Baras");
     } else {
       setErrors([]);
       return dispatch(sessionActions.login({ credential, password }))
-        .then(() => history.push("/trust/Baras"))
+        .then(() => history.push("/Trust/Baras"))
         .catch((res) => {
           if (res.data && res.data.errors) setErrors(res.data.errors);
         });
@@ -817,7 +817,7 @@ function LoginForm() {
           </Modal>
         </>
       ) : (
-        history.push("/trust/Baras")
+        history.push("/Trust/Baras")
       )}
     </>
   );

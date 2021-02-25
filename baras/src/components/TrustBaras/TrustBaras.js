@@ -21,7 +21,7 @@ function TrustBaras() {
       <div className="trustBarasMainDiv">
         {trustBarasAvailable && (
           <div>
-            {renderTrustBaras(trustBaras).map((eachBaras) => eachBaras)}{" "}
+            {renderTrustBaras(trustBaras).map((eachBaras) => eachBaras[1])}
           </div>
         )}
       </div>
