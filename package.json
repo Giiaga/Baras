@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "heroku-postbuild": "npm run build --prefix frontend",
+    "install": "npm --prefix backendBaras install backend && npm --prefix baras install frontend",
+    "dev:backend": "npm install --prefix backendBaras start",
+    "dev:frontend": "npm install --prefix baras start",
+    "sequelize": "npm run --prefix backendBaras sequelize",
+    "sequelize-cli": "npm run --prefix backendBaras sequelize-cli",
+    "start": "npm start --prefix backendBaras"
+  }
+}
