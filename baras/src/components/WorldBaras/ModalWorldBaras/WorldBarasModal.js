@@ -58,7 +58,7 @@ function WorldBarasModal({ modalBaras, setBarasModal, setModalTrue }) {
           onChange={(e) => setThoughtTextArea(e.target.value)}
         ></textarea>
         <button
-          style={{ height: "70px" }}
+          style={{ height: "75px" }}
           onClick={(e) =>
             shareThought(e, thoughtTextArea, userId, modalBaras.id)
           }
