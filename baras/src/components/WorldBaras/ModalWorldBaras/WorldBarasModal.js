@@ -14,7 +14,7 @@ import { sayThought } from "../../../store/thoughts";
 
 import { Modal } from "../../../Modals/Modal";
 
-function WorldBarasModal({ modalBaras, setBarasModal, setModalTrue }) {
+function WorldBarasModal({ modalBaras, setBarasModal }) {
   let [showModal, setShowModal] = useState(false);
   let [thoughtTextArea, setThoughtTextArea] = useState("");
   let [thoughtAddedToDataBase, setThoughtAdded] = useState(false);

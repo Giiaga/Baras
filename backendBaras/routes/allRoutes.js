@@ -523,12 +523,14 @@ router.post(
   asyncHandler(async (req, res) => {
     let { text, userId, barasId } = req.body;
 
-    let thoughtAdded = await BarasComments.create(
-      { id: 7, text, userId, barasId },
-      { include: [User] }
-    );
+    let thoughtAdded = await BarasComments.create({
+      text,
+      userId,
+      barasId,
+    });
     thoughtAdded = await BarasComments.findOne({
       where: { id: thoughtAdded.id },
+      include: [User],
     });
 
     return res.json(thoughtAdded);

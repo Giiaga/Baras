@@ -20,10 +20,19 @@ export function ModalProvider({ children }) {
   );
 }
 
-export function Modal({ onClose, children, login, thoughts }) {
+export function Modal({ onClose, children, login, thoughts, test }) {
   const modalNode = useContext(ModalContext);
   if (!modalNode) return null;
-
+  function returnThis(login, thoughts) {
+    if (login) return { backgroundColor: "orange", borderBottom: "4px solid" };
+    if (thoughts)
+      return {
+        width: "700px",
+        borderRadius: "10px",
+        border: "1px solid orange",
+      };
+    if (test) return { width: "80%" };
+  }
   return ReactDOM.createPortal(
     <div
       id="modal"
@@ -38,20 +47,20 @@ export function Modal({ onClose, children, login, thoughts }) {
       <div
         id="modal-content"
         style={
-          (login && { backgroundColor: "orange", borderBottom: "4px solid" },
+          returnThis(login, thoughts)
           // thoughts && {
           //   width: "700px",
           //   borderRadius: "10px",
           //   border: "1px solid orange",
-          //   backgroundColor: "red",
-          // }),
-          thoughts
-            ? {
-                width: "700px",
-                borderRadius: "10px",
-                border: "1px solid orange",
-              }
-            : { width: "80%", border: "1px solid orange" })
+          // })
+
+          // thoughts
+          //   ? {
+          //       width: "700px",
+          //       borderRadius: "10px",
+          //       border: "1px solid orange",
+          //     }
+          //   : { width: "80%", border: "1px solid orange" })
         }
       >
         {children}

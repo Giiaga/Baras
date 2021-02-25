@@ -20,13 +20,12 @@ function LoginForm() {
     e.preventDefault();
     if (e.target.id === "demo") {
       setErrors([]);
-      return dispatch(
+      dispatch(
         sessionActions.login({ credential: "giiaga", password: "password" })
-      )
-        .then(() => history.push("/trust/Baras"))
-        .catch((res) => {
-          if (res.data && res.data.errors) setErrors(res.data.errors);
-        });
+      ).catch((res) => {
+        if (res.data && res.data.errors) setErrors(res.data.errors);
+      });
+      return history.push("/trust/Baras");
     } else {
       setErrors([]);
       return dispatch(sessionActions.login({ credential, password }))

@@ -15,6 +15,8 @@ function WorldBaras(props) {
   let worldBaras = useSelector((state) => state.worldBaras.worldBaras);
   let [worldBarasAvailable, setWorldBarasAvailable] = useState(false);
   let [modalBaras, setBarasModal] = useState();
+  let [testing, setTest] = useState(false);
+  // let [setBarasModalMain, setBarasModalMainSize] = useState(false);
 
   let dispatch = useDispatch();
 
@@ -38,6 +40,7 @@ function WorldBaras(props) {
               className="eachWorldBarasMainDiv"
               onClick={() => {
                 setBarasModal(eachBaras[0]);
+                setTest(true);
               }}
             >
               {eachBaras[1]}
@@ -45,7 +48,7 @@ function WorldBaras(props) {
           ))}
       </div>
       {modalBaras && (
-        <Modal>
+        <Modal test={testing}>
           <WorldBarasModal
             modalBaras={modalBaras}
             setBarasModal={setBarasModal}
