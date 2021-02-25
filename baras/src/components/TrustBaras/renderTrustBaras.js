@@ -14,7 +14,7 @@ function renderTrustBaras(
       if (eachBaras.text) {
         styledTrustBaras.push([
           eachBaras,
-          <div className="onlyTextTrustBarasDiv">
+          <div>
             <div className="relatesToTrustTextOnlyDiv">
               <h3>{eachBaras.relatesTo}</h3>
             </div>
@@ -37,6 +37,25 @@ function renderTrustBaras(
                 </NavLink>
               </div>
             </div>
+            {/* <div className="thoughtsTextarea">
+              <textarea
+                placeholder="What do you think?"
+                value={thoughtTextArea}
+                onChange={(e) => setThoughtTextArea(e.target.value)}
+              ></textarea>
+              <button
+                style={{
+                  height: "75px",
+                  width: "120px",
+                  borderBottomRightRadius: "4.7px",
+                }}
+                onClick={(e) =>
+                  shareThought(e, thoughtTextArea, userId, eachBaras.id)
+                }
+              >
+                Say
+              </button>
+            </div> */}
           </div>,
         ]);
       } else {
@@ -91,6 +110,25 @@ function renderTrustBaras(
                   {eachBaras.User.username}
                 </NavLink>
               </div>
+            </div>
+            <div className="thoughtsTextarea">
+              <textarea
+                placeholder="What do you think?"
+                value={thoughtTextArea}
+                onChange={(e) => setThoughtTextArea(e.target.value)}
+              ></textarea>
+              <button
+                style={{
+                  height: "75px",
+                  width: "120px",
+                  borderBottomRightRadius: "4.7px",
+                }}
+                onClick={(e) =>
+                  shareThought(e, thoughtTextArea, userId, eachBaras.id)
+                }
+              >
+                Say
+              </button>
             </div>
           </div>,
         ]);
@@ -222,6 +260,25 @@ function renderTrustBaras(
                   {eachBaras.User.username}
                 </NavLink>
               </div>
+            </div>
+            <div className="thoughtsTextarea">
+              <textarea
+                placeholder="What do you think?"
+                value={thoughtTextArea}
+                onChange={(e) => setThoughtTextArea(e.target.value)}
+              ></textarea>
+              <button
+                style={{
+                  height: "75px",
+                  width: "120px",
+                  borderBottomRightRadius: "4.7px",
+                }}
+                onClick={(e) =>
+                  shareThought(e, thoughtTextArea, userId, eachBaras.id)
+                }
+              >
+                Say
+              </button>
             </div>
           </div>,
         ]);

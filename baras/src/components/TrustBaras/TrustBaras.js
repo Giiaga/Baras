@@ -27,13 +27,12 @@ function TrustBaras() {
 
   function shareThought(e, thoughtTextArea, userId, BarasId) {
     e.preventDefault();
-    dispatch(sayThought(thoughtTextArea, userId, BarasId))
-      .then((data) => {
-        if (data) setThoughtTextArea("");
-        // thoughtAddedToDataBase ? setThoughtAdded(false) : setThoughtAdded(true);
-      })
-      .then(() => dispatch(getAllThoughts(BarasId)))
-      .then(() => setOpenModal(true));
+    dispatch(sayThought(thoughtTextArea, userId, BarasId)).then((data) => {
+      if (data) setThoughtTextArea("");
+      // thoughtAddedToDataBase ? setThoughtAdded(false) : setThoughtAdded(true);
+    });
+    console.log("up", BarasId);
+    dispatch(getAllThoughts(BarasId)).then(() => setOpenModal(true));
   }
 
   return (
@@ -51,8 +50,30 @@ function TrustBaras() {
             userId
           ).map((eachBaras) => (
             <>
-              {eachBaras[1]}
-
+              <div>
+                <div className="onlyTextTrustBarasDiv">
+                  {eachBaras[1]}
+                  <div className="thoughtsTextarea">
+                    <textarea
+                      placeholder="What do you think?"
+                      value={thoughtTextArea}
+                      onChange={(e) => setThoughtTextArea(e.target.value)}
+                    ></textarea>
+                    <button
+                      style={{
+                        height: "75px",
+                        width: "120px",
+                        borderBottomRightRadius: "4.7px",
+                      }}
+                      onClick={(e) =>
+                        shareThought(e, thoughtTextArea, userId, eachBaras.id)
+                      }
+                    >
+                      Say
+                    </button>
+                  </div>
+                </div>
+              </div>
               {openModal && (
                 <Modal
                   onClose={() => setOpenModal(false)}
