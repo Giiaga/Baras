@@ -1,6 +1,13 @@
 import { NavLink } from "react-router-dom";
 
-function renderTrustBaras(TrustBaras) {
+function renderTrustBaras(
+  TrustBaras,
+  thoughtTextArea,
+  setThoughtTextArea,
+  shareThought,
+  userId,
+  eachBaras
+) {
   let styledTrustBaras = [];
   TrustBaras.map((eachBaras) => {
     if (!eachBaras.photo && !eachBaras.music && !eachBaras.video) {
@@ -140,6 +147,25 @@ function renderTrustBaras(TrustBaras) {
                   {eachBaras.User.username}
                 </NavLink>
               </div>
+            </div>
+            <div className="thoughtsTextarea">
+              <textarea
+                placeholder="What do you think?"
+                value={thoughtTextArea}
+                onChange={(e) => setThoughtTextArea(e.target.value)}
+              ></textarea>
+              <button
+                style={{
+                  height: "75px",
+                  width: "120px",
+                  borderBottomRightRadius: "4.7px",
+                }}
+                onClick={(e) =>
+                  shareThought(e, thoughtTextArea, userId, eachBaras.id)
+                }
+              >
+                Say
+              </button>
             </div>
           </div>,
         ]);

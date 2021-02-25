@@ -20,12 +20,25 @@ export function ModalProvider({ children }) {
   );
 }
 
-export function Modal({ onClose, children, login, thoughts, test }) {
+export function Modal({
+  onClose,
+  children,
+  login,
+  thoughts,
+  test,
+  openModalTrustBaras,
+}) {
   const modalNode = useContext(ModalContext);
   if (!modalNode) return null;
   function returnThis(login, thoughts) {
     if (login) return { backgroundColor: "orange", borderBottom: "4px solid" };
     if (thoughts)
+      return {
+        width: "700px",
+        borderRadius: "10px",
+        border: "1px solid orange",
+      };
+    if (openModalTrustBaras)
       return {
         width: "700px",
         borderRadius: "10px",
