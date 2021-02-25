@@ -12,8 +12,8 @@ function WorldBarasModal({ modalBaras, setBarasModal }) {
       >
         <i className="fas fa-times"></i>
       </button>
-      <Thoughts BarasId={modalBaras.id} />
       <div>{renderModalWorldBaras(modalBaras)}</div>
+      <Thoughts BarasId={modalBaras.id} />
     </>
   );
 }

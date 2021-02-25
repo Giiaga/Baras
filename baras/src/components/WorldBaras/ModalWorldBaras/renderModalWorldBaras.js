@@ -11,23 +11,21 @@ function renderModalWorldBaras(Baras) {
           <div className="modalRelatesToPhotoDiv">
             <h3>{Baras.relatesTo}</h3>
           </div>
-          <div className="modalPhotoPhotoDiv">
-            <img src={Baras.photo} alt={Baras.relatesTo} />
-          </div>
-          <div className="modalTextPhotoDiv">
-            <p>{Baras.text}</p>
-          </div>
-          <div className="modalUsernamePhotoDiv">
-            <span>by</span>{" "}
-            <NavLink
-              style={{ color: "rgb(131, 129, 125)" }}
-              to={`/${Baras.User.username}/user`}
-            >
-              {Baras.User.username}
-            </NavLink>
-          </div>
-          <div className="modalCreatedAtPhotoDiv">
-            <span>let out: {Baras.updatedAt.slice(0, 16)}</span>
+          <div className="wrapPhotoTextName">
+            <div className="modalPhotoPhotoDiv">
+              <img src={Baras.photo} alt={Baras.relatesTo} />
+            </div>
+            <div className="modalTextPhotoDiv">
+              <p>{Baras.text}</p>
+            </div>
+            <div className="modalUsernamePhotoDiv">
+              <NavLink
+                style={{ color: "rgb(131, 129, 125)" }}
+                to={`/${Baras.User.username}/user`}
+              >
+                {Baras.User.username}
+              </NavLink>
+            </div>
           </div>
         </div>,
       ]);
@@ -41,16 +39,12 @@ function renderModalWorldBaras(Baras) {
             <img src={Baras.photo} alt={Baras.relatesTo} />
           </div>
           <div className="modalUsernamePhotoDiv">
-            <span>by</span>{" "}
             <NavLink
               style={{ color: "rgb(131, 129, 125)" }}
               to={`/${Baras.User.username}/user`}
             >
               {Baras.User.username}
             </NavLink>
-          </div>
-          <div className="modalCreatedAtPhotoDiv">
-            <span>let out: {Baras.updatedAt.slice(0, 16)}</span>
           </div>
         </div>,
       ]);
