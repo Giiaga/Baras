@@ -528,9 +528,12 @@ router.post(
     let { text, userId, barasId } = req.body;
 
     let thoughtAdded = await BarasComments.create(
-      { text, userId, barasId },
+      { id: 7, text, userId, barasId },
       { include: [User] }
     );
+    thoughtAdded = await BarasComments.findOne({
+      where: { id: thoughtAdded.id },
+    });
 
     return res.json(thoughtAdded);
   })
