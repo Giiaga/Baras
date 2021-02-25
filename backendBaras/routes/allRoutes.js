@@ -536,4 +536,26 @@ router.post(
     return res.json(thoughtAdded);
   })
 );
+
+// TRUST BARAS
+
+router.get(
+  "/allTrustBaras/:userId",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    let { userId } = req.params;
+    let allTrustBaras = [];
+    let allTrust = await Trust.findAll({ where: { userId } });
+
+    for (let i = 0; i < allTrust.length; i++) {
+      allTrustBaras.push(
+        ...(await Baras.findAll({
+          where: { userId: allTrust[i].trustedId },
+          include: [User],
+        }))
+      );
+    }
+    return res.json(allTrustBaras);
+  })
+);
 module.exports = router;
