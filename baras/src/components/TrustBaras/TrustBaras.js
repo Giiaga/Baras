@@ -7,6 +7,7 @@ import renderTrustBaras from "./renderTrustBaras";
 import "./TrustBaras.css";
 import "./VideoOnlyTrustBaras.css";
 import "./PhotoOnlyTrustBaras.css";
+import "./TextOnlyTrustBaras.css";
 
 function TrustBaras() {
   let trustBaras = useSelector((state) => state.TrustBaras.allTrustBaras);

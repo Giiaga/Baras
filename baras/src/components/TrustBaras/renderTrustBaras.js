@@ -14,19 +14,21 @@ function renderTrustBaras(TrustBaras) {
             <div className="textTrustTextOnlyDiv">
               <p>{eachBaras.text}</p>
             </div>
-            <div className="usernameTrustTextOnlyDiv">
-              <span>Trusted</span>{" "}
-              <NavLink
-                style={{ color: "rgb(131, 129, 125)" }}
-                className="navlink"
-                style={{ color: "rgb(131, 129, 125)" }}
-                to={`/${eachBaras.User.username}/user`}
-              >
-                {eachBaras.User.username}
-              </NavLink>
-            </div>
-            <div className="createdAtTrustTextOnlyDiv">
-              <span>let out: {eachBaras.updatedAt.slice(0, 10)}</span>
+            <div className="createdAtUsername">
+              <div className="createdAtTrustTextOnlyDiv">
+                <span>let out: {eachBaras.updatedAt.slice(0, 10)}</span>
+              </div>
+              <div className="usernameTrustTextOnlyDiv">
+                <span>Trusted</span>{" "}
+                <NavLink
+                  style={{ color: "rgb(131, 129, 125)" }}
+                  className="navlink"
+                  style={{ color: "rgb(131, 129, 125)" }}
+                  to={`/${eachBaras.User.username}/user`}
+                >
+                  {eachBaras.User.username}
+                </NavLink>
+              </div>
             </div>
           </div>,
         ]);

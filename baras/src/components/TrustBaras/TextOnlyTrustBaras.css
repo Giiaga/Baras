@@ -1,0 +1,59 @@
+.onlyTextTrustBarasDiv {
+  margin-bottom: 2%;
+
+  width: 100%;
+  border: 1px solid rgba(255, 166, 0, 0.623);
+  border-radius: 10px;
+}
+
+.relatesToTrustTextOnlyDiv {
+  margin-left: 1%;
+}
+.relatesToTrustTextOnlyDiv h3 {
+  text-decoration: underline;
+  margin-top: 1%;
+  font-size: 25px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  margin-left: 1%;
+  color: rgb(255, 186, 57);
+}
+
+.textTrustTextOnlyDiv {
+  width: 90%;
+  height: 400px;
+  overflow: auto;
+  overflow-x: hidden;
+  padding-left: 2%;
+  padding-right: 2%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 3px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 3px;
+  border: 1px solid rgba(77, 76, 76, 0.164);
+  margin-left: 1.6%;
+}
+
+.textTrustTextOnlyDiv p {
+  margin-top: 16px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow: auto;
+  overflow-x: hidden;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.createdAtUsername {
+  display: flex;
+  justify-content: space-between;
+}
+
+.createdAtTrustTextOnlyDiv {
+  padding-left: 0.5%;
+  margin-top: 1.2%;
+}
+
+.usernameTrustTextOnlyDiv {
+  align-self: flex-end;
+  margin-right: 1.2%;
+  margin-bottom: 0.8%;
+}
