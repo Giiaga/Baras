@@ -25,6 +25,7 @@ function WorldBarasModal({ modalBaras, setBarasModal, setModalTrue }) {
         thoughtAddedToDataBase ? setThoughtAdded(false) : setThoughtAdded(true);
     });
     setThoughtTextArea("");
+    setShowModal(true);
   }
 
   return (
