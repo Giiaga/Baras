@@ -550,7 +550,7 @@ router.get(
     for (let i = 0; i < allTrust.length; i++) {
       allTrustBaras.push(
         ...(await Baras.findAll({
-          where: { userId: allTrust[i].trustedId },
+          where: { userId: allTrust[i].trustedId, private: false },
           include: [User],
         }))
       );
