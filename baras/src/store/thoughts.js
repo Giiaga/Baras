@@ -17,12 +17,36 @@ export let getAllThoughts = (BarasId) => async (dispatch) => {
   return response.data;
 };
 
+let SAYTHOUGHT = "addsThought";
+
+let sayThoughtAC = (data) => {
+  return {
+    type: SAYTHOUGHT,
+    data,
+  };
+};
+
+export let sayThought = (text, userId, barasId) => async (dispatch) => {
+  let response = await fetch("/addThought", {
+    method: "POST",
+    body: JSON.stringify({ text, userId, barasId }),
+  });
+
+  dispatch(sayThoughtAC(response.data));
+
+  return response.data;
+};
+
 let thoughtsReducer = (state = [], action) => {
   let newState;
   switch (action.type) {
     case GETALLTHOUGHTS:
       newState = Object.assign({}, state);
       newState.allThoughts = action.data;
+      return newState;
+    case SAYTHOUGHT:
+      newState = Object.assign({}, state);
+      newState.allThoughts.push(action.data);
       return newState;
 
     default:

@@ -513,11 +513,26 @@ router.get(
 
     let allThoughts = await BarasComments.findAll({
       where: { barasId: BarasId },
-      order: [['updatedAt', 'DESC']],
+      order: [["updatedAt", "DESC"]],
       include: [User],
     });
 
     return res.json(allThoughts);
+  })
+);
+
+router.post(
+  "/addThought",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    let { text, userId, barasId } = req.body;
+
+    let thoughtAdded = await BarasComments.create(
+      { text, userId, barasId },
+      { include: [User] }
+    );
+
+    return res.json(thoughtAdded);
   })
 );
 module.exports = router;

@@ -10,8 +10,10 @@ import "./OnlyPhotoThought.css";
 function Thoughts({ BarasId }) {
   let [thoughtsAvailable, setThoughtsAvailable] = useState(false);
   let [thoughtTextArea, setThoughtTextArea] = useState("");
+  let [thoughtAddedToDataBase, setThoughtAdded] = useState(false);
 
   let allThoughts = useSelector((state) => state.thoughts.allThoughts);
+  let userId = useSelector((state) => state.session.user.id);
 
   let dispatch = useDispatch();
 
@@ -19,11 +21,15 @@ function Thoughts({ BarasId }) {
     dispatch(getAllThoughts(BarasId)).then(
       (data) => data && setThoughtsAvailable(true)
     );
-  }, [dispatch]);
+  }, [dispatch, thoughtAddedToDataBase]);
 
-  function shareThought() {
+  function shareThought(e, thoughtTextArea, userId, BarasId) {
     e.preventDefault();
-    dispatch(sayThought());
+    dispatch(sayThought(thoughtTextArea, userId, BarasId)).then((data) => {
+      if (data)
+        thoughtAddedToDataBase ? setThoughtAdded(false) : setThoughtAdded(true);
+    });
+    setThoughtTextArea("");
   }
 
   return (
@@ -38,9 +44,13 @@ function Thoughts({ BarasId }) {
         <textarea
           placeholder="What do you think?"
           value={thoughtTextArea}
-          onChange={() => setThoughtTextArea(e.target.value)}
+          onChange={(e) => setThoughtTextArea(e.target.value)}
         ></textarea>
-        <button>Say</button>
+        <button
+          onClick={(e) => shareThought(e, thoughtTextArea, userId, BarasId)}
+        >
+          Say
+        </button>
       </div>
     </>
   );
