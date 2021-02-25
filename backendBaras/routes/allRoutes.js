@@ -513,7 +513,7 @@ router.get(
 
     let allThoughts = await BarasComments.findAll({
       where: { barasId: BarasId },
-      order: [["updatedAt", "DESC"]],
+      order: [["updatedAt", "ASC"]],
       include: [User],
     });
 

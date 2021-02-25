@@ -5,12 +5,19 @@
 }
 
 .modalRelatesToPhotoDiv {
-  background-color: orange;
+  margin-top: 0;
+  height: 40px;
+  margin-bottom: 9px;
+}
+.modalRelatesToPhotoDiv h3 {
+  margin: 0;
+  font-size: 40px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: rgba(32, 32, 32, 0.61);
 }
 
 .modalPhotoPhotoDiv {
   width: 40%;
-  /* height: 4%; */
 }
 
 .modalPhotoPhotoDiv img {
@@ -37,11 +44,27 @@
   overflow-x: hidden;
 }
 
-/* .modalTextPhotoDiv p {
-  /* height: 20px; */
-
+.modalTextPhotoDiv p {
+  color: rgb(44, 44, 44);
+  font-size: large;
+}
 .modalUsernamePhotoDiv {
   margin: auto;
   margin-right: 4.1%;
   font-size: large;
+}
+
+.closeButtonWorldBarasModal {
+  margin-left: 98.4%;
+  margin-top: 0.1%;
+  background-color: transparent;
+  border: none;
+  color: rgb(71, 71, 71);
+  font-size: medium;
+}
+
+.closeButtonWorldBarasModal:hover {
+  color: orange;
+  border: 1px solid gray;
+  border-radius: 4px;
 }

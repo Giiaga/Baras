@@ -39,11 +39,19 @@ export function Modal({ onClose, children, login, thoughts }) {
         id="modal-content"
         style={
           (login && { backgroundColor: "orange", borderBottom: "4px solid" },
-          thoughts && {
-            width: "700px",
-            borderRadius: "10px",
-            border: "1px solid orange",
-          })
+          // thoughts && {
+          //   width: "700px",
+          //   borderRadius: "10px",
+          //   border: "1px solid orange",
+          //   backgroundColor: "red",
+          // }),
+          thoughts
+            ? {
+                width: "700px",
+                borderRadius: "10px",
+                border: "1px solid orange",
+              }
+            : { width: "80%", border: "1px solid orange" })
         }
       >
         {children}

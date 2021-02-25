@@ -13,7 +13,6 @@ import "./OnlyText.css";
 
 function WorldBaras(props) {
   let worldBaras = useSelector((state) => state.worldBaras.worldBaras);
-  // let [showModal, setShowModal] = useState(false);
   let [worldBarasAvailable, setWorldBarasAvailable] = useState(false);
   let [modalBaras, setBarasModal] = useState();
 
@@ -38,7 +37,6 @@ function WorldBaras(props) {
               }
               className="eachWorldBarasMainDiv"
               onClick={() => {
-                // setShowModal(true);
                 setBarasModal(eachBaras[0]);
               }}
             >
