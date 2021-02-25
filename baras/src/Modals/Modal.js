@@ -20,7 +20,7 @@ export function ModalProvider({ children }) {
   );
 }
 
-export function Modal({ onClose, children, login }) {
+export function Modal({ onClose, children, login, thoughts }) {
   const modalNode = useContext(ModalContext);
   if (!modalNode) return null;
 
@@ -38,7 +38,12 @@ export function Modal({ onClose, children, login }) {
       <div
         id="modal-content"
         style={
-          login && { backgroundColor: "orange", borderBottom: "4px solid" }
+          (login && { backgroundColor: "orange", borderBottom: "4px solid" },
+          thoughts && {
+            width: "700px",
+            borderRadius: "10px",
+            border: "1px solid orange",
+          })
         }
       >
         {children}

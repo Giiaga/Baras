@@ -6,6 +6,7 @@ import { Modal } from "../../../Modals/Modal";
 
 function WorldBarasModal({ modalBaras, setBarasModal }) {
   let [showModal, setShowModal] = useState(false);
+
   return (
     <>
       <button
@@ -17,7 +18,7 @@ function WorldBarasModal({ modalBaras, setBarasModal }) {
       <button onClick={() => setShowModal(true)}>Comments</button>
       <div>{renderModalWorldBaras(modalBaras)}</div>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal onClose={() => setShowModal(false)} thoughts={showModal}>
           <Thoughts BarasId={modalBaras.id} />
         </Modal>
       )}

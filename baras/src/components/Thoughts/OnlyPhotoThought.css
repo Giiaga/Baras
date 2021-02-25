@@ -46,18 +46,23 @@
 }
 
 .thoughtWithImageText {
-  width: 80%;
+  width: 95%;
+  padding-right: 1%;
   max-height: 100px;
 
   padding-left: 5%;
   overflow: auto;
   overflow-x: hidden;
   margin-top: 0%;
+  margin-bottom: 1%;
 }
 .thoughtWithImageText p {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* font-size: 14px; */
   width: 100%;
+  padding-right: 1%;
   margin-top: 0.1%;
-  margin-bottom: 0.1%;
+  /* margin-bottom: 01%; */
 }
 .wrapPhotoTextName {
   display: flex;
@@ -65,5 +70,7 @@
 }
 
 .thoughtWithImageUpdatedAt {
-  margin-left: 80%;
+  margin-left: 81.5%;
+  /* font-size: small; */
+  /* color: rgb(112, 112, 112); */
 }

@@ -1,10 +1,11 @@
 .thoughtsMainDiv {
-  width: 45%;
-  max-height: 220px;
-  border: 1px solid purple;
+  width: 99.5%;
+  max-height: 520px;
+  /* border: 1px solid; */
   overflow: auto;
   overflow-x: hidden;
-  margin-left: 1%;
+  border-radius: 10px;
+  /* margin-left: 1%; */
   /* height: 40%; */
 }
 
@@ -15,4 +16,39 @@
 .everyThought:nth-child(even) {
   background-color: rgb(255, 241, 215);
   border-bottom: 1px solid rgb(141, 141, 141);
+}
+
+.thoughtsTextarea textarea {
+  width: 90%;
+  height: 70px;
+  resize: none;
+  border: 1px solid rgb(255, 218, 149);
+  border-top: none;
+}
+
+.thoughtsTextarea {
+  display: flex;
+}
+.thoughtsTextarea textarea:focus {
+  width: 90%;
+  height: 70px;
+  /* resize: none; */
+  border: 1px solid orange;
+}
+
+.thoughtsTextarea button {
+  width: 7.95%;
+  height: 73px;
+  border: none;
+  border-bottom-right-radius: 10px;
+  background-color: rgb(255, 203, 106);
+  color: rgb(255, 255, 255);
+  /* align-self: center; */
+  /* resize: none; */
+  /* border: 1px solid orange; */
+}
+
+.thoughtsTextarea button:hover {
+  background-color: orange;
+  color: white;
 }
