@@ -54,40 +54,36 @@ function renderModalWorldBaras(Baras) {
   if (Baras.video) {
     if (Baras.text) {
       styledWorldBaras.push([
-        <div className="modalPhotoBarasDiv">
-          <div className="modalRelatesToPhotoDiv">
+        <div className="modalVideoBarasDiv">
+          <div className="modalRelatesToVideoDiv">
             <h3>{Baras.relatesTo}</h3>
           </div>
-          <div className="modalPhotoPhotoDiv">
-            <img src={Baras.video} alt={Baras.relatesTo} />
+          <div className="modalVideoVideoDiv">
+            <iframe src={Baras.video}></iframe>
           </div>
-          <div className="modalTextPhotoDiv">
+          <div className="modalTextVideoDiv">
             <p>{Baras.text}</p>
           </div>
-          <div className="modalUsernamePhotoDiv">
-            <span>by</span>{" "}
+          <div className="modalUsernameVideoDiv">
             <NavLink
               style={{ color: "rgb(131, 129, 125)" }}
               to={`/${Baras.User.username}/user`}
             >
               {Baras.User.username}
             </NavLink>
-          </div>
-          <div className="modalCreatedAtPhotoDiv">
-            <span>let out: {Baras.updatedAt.slice(0, 16)}</span>
           </div>
         </div>,
       ]);
     } else {
       styledWorldBaras.push([
-        <div className="modalPhotoBarasDiv">
-          <div className="modalRelatesToPhotoDiv">
+        <div className="modalVideoBarasDiv">
+          <div className="modalRelatesToVideoDiv">
             <h3>{Baras.relatesTo}</h3>
           </div>
-          <div className="modalPhotoPhotoDiv">
+          <div className="modalVideoVideoDiv">
             <img src={Baras.video} alt={Baras.relatesTo} />
           </div>
-          <div className="modalUsernamePhotoDiv">
+          <div className="modalUsernameVideoDiv">
             <span>by</span>{" "}
             <NavLink
               style={{ color: "rgb(131, 129, 125)" }}
@@ -96,8 +92,50 @@ function renderModalWorldBaras(Baras) {
               {Baras.User.username}
             </NavLink>
           </div>
-          <div className="modalCreatedAtPhotoDiv">
-            <span>let out: {Baras.updatedAt.slice(0, 16)}</span>
+        </div>,
+      ]);
+    }
+  }
+  if (Baras.music) {
+    if (Baras.text) {
+      styledWorldBaras.push([
+        <div className="modalMusicBarasDiv">
+          <div className="modalRelatesToMusicDiv">
+            <h3>{Baras.relatesTo}</h3>
+          </div>
+          <div className="modalMusicMusicDiv">
+            <iframe src={Baras.music}></iframe>
+          </div>
+          <div className="modalTextMusicDiv">
+            <p>{Baras.text}</p>
+          </div>
+          <div className="modalUsernameMusicDiv">
+            <NavLink
+              style={{ color: "rgb(131, 129, 125)" }}
+              to={`/${Baras.User.username}/user`}
+            >
+              {Baras.User.username}
+            </NavLink>
+          </div>
+        </div>,
+      ]);
+    } else {
+      styledWorldBaras.push([
+        <div className="modalMusicBarasDiv">
+          <div className="modalRelatesToMusicDiv">
+            <h3>{Baras.relatesTo}</h3>
+          </div>
+          <div className="modalMusicMusicDiv">
+            <img src={Baras.music} alt={Baras.relatesTo} />
+          </div>
+          <div className="modalUsernameMusicDiv">
+            <span>by</span>{" "}
+            <NavLink
+              style={{ color: "rgb(131, 129, 125)" }}
+              to={`/${Baras.User.username}/user`}
+            >
+              {Baras.User.username}
+            </NavLink>
           </div>
         </div>,
       ]);

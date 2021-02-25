@@ -1,42 +1,47 @@
-.modalPhotoBarasDiv {
+.modalVideoBarasDiv {
   width: 100%;
   height: 100%;
   margin-left: 1%;
 }
 
-.modalRelatesToPhotoDiv {
+.modalRelatesToVideoDiv {
   margin-top: 0;
   height: 40px;
   margin-bottom: 9px;
 }
-.modalRelatesToPhotoDiv h3 {
+.modalRelatesToVideoDiv h3 {
   margin: 0;
   font-size: 40px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: rgba(32, 32, 32, 0.61);
 }
 
-.modalPhotoPhotoDiv {
+.modalVideoVideoDiv {
+  display: inline-block;
   width: 40%;
 }
 
-.modalPhotoPhotoDiv img {
+.modalVideoVideoDiv iframe {
   min-height: auto;
   min-width: auto;
   max-width: 100%;
   max-height: 100%;
+  width: 100%;
   height: 375px;
+  border: none;
 }
 
-.modalTextPhotoDiv {
+.modalTextVideoDiv {
+  display: inline-block;
+
   padding-right: 1%;
 }
 
-.modalTextPhotoDiv {
+.modalTextVideoDiv {
   border-radius: 3px;
   width: 52%;
   margin-left: 1%;
-  max-height: 372px;
+  height: 372px;
   border: 1px solid;
   padding-left: 1.5%;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -44,12 +49,12 @@
   overflow-x: hidden;
 }
 
-.modalTextPhotoDiv p {
+.modalTextVideoDiv p {
   color: rgb(44, 44, 44);
   font-size: large;
 }
-.modalUsernamePhotoDiv {
-  margin: auto;
+.modalUsernameVideoDiv {
+  margin-left: 89.4%;
   margin-right: 4.1%;
   font-size: large;
 }
@@ -66,7 +71,6 @@
 .closeButtonWorldBarasModal:hover {
   color: orange;
 }
-
 .closeButtonWorldBarasModal:focus {
   outline: none;
 }

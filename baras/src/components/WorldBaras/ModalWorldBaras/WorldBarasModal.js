@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import renderModalWorldBaras from "./renderModalWorldBaras";
+
 import "./OnlyPhotoModal.css";
+import "./OnlyVideoModal.css";
+import "./OnlyMusicModal.css";
+
 import Thoughts from "../../Thoughts/Thoughts";
 
 import { sayThought } from "../../../store/thoughts";
