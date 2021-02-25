@@ -48,7 +48,6 @@ router.get(
   requireAuth,
   asyncHandler(async (req, res) => {
     let { username: currentUser } = req.user;
-    // console.log(currentUser, "dffjsdk");
     let { username } = req.params;
     if (currentUser != username) return res.redirect("/");
 
@@ -81,7 +80,6 @@ router.post(
       trustShare,
       selfShare,
     } = req.body;
-    // console.log(publish, worldShare, trustShare, selfShare, "CHECKKKKKK");
     // let storyFound = await Story.findOne({
     //   where: { userId: userId, title: title },
     // });
@@ -432,8 +430,6 @@ router.get(
   "/privateChat/:userId/:senderId/chat",
   requireAuth,
   asyncHandler(async (req, res) => {
-    console.log("This route hit");
-
     let { userId, senderId } = req.params;
     let recievedMessage = await PrivateChat.findAll({
       where: { recieverId: userId, senderId: senderId },

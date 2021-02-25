@@ -11,7 +11,6 @@ function EntryPage() {
   //    fileread.onload = (e) =>
   //      document.getElementById("pho").setAttribute("src", e.target.result);
   //    fileread.readAsDataURL(photo);
-  //    console.log("after", photo);
   //  }
   return (
     <div className="entryPageMain">

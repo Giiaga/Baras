@@ -6,7 +6,6 @@ function renderThoughts(allThoughts) {
   allThoughts.map((thought) => {
     if (thought.photo) {
       if (thought.text) {
-        console.log("ALRGITH", thought);
         styledThoughts.push(
           <div className="mainThoughtDiv">
             <div className="thoughtUsernameImageDiv">

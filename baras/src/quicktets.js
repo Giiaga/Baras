@@ -9,7 +9,6 @@ function Showpic() {
   useEffect(() => {
     dispatch(showpicture());
   }, []);
-  // console.log(user);
   return (
     <>
       <CreateBaras />

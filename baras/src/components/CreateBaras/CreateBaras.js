@@ -6,7 +6,6 @@ import "./CreateBaras.css";
 
 function CreateBaras() {
   let userId = useSelector((state) => state.session.user);
-  console.log(userId);
   let dispatch = useDispatch();
   let history = useHistory();
 

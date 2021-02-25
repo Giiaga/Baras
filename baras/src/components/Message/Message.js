@@ -72,7 +72,6 @@ function Message(props) {
               ).map((message) =>
                 message.senderId != userId ? (
                   <>
-                    {console.log("hihsdfshfids", message)}
                     <div key={message.id} className="senderMessageBlock">
                       <img
                         src={message.reciever.photo}

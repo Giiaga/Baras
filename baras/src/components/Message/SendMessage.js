@@ -14,7 +14,6 @@ function SendMessage(props) {
   let [textValuess, setTextValuess] = useState(false);
 
   let allData = useSelector((state) => state.message.allTrust);
-  console.log(allData);
   useEffect(() => {
     dispatch(getTrust(userId)).then(() => setState(true));
   }, [dispatch]);

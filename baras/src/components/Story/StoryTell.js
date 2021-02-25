@@ -14,7 +14,6 @@ function StoryTell() {
   let history = useHistory();
 
   let createStory = (e) => {
-    console.log(publish, "INT ETHRDFJK");
     e.preventDefault();
     dispatch(tellStory(userId, title, publish)).then((data) => {
       let paramTitle = title.split(" ").join("<:>");

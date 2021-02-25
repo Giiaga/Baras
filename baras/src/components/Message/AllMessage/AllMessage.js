@@ -8,12 +8,10 @@ import SendMessage from "../SendMessage";
 function AllMessages(props) {
   let userId = useSelector((state) => state.session.user.id);
   let messages = useSelector((state) => state.message.allMessages);
-  console.log("AT ALLL", messages);
   let [showModal, setShowModel] = useState(false);
 
   let dispatch = useDispatch();
   useEffect(() => {
-    console.log("does it");
     dispatch(getAllMessages(userId));
   }, [dispatch]);
   // let [i, setI] = useState(0);
@@ -153,8 +151,6 @@ function AllMessages(props) {
             key={each.createdAt}
             className="listOfMessagesDiv"
             onClick={() => {
-              console.log(each.senderId, "SENDERNERN");
-
               props.state.setMessageOpen(true);
               props.state.setUserClicked(each.senderId);
             }}

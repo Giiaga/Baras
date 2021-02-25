@@ -14,7 +14,6 @@ function UserProfile() {
   let loggedInUser = useSelector((state) => state.session.user);
   let user = useSelector((state) => state.user.user);
   let userBaras = useSelector((state) => state.user.allBaras);
-  // console.log(userBaras);
   useEffect(() => {
     if (loggedInUser != undefined) {
       dispatch(getUser(loggedInUser.username))

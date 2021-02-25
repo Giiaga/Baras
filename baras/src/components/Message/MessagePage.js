@@ -14,7 +14,6 @@ function MessagesPage() {
   let [replacer, setReplacer] = useState(false);
   let userId = useSelector((state) => state.session.user.id);
   //   const { userId } = useParams();
-  // console.log(userClicked, "USERERRE");
   return (
     <>
       <AllMessages

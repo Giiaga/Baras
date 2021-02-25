@@ -51,7 +51,6 @@ router.delete("/", (_req, res) => {
 });
 // router.get("/h", async (req, res) => {
 //   let userr = await User.findByPk(26);
-//   console.log(userr);
 //   res.json({ userr });
 // });
 // Restore session user
