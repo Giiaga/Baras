@@ -69,17 +69,19 @@ function renderTrustBaras(TrustBaras) {
             <div className="textTrustPhotoDiv">
               <p>{eachBaras.text}</p>
             </div>
-            <div className="createdAtTrustPhotoDiv">
-              <span>let out: {eachBaras.updatedAt.slice(0, 10)}</span>
-            </div>
-            <div className="usernameTrustPhotoDiv">
-              <span>Trusted</span>{" "}
-              <NavLink
-                style={{ color: "rgb(131, 129, 125)" }}
-                to={`/${eachBaras.User.username}/user`}
-              >
-                {eachBaras.User.username}
-              </NavLink>
+            <div className="createdAtUsername">
+              <div className="createdAtTrustPhotoDiv">
+                <span>let out: {eachBaras.updatedAt.slice(0, 10)}</span>
+              </div>
+              <div className="usernameTrustPhotoDiv">
+                <span>Trusted</span>{" "}
+                <NavLink
+                  style={{ color: "rgb(131, 129, 125)" }}
+                  to={`/${eachBaras.User.username}/user`}
+                >
+                  {eachBaras.User.username}
+                </NavLink>
+              </div>
             </div>
           </div>,
         ]);
@@ -123,17 +125,19 @@ function renderTrustBaras(TrustBaras) {
             <div className="textTrustVideoDiv">
               <p>{eachBaras.text}</p>
             </div>
-            <div className="createdAtTrustVideoDiv">
-              <span>let out: {eachBaras.updatedAt.slice(0, 10)}</span>
-            </div>
-            <div className="usernameTrustVideoDiv">
-              <span>Trusted</span>{" "}
-              <NavLink
-                style={{ color: "rgb(131, 129, 125)" }}
-                to={`/${eachBaras.User.username}/user`}
-              >
-                {eachBaras.User.username}
-              </NavLink>
+            <div className="createdAtUsername">
+              <div className="createdAtTrustVideoDiv">
+                <span>let out: {eachBaras.updatedAt.slice(0, 10)}</span>
+              </div>
+              <div className="usernameTrustVideoDiv">
+                <span>Trusted</span>{" "}
+                <NavLink
+                  style={{ color: "rgb(131, 129, 125)" }}
+                  to={`/${eachBaras.User.username}/user`}
+                >
+                  {eachBaras.User.username}
+                </NavLink>
+              </div>
             </div>
           </div>,
         ]);
@@ -177,17 +181,19 @@ function renderTrustBaras(TrustBaras) {
             <div className="textTrustMusicDiv">
               <p>{eachBaras.text}</p>
             </div>
-            <div className="createdAtTrustMusicDiv">
-              <span>let out: {eachBaras.updatedAt.slice(0, 10)}</span>
-            </div>
-            <div className="usernameTrustMusicDiv">
-              <span>Trusted</span>{" "}
-              <NavLink
-                style={{ color: "rgb(131, 129, 125)" }}
-                to={`/${eachBaras.User.username}/user`}
-              >
-                {eachBaras.User.username}
-              </NavLink>
+            <div className="createdAtUsername">
+              <div className="createdAtTrustMusicDiv">
+                <span>let out: {eachBaras.updatedAt.slice(0, 10)}</span>
+              </div>
+              <div className="usernameTrustMusicDiv">
+                <span>Trusted</span>{" "}
+                <NavLink
+                  style={{ color: "rgb(131, 129, 125)" }}
+                  to={`/${eachBaras.User.username}/user`}
+                >
+                  {eachBaras.User.username}
+                </NavLink>
+              </div>
             </div>
           </div>,
         ]);

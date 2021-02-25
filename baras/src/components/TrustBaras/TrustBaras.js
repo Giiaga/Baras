@@ -21,13 +21,12 @@ function TrustBaras() {
   }, [dispatch]);
   return (
     <>
-      <div>Trust Baras</div>
+      <div className="TrustBarasHeading">
+        <h3>Trust Baras</h3>
+      </div>
       <div className="trustBarasMainDiv">
-        {trustBarasAvailable && (
-          <div>
-            {renderTrustBaras(trustBaras).map((eachBaras) => eachBaras[1])}
-          </div>
-        )}
+        {trustBarasAvailable &&
+          renderTrustBaras(trustBaras).map((eachBaras) => eachBaras[1])}
       </div>
     </>
   );

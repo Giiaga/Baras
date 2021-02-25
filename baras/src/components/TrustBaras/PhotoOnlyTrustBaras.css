@@ -4,8 +4,11 @@
 }
 
 .photoTrustBarasDiv {
+  margin-bottom: 2%;
+
   width: 100%;
-  border: 1px solid;
+  border: 1px solid rgba(255, 166, 0, 0.623);
+  border-radius: 10px;
 }
 
 .relatesToTrustPhotoDiv {
@@ -34,6 +37,10 @@
   overflow: auto;
   overflow-x: hidden;
   padding-left: 2%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 3px;
+  border: 1px solid rgba(77, 76, 76, 0.164);
+  margin-left: 0.5%;
 }
 .photoTrustPhotoDiv img {
   width: 100%;
@@ -42,7 +49,7 @@
 }
 
 .textTrustPhotoDiv p {
-  margin-top: 0;
+  margin-top: 16px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   overflow: auto;
   overflow-x: hidden;
@@ -51,12 +58,18 @@
 }
 
 .usernameTrustPhotoDiv {
-  display: inline-block;
+  align-self: flex-end;
+  margin-right: 1.2%;
+  margin-bottom: 0.8%;
 }
 
 .createdAtTrustPhotoDiv {
-  display: inline-block;
   padding-left: 0.5%;
-  margin-top: 1%;
-  margin-right: 79%;
+  margin-top: 1.2%;
+  /* margin-right: 79%; */
+}
+
+.createdAtUsername {
+  display: flex;
+  justify-content: space-between;
 }
