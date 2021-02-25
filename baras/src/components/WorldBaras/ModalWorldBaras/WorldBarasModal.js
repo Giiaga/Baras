@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import renderModalWorldBaras from "./renderModalWorldBaras";
 import "./OnlyPhotoModal.css";
 import Thoughts from "../../Thoughts/Thoughts";
+import { Modal } from "../../../Modals/Modal";
 
 function WorldBarasModal({ modalBaras, setBarasModal }) {
+  let [showModal, setShowModal] = useState(false);
   return (
     <>
       <button
@@ -12,8 +14,13 @@ function WorldBarasModal({ modalBaras, setBarasModal }) {
       >
         <i className="fas fa-times"></i>
       </button>
+      <button onClick={() => setShowModal(true)}>Comments</button>
       <div>{renderModalWorldBaras(modalBaras)}</div>
-      <Thoughts BarasId={modalBaras.id} />
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <Thoughts BarasId={modalBaras.id} />
+        </Modal>
+      )}
     </>
   );
 }

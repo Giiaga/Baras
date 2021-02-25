@@ -1,5 +1,18 @@
 .thoughtsMainDiv {
-  width: 40%;
+  width: 45%;
+  max-height: 220px;
   border: 1px solid purple;
+  overflow: auto;
+  overflow-x: hidden;
+  margin-left: 1%;
   /* height: 40%; */
+}
+
+.everyThought:nth-child(odd) {
+  background-color: rgb(255, 225, 169);
+  border-bottom: 1px solid orange;
+}
+.everyThought:nth-child(even) {
+  background-color: rgb(255, 241, 215);
+  border-bottom: 1px solid rgb(141, 141, 141);
 }

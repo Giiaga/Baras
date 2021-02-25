@@ -22,9 +22,10 @@ function Thoughts({ BarasId }) {
   return (
     <>
       <div className="thoughtsMainDiv">
-        {thoughtsAvailable && (
-          <div>{renderThoughts(allThoughts).map((thought) => thought)}</div>
-        )}
+        {thoughtsAvailable &&
+          renderThoughts(allThoughts).map((thought) => (
+            <div className="everyThought">{thought}</div>
+          ))}
       </div>
     </>
   );
