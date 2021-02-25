@@ -1,0 +1,58 @@
+.trustBarasMainDiv {
+  width: 80%;
+  margin: auto;
+}
+
+.musicTrustBarasDiv {
+  width: 100%;
+  border: 1px solid;
+}
+
+.relatesToTrustMusicDiv {
+  margin-left: 1%;
+}
+.relatesToTrustMusicDiv h3 {
+  text-decoration: underline;
+  margin-top: 1%;
+  font-size: 25px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  margin-left: 1%;
+  color: rgb(255, 186, 57);
+}
+
+.musicTrustMusicDiv {
+  border: none;
+  padding-left: 1%;
+  display: inline-block;
+}
+
+.textTrustMusicDiv {
+  display: inline-block;
+  width: 71.2%;
+  overflow: auto;
+  overflow-x: hidden;
+  padding-left: 2%;
+  height: 400px;
+}
+.musicTrustMusicDiv iframe {
+  border: none;
+}
+
+.textTrustMusicDiv p {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow: auto;
+  overflow-x: hidden;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.usernameTrustMusicDiv {
+  display: inline-block;
+}
+
+.createdAtTrustMusicDiv {
+  display: inline-block;
+  padding-left: 0.5%;
+  margin-top: 1%;
+  margin-right: 79%;
+}

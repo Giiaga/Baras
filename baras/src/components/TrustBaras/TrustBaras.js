@@ -4,6 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTrustBaras } from "../../store/trustBaras";
 import renderTrustBaras from "./renderTrustBaras";
 
+import "./TrustBaras.css";
+import "./VideoOnlyTrustBaras.css";
+import "./PhotoOnlyTrustBaras.css";
+
 function TrustBaras() {
   let trustBaras = useSelector((state) => state.TrustBaras.allTrustBaras);
   let userId = useSelector((state) => state.session.user.id);

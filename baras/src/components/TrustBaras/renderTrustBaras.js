@@ -7,15 +7,15 @@ function renderTrustBaras(TrustBaras) {
       if (eachBaras.text) {
         styledTrustBaras.push([
           eachBaras,
-          <div className="onlyTextBarasDiv">
-            <div className="relatesToTextOnlyDiv">
+          <div className="onlyTextTrustBarasDiv">
+            <div className="relatesToTrustTextOnlyDiv">
               <h3>{eachBaras.relatesTo}</h3>
             </div>
-            <div className="textTextOnlyDiv">
-              <p>{eachBaras.text.slice(0, 574)}</p>
+            <div className="textTrustTextOnlyDiv">
+              <p>{eachBaras.text}</p>
             </div>
-            <div className="usernameTextOnlyDiv">
-              <span>by</span>{" "}
+            <div className="usernameTrustTextOnlyDiv">
+              <span>Trusted</span>{" "}
               <NavLink
                 style={{ color: "rgb(131, 129, 125)" }}
                 className="navlink"
@@ -25,21 +25,21 @@ function renderTrustBaras(TrustBaras) {
                 {eachBaras.User.username}
               </NavLink>
             </div>
-            <div className="createdAtTextOnlyDiv">
-              <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
+            <div className="createdAtTrustTextOnlyDiv">
+              <span>let out: {eachBaras.updatedAt.slice(0, 10)}</span>
             </div>
           </div>,
         ]);
       } else {
         styledTrustBaras.push([
           eachBaras,
-          <div className="onlyTextBarasDiv">
-            <div className="relatesToTextOnlyDiv">
+          <div className="onlyTextTrustBarasDiv">
+            <div className="relatesToTrustTextOnlyDiv">
               <h3>{eachBaras.relatesTo}</h3>
             </div>
-            <div className="textTextOnlyDiv"></div>
+            <div className="textTrustTextOnlyDiv"></div>
             <div className="usernameTextOnlyDiv">
-              <span>by</span>{" "}
+              <span>Trusted</span>{" "}
               <NavLink
                 style={{ color: "rgb(131, 129, 125)" }}
                 to={`/${eachBaras.User.username}/user`}
@@ -47,8 +47,8 @@ function renderTrustBaras(TrustBaras) {
                 {eachBaras.User.username}
               </NavLink>
             </div>
-            <div className="createdAtTextOnlyDiv">
-              <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
+            <div className="createdAtTrustTextOnlyDiv">
+              <span>let out: {eachBaras.updatedAt.slice(0, 10)}</span>
             </div>
           </div>,
         ]);
@@ -59,42 +59,42 @@ function renderTrustBaras(TrustBaras) {
       if (eachBaras.text) {
         styledTrustBaras.push([
           eachBaras,
-          <div className="photoBarasDiv">
-            <div className="relatesToPhotoDiv">
+          <div className="photoTrustBarasDiv">
+            <div className="relatesToTrustPhotoDiv">
               <h3>{eachBaras.relatesTo}</h3>
             </div>
-            <div className="photoPhotoDiv">
+            <div className="photoTrustPhotoDiv">
               <img src={eachBaras.photo} alt={eachBaras.relatesTo} />
             </div>
-            <div className="textPhotoDiv">
-              <p>{eachBaras.text.slice(0, 287)}</p>
+            <div className="textTrustPhotoDiv">
+              <p>{eachBaras.text}</p>
             </div>
-            <div className="usernamePhotoDiv">
-              <span>by</span>{" "}
+            <div className="createdAtTrustPhotoDiv">
+              <span>let out: {eachBaras.updatedAt.slice(0, 10)}</span>
+            </div>
+            <div className="usernameTrustPhotoDiv">
+              <span>Trusted</span>{" "}
               <NavLink
                 style={{ color: "rgb(131, 129, 125)" }}
                 to={`/${eachBaras.User.username}/user`}
               >
                 {eachBaras.User.username}
               </NavLink>
-            </div>
-            <div className="createdAtPhotoDiv">
-              <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
             </div>
           </div>,
         ]);
       } else {
         styledTrustBaras.push([
           eachBaras,
-          <div className="photoBarasDiv">
-            <div className="relatesToPhotoDiv">
+          <div className="photoTrustBarasDiv">
+            <div className="relatesToTrustPhotoDiv">
               <h3>{eachBaras.relatesTo}</h3>
             </div>
-            <div className="photoPhotoDiv">
+            <div className="photoTrustPhotoDiv">
               <img src={eachBaras.photo} alt={eachBaras.relatesTo} />
             </div>
             <div className="usernamePhotoDiv">
-              <span>by</span>{" "}
+              <span>Trusted</span>{" "}
               <NavLink
                 style={{ color: "rgb(131, 129, 125)" }}
                 to={`/${eachBaras.User.username}/user`}
@@ -102,8 +102,8 @@ function renderTrustBaras(TrustBaras) {
                 {eachBaras.User.username}
               </NavLink>
             </div>
-            <div className="createdAtPhotoDiv">
-              <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
+            <div className="createdAtTrustPhotoDiv">
+              <span>let out: {eachBaras.updatedAt.slice(0, 10)}</span>
             </div>
           </div>,
         ]);
@@ -113,42 +113,42 @@ function renderTrustBaras(TrustBaras) {
       if (eachBaras.text) {
         styledTrustBaras.push([
           eachBaras,
-          <div className="videoBarasDiv">
-            <div className="relatesToVideoDiv">
+          <div className="videoTrustBarasDiv">
+            <div className="relatesToTrustVideoDiv">
               <h3>{eachBaras.relatesTo}</h3>
             </div>
-            <div className="videoVideoDiv">
+            <div className="videoTrustVideoDiv">
               <iframe src={eachBaras.video}></iframe>
             </div>
-            <div className="textVideoDiv">
-              <p>{eachBaras.text.slice(0, 287)}</p>
+            <div className="textTrustVideoDiv">
+              <p>{eachBaras.text}</p>
             </div>
-            <div className="usernameVideoDiv">
-              <span>by</span>{" "}
+            <div className="createdAtTrustVideoDiv">
+              <span>let out: {eachBaras.updatedAt.slice(0, 10)}</span>
+            </div>
+            <div className="usernameTrustVideoDiv">
+              <span>Trusted</span>{" "}
               <NavLink
                 style={{ color: "rgb(131, 129, 125)" }}
                 to={`/${eachBaras.User.username}/user`}
               >
                 {eachBaras.User.username}
               </NavLink>
-            </div>
-            <div className="createdAtVideoDiv">
-              <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
             </div>
           </div>,
         ]);
       } else {
         styledTrustBaras.push([
           eachBaras,
-          <div className="videoBarasDiv">
-            <div className="relatesToVideoDiv">
+          <div className="videoTrustBarasDiv">
+            <div className="relatesToTrustVideoDiv">
               <h3>{eachBaras.relatesTo}</h3>
             </div>
-            <div className="videoVideoDiv">
+            <div className="videoTrustVideoDiv">
               <iframe src={eachBaras.video}></iframe>
             </div>
-            <div className="usernameVideoDiv">
-              <span>by</span>{" "}
+            <div className="usernameTrustVideoDiv">
+              <span>Trusted</span>{" "}
               <NavLink
                 style={{ color: "rgb(131, 129, 125)" }}
                 to={`/${eachBaras.User.username}/user`}
@@ -156,8 +156,8 @@ function renderTrustBaras(TrustBaras) {
                 {eachBaras.User.username}
               </NavLink>
             </div>
-            <div className="createdAtVideoDiv">
-              <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
+            <div className="createdAtTrustVideoDiv">
+              <span>let out: {eachBaras.updatedAt.slice(0, 10)}</span>
             </div>
           </div>,
         ]);
@@ -167,42 +167,42 @@ function renderTrustBaras(TrustBaras) {
       if (eachBaras.text) {
         styledTrustBaras.push([
           eachBaras,
-          <div className="musicBarasDiv">
-            <div className="relatesToMusicDiv">
+          <div className="musicTrustBarasDiv">
+            <div className="relatesToTrustMusicDiv">
               <h3>{eachBaras.relatesTo}</h3>
             </div>
-            <div className="musicMusicDiv">
+            <div className="musicTrustMusicDiv">
               <iframe src={eachBaras.music}></iframe>
             </div>
-            <div className="textMusicDiv">
-              <p>{eachBaras.text.slice(0, 287)}</p>
+            <div className="textTrustMusicDiv">
+              <p>{eachBaras.text}</p>
             </div>
-            <div className="usernameMusicDiv">
-              <span>by</span>{" "}
+            <div className="createdAtTrustMusicDiv">
+              <span>let out: {eachBaras.updatedAt.slice(0, 10)}</span>
+            </div>
+            <div className="usernameTrustMusicDiv">
+              <span>Trusted</span>{" "}
               <NavLink
                 style={{ color: "rgb(131, 129, 125)" }}
                 to={`/${eachBaras.User.username}/user`}
               >
                 {eachBaras.User.username}
               </NavLink>
-            </div>
-            <div className="createdAtMusicDiv">
-              <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
             </div>
           </div>,
         ]);
       } else {
         styledTrustBaras.push([
           eachBaras,
-          <div className="musicBarasDiv">
-            <div className="relatesToMusicDiv">
+          <div className="musicTrustBarasDiv">
+            <div className="relatesToTrustMusicDiv">
               <h3>{eachBaras.relatesTo}</h3>
             </div>
-            <div className="musicMusicDiv">
+            <div className="musicTrustMusicDiv">
               <iframe src={eachBaras.music}></iframe>
             </div>
-            <div className="usernameMusicDiv">
-              <span>by</span>{" "}
+            <div className="usernameTrustMusicDiv">
+              <span>Trusted</span>{" "}
               <NavLink
                 style={{ color: "rgb(131, 129, 125)" }}
                 to={`/${eachBaras.User.username}/user`}
@@ -210,8 +210,8 @@ function renderTrustBaras(TrustBaras) {
                 {eachBaras.User.username}
               </NavLink>
             </div>
-            <div className="createdAtMusicDiv">
-              <span>let out: {eachBaras.updatedAt.slice(0, 16)}</span>
+            <div className="createdAtTrustMusicDiv">
+              <span>let out: {eachBaras.updatedAt.slice(0, 10)}</span>
             </div>
           </div>,
         ]);
