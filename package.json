@@ -1,11 +1,26 @@
 {
+  "name": "Baras",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "heroku-postbuild": "npm run build --prefix baras",
-    "install": "npm --prefix backendBaras install backend && npm --prefix baras install frontend",
+    "install": "npm --prefix backendBaras install backendBaras && npm --prefix baras install baras",
     "dev:backend": "npm install --prefix backendBaras start",
     "dev:frontend": "npm install --prefix baras start",
     "sequelize": "npm run --prefix backendBaras sequelize",
     "sequelize-cli": "npm run --prefix backendBaras sequelize-cli",
     "start": "npm start --prefix backendBaras"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Giiaga/Baras.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Giiaga/Baras/issues"
+  },
+  "homepage": "https://github.com/Giiaga/Baras#readme"
 }

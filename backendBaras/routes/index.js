@@ -39,10 +39,10 @@ if (process.env.NODE_ENV !== "production") {
     res.cookie("XSRF-TOKEN", req.csrfToken());
     return res.json({});
   });
+  router.get("/", async (req, res) => {
+    // let userr = await User.findByPk(15);
+    res.json("hisdgfg");
+  });
 }
-router.get("/", async (req, res) => {
-  // let userr = await User.findByPk(15);
-  res.json("hisdgfg");
-});
 
 module.exports = router;
