@@ -21,9 +21,19 @@ module.exports = {
           message: "Whats happeining",
         },
         {
+          senderId: 7,
+          recieverId: 4,
+          message: "Whats happeining",
+        },
+        {
           senderId: 4,
           recieverId: 7,
           message: "Working on the project",
+        },
+        {
+          senderId: 7,
+          recieverId: 4,
+          message: "Nevermind",
         },
         {
           senderId: 7,

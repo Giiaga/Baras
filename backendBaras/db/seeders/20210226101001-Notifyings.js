@@ -17,12 +17,12 @@ module.exports = {
           notification: "add me",
           type: "trustRequest",
         },
-        {
-          userId: 4,
-          trustedId: 3,
-          notification: "add me",
-          type: "trustRequest",
-        },
+        // {
+        //   userId: 4,
+        //   trustedId: 3,
+        //   notification: "add me",
+        //   type: "trustRequest",
+        // },
       ],
       {}
     );

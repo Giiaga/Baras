@@ -19,6 +19,14 @@ module.exports = {
         },
         {
           userId: 4,
+          trustedId: 3,
+        },
+        {
+          userId: 3,
+          trustedId: 4,
+        },
+        {
+          userId: 4,
           trustedId: 8,
         },
         {

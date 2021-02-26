@@ -23,6 +23,8 @@ module.exports = {
         {
           email: "demoUser3@gmail.com",
           username: "demoUser3",
+          quote: "Stars in your eyes",
+          description: "This is a random description",
           photo:
             "https://www.bing.com/th/id/OGC.98ffcc7ba6291d9e35d0ecac8c7b73b9?pid=1.7&rurl=https%3a%2f%2fmedia.giphy.com%2fmedia%2fnD5bOSfzzwehq%2f200.gif&ehk=OfDMmGAepViI03PvnFNrMGfP2daykWV%2b7xMk0lCXt0Y%3d",
           hashedPassword: bcrypt.hashSync("password"),
@@ -30,6 +32,9 @@ module.exports = {
         {
           email: "giiaga@gmail.com",
           username: "giiaga",
+          quote: "Everything is Life",
+          description:
+            "This is a description and what to put in description. Could be left null",
           photo:
             "https://th.bing.com/th/id/OIP.p8SDvxKX_rIkAV5jbHpG6gHaED?w=311&h=180&c=7&o=5&dpr=1.25&pid=1.7",
           hashedPassword: bcrypt.hashSync("password"),
