@@ -31,7 +31,7 @@ function TrustBaras() {
   function shareThought(e, thoughtTextArea, userId, BarasId) {
     e.preventDefault();
 
-    dispatch(sayThought(thoughtTextArea, userId.id, BarasId))
+    dispatch(sayThought(thoughtTextArea, userId, BarasId))
       .then((data) => {
         if (data) setThoughtTextArea("");
         // thoughtAddedToDataBase ? setThoughtAdded(false) : setThoughtAdded(true);
