@@ -43,6 +43,24 @@ router.post(
   })
 );
 
+// LET GO
+
+router.delete(
+  "/letGo",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    let { letGoId } = req.body;
+    let thoughts = await BarasComments.findAll({ where: { barasId: letGoId } });
+    if (thoughts) {
+      for (let i = 0; i < thoughts.length; i++) {
+        await BarasComments.destroy({ where: { id: thoughts[i].id } });
+      }
+    }
+    await Baras.destroy({ where: { id: letGoId } });
+
+    return res.json("have let Go");
+  })
+);
 //USER PROFILE
 router.get(
   "/:username",

@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getUser, allBaras } from "../../store/user";
+import { getUser, allBaras, letGo } from "../../store/user";
 import renderUserBaras from "./renderUserBaras";
 import "./UserProfile.css";
+import { Modal } from "../../Modals/Modal";
 
 function UserProfile() {
   let dispatch = useDispatch();
   let [userAvailable, setUserAvailable] = useState(false);
   let [barasAvailable, setAllBaras] = useState(false);
+  let [haveLetGo, setHaveLetGo] = useState(false);
 
-  let history = useHistory();
+  // let history = useHistory();
 
   let loggedInUser = useSelector((state) => state.session.user);
   let user = useSelector((state) => state.user.user);
@@ -20,10 +22,17 @@ function UserProfile() {
       dispatch(getUser(loggedInUser.username))
         .then((data) => data && setUserAvailable(true))
         .then(() => dispatch(allBaras(loggedInUser.id)))
-        .then((data) => data.length && setAllBaras(true));
+        .then((data) => data && setAllBaras(true));
     }
+    // setHaveLetGo(false);
   }, [dispatch]);
 
+  function letItGo(e, id) {
+    e.preventDefault();
+    dispatch(letGo(id))
+      .then(() => dispatch(allBaras(loggedInUser.id)))
+      .then((data) => data && setHaveLetGo(true));
+  }
   return (
     <>
       {userAvailable ? (
@@ -56,7 +65,15 @@ function UserProfile() {
           </div>
           {barasAvailable ? (
             renderUserBaras(userBaras).map((each) => (
-              <div className="allBarasDiv">{each[1]}</div>
+              <div className="allBarasDiv">
+                <button
+                  style={{ marginLeft: "90%" }}
+                  onClick={(e) => letItGo(e, each[0].id)}
+                >
+                  let go
+                </button>
+                {each[1]}
+              </div>
             ))
           ) : (
             <div className="allBarasDiv">No Baras</div>
@@ -64,6 +81,15 @@ function UserProfile() {
         </div>
       ) : (
         ""
+      )}
+      {haveLetGo && (
+        <Modal onClose={() => setHaveLetGo(false)}>
+          <img
+            src="https://media.tenor.com/images/3e375093f00d9524149b3c8a184c6b91/tenor.gif"
+            alt="haveLetGo"
+            // style={{ width: "300px" }}
+          />
+        </Modal>
       )}
     </>
   );

@@ -65,6 +65,26 @@ export let userTrusted = (userId, currentUser) => async (dispatch) => {
 
   return response.data;
 };
+
+let LETGO = "letGoBaras";
+
+let letGoAC = (data) => {
+  return {
+    type: LETGO,
+    data,
+  };
+};
+
+export let letGo = (letGoId) => async (dispatch) => {
+  let response = await fetch("/letGo", {
+    method: "DELETE",
+    body: JSON.stringify({ letGoId }),
+  });
+
+  dispatch(letGoAC(response.data));
+
+  return response.data;
+};
 let userReducer = (state = [], action) => {
   let newState;
   switch (action.type) {
@@ -84,7 +104,10 @@ let userReducer = (state = [], action) => {
       newState = Object.assign({}, state);
       newState.userTrusted = action.data;
       return newState;
-
+    // case LETGO:
+    //   newState = Object.assign({}, state);
+    //   newState.letGo = action.data;
+    //   return newState;
     default:
       return state;
   }
