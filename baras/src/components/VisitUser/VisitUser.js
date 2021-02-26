@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { getUser, allBaras } from "../../store/user";
-import renderUserBaras from "./renderUserBaras";
-import "./UserProfile.css";
+import { getSpecificUser, allBaras } from "../../store/user";
+import renderUserBaras from "../UserProfile/renderUserBaras";
+import "../UserProfile/UserProfile.css";
 
-function UserProfile() {
+function VisitUser() {
   let dispatch = useDispatch();
   let [userAvailable, setUserAvailable] = useState(false);
   let [barasAvailable, setAllBaras] = useState(false);
-  let userId = useParams();
-  let history = useHistory();
+  let { username } = useParams();
+  console.log(username);
+  // let history = useHistory();
 
   //   let loggedInUser = useSelector((state) => state.session.user);
-  //   let user = useSelector((state) => state.user.user);
+  let user = useSelector((state) => state.user.specificUser);
   let userBaras = useSelector((state) => state.user.allBaras);
+  console.log(user, "USER");
   useEffect(() => {
     // if (loggedInUser != undefined) {
-    dispatch(getUser(userId))
-      .then((data) => data && setUserAvailable(true))
-      .then(() => dispatch(allBaras(userId)))
-      .then((data) => data.length && setAllBaras(true));
+    dispatch(getSpecificUser(username))
+      .then((data) => data.username && setUserAvailable(true))
+      .then(() => dispatch(allBaras(undefined, username)))
+      .then((data) => data && setAllBaras(true));
     // }
   }, [dispatch]);
 
@@ -69,4 +71,4 @@ function UserProfile() {
   );
 }
 
-export default UserProfile;
+export default VisitUser;

@@ -62,9 +62,17 @@ router.get(
   requireAuth,
   asyncHandler(async (req, res) => {
     let { userId } = req.params;
-    let allBaras = await Baras.findAll({ where: { userId: userId } });
-
-    return res.json(allBaras);
+    // console.log(typeof userId, "TYEPOF");
+    if (Number(userId)) {
+      let allBaras = await Baras.findAll({ where: { userId: userId } });
+      return res.json(allBaras);
+    } else {
+      let user = await User.findOne({ where: { username: userId } });
+      let allBarasUsername = await Baras.findAll({
+        where: { userId: user.id },
+      });
+      return res.json(allBarasUsername);
+    }
   })
 );
 

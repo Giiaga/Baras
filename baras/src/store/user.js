@@ -16,6 +16,21 @@ export let getUser = (username) => async (dispatch) => {
 
   return response.data;
 };
+let GETUSERSPECIFIC = "getUserSpecificProfilePage";
+
+let getSpecificUserAC = (data) => {
+  return {
+    type: GETUSERSPECIFIC,
+    data,
+  };
+};
+
+export let getSpecificUser = (username) => async (dispatch) => {
+  let response = await fetch(`/${username}/user`);
+
+  dispatch(getSpecificUserAC(response.data));
+  return response.data;
+};
 
 let GETBARASFORUSER = "getAllBarasForUser";
 
@@ -26,8 +41,8 @@ let allBarasAC = (data) => {
   };
 };
 
-export let allBaras = (userId) => async (dispatch) => {
-  let response = await fetch(`/getBaras/${userId}`);
+export let allBaras = (userId, username) => async (dispatch) => {
+  let response = await fetch(`/getBaras/${userId ? userId : username}`);
 
   dispatch(allBarasAC(response.data));
 
@@ -44,6 +59,10 @@ let userReducer = (state = [], action) => {
     case GETBARASFORUSER:
       newState = Object.assign({}, state);
       newState.allBaras = action.data;
+      return newState;
+    case GETUSERSPECIFIC:
+      newState = Object.assign({}, state);
+      newState.specificUser = action.data;
       return newState;
 
     default:
