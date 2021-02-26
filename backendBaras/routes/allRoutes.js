@@ -100,10 +100,10 @@ router.get(
   "/userTrusted/:userId/:currentUsername",
   requireAuth,
   asyncHandler(async (req, res) => {
-    let { userId, currenUsername } = req.params;
-
+    let { userId, currentUsername } = req.params;
+    let user = await User.findOne({ where: { username: currentUsername } });
     let userTrusted = await Trust.findOne({
-      where: { userId, trustedId: currenUsername },
+      where: { userId, trustedId: user.id },
     });
 
     if (userTrusted) return res.json(userTrusted);
@@ -448,6 +448,23 @@ router.get(
 
       return res.json(allNotifications);
     }
+  })
+);
+
+router.post(
+  "/notifCreate",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    let { userId, currentUser } = req.body;
+
+    await Notifying.create({
+      userId,
+      trustedId: currentUser,
+      notification: "add",
+      type: "trustRequest",
+    });
+
+    return res.json("sent");
   })
 );
 

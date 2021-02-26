@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { getSpecificUser, allBaras, userTrusted } from "../../store/user";
+import { sendNotif, removeTrust } from "../../store/trust";
 import renderUserBaras from "../UserProfile/renderUserBaras";
 import "../UserProfile/UserProfile.css";
 
@@ -10,6 +11,7 @@ function VisitUser() {
   let [userAvailable, setUserAvailable] = useState(false);
   let [barasAvailable, setAllBaras] = useState(false);
   let [trusted, setTrusted] = useState(false);
+  let [notifSent, setNotifSent] = useState(false);
 
   let { username } = useParams();
   // let history = useHistory();
@@ -29,11 +31,42 @@ function VisitUser() {
     // }
   }, [dispatch]);
 
+  function confirmTrust(e, userId, user) {
+    e.preventDefault();
+    dispatch(sendNotif(userId, user));
+    setNotifSent(true);
+  }
+
+  function removeTrusted(e, userId, user) {
+    e.preventDefault();
+    dispatch(removeTrust(userId, user.id));
+    setTrusted(false);
+  }
   return (
     <>
       {userAvailable ? (
         <div className="profilePageMain">
-          {!trusted ? <button>Trust</button> : <button>Remove Trust</button>}
+          {!trusted ? (
+            <>
+              {!notifSent ? (
+                <button
+                  style={{ position: "absolute", left: "30%" }}
+                  onClick={(e) => confirmTrust(e, loggedInUser.id, user.id)}
+                >
+                  Trust
+                </button>
+              ) : (
+                <span>Request Sent</span>
+              )}
+            </>
+          ) : (
+            <button
+              style={{ position: "absolute", left: "30%" }}
+              onClick={(e) => removeTrusted(e, loggedInUser.id, user)}
+            >
+              Remove Trust
+            </button>
+          )}
           <div className="userDetailDiv">
             <div className="userPhotoDiv">
               <img src={user.photo} alt={user.username} className="userPhoto" />

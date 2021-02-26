@@ -57,6 +57,26 @@ export let allTrust = (userId) => async (dispatch) => {
   return response.data;
 };
 
+let SENDNOTIF = "sendTrustRequestNotif";
+
+let sendNotifAC = (data) => {
+  return {
+    type: SENDNOTIF,
+    data,
+  };
+};
+
+export let sendNotif = (userId, currentUser) => async (dispatch) => {
+  let response = await fetch(`/notifCreate`, {
+    method: "POST",
+    body: JSON.stringify({ userId, currentUser }),
+  });
+
+  dispatch(sendNotifAC(response.data));
+
+  return response.data;
+};
+
 let trustReducer = (state = {}, action) => {
   let newState;
 
@@ -71,6 +91,10 @@ let trustReducer = (state = {}, action) => {
     case ALLTRUST:
       newState = Object.assign({}, state);
       newState.allTrust = action.data;
+      return newState;
+    case SENDNOTIF:
+      newState = Object.assign({}, state);
+      newState.notifSent = action.data;
       return newState;
 
     default:
