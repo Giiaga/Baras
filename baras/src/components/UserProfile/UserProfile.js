@@ -67,7 +67,12 @@ function UserProfile() {
             renderUserBaras(userBaras).map((each) => (
               <div className="allBarasDiv">
                 <button
-                  style={{ marginLeft: "90%" }}
+                  style={{
+                    marginLeft: "90.5%",
+                    marginTop: ".05%",
+                    borderTopRightRadius: "8px",
+                    border: "1px solid",
+                  }}
                   onClick={(e) => letItGo(e, each[0].id)}
                 >
                   let go
