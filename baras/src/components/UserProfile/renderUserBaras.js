@@ -62,14 +62,24 @@ function renderUserBaras(worldBaras) {
       if (eachBaras.text) {
         styledWorldBaras.push([
           eachBaras,
-          <div className="modalMusicBarasDiv">
-            <div className="modalRelatesToMusicDiv">
+          <div className="modalPhotoBarasDiv">
+            <div className="modalRelatesToPhotoDiv">
               <h3>{eachBaras.relatesTo}</h3>
             </div>
-            <div className="modalMusicMusicDiv">
+            <div
+              className="modalPhotoPhotoDiv"
+              style={{
+                width: "40%px",
+                display: "inline-block",
+                height: "auto",
+              }}
+            >
               <img src={eachBaras.photo} alt={eachBaras.relatesTo} />
             </div>
-            <div className="modalTextMusicDiv">
+            <div
+              className="modalTextPhotoDiv"
+              style={{ display: "inline-block" }}
+            >
               <p>{eachBaras.text}</p>
             </div>
             {/* <div className="usernamePhotoDiv">
