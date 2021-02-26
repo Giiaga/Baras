@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const asyncHandler = require("express-async-handler");
 const { requireAuth } = require("../utils/auth.js");
+let { Op } = require("sequelize");
 
 const {
   Baras,
@@ -88,14 +89,15 @@ router.get(
 // SEARCH
 router.get(
   "/search/:username",
-  requireAuth,
+  // requireAuth,
   asyncHandler(async (req, res) => {
     let { username } = req.params;
-
+    console.log(username, "USERNAMESMDVJFJGDFJGKFDJJ");
     let foundUsers = await User.findAll({
-      where: { username: { $iLike: `%${username}%` } },
+      where: { username: { [Op.iLike]: `%${username}%` } },
     });
     if (foundUsers) {
+      console.log("FOUDMDND");
       return res.json(foundUsers);
     } else {
       return res.json("not Found");
