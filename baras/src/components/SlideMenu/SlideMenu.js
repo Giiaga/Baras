@@ -73,10 +73,10 @@ function SlideMenu({ totalNotif, setTotalNotif }) {
             onClick={() => {
               document.getElementById("menu").style.top = -70 + "%";
               setShowMenu(false);
-              history.push("/message");
+              history.push("/privateChat");
             }}
           >
-            Message
+            Private Chat
           </h4>
           <h4
             onClick={() => {

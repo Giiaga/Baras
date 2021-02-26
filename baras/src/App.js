@@ -83,7 +83,7 @@ function App() {
                 setTotalNotif={setTotalNotif}
               />
             </Route>
-            <Route exact path="/message">
+            <Route exact path="/privateChat">
               <MessagesPage />
             </Route>
             <Route exact path="/feelGood">
