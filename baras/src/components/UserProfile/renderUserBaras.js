@@ -7,11 +7,14 @@ function renderUserBaras(worldBaras) {
       if (eachBaras.text) {
         styledWorldBaras.push([
           eachBaras,
-          <div className="modalTextTextDiv">
+          <div className="modalMusicBarasDiv">
             <div className="modalRelatesToMusicDiv">
               <h3>{eachBaras.relatesTo}</h3>
             </div>
-            <div className="modalTextMusicDiv">
+            <div
+              className="modalTextMusicDiv"
+              style={{ width: "90%", height: "372px" }}
+            >
               <p>{eachBaras.text}</p>
             </div>
             {/* <div className="usernameTextOnlyDiv">
