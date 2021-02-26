@@ -89,15 +89,17 @@ router.get(
 // SEARCH
 router.get(
   "/search/:username",
-  // requireAuth,
+  requireAuth,
   asyncHandler(async (req, res) => {
     let { username } = req.params;
-    console.log(username, "USERNAMESMDVJFJGDFJGKFDJJ");
+
     let foundUsers = await User.findAll({
-      where: { username: { [Op.iLike]: `%${username}%` } },
+      where: {
+        username: { [Op.iLike]: `%${username}%` },
+        privateAccount: false,
+      },
     });
     if (foundUsers) {
-      console.log("FOUDMDND");
       return res.json(foundUsers);
     } else {
       return res.json("not Found");
