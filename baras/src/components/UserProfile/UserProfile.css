@@ -1,5 +1,6 @@
-/* .profilePageMain {
-} */
+.profilePageMain {
+  background-color: rgba(0, 0, 0, 0.568);
+}
 
 .userDetailDiv {
   display: flex;
@@ -15,16 +16,22 @@
   width: 250px;
   height: 250px;
   border-radius: 100%;
-  border: 1px solid;
+  border: 2px solid orange;
 }
 .userNameDiv {
   margin: auto;
+  font-size: 20px;
+  color: rgb(255, 179, 38);
+  margin-bottom: 0;
 }
 
 .allBarasDiv {
-  width: 200px;
-  height: 150px;
-  border: 1px solid;
-  margin-left: 5%;
+  display: inline-block;
+  width: 32%;
+  /* width: 200px;
+  height: 150px; */
+  border: 1px solid orange;
+  margin-left: 1%;
+  /* margin-right: 2%; */
   margin-top: 2%;
 }
