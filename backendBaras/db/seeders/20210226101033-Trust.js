@@ -21,6 +21,22 @@ module.exports = {
           userId: 4,
           trustedId: 8,
         },
+        {
+          userId: 1,
+          trustedId: 4,
+        },
+        {
+          userId: 6,
+          trustedId: 4,
+        },
+        {
+          userId: 5,
+          trustedId: 4,
+        },
+        {
+          userId: 8,
+          trustedId: 4,
+        },
       ],
       {}
     );
