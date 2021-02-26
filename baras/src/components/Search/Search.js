@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+
 import { searchUser } from "../../store/search";
 
 import "./Search.css";
@@ -9,7 +11,8 @@ function Search() {
   let [search, setSearch] = useState(false);
 
   let foundUsers = useSelector((state) => state.search.foundUsers);
-  console.log(foundUsers, "SUFJSDF");
+
+  let history = useHistory();
   let dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,7 +27,13 @@ function Search() {
           <i class="fab fa-searchengin"></i>
         </button>
       ) : (
-        <button id="closeSearchButton" onClick={() => setSearch(false)}>
+        <button
+          id="closeSearchButton"
+          onClick={() => {
+            setSearch(false);
+            setSearching("");
+          }}
+        >
           <i class="fas fa-window-close"></i>
         </button>
       )}
@@ -39,9 +48,15 @@ function Search() {
       {foundUsers && (
         <div id="searchResultDiv">
           {/* <ul> */}
-          {foundUsers.map((user) => (
-            <li className="searchResult">{user.username}</li>
-          ))}
+          {search &&
+            foundUsers.map((user) => (
+              <li
+                className="searchResult"
+                onClick={() => history.push(`/${user.username}/user`)}
+              >
+                {user.username}
+              </li>
+            ))}
           {/* </ul> */}
         </div>
       )}

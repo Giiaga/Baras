@@ -20,7 +20,7 @@
   position: absolute;
   top: 2.97%;
   left: 86.8%;
-  width: 11.15%;
+  width: 10.99%;
   /* background-color: firebrick; */
 }
 
@@ -36,11 +36,13 @@
   background-color: orange;
   color: white;
   /* border: 1px solid orange; */
+  border-bottom: 1px solid white;
 }
 
 .searchResult:nth-child(even):hover {
   background-color: orange;
   color: white;
+  border-bottom: 1px solid white;
 }
 /* .searchResult:nth-child(odd):hover {
   background-color: orange;
