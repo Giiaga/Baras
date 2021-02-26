@@ -458,8 +458,8 @@ router.post(
     let { userId, currentUser } = req.body;
 
     await Notifying.create({
-      userId,
-      trustedId: currentUser,
+      userId: currentUser,
+      trustedId: userId,
       notification: "add",
       type: "trustRequest",
     });

@@ -50,20 +50,20 @@ function VisitUser() {
             <>
               {!notifSent ? (
                 <button
-                  style={{ position: "absolute", left: "30%" }}
+                  style={{ position: "absolute", left: "90%" }}
                   onClick={(e) => confirmTrust(e, loggedInUser.id, user.id)}
                 >
                   Trust
                 </button>
               ) : (
-                <span style={{ position: "absolute", left: "30%" }}>
+                <span style={{ position: "absolute", left: "90%" }}>
                   Request Sent
                 </span>
               )}
             </>
           ) : (
             <button
-              style={{ position: "absolute", left: "30%" }}
+              style={{ position: "absolute", left: "90%" }}
               onClick={(e) => removeTrusted(e, loggedInUser.id, user)}
             >
               Remove Trust
