@@ -94,6 +94,22 @@ router.get(
   })
 );
 
+// USER TRUSTED
+
+router.get(
+  "/userTrusted/:userId/:currentUsername",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    let { userId, currenUsername } = req.params;
+
+    let userTrusted = await Trust.findOne({
+      where: { userId, trustedId: currenUsername },
+    });
+
+    if (userTrusted) return res.json(userTrusted);
+    return res.json("not Trusted");
+  })
+);
 // SEARCH
 router.get(
   "/search/:username",

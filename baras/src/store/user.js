@@ -49,6 +49,22 @@ export let allBaras = (userId, username) => async (dispatch) => {
   return response.data;
 };
 
+let USERTRUSTED = "userAlreadyTrusted";
+
+let userTrustedAC = (data) => {
+  return {
+    type: USERTRUSTED,
+    data,
+  };
+};
+
+export let userTrusted = (userId, currentUser) => async (dispatch) => {
+  let response = await fetch(`/userTrusted/${userId}/${currentUser}`);
+
+  dispatch(userTrustedAC(response.data));
+
+  return response.data;
+};
 let userReducer = (state = [], action) => {
   let newState;
   switch (action.type) {
@@ -63,6 +79,10 @@ let userReducer = (state = [], action) => {
     case GETUSERSPECIFIC:
       newState = Object.assign({}, state);
       newState.specificUser = action.data;
+      return newState;
+    case USERTRUSTED:
+      newState = Object.assign({}, state);
+      newState.userTrusted = action.data;
       return newState;
 
     default:

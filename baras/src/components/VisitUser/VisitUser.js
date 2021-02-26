@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { getSpecificUser, allBaras } from "../../store/user";
+import { getSpecificUser, allBaras, userTrusted } from "../../store/user";
 import renderUserBaras from "../UserProfile/renderUserBaras";
 import "../UserProfile/UserProfile.css";
 
@@ -9,18 +9,21 @@ function VisitUser() {
   let dispatch = useDispatch();
   let [userAvailable, setUserAvailable] = useState(false);
   let [barasAvailable, setAllBaras] = useState(false);
+  let [trusted, setTrusted] = useState(false);
+
   let { username } = useParams();
-  console.log(username);
   // let history = useHistory();
 
-  //   let loggedInUser = useSelector((state) => state.session.user);
+  let loggedInUser = useSelector((state) => state.session.user);
   let user = useSelector((state) => state.user.specificUser);
   let userBaras = useSelector((state) => state.user.allBaras);
-  console.log(user, "USER");
+
   useEffect(() => {
     // if (loggedInUser != undefined) {
     dispatch(getSpecificUser(username))
       .then((data) => data.username && setUserAvailable(true))
+      .then(() => dispatch(userTrusted(loggedInUser.id, username)))
+      .then((data) => data != "not Trusted" && setTrusted(true))
       .then(() => dispatch(allBaras(undefined, username)))
       .then((data) => data && setAllBaras(true));
     // }
@@ -30,6 +33,7 @@ function VisitUser() {
     <>
       {userAvailable ? (
         <div className="profilePageMain">
+          {!trusted ? <button>Trust</button> : <button>Remove Trust</button>}
           <div className="userDetailDiv">
             <div className="userPhotoDiv">
               <img src={user.photo} alt={user.username} className="userPhoto" />
