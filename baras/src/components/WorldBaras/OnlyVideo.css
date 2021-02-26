@@ -45,6 +45,7 @@
 
 .textVideoDiv p {
   height: 90%;
+  word-break: break-all;
   overflow: hidden;
 }
 .usernameVideoDiv {

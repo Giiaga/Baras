@@ -7,11 +7,11 @@ function renderUserBaras(worldBaras) {
       if (eachBaras.text) {
         styledWorldBaras.push([
           eachBaras,
-          <div className="onlyTextBarasDiv">
-            <div className="relatesToTextOnlyDiv">
+          <div className="modalTextTextDiv">
+            <div className="modalRelatesToMusicDiv">
               <h3>{eachBaras.relatesTo}</h3>
             </div>
-            <div className="textTextOnlyDiv">
+            <div className="modalTextMusicDiv">
               <p>{eachBaras.text}</p>
             </div>
             {/* <div className="usernameTextOnlyDiv">
@@ -34,7 +34,7 @@ function renderUserBaras(worldBaras) {
         styledWorldBaras.push([
           eachBaras,
           <div className="onlyTextBarasDiv">
-            <div className="relatesToTextOnlyDiv">
+            <div className="modalRelatesToMusicDiv">
               <h3>{eachBaras.relatesTo}</h3>
             </div>
             <div className="textTextOnlyDiv"></div>
