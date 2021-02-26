@@ -10,6 +10,7 @@ import "./OnlyPhoto.css";
 import "./OnlyVideo.css";
 import "./OnlyMusic.css";
 import "./OnlyText.css";
+import Search from "../Search/Search";
 
 function WorldBaras(props) {
   let worldBaras = useSelector((state) => state.worldBaras.worldBaras);
@@ -30,6 +31,7 @@ function WorldBaras(props) {
       <div className="headingDivWorldBaras">
         <h1>World Baras</h1>
       </div>
+      <Search style={{ position: "absolute", top: "0%", left: "50%" }} />
       <div className="worldBarasMainDiv">
         {worldBarasAvailable &&
           renderWorldBaras(worldBaras).map((eachBaras, i) => (

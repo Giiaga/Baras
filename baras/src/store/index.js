@@ -11,6 +11,7 @@ import messageReducer from "./message";
 import worldBarasReducer from "./worldBaras";
 import thoughtsReducer from "./thoughts";
 import TrustBaras from "./trustBaras";
+import search from "./search";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   worldBaras: worldBarasReducer,
   thoughts: thoughtsReducer,
   TrustBaras: TrustBaras,
+  search: search,
 });
 
 let enhancer;

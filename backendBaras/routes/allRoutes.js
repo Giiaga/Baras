@@ -67,6 +67,42 @@ router.get(
   })
 );
 
+// GET SPECIFIC USER
+
+router.get(
+  "/:username/user",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    let { username } = req.params;
+    let userFound = await User.findOne({
+      where: {
+        username,
+      },
+    });
+    if (userFound) {
+      return res.json(userFound);
+    } else return res.json("not Found");
+  })
+);
+
+// SEARCH
+router.get(
+  "/search/:username",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    let { username } = req.params;
+
+    let foundUsers = await User.findAll({
+      where: { username: { $iLike: `%${username}%` } },
+    });
+    if (foundUsers) {
+      return res.json(foundUsers);
+    } else {
+      return res.json("not Found");
+    }
+    // );
+  })
+);
 // CREATE STORY
 router.post(
   "/story/tell",
