@@ -7,7 +7,7 @@ import renderThoughts from "./renderThoughtsModal";
 import "./Thoughts.css";
 import "./OnlyPhotoThought.css";
 
-function Thoughts({ BarasId }) {
+function Thoughts({ BarasId, thoughtfrom }) {
   let [thoughtsAvailable, setThoughtsAvailable] = useState(false);
   let [thoughtTextArea, setThoughtTextArea] = useState("");
   let [thoughtAddedToDataBase, setThoughtAdded] = useState(false);
@@ -21,7 +21,7 @@ function Thoughts({ BarasId }) {
     dispatch(getAllThoughts(BarasId)).then(
       (data) => data && setThoughtsAvailable(true)
     );
-  }, [dispatch, thoughtAddedToDataBase]);
+  }, [dispatch, thoughtAddedToDataBase, thoughtfrom]);
 
   function shareThought(e, thoughtTextArea, userId, BarasId) {
     e.preventDefault();

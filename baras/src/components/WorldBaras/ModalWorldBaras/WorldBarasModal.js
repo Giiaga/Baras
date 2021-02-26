@@ -44,7 +44,10 @@ function WorldBarasModal({ modalBaras, setBarasModal }) {
       <div>{renderModalWorldBaras(modalBaras)}</div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)} thoughts={showModal}>
-          <Thoughts BarasId={modalBaras.id} />
+          <Thoughts
+            BarasId={modalBaras.id}
+            thoughtfrom={thoughtAddedToDataBase}
+          />
         </Modal>
       )}
       <button
