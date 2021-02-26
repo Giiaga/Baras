@@ -34,7 +34,7 @@ function App() {
         (data) => data && setTotalNotif(data.length)
       );
       return;
-    }
+    } else setIsLoaded(false);
     dispatch(sessionActions.restoreUser()).then(
       (data) => data.user && setIsLoaded(true)
     );

@@ -13,7 +13,7 @@ import "./TextOnlyTrustBaras.css";
 
 function TrustBaras() {
   let trustBaras = useSelector((state) => state.TrustBaras.allTrustBaras);
-  let userId = useSelector((state) => state.session.user.id);
+  let userId = useSelector((state) => state.session.user);
   let [thoughtTextArea, setThoughtTextArea] = useState("");
   let [openModal, setOpenModal] = useState(false);
   let [currentBarasId, setCurrentBarasId] = useState();
@@ -21,16 +21,17 @@ function TrustBaras() {
   let [trustBarasAvailable, setTrustBarasAvailable] = useState(false);
   let dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getTrustBaras(userId)).then(
-      (data) => data && setTrustBarasAvailable(true)
-    );
+    if (userId) {
+      dispatch(getTrustBaras(userId.id)).then(
+        (data) => data && setTrustBarasAvailable(true)
+      );
+    }
   }, [dispatch]);
 
   function shareThought(e, thoughtTextArea, userId, BarasId) {
     e.preventDefault();
-    console.log("ATDISPATCH", currentBarasId);
 
-    dispatch(sayThought(thoughtTextArea, userId, BarasId))
+    dispatch(sayThought(thoughtTextArea, userId.id, BarasId))
       .then((data) => {
         if (data) setThoughtTextArea("");
         // thoughtAddedToDataBase ? setThoughtAdded(false) : setThoughtAdded(true);
@@ -38,7 +39,6 @@ function TrustBaras() {
       .then(() =>
         dispatch(getAllThoughts(BarasId)).then(() => setOpenModal(true))
       );
-    console.log(currentBarasId, "CERUEN");
   }
   return (
     <>
@@ -66,11 +66,10 @@ function TrustBaras() {
                         borderBottomRightRadius: "4.7px",
                       }}
                       onClick={(e) => {
-                        console.log("AT CLICK", currentBarasId);
                         shareThought(
                           e,
                           thoughtTextArea,
-                          userId,
+                          userId.id,
                           currentBarasId
                         );
                       }}
