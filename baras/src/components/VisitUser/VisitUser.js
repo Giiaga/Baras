@@ -56,7 +56,9 @@ function VisitUser() {
                   Trust
                 </button>
               ) : (
-                <span>Request Sent</span>
+                <span style={{ position: "absolute", left: "30%" }}>
+                  Request Sent
+                </span>
               )}
             </>
           ) : (
