@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { getUser, allBaras, letGo } from "../../store/user";
 import renderUserBaras from "./renderUserBaras";
 import "./UserProfile.css";
