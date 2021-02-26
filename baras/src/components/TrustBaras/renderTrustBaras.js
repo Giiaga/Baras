@@ -87,7 +87,7 @@ function renderTrustBaras(
       if (eachBaras.text) {
         styledTrustBaras.push([
           eachBaras,
-          <div className="photoTrustBarasDiv">
+          <div>
             <div className="relatesToTrustPhotoDiv">
               <h3>{eachBaras.relatesTo}</h3>
             </div>
@@ -111,7 +111,7 @@ function renderTrustBaras(
                 </NavLink>
               </div>
             </div>
-            <div className="thoughtsTextarea">
+            {/* <div className="thoughtsTextarea">
               <textarea
                 placeholder="What do you think?"
                 value={thoughtTextArea}
@@ -129,7 +129,7 @@ function renderTrustBaras(
               >
                 Say
               </button>
-            </div>
+            </div> */}
           </div>,
         ]);
       } else {
@@ -162,7 +162,7 @@ function renderTrustBaras(
       if (eachBaras.text) {
         styledTrustBaras.push([
           eachBaras,
-          <div className="videoTrustBarasDiv">
+          <div>
             <div className="relatesToTrustVideoDiv">
               <h3>{eachBaras.relatesTo}</h3>
             </div>
@@ -186,7 +186,7 @@ function renderTrustBaras(
                 </NavLink>
               </div>
             </div>
-            <div className="thoughtsTextarea">
+            {/* <div className="thoughtsTextarea">
               <textarea
                 placeholder="What do you think?"
                 value={thoughtTextArea}
@@ -204,13 +204,13 @@ function renderTrustBaras(
               >
                 Say
               </button>
-            </div>
+            </div> */}
           </div>,
         ]);
       } else {
         styledTrustBaras.push([
           eachBaras,
-          <div className="videoTrustBarasDiv">
+          <div>
             <div className="relatesToTrustVideoDiv">
               <h3>{eachBaras.relatesTo}</h3>
             </div>
@@ -237,7 +237,7 @@ function renderTrustBaras(
       if (eachBaras.text) {
         styledTrustBaras.push([
           eachBaras,
-          <div className="musicTrustBarasDiv">
+          <div>
             <div className="relatesToTrustMusicDiv">
               <h3>{eachBaras.relatesTo}</h3>
             </div>
@@ -261,7 +261,7 @@ function renderTrustBaras(
                 </NavLink>
               </div>
             </div>
-            <div className="thoughtsTextarea">
+            {/* <div className="thoughtsTextarea">
               <textarea
                 placeholder="What do you think?"
                 value={thoughtTextArea}
@@ -279,7 +279,7 @@ function renderTrustBaras(
               >
                 Say
               </button>
-            </div>
+            </div> */}
           </div>,
         ]);
       } else {

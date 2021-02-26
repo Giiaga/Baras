@@ -524,7 +524,7 @@ router.post(
     let { text, userId, barasId } = req.body;
 
     let thoughtAdded = await BarasComments.create({
-      id: 17,
+      id: 22,
       text,
       userId,
       barasId,

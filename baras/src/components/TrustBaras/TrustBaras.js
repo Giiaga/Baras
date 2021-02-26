@@ -16,6 +16,7 @@ function TrustBaras() {
   let userId = useSelector((state) => state.session.user.id);
   let [thoughtTextArea, setThoughtTextArea] = useState("");
   let [openModal, setOpenModal] = useState(false);
+  let [currentBarasId, setCurrentBarasId] = useState();
   // let [thoughtAddedToDataBase, setThoughtAdded] = useState(false);
   let [trustBarasAvailable, setTrustBarasAvailable] = useState(false);
   let dispatch = useDispatch();
@@ -27,14 +28,18 @@ function TrustBaras() {
 
   function shareThought(e, thoughtTextArea, userId, BarasId) {
     e.preventDefault();
-    dispatch(sayThought(thoughtTextArea, userId, BarasId)).then((data) => {
-      if (data) setThoughtTextArea("");
-      // thoughtAddedToDataBase ? setThoughtAdded(false) : setThoughtAdded(true);
-    });
-    console.log("up", BarasId);
-    dispatch(getAllThoughts(BarasId)).then(() => setOpenModal(true));
-  }
+    console.log("ATDISPATCH", currentBarasId);
 
+    dispatch(sayThought(thoughtTextArea, userId, BarasId))
+      .then((data) => {
+        if (data) setThoughtTextArea("");
+        // thoughtAddedToDataBase ? setThoughtAdded(false) : setThoughtAdded(true);
+      })
+      .then(() =>
+        dispatch(getAllThoughts(BarasId)).then(() => setOpenModal(true))
+      );
+    console.log(currentBarasId, "CERUEN");
+  }
   return (
     <>
       <div className="TrustBarasHeading">
@@ -42,13 +47,7 @@ function TrustBaras() {
       </div>
       <div className="trustBarasMainDiv">
         {trustBarasAvailable &&
-          renderTrustBaras(
-            trustBaras,
-            thoughtTextArea,
-            setThoughtTextArea,
-            shareThought,
-            userId
-          ).map((eachBaras) => (
+          renderTrustBaras(trustBaras).map((eachBaras, i) => (
             <>
               <div>
                 <div className="onlyTextTrustBarasDiv">
@@ -57,6 +56,7 @@ function TrustBaras() {
                     <textarea
                       placeholder="What do you think?"
                       value={thoughtTextArea}
+                      onClick={() => setCurrentBarasId(eachBaras[0].id)}
                       onChange={(e) => setThoughtTextArea(e.target.value)}
                     ></textarea>
                     <button
@@ -65,9 +65,15 @@ function TrustBaras() {
                         width: "120px",
                         borderBottomRightRadius: "4.7px",
                       }}
-                      onClick={(e) =>
-                        shareThought(e, thoughtTextArea, userId, eachBaras.id)
-                      }
+                      onClick={(e) => {
+                        console.log("AT CLICK", currentBarasId);
+                        shareThought(
+                          e,
+                          thoughtTextArea,
+                          userId,
+                          currentBarasId
+                        );
+                      }}
                     >
                       Say
                     </button>
@@ -79,7 +85,7 @@ function TrustBaras() {
                   onClose={() => setOpenModal(false)}
                   openModalTrustBaras={openModal}
                 >
-                  <Thoughts BarasId={eachBaras[0].id} />
+                  <Thoughts BarasId={currentBarasId} />
                 </Modal>
               )}
             </>
