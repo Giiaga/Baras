@@ -10,7 +10,7 @@ let showpictureAC = (data) => {
 };
 
 export let showpicture = () => async (dispatch) => {
-  let response = await fetch("/api/session/h");
+  let response = await fetch("/apis/session/h");
   dispatch(showpictureAC(response.data.userr));
   return response;
 };

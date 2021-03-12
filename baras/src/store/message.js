@@ -87,7 +87,7 @@ let getTrustAC = (data) => {
 };
 
 export let getTrust = (userId) => async (dispatch) => {
-  let response = await fetch(`/api/getTrust/${userId}`);
+  let response = await fetch(`/apis/getTrust/${userId}`);
 
   dispatch(getTrustAC(response.data));
 

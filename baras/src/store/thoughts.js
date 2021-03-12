@@ -10,7 +10,7 @@ let getAllThoughtsAC = (data) => {
 };
 
 export let getAllThoughts = (BarasId) => async (dispatch) => {
-  let response = await fetch(`/api/allThoughts/${BarasId}`);
+  let response = await fetch(`/apis/allThoughts/${BarasId}`);
 
   dispatch(getAllThoughtsAC(response.data));
 
@@ -27,7 +27,7 @@ let sayThoughtAC = (data) => {
 };
 
 export let sayThought = (text, userId, barasId) => async (dispatch) => {
-  let response = await fetch("/api/addThought", {
+  let response = await fetch("/apis/addThought", {
     method: "POST",
     body: JSON.stringify({ text, userId, barasId }),
   });

@@ -10,7 +10,7 @@ let getTrustBarasAC = (data) => {
 };
 
 export let getTrustBaras = (userId) => async (dispatch) => {
-  let response = await fetch(`/api/allTrustBaras/${userId}`);
+  let response = await fetch(`/apis/allTrustBaras/${userId}`);
 
   dispatch(getTrustBarasAC(response.data));
 

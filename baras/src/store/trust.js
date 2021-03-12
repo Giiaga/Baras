@@ -67,7 +67,7 @@ let sendNotifAC = (data) => {
 };
 
 export let sendNotif = (userId, currentUser) => async (dispatch) => {
-  let response = await fetch(`/api/notifCreate`, {
+  let response = await fetch(`/apis/notifCreate`, {
     method: "POST",
     body: JSON.stringify({ userId, currentUser }),
   });
