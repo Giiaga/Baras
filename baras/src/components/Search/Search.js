@@ -14,6 +14,13 @@ function Search() {
 
   let history = useHistory();
   let dispatch = useDispatch();
+  document.addEventListener("click", (e) => {
+    // let test = document.getElementById("root");
+    // console.log(e);
+    if (e.target.id === "root" || e.target.className === "worldBarasMainDiv") {
+      setSearch(false);
+    }
+  });
 
   useEffect(() => {
     dispatch(searchUser(searching));
