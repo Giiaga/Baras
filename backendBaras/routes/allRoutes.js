@@ -623,7 +623,7 @@ router.post(
     let { text, userId, barasId } = req.body;
 
     let thoughtAdded = await BarasComments.create({
-      id: 24,
+      // id: barasId,
       text,
       userId,
       barasId,
