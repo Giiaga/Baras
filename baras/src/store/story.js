@@ -17,7 +17,7 @@ export let tellStory = (
   trustShare,
   selfShare
 ) => async (dispatch) => {
-  let response = await fetch("/story/tell", {
+  let response = await fetch("/api/story/tell", {
     method: "POST",
     body: JSON.stringify({
       userId,
@@ -57,7 +57,7 @@ export let storyPage = (
   text,
   pageNumber
 ) => async (dispatch) => {
-  let response = await fetch(`/story/${title}/cont`, {
+  let response = await fetch(`/api/story/${title}/cont`, {
     method: "PUT",
     body: JSON.stringify({
       userId,
@@ -91,7 +91,7 @@ let getPagesAC = (data) => {
 };
 
 export let getPages = (title, userId) => async (dispatch) => {
-  let response = await fetch(`/story/${title}/cont/${userId}`);
+  let response = await fetch(`/api/story/${title}/cont/${userId}`);
   dispatch(getPagesAC(response.data));
 
   return response.data;
@@ -121,7 +121,7 @@ export let newPage = (
   text,
   pageNumber
 ) => async (dispatch) => {
-  let response = await fetch("/story/:title/cont/newPage", {
+  let response = await fetch("/api/story/:title/cont/newPage", {
     method: "POST",
     body: JSON.stringify({
       userId,

@@ -10,7 +10,7 @@ let getWorldBarasAC = (data) => {
 };
 
 export let getWorldBaras = () => async (dispatch) => {
-  let response = await fetch("/world/Baras");
+  let response = await fetch("/api/world/Baras");
 
   dispatch(getWorldBarasAC(response.data));
 

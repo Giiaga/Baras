@@ -59,7 +59,7 @@ let userTrustedAC = (data) => {
 };
 
 export let userTrusted = (userId, currentUser) => async (dispatch) => {
-  let response = await fetch(`/userTrusted/${userId}/${currentUser}`);
+  let response = await fetch(`/api/userTrusted/${userId}/${currentUser}`);
 
   dispatch(userTrustedAC(response.data));
 
@@ -76,7 +76,7 @@ let letGoAC = (data) => {
 };
 
 export let letGo = (letGoId) => async (dispatch) => {
-  let response = await fetch("/letGo", {
+  let response = await fetch("/api/letGo", {
     method: "DELETE",
     body: JSON.stringify({ letGoId }),
   });

@@ -10,7 +10,7 @@ let searchUserAC = (data) => {
 };
 
 export let searchUser = (input) => async (dispatch) => {
-  let response = await fetch(`/search/${input}`);
+  let response = await fetch(`/api/search/${input}`);
 
   dispatch(searchUserAC(response.data));
 

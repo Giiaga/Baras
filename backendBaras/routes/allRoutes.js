@@ -15,7 +15,7 @@ const {
 } = require("../db/models");
 
 router.post(
-  "/letBarasOut",
+  "/api/letBarasOut",
   requireAuth,
   asyncHandler(async (req, res, next) => {
     let {
@@ -46,7 +46,7 @@ router.post(
 // LET GO
 
 router.delete(
-  "/letGo",
+  "/api/letGo",
   requireAuth,
   asyncHandler(async (req, res) => {
     let { letGoId } = req.body;
@@ -63,7 +63,7 @@ router.delete(
 );
 //USER PROFILE
 router.get(
-  "/:username",
+  "/api/:username",
   requireAuth,
   asyncHandler(async (req, res) => {
     let { username: currentUser } = req.user;
@@ -76,7 +76,7 @@ router.get(
 );
 
 router.get(
-  "/getBaras/:userId",
+  "/api/getBaras/:userId",
   requireAuth,
   asyncHandler(async (req, res) => {
     let { userId } = req.params;
@@ -97,7 +97,7 @@ router.get(
 // GET SPECIFIC USER
 
 router.get(
-  "/:username/user",
+  "/api/:username/user",
   requireAuth,
   asyncHandler(async (req, res) => {
     let { username } = req.params;
@@ -115,7 +115,7 @@ router.get(
 // USER TRUSTED
 
 router.get(
-  "/userTrusted/:userId/:currentUsername",
+  "/api/userTrusted/:userId/:currentUsername",
   requireAuth,
   asyncHandler(async (req, res) => {
     let { userId, currentUsername } = req.params;
@@ -130,7 +130,7 @@ router.get(
 );
 // SEARCH
 router.get(
-  "/search/:username",
+  "/api/search/:username",
   requireAuth,
   asyncHandler(async (req, res) => {
     let { username } = req.params;
@@ -151,7 +151,7 @@ router.get(
 );
 // CREATE STORY
 router.post(
-  "/story/tell",
+  "/api/story/tell",
   requireAuth,
   asyncHandler(async (req, res) => {
     let {
@@ -226,7 +226,7 @@ router.post(
 );
 
 // STORY PAGE
-router.get("/story/:title/cont/:userId", requireAuth, async (req, res) => {
+router.get("/api/story/:title/cont/:userId", requireAuth, async (req, res) => {
   let { title, userId } = req.params;
   let titleToSearch = title.split("<:>").join(" ");
   let storyFound = await Story.findOne({
@@ -242,7 +242,7 @@ router.get("/story/:title/cont/:userId", requireAuth, async (req, res) => {
 });
 
 router.post(
-  "/story/:title/cont/newPage",
+  "/api/story/:title/cont/newPage",
   requireAuth,
   asyncHandler(async (req, res) => {
     let {
@@ -319,7 +319,7 @@ router.post(
   })
 );
 router.put(
-  "/story/:title/cont",
+  "/api/story/:title/cont",
   requireAuth,
   asyncHandler(async (req, res) => {
     let {
@@ -389,7 +389,7 @@ router.put(
 // TRUST ROUTES
 
 router.get(
-  "/trust/all/:userId",
+  "/api/trust/all/:userId",
   requireAuth,
   asyncHandler(async (req, res) => {
     let { userId } = req.params;
@@ -405,7 +405,7 @@ router.get(
   })
 );
 router.post(
-  "/add/trust",
+  "/api/add/trust",
   requireAuth,
   asyncHandler(async (req, res) => {
     let { userId, trustedId } = req.body;
@@ -427,7 +427,7 @@ router.post(
 );
 
 router.delete(
-  "/remove/trust",
+  "/api/remove/trust",
   requireAuth,
   asyncHandler(async (req, res) => {
     let { userId, trustedId } = req.body;
@@ -440,7 +440,7 @@ router.delete(
 // NOTIFICATIONS
 
 router.get(
-  "/notifications/:userId",
+  "/api/notifications/:userId",
   requireAuth,
   asyncHandler(async (req, res) => {
     let { userId } = req.params;
@@ -470,7 +470,7 @@ router.get(
 );
 
 router.post(
-  "/notifCreate",
+  "/api/notifCreate",
   requireAuth,
   asyncHandler(async (req, res) => {
     let { userId, currentUser } = req.body;
@@ -487,7 +487,7 @@ router.post(
 );
 
 router.post(
-  "/notification/remove",
+  "/api/notification/remove",
   requireAuth,
   asyncHandler(async (req, res) => {
     let { userId, trustedId } = req.body;
@@ -506,7 +506,7 @@ router.post(
 // MESSAGES
 
 router.get(
-  "/privateChat/:userId",
+  "/api/privateChat/:userId",
   requireAuth,
   asyncHandler(async (req, res) => {
     let { userId } = req.params;
@@ -526,7 +526,7 @@ router.get(
 );
 
 router.get(
-  "/privateChat/:userId/:senderId/chat",
+  "/api/privateChat/:userId/:senderId/chat",
   requireAuth,
   asyncHandler(async (req, res) => {
     let { userId, senderId } = req.params;
@@ -544,7 +544,7 @@ router.get(
 );
 
 router.post(
-  "/sendMessage",
+  "/api/sendMessage",
   requireAuth,
   asyncHandler(async (req, res) => {
     let { formValue, userId, sendToId, message, sendTo } = req.body;
@@ -568,7 +568,7 @@ router.post(
 );
 
 router.get(
-  "/getTrust/:userId",
+  "/api/getTrust/:userId",
   requireAuth,
   asyncHandler(async (req, res) => {
     let { userId } = req.params;
@@ -585,7 +585,7 @@ router.get(
 // WORLD BARAS
 
 router.get(
-  "/world/Baras",
+  "/api/world/Baras",
   requireAuth,
   asyncHandler(async (req, res) => {
     let worldBaras = await Baras.findAll({
@@ -601,7 +601,7 @@ router.get(
 // THOUGHTS
 
 router.get(
-  "/allThoughts/:BarasId",
+  "/api/allThoughts/:BarasId",
   requireAuth,
   asyncHandler(async (req, res) => {
     let { BarasId } = req.params;
@@ -617,7 +617,7 @@ router.get(
 );
 
 router.post(
-  "/addThought",
+  "/api/addThought",
   requireAuth,
   asyncHandler(async (req, res) => {
     let { text, userId, barasId } = req.body;
@@ -640,7 +640,7 @@ router.post(
 // TRUST BARAS
 
 router.get(
-  "/allTrustBaras/:userId",
+  "/api/allTrustBaras/:userId",
   requireAuth,
   asyncHandler(async (req, res) => {
     let { userId } = req.params;

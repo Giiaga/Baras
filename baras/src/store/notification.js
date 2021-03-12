@@ -10,7 +10,7 @@ let removeNotificationAC = (data) => {
 };
 
 export let removeNotification = (userId, trustedId) => async (dispatch) => {
-  let response = await fetch("/notification/remove", {
+  let response = await fetch("/api/notification/remove", {
     method: "POST",
     body: JSON.stringify({ userId, trustedId }),
   });
@@ -30,7 +30,7 @@ let allNotificationsAC = (data) => {
 };
 
 export let allNotifications = (userId) => async (dispatch) => {
-  let response = await fetch(`/notifications/${userId}`);
+  let response = await fetch(`/api/notifications/${userId}`);
 
   dispatch(allNotificationsAC(response.data));
 

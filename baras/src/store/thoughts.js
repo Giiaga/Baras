@@ -10,7 +10,7 @@ let getAllThoughtsAC = (data) => {
 };
 
 export let getAllThoughts = (BarasId) => async (dispatch) => {
-  let response = await fetch(`/allThoughts/${BarasId}`);
+  let response = await fetch(`/api/allThoughts/${BarasId}`);
 
   dispatch(getAllThoughtsAC(response.data));
 
@@ -27,7 +27,7 @@ let sayThoughtAC = (data) => {
 };
 
 export let sayThought = (text, userId, barasId) => async (dispatch) => {
-  let response = await fetch("/addThought", {
+  let response = await fetch("/api/addThought", {
     method: "POST",
     body: JSON.stringify({ text, userId, barasId }),
   });
@@ -46,7 +46,7 @@ let thoughtsReducer = (state = [], action) => {
       return newState;
     case SAYTHOUGHT:
       newState = Object.assign({}, state);
-      newState.allThoughts.push(action.data);
+      // newState.allThoughts.push(action.data);
       // if (newState.allThoughts) {
       //   newState.allThoughts.push(action.data);
       // }
