@@ -12,7 +12,7 @@ function renderWorldBaras(worldBaras) {
               <h3>{eachBaras.relatesTo}</h3>
             </div>
             <div className="textTextOnlyDiv">
-              <p>{eachBaras.text.slice(0, 574)}</p>
+              <p>{eachBaras.text.slice(0, 535)}</p>
             </div>
             <div className="usernameTextOnlyDiv">
               <span>by</span>{" "}

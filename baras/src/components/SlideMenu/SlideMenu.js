@@ -16,7 +16,7 @@ function SlideMenu({ totalNotif, setTotalNotif }) {
         <div className="menuList">
           <h4
             onClick={() => {
-              document.getElementById("menu").style.top = -70 + "%";
+              document.getElementById("menu").style.top = -300 + "%";
               setShowMenu(false);
               history.push(`/letBarasOut`);
             }}
@@ -25,7 +25,7 @@ function SlideMenu({ totalNotif, setTotalNotif }) {
           </h4>
           <h4
             onClick={() => {
-              document.getElementById("menu").style.top = -70 + "%";
+              document.getElementById("menu").style.top = -300 + "%";
               setShowMenu(false);
               history.push(`/${user.username}`);
             }}
@@ -34,7 +34,7 @@ function SlideMenu({ totalNotif, setTotalNotif }) {
           </h4>
           <h4
             onClick={() => {
-              document.getElementById("menu").style.top = -70 + "%";
+              document.getElementById("menu").style.top = -300 + "%";
               setShowMenu(false);
               history.push("/world/Baras");
             }}
@@ -43,7 +43,7 @@ function SlideMenu({ totalNotif, setTotalNotif }) {
           </h4>
           <h4
             onClick={() => {
-              document.getElementById("menu").style.top = -70 + "%";
+              document.getElementById("menu").style.top = -300 + "%";
               setShowMenu(false);
               history.push("/Trust/Baras");
             }}
@@ -53,7 +53,7 @@ function SlideMenu({ totalNotif, setTotalNotif }) {
           <h4
             onClick={() => {
               document.getElementById("menu").style.transition = 0 + "s";
-              document.getElementById("menu").style.top = -70 + "%";
+              document.getElementById("menu").style.top = -300 + "%";
               setShowMenu(false);
               history.push("/trust");
             }}
@@ -62,7 +62,7 @@ function SlideMenu({ totalNotif, setTotalNotif }) {
           </h4>
           <h4
             onClick={() => {
-              document.getElementById("menu").style.top = -70 + "%";
+              document.getElementById("menu").style.top = -300 + "%";
               setShowMenu(false);
               history.push("/story/tell");
             }}
@@ -71,7 +71,7 @@ function SlideMenu({ totalNotif, setTotalNotif }) {
           </h4>
           <h4
             onClick={() => {
-              document.getElementById("menu").style.top = -70 + "%";
+              document.getElementById("menu").style.top = -300 + "%";
               setShowMenu(false);
               history.push("/privateChat");
             }}
@@ -80,7 +80,7 @@ function SlideMenu({ totalNotif, setTotalNotif }) {
           </h4>
           <h4
             onClick={() => {
-              document.getElementById("menu").style.top = -70 + "%";
+              document.getElementById("menu").style.top = -300 + "%";
               setShowMenu(false);
               history.push("/notification");
             }}
@@ -125,7 +125,7 @@ function SlideMenu({ totalNotif, setTotalNotif }) {
           onClick={() => {
             setShowMenu(false);
             if ((document.getElementById("menu").style.top = 0 + "%")) {
-              document.getElementById("menu").style.top = -70 + "%";
+              document.getElementById("menu").style.top = -300 + "%";
             }
           }}
         >
@@ -140,8 +140,8 @@ function SlideMenu({ totalNotif, setTotalNotif }) {
           document.getElementById("menu").style.transition = 1.1 + "s";
           setShowMenu(true);
           if (
-            document.getElementById("menu").style.top == -70 + "%" ||
-            document.getElementById("menu").style.top != -70 + "%"
+            document.getElementById("menu").style.top == -300 + "%" ||
+            document.getElementById("menu").style.top != -300 + "%"
           ) {
             document.getElementById("menu").style.top = 0 + "%";
           }
