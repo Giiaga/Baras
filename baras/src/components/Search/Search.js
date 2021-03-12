@@ -18,8 +18,11 @@ function Search() {
     // let test = document.getElementById("root");
     // console.log(e);
     if (e.target.id === "root" || e.target.className === "worldBarasMainDiv") {
-      setSearch(false);
+      search && setSearch(false);
     }
+    // if (e.target.id == "searchButton") {
+    //   setSearch(false);
+    // }
   });
 
   useEffect(() => {
@@ -50,6 +53,7 @@ function Search() {
           type="text"
           value={searching}
           onChange={(e) => setSearching(e.target.value)}
+          placeholder="Search User(s)"
         />
       )}
       {foundUsers && (
