@@ -1,26 +1,26 @@
 #searchButton {
   position: absolute;
   top: 0;
-  left: 98%;
+  left: 97.5%;
 }
 
 #closeSearchButton {
   position: absolute;
   top: 0;
-  left: 98%;
+  left: 97.5%;
 }
 
 #searchBox {
   position: absolute;
   top: 0;
-  left: 86.8%;
+  left: 81.5%;
 }
 
 #searchResultDiv {
   position: absolute;
-  top: 2.97%;
-  left: 86.8%;
-  width: 10.99%;
+  top: 4.4%;
+  left: 81.5%;
+  width: 15.71%;
   /* background-color: firebrick; */
 }
 
@@ -51,7 +51,7 @@
 
 .searchResult:nth-child(odd) {
   /* border: 1px solid orange; */
-  background-color: #e1e1e1;
+  background-color: #fae5d2;
   border-bottom: 1px solid rgb(255, 199, 96);
   /* list-style: none;
   width: 100%; */

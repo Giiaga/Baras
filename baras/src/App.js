@@ -20,6 +20,8 @@ import { allNotifications } from "./store/notification";
 import WorldBaras from "./components/WorldBaras/WorldBaras";
 import TrustBaras from "./components/TrustBaras/TrustBaras";
 import VisitUser from "./components/VisitUser/VisitUser";
+import Test from "./Test";
+import Quicks from "./Quicks";
 
 function App() {
   let user = useSelector((state) => state.session.user);
@@ -57,14 +59,19 @@ function App() {
           <SignupFormPage />
         </Route>
         {!isLoaded && (
-          <Route path="*">
-            <EntryPage />
-          </Route>
+          <>
+            <Route path="*">
+              <EntryPage />
+            </Route>
+          </>
         )}
       </Switch>
       {isLoaded && (
         <>
           <Switch>
+            <Route exact path="/testing">
+              <Quicks />
+            </Route>
             <Route exact path="/:username/user">
               <VisitUser />
             </Route>

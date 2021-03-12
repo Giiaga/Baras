@@ -1,0 +1,394 @@
+// $w: 30vh;
+// $h: 1vh;
+// $d: 0.5 * 1em;
+// $r: 0.5 * $d;
+// $uw: 28vh;
+
+// @mixin track() {
+//   width: 100%;
+//   height: 100%;
+//   //   position: relative;
+//   //   z-index: 1;
+//   background: none; /* get rid of Firefox track background */
+// }
+
+// @mixin thumb() {
+//   border: none; /* get rid of Firefox thumb border */
+//   width: 1.5vh;
+//   height: 1.5vh;
+//   margin-top: 3.1%;
+//   //   z-index: 10;
+//   //   position: absolute;
+//   background-color: pink;
+//   border-radius: 100%; /* get rid of Firefox corner rounding */
+//   //   background: linear-gradient(90deg, #fff 2px, transparent 0) calc(#{$r} - 1px),
+//   //     radial-gradient(circle, var(--col) calc(#{$r} - 1px), transparent $r);
+//   pointer-events: auto;
+// }
+
+// /* fix too small font-size in both Chrome & Firefox */
+// * {
+//   font: inherit;
+// }
+
+// // .testko {
+// //   position: relative;
+// // }
+// .wrap {
+//   --dif: calc(var(--max) - var(--min));
+//   display: grid;
+//   grid-template: repeat(2, max-content) #{2.7vh}/ 1fr 1fr;
+//   overflow: hidden;
+//   position: relative;
+//   margin: 0 auto;
+//   width: $w;
+//   z-index: 0;
+//   background: linear-gradient(0deg, transparent 2vh, transparent 0);
+//   font-family: ubuntu mono, consolas, monaco, monospace;
+
+//   &::before,
+//   &::after {
+//     grid-column: 1 / span 2;
+//     grid-row: 3;
+//     margin-top: 4.7%;
+//     height: 1vh;
+//     background: pink;
+//     content: "";
+//   }
+
+//   &::before {
+//     margin-left: calc(#{0.8vh} + (var(--a) - var(--min)) / var(--dif) *#{$uw});
+//     width: calc((var(--b) - var(--a)) / var(--dif) *#{$uw});
+//   }
+
+//   &::after {
+//     margin-left: calc(#{0.8vh} + (var(--b) - var(--min)) / var(--dif) *#{$uw});
+//     width: calc((var(--a) - var(--b)) / var(--dif) *#{$uw});
+//   }
+// }
+
+// [id="multi-lbl"] {
+//   grid-column: 1 / span 2;
+// }
+
+// .sr-only {
+//   position: absolute;
+//   clip-path: inset(50%);
+// }
+
+// input[type="range"] {
+//   &::-webkit-slider-runnable-track,
+//   &::-webkit-slider-thumb,
+//   & {
+//     -webkit-appearance: none;
+//   }
+//   margin: auto !important;
+//   width: 29vh;
+//   grid-column: 1 / span 2;
+//   grid-row: 3;
+//   z-index: 1;
+//   top: 0;
+//   left: 0;
+//   margin: 0;
+//   background: none; /* get rid of white Chrome background */
+//   --col: #000;
+//   pointer-events: none;
+
+//   &::-webkit-slider-runnable-track {
+//     @include track;
+//   }
+//   &::-moz-range-track {
+//     @include track;
+//   }
+
+//   &::-webkit-slider-thumb {
+//     @include thumb;
+//   }
+//   &::-moz-range-thumb {
+//     @include thumb;
+//   }
+
+//   &:focus {
+//     z-index: 2;
+//     outline: none;
+
+//     // &,
+//     // & + output {
+//     //   --col: darkorange;
+//     // }
+//   }
+// }
+
+// output {
+//   position: absolute;
+//   top: 1.4vh;
+//   background-color: rgba(255, 185, 185, 0.171);
+//   width: 94%;
+//   margin-left: 0.75vh;
+//   font-size: 0;
+//   height: 0.6vh;
+//   border: 1px solid rgba(255, 192, 203, 0.637);
+//   border-radius: 1vh;
+//   //   display: flex;
+//   //   justify-content: space-between;
+//   z-index: 0;
+//   grid-row: 3;
+//   color: var(--col);
+
+//   &:last-child {
+//     text-align: right;
+//   }
+
+//   &::after {
+//     counter-reset: c var(--c);
+//     content: "--" attr(for) ": " counter(c) ";";
+//   }
+// }
+
+// $w: 30vh;
+// $h: 11vh;
+// // $d: 0.5 * $h;
+// // $r: 0.5 * $d;
+// // $uw: $w - $d;
+
+// @mixin track() {
+//   // width: 100%;
+//   // height: 100%;
+//   background: none; /* get rid of Firefox track background */
+// }
+
+// @mixin thumb() {
+//   border: none; /* get rid of Firefox thumb border */
+//   width: 1.5vh;
+//   height: 1.5vh;
+//   background-color: pink;
+//   border-radius: 100%; /* get rid of Firefox corner rounding */
+//   // background: linear-gradient(90deg, #fff 2px, transparent 0) calc(#{$r} - 1px),
+//   // radial-gradient(circle, var(--col) calc(#{$r} - 1px), transparent $r);
+//   pointer-events: auto;
+// }
+
+// /* fix too small font-size in both Chrome & Firefox */
+// * {
+//   font: inherit;
+// }
+
+// .wrap {
+//   --dif: calc(var(--max) - var(--min));
+//   display: grid;
+//   grid-template: repeat(2, max-content) #{4vh}/ 1fr 1fr;
+//   overflow: hidden;
+//   position: relative;
+//   margin: 0 auto;
+//   width: $w;
+//   background: linear-gradient(0deg, #ccc 4vh, transparent 0);
+//   font-family: ubuntu mono, consolas, monaco, monospace;
+
+//   &::before,
+//   &::after {
+//     grid-column: 1 / span 2;
+//     grid-row: 3;
+//     // height: 1.3vh;
+//     // margin-top: 9.5vh;
+//     background: #95a;
+//     content: "";
+//   }
+
+//   &::before {
+//     // height: 1.3vh;
+//     margin-left: calc(1vh + (var(--a) - var(--min)) / var(--dif) *#{28vh});
+//     width: calc((var(--b) - var(--a)) / var(--dif) *#{28vh});
+//   }
+
+//   &::after {
+//     // height: 1.3vh;
+//     margin-left: calc(1vh + (var(--b) - var(--min)) / var(--dif) *#{28vh});
+//     width: calc((var(--a) - var(--b)) / var(--dif) *#{28vh});
+//   }
+// }
+
+// [id="multi-lbl"] {
+//   grid-column: 1 / span 2;
+// }
+
+// .sr-only {
+//   position: absolute;
+//   clip-path: inset(50%);
+// }
+
+// input[type="range"] {
+//   &::-webkit-slider-runnable-track,
+//   &::-webkit-slider-thumb,
+//   & {
+//     -webkit-appearance: none;
+//   }
+//   // height: auto;
+//   // margin: auto !important;
+//   // margin-top: 9.5vh !important;
+//   grid-column: 1 / span 2;
+//   grid-row: 3;
+//   z-index: 1;
+//   top: 0;
+//   left: 0;
+//   margin: 0;
+//   background: none; /* get rid of white Chrome background */
+//   --col: #000;
+//   pointer-events: none;
+
+//   &::-webkit-slider-runnable-track {
+//     @include track;
+//   }
+//   &::-moz-range-track {
+//     @include track;
+//   }
+
+//   &::-webkit-slider-thumb {
+//     @include thumb;
+//   }
+//   &::-moz-range-thumb {
+//     @include thumb;
+//   }
+
+//   &:focus {
+//     z-index: 2;
+//     outline: none;
+
+//     // &,
+//     // & + output {
+//     //   --col: darkorange;
+//     // }
+//   }
+// }
+
+// output {
+//   position: absolute;
+//   grid-row: 3;
+//   color: var(--col);
+
+//   &:last-child {
+//     text-align: right;
+//   }
+
+//   &::after {
+//     counter-reset: c var(--c);
+//     content: "--" attr(for) ": " counter(c) ";";
+//   }
+// }
+
+$w: 10em;
+$h: 0.5em;
+// $h: 0.5vmax;
+
+@mixin track() {
+  width: 100%;
+  height: 100%;
+  background: none; /* get rid of Firefox track background */
+}
+
+@mixin thumb() {
+  border: none; /* get rid of Firefox thumb border */
+  width: $h;
+  height: $h;
+  border-radius: 0; /* get rid of Firefox corner rounding */
+  background: currentcolor;
+  pointer-events: auto;
+}
+
+* {
+  font: inherit;
+}
+
+.wrap {
+  --dif: calc(var(--max) - var(--min));
+  display: grid;
+  grid-template: repeat(2, max-content) #{$h}/ 1fr 1fr;
+  overflow: hidden;
+  position: relative;
+  margin: 1em auto;
+  width: $w;
+  background: linear-gradient(0deg, #ccc $h, transparent 0);
+  font-family: ubuntu mono, consolas, monaco, monospace;
+
+  &::before,
+  &::after {
+    grid-column: 1 / span 2;
+    grid-row: 3;
+    height: 100%;
+    background: #95a;
+    content: "";
+  }
+
+  &::before {
+    margin-left: calc((var(--a) - var(--min)) / var(--dif) * 100%);
+    width: calc((var(--b) - var(--a)) / var(--dif) * 100%);
+  }
+
+  &::after {
+    margin-left: calc((var(--b) - var(--min)) / var(--dif) * 100%);
+    width: calc((var(--a) - var(--b)) / var(--dif) * 100%);
+  }
+}
+
+[id="multi-lbl"] {
+  grid-column: 1 / span 2;
+}
+
+.sr-only {
+  position: absolute;
+  clip-path: inset(50%);
+}
+
+input[type="range"] {
+  &::-webkit-slider-runnable-track,
+  &::-webkit-slider-thumb,
+  & {
+    -webkit-appearance: none;
+  }
+  // height: $h;
+  grid-column: 1 / span 2;
+  grid-row: 3;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  margin: 0;
+  background: none; /* get rid of white Chrome background */
+  color: #000;
+  pointer-events: none;
+
+  &::-webkit-slider-runnable-track {
+    @include track;
+  }
+  &::-moz-range-track {
+    @include track;
+  }
+
+  &::-webkit-slider-thumb {
+    @include thumb;
+  }
+  &::-moz-range-thumb {
+    @include thumb;
+  }
+
+  &:focus {
+    z-index: 2;
+    outline: dotted 1px currentcolor;
+
+    &,
+    & + output {
+      color: darkorange;
+    }
+  }
+}
+
+output {
+  grid-row: 2;
+
+  &:last-child {
+    text-align: right;
+  }
+
+  &::after {
+    counter-reset: c var(--c);
+    content: "--" attr(for) ": " counter(c) ";";
+  }
+}

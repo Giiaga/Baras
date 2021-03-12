@@ -12,10 +12,10 @@
 }
 
 .closeButton {
-  margin-left: 84%;
+  margin-left: 81%;
   color: rgba(112, 110, 110, 0.5);
   position: absolute;
-  top: 91.5%;
+  top: 89.5%;
   transform: rotate(-35deg);
 }
 .closeButton:hover {
@@ -44,13 +44,13 @@
 .menuList {
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
+  margin-top: 0px;
 }
 
 .menuList > h4 {
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 5px;
+  margin-bottom: 1px;
   color: rgb(0, 0, 0);
 }
 
