@@ -46,6 +46,7 @@ let thoughtsReducer = (state = [], action) => {
       return newState;
     case SAYTHOUGHT:
       newState = Object.assign({}, state);
+      newState.allThoughts.push(action.data);
       // if (newState.allThoughts) {
       //   newState.allThoughts.push(action.data);
       // }

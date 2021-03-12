@@ -22,6 +22,7 @@ function WorldBarasModal({ modalBaras, setBarasModal }) {
   let userId = useSelector((state) => state.session.user.id);
 
   let dispatch = useDispatch();
+  if (modalBaras) console.log(modalBaras, modalBaras.id, "id");
 
   function shareThought(e, thoughtTextArea, userId, BarasId) {
     e.preventDefault();

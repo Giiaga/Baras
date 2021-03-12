@@ -20,7 +20,7 @@ function WorldBaras(props) {
   // let [setBarasModalMain, setBarasModalMainSize] = useState(false);
 
   let dispatch = useDispatch();
-
+  if (modalBaras) console.log(modalBaras, modalBaras.id, "id");
   useEffect(() => {
     dispatch(getWorldBaras()).then(
       (data) => data.length && setWorldBarasAvailable(true)
