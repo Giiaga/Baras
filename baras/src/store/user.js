@@ -10,7 +10,7 @@ let getUserAC = (data) => {
 };
 
 export let getUser = (username) => async (dispatch) => {
-  let response = await fetch(`/${username}`);
+  let response = await fetch(`/apis/${username}`);
 
   dispatch(getUserAC(response.data));
 
@@ -26,7 +26,7 @@ let getSpecificUserAC = (data) => {
 };
 
 export let getSpecificUser = (username) => async (dispatch) => {
-  let response = await fetch(`/${username}/user`);
+  let response = await fetch(`/apis/${username}/user`);
 
   dispatch(getSpecificUserAC(response.data));
   return response.data;
@@ -42,7 +42,7 @@ let allBarasAC = (data) => {
 };
 
 export let allBaras = (userId, username) => async (dispatch) => {
-  let response = await fetch(`/getBaras/${userId ? userId : username}`);
+  let response = await fetch(`/apis/getBaras/${userId ? userId : username}`);
 
   dispatch(allBarasAC(response.data));
 
@@ -59,7 +59,7 @@ let userTrustedAC = (data) => {
 };
 
 export let userTrusted = (userId, currentUser) => async (dispatch) => {
-  let response = await fetch(`userTrusted/${userId}/${currentUser}`);
+  let response = await fetch(`/apis/userTrusted/${userId}/${currentUser}`);
 
   dispatch(userTrustedAC(response.data));
 

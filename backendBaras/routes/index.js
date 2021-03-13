@@ -6,7 +6,7 @@ let allRoutes = require("./allRoutes");
 const { requireAuth, setTokenCookie, restoreUser } = require("../utils/auth");
 // const { User } = require("../db/models/user");
 
-router.use("", allRoutes);
+router.use("/apis", allRoutes);
 router.use("/api", apiRouter);
 
 // Static routes
