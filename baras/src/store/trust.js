@@ -10,7 +10,7 @@ let addTrustAC = (data) => {
 };
 
 export let addTrust = (userId, trustedId) => async (dispatch) => {
-  let response = await fetch("/add/trust", {
+  let response = await fetch("/apis/add/trust", {
     method: "POST",
     body: JSON.stringify({ userId, trustedId }),
   });
@@ -30,7 +30,7 @@ let removeTrustAC = (data) => {
 };
 
 export let removeTrust = (userId, trustedId) => async (dispatch) => {
-  let response = await fetch("/remove/trust", {
+  let response = await fetch("/apis/remove/trust", {
     method: "DELETE",
     body: JSON.stringify({ userId, trustedId }),
   });
@@ -50,7 +50,7 @@ let allTrustAC = (data) => {
 };
 
 export let allTrust = (userId) => async (dispatch) => {
-  let response = await fetch(`/trust/all/${userId}`);
+  let response = await fetch(`/apis/trust/all/${userId}`);
 
   dispatch(allTrustAC(response.data));
 
