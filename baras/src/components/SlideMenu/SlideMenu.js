@@ -85,32 +85,34 @@ function SlideMenu({ totalNotif, setTotalNotif }) {
               history.push("/notification");
             }}
           >
-            Notification
-          </h4>
-          {totalNotif > 0 && (
-            <div
-              style={{
-                position: "absolute",
-                top: "71.5%",
-                left: "70%",
-                width: "15px",
-                height: "15px",
-                borderRadius: "15px",
-                paddingBottom: "1px",
-                backgroundColor: "orange",
-              }}
-            >
-              <span
+            <span style={{ color: "transparent" }}>hgi</span>
+            Notification{" "}
+            {totalNotif > 0 && (
+              <div
                 style={{
-                  paddingLeft: "30%",
-                  fontSize: "12px",
-                  color: "white",
+                  display: "inline-block",
+                  position: "relative",
+                  top: "0.5%",
+                  left: "0%",
+                  width: "15px",
+                  height: "15px",
+                  borderRadius: "15px",
+                  paddingBottom: "1px",
+                  backgroundColor: "orange",
                 }}
               >
-                {totalNotif}
-              </span>
-            </div>
-          )}
+                <span
+                  style={{
+                    paddingLeft: "30%",
+                    fontSize: "12px",
+                    color: "white",
+                  }}
+                >
+                  {totalNotif}
+                </span>
+              </div>
+            )}
+          </h4>
           <h4
             onClick={() => {
               history.push("/feelGood");
