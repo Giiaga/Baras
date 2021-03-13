@@ -42,13 +42,15 @@ function VisitUser() {
     dispatch(removeTrust(userId, user.id));
     setTrusted(false);
   }
+
+  if (username == loggedInUser.username) return null;
   return (
     <>
       {userAvailable ? (
         <div className="profilePageMain">
           {!trusted ? (
             <>
-              {!notifSent ? (
+              {loggedInUser && !notifSent ? (
                 <button
                   style={{ position: "absolute", left: "90%" }}
                   onClick={(e) => confirmTrust(e, loggedInUser.id, user.id)}
