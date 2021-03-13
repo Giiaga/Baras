@@ -10,7 +10,7 @@ let getAllMessagesAC = (data) => {
 };
 
 export let getAllMessages = (userId) => async (dispatch) => {
-  let response = await fetch(`/api/privateChat/${userId}`);
+  let response = await fetch(`/apis/privateChat/${userId}`);
 
   dispatch(getAllMessagesAC(response.data));
 
@@ -29,7 +29,7 @@ let getSpecificUserMessageAC = (data) => {
 export let getSpecificUserMessage = (userId, clickedUser) => async (
   dispatch
 ) => {
-  let response = await fetch(`/api/privateChat/${userId}/${clickedUser}/chat`);
+  let response = await fetch(`/apis/privateChat/${userId}/${clickedUser}/chat`);
 
   dispatch(getSpecificUserMessageAC(response.data));
 
@@ -48,7 +48,7 @@ let submitTheFormAC = (data) => {
 export let submitTheForm = (formValue, userId, sendToId) => async (
   dispatch
 ) => {
-  let response = await fetch("/api/sendMessage", {
+  let response = await fetch("/apis/sendMessage", {
     method: "POST",
     body: JSON.stringify({ formValue, userId, sendToId }),
   });
@@ -67,7 +67,7 @@ let sendMessageAC = (data) => {
 };
 
 export let sendMessage = (userId, sendTo, message) => async (dispatch) => {
-  let response = await fetch("/api/sendMessage", {
+  let response = await fetch("/apis/sendMessage", {
     method: "POST",
     body: JSON.stringify({ userId, sendTo, message }),
   });
